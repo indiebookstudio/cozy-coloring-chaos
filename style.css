@@ -10,6 +10,7 @@
   --color-bg-page: #FBF9F5;
   --color-bg-card: #FFFFFF;
   --color-bg-surface: #F4EFE6;
+  --color-bg-surface-hover: #ECE4D6;
   --color-bg-input: #FAF6EE;
 
   /* Typography */
@@ -38,10 +39,13 @@
   --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 
   /* Elevation Shadows */
+  --shadow-sm: 0 2px 8px rgba(28, 25, 23, 0.04);
   --shadow-card: 0 4px 20px -2px rgba(28, 25, 23, 0.06), 0 2px 6px -1px rgba(28, 25, 23, 0.03);
   --shadow-card-hover: 0 16px 36px -6px rgba(28, 25, 23, 0.12), 0 4px 12px -2px rgba(28, 25, 23, 0.06);
   --shadow-btn: 0 4px 16px rgba(255, 84, 54, 0.32);
   --shadow-btn-hover: 0 8px 24px rgba(255, 84, 54, 0.45);
+  --shadow-tiktok: 0 4px 20px rgba(0, 0, 0, 0.15);
+  --shadow-tiktok-hover: 0 8px 25px rgba(254, 44, 85, 0.25), 0 8px 25px rgba(37, 244, 238, 0.2);
 
   /* Geometry */
   --radius-xs: 6px;
@@ -106,24 +110,98 @@ body {
   width: 100%;
   max-width: 1080px;
   margin: 0 auto;
-  padding: 2.5rem 1.25rem 3.5rem 1.25rem;
+  padding: 1.5rem 1.25rem 3.5rem 1.25rem;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 /* --------------------------------------------------------------------------
-   3. HEADER STYLES
+   3. HEADER & TOP BAR (LANGUAGE SWITCHER)
    -------------------------------------------------------------------------- */
 .site-header {
-  text-align: center;
-  padding: 0.5rem 0 2rem 0;
+  padding: 0 0 1.5rem 0;
+  position: relative;
+}
+
+/* Top bar with language switcher */
+.top-nav-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 1.25rem;
+  width: 100%;
+}
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  padding: 3px;
+  box-shadow: var(--shadow-sm);
+  transition: border-color var(--transition-fast), background-color var(--transition-fast);
+}
+
+.lang-switcher:hover {
+  border-color: var(--color-border-hover);
+}
+
+.lang-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.35rem 0.75rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: var(--color-text-muted);
+  background: transparent;
+  border: none;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.lang-flag {
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.lang-code {
+  letter-spacing: 0.04em;
+}
+
+.lang-btn:hover {
+  color: var(--color-text-main);
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+.lang-btn.active {
+  background-color: #FFFFFF;
+  color: var(--color-coral-primary);
+  box-shadow: 0 2px 6px rgba(28, 25, 23, 0.08);
+}
+
+.lang-btn:focus-visible {
+  outline: 2px solid var(--color-coral-primary);
+  outline-offset: 1px;
+}
+
+.lang-divider {
+  width: 1px;
+  height: 14px;
+  background-color: var(--color-border);
+  margin: 0 1px;
 }
 
 .header-inner {
   display: flex;
   flex-direction: column;
   align-items: center;
+  text-align: center;
   max-width: 720px;
   margin: 0 auto;
 }
@@ -151,16 +229,16 @@ body {
 }
 
 /* --------------------------------------------------------------------------
-   4. CATALOG SECTION
+   4. CATALOG SECTION & BOOK LANGUAGE FILTER
    -------------------------------------------------------------------------- */
 .main-content {
   flex: 1 0 auto;
-  margin-top: 1rem;
+  margin-top: 0.5rem;
 }
 
 .section-header {
   text-align: center;
-  margin-bottom: 2.25rem;
+  margin-bottom: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -182,6 +260,92 @@ body {
   background: var(--gradient-cta);
   border-radius: var(--radius-pill);
   margin-top: 0.5rem;
+}
+
+/* Book Language Filter Pills */
+.book-filters-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 2.25rem;
+  width: 100%;
+}
+
+.book-filters {
+  display: inline-flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.35rem;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+}
+
+.filter-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: var(--color-text-muted);
+  border: 1px solid transparent;
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  user-select: none;
+}
+
+.filter-icon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.filter-text {
+  letter-spacing: 0.01em;
+}
+
+.filter-count {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 20px;
+  height: 20px;
+  padding: 0 6px;
+  border-radius: var(--radius-pill);
+  font-size: 0.72rem;
+  font-weight: 800;
+  background-color: rgba(28, 25, 23, 0.08);
+  color: var(--color-text-muted);
+  transition: all var(--transition-fast);
+}
+
+.filter-btn:hover {
+  color: var(--color-text-main);
+  background-color: rgba(255, 255, 255, 0.6);
+  transform: translateY(-1px);
+}
+
+.filter-btn.active {
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  border-color: transparent;
+  box-shadow: 0 4px 14px rgba(255, 84, 54, 0.35);
+}
+
+.filter-btn.active .filter-count {
+  background-color: rgba(255, 255, 255, 0.28);
+  color: #FFFFFF;
+}
+
+.filter-btn:focus-visible {
+  outline: 2px solid var(--color-coral-primary);
+  outline-offset: 2px;
 }
 
 /* --------------------------------------------------------------------------
@@ -221,6 +385,18 @@ body {
   box-shadow: var(--shadow-card);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
   position: relative;
+  animation: cardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@keyframes cardFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -489,8 +665,21 @@ body {
   }
 }
 
+/* Empty State */
+.empty-state {
+  grid-column: 1 / -1;
+  text-align: center;
+  padding: 3rem 1.5rem;
+  background-color: var(--color-bg-card);
+  border: 1px dashed var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text-muted);
+  font-size: 1.05rem;
+  font-weight: 600;
+}
+
 /* --------------------------------------------------------------------------
-   7. FOOTER STYLES
+   7. FOOTER & TIKTOK SOCIAL CTA
    -------------------------------------------------------------------------- */
 .site-footer {
   text-align: center;
@@ -502,7 +691,93 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.4rem;
+  gap: 1.25rem;
+}
+
+/* TikTok CTA Button */
+.footer-social-wrapper {
+  margin-bottom: 0.25rem;
+}
+
+.tiktok-pill-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  background: #111111;
+  color: #FFFFFF;
+  text-decoration: none;
+  padding: 0.65rem 1.25rem;
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-tiktok);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth), background-color var(--transition-smooth);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.tiktok-icon-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 50%;
+  color: #FFFFFF;
+  flex-shrink: 0;
+  transition: transform var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.tiktok-btn-content {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  line-height: 1.2;
+}
+
+.tiktok-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: #A8A29E;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.tiktok-handle {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: #FFFFFF;
+  letter-spacing: -0.01em;
+}
+
+.tiktok-arrow {
+  flex-shrink: 0;
+  color: #A8A29E;
+  transition: transform var(--transition-smooth), color var(--transition-smooth);
+  margin-left: 0.25rem;
+}
+
+.tiktok-pill-btn:hover {
+  transform: translateY(-2px);
+  background: #000000;
+  border-color: rgba(254, 44, 85, 0.4);
+  box-shadow: var(--shadow-tiktok-hover);
+}
+
+.tiktok-pill-btn:hover .tiktok-icon-wrapper {
+  transform: scale(1.1);
+  background: #FE2C55;
+}
+
+.tiktok-pill-btn:hover .tiktok-arrow {
+  color: #FFFFFF;
+  transform: translateX(3px) translateY(-1px);
+}
+
+.tiktok-pill-btn:focus-visible {
+  outline: 3px solid var(--color-coral-primary);
+  outline-offset: 3px;
 }
 
 .footer-tagline {
@@ -522,7 +797,12 @@ body {
    -------------------------------------------------------------------------- */
 @media (max-width: 480px) {
   .site-wrapper {
-    padding: 1.5rem 1rem 2.5rem 1rem;
+    padding: 1.25rem 1rem 2.5rem 1rem;
+  }
+
+  .top-nav-bar {
+    justify-content: center;
+    margin-bottom: 1rem;
   }
 
   .brand-title {
@@ -532,6 +812,17 @@ body {
   .brand-subtitle {
     font-size: 1rem;
     margin-bottom: 0.5rem;
+  }
+
+  .book-filters {
+    width: 100%;
+    justify-content: center;
+    gap: 0.35rem;
+  }
+
+  .filter-btn {
+    padding: 0.45rem 0.75rem;
+    font-size: 0.82rem;
   }
 
   .book-card {
@@ -551,5 +842,10 @@ body {
   .btn-buy {
     min-height: 52px;
     font-size: 0.92rem;
+  }
+
+  .tiktok-pill-btn {
+    width: 100%;
+    justify-content: center;
   }
 }

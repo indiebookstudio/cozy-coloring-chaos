@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="it">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,23 +8,23 @@
   <!-- ============================================
        PAGE TITLE & SEO META TAGS
        ============================================ -->
-  <title>Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books</title>
-  <meta name="description" content="Discover vibrant cozy coloring books with a twist of dark humor and beautiful chaos. Choose your Amazon marketplace and order your copy today!">
+  <title id="meta-title">Cozy Coloring Chaos | Libri da Colorare Cozy, Divertenti & Caotici</title>
+  <meta id="meta-desc" name="description" content="Scopri libri da colorare cozy con un tocco di umorismo nero e caos creativo. Scegli il tuo store Amazon e ordina la tua copia!">
   <meta name="author" content="Cozy Coloring Chaos">
-  <meta name="theme-color" content="#FF5733">
+  <meta name="theme-color" content="#FF5436">
 
   <!-- Open Graph / Social Sharing (TikTok, Instagram, WhatsApp, FB) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
-  <meta property="og:description" content="Cozy coloring. Dark humor. Beautiful chaos. Official coloring books collection.">
+  <meta id="og-title" property="og:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
+  <meta id="og-desc" property="og:description" content="Cozy coloring. Dark humor. Beautiful chaos. Official coloring books collection.">
   <meta property="og:image" content="assets/Innocent.Paws/Front.Cover.png">
   <meta property="og:site_name" content="Cozy Coloring Chaos">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
-  <meta name="twitter:description" content="Cozy coloring. Dark humor. Beautiful chaos. Explore our books on Amazon.">
-  <meta name="twitter:image" content="assets/Innocent.Paws/Front.Cover.png">
+  <meta id="twitter-title" property="twitter:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
+  <meta id="twitter-desc" property="twitter:description" content="Cozy coloring. Dark humor. Beautiful chaos. Explore our books on Amazon.">
+  <meta property="twitter:image" content="assets/Innocent.Paws/Front.Cover.png">
 
   <!-- Google Fonts: Bricolage Grotesque (Bold Modern Display) & Plus Jakarta Sans (Crisp Modern Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -42,13 +42,27 @@
          HEADER SECTION
          ============================================ -->
     <header class="site-header">
+      <!-- Top Navigation: Interface Language Switcher -->
+      <div class="top-nav-bar">
+        <div class="lang-switcher" role="group" aria-label="Language Selector">
+          <button type="button" class="lang-btn" data-lang="it" aria-pressed="false" title="Passa all'Italiano">
+            <span class="lang-flag" aria-hidden="true">🇮🇹</span>
+            <span class="lang-code">IT</span>
+          </button>
+          <div class="lang-divider" aria-hidden="true"></div>
+          <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="Switch to English">
+            <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+            <span class="lang-code">EN</span>
+          </button>
+        </div>
+      </div>
+
       <div class="header-inner">
-        
         <!-- Brand Title -->
         <h1 class="brand-title">COZY COLORING CHAOS</h1>
         
         <!-- Brand Tagline -->
-        <p class="brand-subtitle">Cozy coloring. Dark humor. Beautiful chaos.</p>
+        <p class="brand-subtitle" data-i18n="brandSubtitle">Colorare cozy. Umorismo nero. Splendido caos.</p>
       </div>
     </header>
 
@@ -59,8 +73,29 @@
       <section class="catalog-section" aria-labelledby="catalog-heading">
         
         <div class="section-header">
-          <h2 id="catalog-heading" class="section-title">CHOOSE YOUR CHAOS</h2>
+          <h2 id="catalog-heading" class="section-title" data-i18n="sectionTitle">SCEGLI IL TUO CAOS</h2>
           <div class="title-accent-pill" aria-hidden="true"></div>
+        </div>
+
+        <!-- Book Language Filter Pills -->
+        <div class="book-filters-container">
+          <div class="book-filters" role="tablist" aria-label="Filtra libri per lingua">
+            <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
+              <span class="filter-icon" aria-hidden="true">✨</span>
+              <span class="filter-text" data-i18n="filterAll">Tutti</span>
+              <span class="filter-count" id="count-all">0</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="it" role="tab" aria-selected="false">
+              <span class="filter-icon" aria-hidden="true">🇮🇹</span>
+              <span class="filter-text" data-i18n="filterIt">Italiano</span>
+              <span class="filter-count" id="count-it">0</span>
+            </button>
+            <button type="button" class="filter-btn" data-filter="en" role="tab" aria-selected="false">
+              <span class="filter-icon" aria-hidden="true">🇬🇧</span>
+              <span class="filter-text" data-i18n="filterEn">English</span>
+              <span class="filter-count" id="count-en">0</span>
+            </button>
+          </div>
         </div>
 
         <!-- Book Cards Container (Populated dynamically by script.js) -->
@@ -80,8 +115,27 @@
          ============================================ -->
     <footer class="site-footer">
       <div class="footer-inner">
-        <p class="footer-tagline">Made for people who like their coloring books a little weird. ✨</p>
-        <p class="footer-copy">&copy; <span id="current-year"></span> Cozy Coloring Chaos. All rights reserved.</p>
+        <!-- TikTok Social CTA Button -->
+        <div class="footer-social-wrapper">
+          <a href="https://www.tiktok.com/@cozycoloringchaos" target="_blank" rel="noopener noreferrer" class="tiktok-pill-btn" aria-label="Segui @cozycoloringchaos su TikTok">
+            <div class="tiktok-icon-wrapper" aria-hidden="true">
+              <svg class="tiktok-svg" viewBox="0 0 24 24" width="20" height="20" fill="currentColor">
+                <path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 3 15.68 6.34 6.34 0 0 0 9.35 22a6.33 6.33 0 0 0 6.33-6.33V8.87a8.16 8.16 0 0 0 4.91 1.62V7.05a4.85 4.85 0 0 1-1-.36z"/>
+              </svg>
+            </div>
+            <div class="tiktok-btn-content">
+              <span class="tiktok-label" data-i18n="followTikTok">Seguici su TikTok</span>
+              <span class="tiktok-handle">@cozycoloringchaos</span>
+            </div>
+            <svg class="tiktok-arrow" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+        </div>
+
+        <p class="footer-tagline" data-i18n="footerTagline">Creato per chi ama i libri da colorare un po' fuori dagli schemi. ✨</p>
+        <p class="footer-copy">&copy; <span id="current-year"></span> Cozy Coloring Chaos. <span data-i18n="footerCopyright">Tutti i diritti riservati.</span></p>
       </div>
     </footer>
   </div>
