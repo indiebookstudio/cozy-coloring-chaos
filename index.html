@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+  <!-- ============================================
+       PAGE TITLE & SEO META TAGS
+       ============================================ -->
+  <title>Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books</title>
+  <meta name="description" content="Discover vibrant cozy coloring books with a twist of dark humor and beautiful chaos. Choose your Amazon marketplace and order your copy today!">
+  <meta name="author" content="Cozy Coloring Chaos">
+  <meta name="theme-color" content="#FF5733">
+
+  <!-- Open Graph / Social Sharing (TikTok, Instagram, WhatsApp, FB) -->
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
+  <meta property="og:description" content="Cozy coloring. Dark humor. Beautiful chaos. Official coloring books collection.">
+  <meta property="og:image" content="assets/Innocent.Paws/Front.Cover.png">
+  <meta property="og:site_name" content="Cozy Coloring Chaos">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
+  <meta name="twitter:description" content="Cozy coloring. Dark humor. Beautiful chaos. Explore our books on Amazon.">
+  <meta name="twitter:image" content="assets/Innocent.Paws/Front.Cover.png">
+
+  <!-- Google Fonts: Bricolage Grotesque (Bold Modern Display) & Plus Jakarta Sans (Crisp Modern Sans) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <!-- Lively background ambient gradients -->
+  <div class="bg-ambience" aria-hidden="true"></div>
+
+  <div class="site-wrapper">
+    <!-- ============================================
+         HEADER SECTION
+         ============================================ -->
+    <header class="site-header">
+      <div class="header-inner">
+        
+        <!-- Brand Title -->
+        <h1 class="brand-title">COZY COLORING CHAOS</h1>
+        
+        <!-- Brand Tagline -->
+        <p class="brand-subtitle">Cozy coloring. Dark humor. Beautiful chaos.</p>
+      </div>
+    </header>
+
+    <!-- ============================================
+         MAIN CONTENT: BOOKS SHOWCASE
+         ============================================ -->
+    <main class="main-content">
+      <section class="catalog-section" aria-labelledby="catalog-heading">
+        
+        <div class="section-header">
+          <h2 id="catalog-heading" class="section-title">CHOOSE YOUR CHAOS</h2>
+          <div class="title-accent-pill" aria-hidden="true"></div>
+        </div>
+
+        <!-- Book Cards Container (Populated dynamically by script.js) -->
+        <div id="books-grid" class="books-grid" role="list">
+          <noscript>
+            <div class="noscript-card">
+              <p>Please enable JavaScript to view our coloring books catalog.</p>
+            </div>
+          </noscript>
+        </div>
+
+      </section>
+    </main>
+
+    <!-- ============================================
+         FOOTER SECTION
+         ============================================ -->
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <p class="footer-tagline">Made for people who like their coloring books a little weird. ✨</p>
+        <p class="footer-copy">&copy; <span id="current-year"></span> Cozy Coloring Chaos. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
+  <script src="script.js"></script>
+</body>
+</html>
