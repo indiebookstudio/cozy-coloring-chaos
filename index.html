@@ -151,6 +151,41 @@
     </footer>
   </div>
 
+  <!-- ======================================================================
+       MODAL POPUP ANTEPRIMA LIBRO (PREVIEW MODAL)
+       ====================================================================== -->
+  <div class="sample-modal-backdrop" id="sample-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="sample-modal-title">
+    <div class="sample-modal-dialog">
+      <div class="sample-modal-header">
+        <div class="sample-modal-title-group">
+          <span class="sample-modal-badge" id="sample-modal-badge">📖 Anteprima</span>
+          <h3 class="sample-modal-title" id="sample-modal-title">Titolo Libro</h3>
+        </div>
+        <button type="button" class="sample-modal-close" onclick="closeSampleModal()" aria-label="Chiudi anteprima">✕</button>
+      </div>
+
+      <div class="sample-modal-body">
+        <button type="button" class="sample-nav-btn prev" id="sample-prev-btn" onclick="changeSamplePage(-1)" aria-label="Pagina precedente">◀</button>
+        
+        <div class="sample-page-viewer" id="sample-viewer">
+          <div class="sample-img-container">
+            <img src="" alt="Anteprima pagina" id="sample-page-img" class="sample-page-img" />
+          </div>
+          <div class="sample-page-info">
+            <span class="sample-page-label" id="sample-page-label">Copertina</span>
+            <span class="sample-page-counter" id="sample-page-counter">1 / 8</span>
+          </div>
+        </div>
+
+        <button type="button" class="sample-nav-btn next" id="sample-next-btn" onclick="changeSamplePage(1)" aria-label="Pagina successiva">▶</button>
+      </div>
+
+      <div class="sample-modal-footer" id="sample-modal-footer">
+        <!-- Bottone Amazon dinamico generato da script.js -->
+      </div>
+    </div>
+  </div>
+
   <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
   <script src="script.js"></script>
 </body>

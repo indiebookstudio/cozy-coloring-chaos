@@ -35,6 +35,16 @@ const BOOKS = [
     language: "English",
     langCode: "en",
     cover: "assets/Innocent.Paws/Front.Cover.png",
+    preview: [
+      "assets/Innocent.Paws/Front.Cover.png",
+      "assets/Innocent.Paws/2.png",
+      "assets/Innocent.Paws/3.png",
+      "assets/Innocent.Paws/4.png",
+      "assets/Innocent.Paws/6.png",
+      "assets/Innocent.Paws/8.png",
+      "assets/Innocent.Paws/10.png",
+      "assets/Innocent.Paws/Back.Cover.png"
+    ],
     defaultMarket: "com",
     asin: "B0HFGBJW8Y"
   },
@@ -46,6 +56,17 @@ const BOOKS = [
     language: "Italiano",
     langCode: "it",
     cover: "assets/Non.Rompetemi.I.Coglioni/Front.Cover.png",
+    preview: [
+      "assets/Non.Rompetemi.I.Coglioni/Front.Cover.png",
+      "assets/Non.Rompetemi.I.Coglioni/4.png",
+      "assets/Non.Rompetemi.I.Coglioni/5.png",
+      "assets/Non.Rompetemi.I.Coglioni/6.png",
+      "assets/Non.Rompetemi.I.Coglioni/8.png",
+      "assets/Non.Rompetemi.I.Coglioni/10.png",
+      "assets/Non.Rompetemi.I.Coglioni/12.png",
+      "assets/Non.Rompetemi.I.Coglioni/14.png",
+      "assets/Non.Rompetemi.I.Coglioni/Back.Cover.png"
+    ],
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
   }
@@ -59,6 +80,11 @@ const BOOKS = [
     language: "Italiano", // o "English", "Español", "Deutsch", ecc.
     langCode: "it",       // "it" o "en" per il filtro automatico
     cover: "assets/NomeCartella/Front.Cover.png",
+    preview: [
+      "assets/NomeCartella/Front.Cover.png",
+      "assets/NomeCartella/2.png",
+      "assets/NomeCartella/Back.Cover.png"
+    ],
     defaultMarket: "it",  // "it" oppure "com", "uk", "de", ecc.
     asin: "B0XXXXXXXX"
   }
@@ -80,6 +106,11 @@ const TRANSLATIONS = {
     selectStore: "Seleziona Store Amazon",
     viewOn: (market) => `VEDI SU ${market.toUpperCase()}`,
     byAuthor: "di",
+    previewBtn: "📖 Anteprima",
+    previewBadge: "📖 Anteprima",
+    frontCoverLabel: "Copertina (Front)",
+    backCoverLabel: "Retro Copertina (Back)",
+    pageLabel: "Pagina",
     footerTagline: "Creato per chi ama i libri da colorare un po' fuori dagli schemi. ✨",
     footerCopyright: "Tutti i diritti riservati.",
     followTikTok: "Seguici su TikTok",
@@ -99,6 +130,11 @@ const TRANSLATIONS = {
     selectStore: "Select Amazon Store",
     viewOn: (market) => `VIEW ON ${market.toUpperCase()}`,
     byAuthor: "by",
+    previewBtn: "📖 Preview",
+    previewBadge: "📖 Sample Preview",
+    frontCoverLabel: "Front Cover",
+    backCoverLabel: "Back Cover",
+    pageLabel: "Page",
     footerTagline: "Made for people who like their coloring books a little weird. ✨",
     footerCopyright: "All rights reserved.",
     followTikTok: "Follow on TikTok",
@@ -314,6 +350,184 @@ function setBookFilter(filterKey) {
 }
 
 /**
+ * Escapes JavaScript string literals for inline handlers.
+ */
+function escapeJs(str) {
+  if (!str) return '';
+  return String(str).replace(/'/g, "\\'").replace(/"/g, '\\"');
+}
+
+/**
+ * ============================================================================
+ * PREVIEW MODAL / SAMPLE VIEWER LOGIC
+ * ============================================================================
+ */
+let activePreviewBook = null;
+let currentPreviewIndex = 0;
+
+window.openSampleModal = function(bookId) {
+  const book = BOOKS.find(b => b.id === bookId);
+  if (!book) return;
+
+  const pages = (Array.isArray(book.preview) && book.preview.length > 0)
+    ? book.preview
+    : [book.cover];
+
+  activePreviewBook = { ...book, preview: pages };
+  currentPreviewIndex = 0;
+
+  const modal = document.getElementById('sample-modal');
+  const titleEl = document.getElementById('sample-modal-title');
+  const badgeEl = document.getElementById('sample-modal-badge');
+  const footerEl = document.getElementById('sample-modal-footer');
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  if (titleEl) titleEl.textContent = book.title;
+  if (badgeEl) badgeEl.textContent = t.previewBadge || "📖 Anteprima";
+
+  if (footerEl) {
+    let marketKey = selectedMarketState[book.id];
+    if (!marketKey || !AMAZON_MARKETS[marketKey]) {
+      marketKey = getDefaultMarketForLanguage(book, currentLanguage);
+    }
+    const targetUrl = getBookUrlForMarket(book, marketKey);
+    const marketInfo = AMAZON_MARKETS[marketKey] || { name: 'Amazon' };
+    footerEl.innerHTML = `
+      <a 
+        href="${targetUrl}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-buy" 
+        style="max-width: 380px;" 
+        aria-label="${t.ariaViewMarket(book.title, marketInfo.name)}"
+      >
+        <span class="btn-buy-text">${t.viewOn(marketInfo.name)}</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    `;
+  }
+
+  updateSampleViewer();
+
+  if (modal) {
+    modal.style.display = 'flex';
+    modal.classList.add('open');
+    modal.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+  }
+};
+
+window.closeSampleModal = function() {
+  const modal = document.getElementById('sample-modal');
+  if (modal) {
+    modal.classList.remove('open');
+    modal.style.display = 'none';
+    modal.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+  activePreviewBook = null;
+};
+
+window.changeSamplePage = function(delta) {
+  if (!activePreviewBook || !activePreviewBook.preview) return;
+  const newIndex = currentPreviewIndex + delta;
+  if (newIndex >= 0 && newIndex < activePreviewBook.preview.length) {
+    currentPreviewIndex = newIndex;
+    updateSampleViewer();
+  }
+};
+
+function updateSampleViewer() {
+  if (!activePreviewBook || !activePreviewBook.preview) return;
+
+  const pages = activePreviewBook.preview;
+  const total = pages.length;
+  const imgEl = document.getElementById('sample-page-img');
+  const labelEl = document.getElementById('sample-page-label');
+  const counterEl = document.getElementById('sample-page-counter');
+  const prevBtn = document.getElementById('sample-prev-btn');
+  const nextBtn = document.getElementById('sample-next-btn');
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  const currentSrc = pages[currentPreviewIndex];
+
+  if (imgEl) {
+    imgEl.src = currentSrc;
+    imgEl.alt = `${activePreviewBook.title} - ${currentPreviewIndex + 1}`;
+  }
+
+  if (labelEl) {
+    if (currentPreviewIndex === 0) {
+      labelEl.textContent = t.frontCoverLabel || "Front Cover";
+    } else if (currentPreviewIndex === total - 1) {
+      labelEl.textContent = t.backCoverLabel || "Back Cover";
+    } else {
+      labelEl.textContent = `${t.pageLabel || "Pagina"} ${currentPreviewIndex + 1}`;
+    }
+  }
+
+  if (counterEl) {
+    counterEl.textContent = `${currentPreviewIndex + 1} / ${total}`;
+  }
+
+  if (prevBtn) prevBtn.disabled = currentPreviewIndex === 0;
+  if (nextBtn) nextBtn.disabled = currentPreviewIndex === total - 1;
+
+  // Preload next image for instant transitions
+  if (currentPreviewIndex + 1 < total) {
+    const preloadImg = new Image();
+    preloadImg.src = pages[currentPreviewIndex + 1];
+  }
+}
+
+function initSampleModalEvents() {
+  const modal = document.getElementById('sample-modal');
+  if (modal) {
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) {
+        closeSampleModal();
+      }
+    });
+  }
+
+  // Keyboard controls: Escape, ArrowLeft, ArrowRight
+  document.addEventListener('keydown', (e) => {
+    const modal = document.getElementById('sample-modal');
+    if (!modal || !modal.classList.contains('open')) return;
+
+    if (e.key === 'Escape') {
+      closeSampleModal();
+    } else if (e.key === 'ArrowLeft') {
+      changeSamplePage(-1);
+    } else if (e.key === 'ArrowRight') {
+      changeSamplePage(1);
+    }
+  });
+
+  // Touch Swipe for mobile
+  let touchStartX = 0;
+  let touchEndX = 0;
+  const viewer = document.getElementById('sample-viewer');
+  if (viewer) {
+    viewer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    viewer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      if (touchStartX - touchEndX > 45) {
+        changeSamplePage(1); // Swipe left -> Next page
+      } else if (touchEndX - touchStartX > 45) {
+        changeSamplePage(-1); // Swipe right -> Previous page
+      }
+    }, { passive: true });
+  }
+}
+
+/**
  * Event listener triggered when a user changes the Amazon marketplace dropdown on a card.
  */
 function onMarketChange(selectElement, bookId) {
@@ -353,6 +567,7 @@ function createBookCard(book, index) {
   const safeAuthor = book.author ? escapeHtml(book.author) : '';
   const safeLang = book.language ? escapeHtml(book.language) : '';
   const safeCover = book.cover ? escapeHtml(book.cover) : '';
+  const hasPreview = Array.isArray(book.preview) && book.preview.length > 0;
 
   // Determine selected market based on state or website language
   let initialMarketKey = selectedMarketState[book.id];
@@ -367,6 +582,13 @@ function createBookCard(book, index) {
   // Language Badge
   const langBadgeHtml = safeLang 
     ? `<span class="book-lang-badge" aria-label="Language: ${safeLang}">${safeLang}</span>` 
+    : '';
+
+  // Preview Chip Button
+  const previewChipHtml = hasPreview 
+    ? `<button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}')" aria-label="${t.previewBtn} - ${safeTitle}">
+        <span>${t.previewBtn}</span>
+       </button>`
     : '';
 
   // Localized Author prefix ("di" / "by")
@@ -388,8 +610,11 @@ function createBookCard(book, index) {
 
   return `
     <article class="book-card" role="listitem" id="card-${escapeHtml(book.id || index)}">
-      <!-- Book Cover Image -->
-      <div class="book-cover-container">
+      <!-- Book Cover Image with Preview Click Trigger -->
+      <div 
+        class="book-cover-container ${hasPreview ? 'has-preview' : ''}"
+        ${hasPreview ? `onclick="openSampleModal('${escapeJs(book.id)}')" title="${t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}')"` : ''}
+      >
         <img 
           src="${safeCover}" 
           alt="${safeTitle} - Coloring Book Cover by ${safeAuthor || 'Cozy Coloring Chaos'}"
@@ -397,6 +622,7 @@ function createBookCard(book, index) {
           loading="lazy"
           onerror="handleImageError(this, '${safeTitle.replace(/'/g, "\\'")}')"
         >
+        ${hasPreview ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${t.previewBtn}</span></div>` : ''}
       </div>
 
       <!-- Book Info -->
@@ -404,6 +630,10 @@ function createBookCard(book, index) {
         <div class="book-header-row">
           <h3 class="book-title">${safeTitle}</h3>
           ${langBadgeHtml}
+        </div>
+
+        <div class="book-meta-row">
+          ${previewChipHtml}
         </div>
         
         ${authorHtml}
@@ -518,6 +748,7 @@ function initApp() {
 
   // 2. Set up event listeners
   attachEventListeners();
+  initSampleModalEvents();
 
   // 3. Render page according to initial language & default filter 'all'
   updateInterfaceLanguage(currentLanguage);
