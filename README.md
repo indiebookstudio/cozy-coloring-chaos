@@ -62,3 +62,5 @@ Apri [**`script.js`**](script.js) e aggiungi un nuovo elemento all'array `BOOKS`
 1. Carica i file (`index.html`, `style.css`, `script.js` e la cartella `assets/`) nel tuo repository GitHub.
 2. Vai in **Settings** > **Pages** > Seleziona branch **`main`** / cartella **`root`** > **Save**.
 3. Inserisci il link generato nella bio di TikTok!
+
+...
