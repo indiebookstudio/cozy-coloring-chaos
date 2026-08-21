@@ -29,7 +29,13 @@ Sito web statico, moderno, responsive e ultra-leggero per il brand **Cozy Colori
    - **ASIN**: `B0HFGBJW8Y`
    - **Store iniziale**: Amazon.com 🇺🇸
 
-2. **Non Rompetemi i Coglioni**
+2. **Impossible Worlds**
+   - **Autore**: Isaac McClour
+   - **Lingua**: English (`langCode: "en"`)
+   - **ASIN**: `B0HFZZ2TMH`
+   - **Store iniziale**: Amazon.com 🇺🇸
+
+3. **Non Rompetemi i Coglioni**
    - **Autore**: Lucas C. Morica
    - **Lingua**: Italiano (`langCode: "it"`)
    - **ASIN**: `B0HF7WZBYD`

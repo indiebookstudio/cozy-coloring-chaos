@@ -39,7 +39,6 @@ const BOOKS = [
       "assets/Innocent.Paws/Front.Cover.png",
       "assets/Innocent.Paws/2.png",
       "assets/Innocent.Paws/3.png",
-      "assets/Innocent.Paws/4.png",
       "assets/Innocent.Paws/6.png",
       "assets/Innocent.Paws/8.png",
       "assets/Innocent.Paws/10.png",
@@ -47,6 +46,26 @@ const BOOKS = [
     ],
     defaultMarket: "com",
     asin: "B0HFGBJW8Y"
+  },
+  {
+    id: "impossible-worlds",
+    title: "Impossible Worlds",
+    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/Impossible.Worlds/Front.Cover.png",
+    preview: [
+      "assets/Impossible.Worlds/Front.Cover.png",
+      "assets/Impossible.Worlds/2.png",
+      "assets/Impossible.Worlds/4.png",
+      "assets/Impossible.Worlds/8.png",
+      "assets/Impossible.Worlds/36.png",
+      "assets/Impossible.Worlds/90.png",
+      "assets/Impossible.Worlds/Back.Cover.png"
+    ],
+    defaultMarket: "com",
+    asin: "B0HFZZ2TMH"
   },
   {
     id: "non-rompetemi-i-coglioni",
@@ -524,7 +543,33 @@ function initSampleModalEvents() {
         changeSamplePage(-1); // Swipe right -> Previous page
       }
     }, { passive: true });
+
+    // Prevent right-click context menu and drag on sample viewer
+    viewer.addEventListener('contextmenu', (e) => {
+      e.preventDefault();
+      return false;
+    });
+
+    viewer.addEventListener('dragstart', (e) => {
+      e.preventDefault();
+      return false;
+    });
   }
+
+  // Prevent right click and dragging globally inside modal and cover containers
+  document.addEventListener('contextmenu', (e) => {
+    if (e.target && (e.target.closest('#sample-modal') || e.target.closest('.book-cover-container'))) {
+      e.preventDefault();
+      return false;
+    }
+  });
+
+  document.addEventListener('dragstart', (e) => {
+    if (e.target && (e.target.closest('#sample-modal') || e.target.closest('.book-cover-container'))) {
+      e.preventDefault();
+      return false;
+    }
+  });
 }
 
 /**
@@ -620,6 +665,8 @@ function createBookCard(book, index) {
           alt="${safeTitle} - Coloring Book Cover by ${safeAuthor || 'Cozy Coloring Chaos'}"
           class="book-cover-img"
           loading="lazy"
+          draggable="false"
+          oncontextmenu="return false;"
           onerror="handleImageError(this, '${safeTitle.replace(/'/g, "\\'")}')"
         >
         ${hasPreview ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${t.previewBtn}</span></div>` : ''}
