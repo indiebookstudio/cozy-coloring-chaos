@@ -12,15 +12,27 @@
 // ============================================================================
 // AMAZON MARKETPLACE DEFINITIONS
 // ============================================================================
+// ============================================================================
+// AMAZON MARKETPLACE DEFINITIONS (14 Official Stores)
+// ============================================================================
+// ============================================================================
+// AMAZON MARKETPLACE DEFINITIONS (14 Official Stores)
+// ============================================================================
 const AMAZON_MARKETS = {
-  it: { name: "Amazon.it", flag: "🇮🇹", domain: "amazon.it" },
-  com: { name: "Amazon.com (US / Global)", flag: "🇺🇸", domain: "amazon.com" },
-  uk: { name: "Amazon.co.uk", flag: "🇬🇧", domain: "amazon.co.uk" },
-  de: { name: "Amazon.de", flag: "🇩🇪", domain: "amazon.de" },
-  fr: { name: "Amazon.fr", flag: "🇫🇷", domain: "amazon.fr" },
-  es: { name: "Amazon.es", flag: "🇪🇸", domain: "amazon.es" },
-  ca: { name: "Amazon.ca", flag: "🇨🇦", domain: "amazon.ca" },
-  au: { name: "Amazon.com.au", flag: "🇦🇺", domain: "amazon.com.au" }
+  us: { name: "Amazon.com (US)", code: "US", flag: "🇺🇸", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
+  uk: { name: "Amazon.co.uk (UK)", code: "UK", flag: "🇬🇧", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
+  de: { name: "Amazon.de (DE)", code: "DE", flag: "🇩🇪", domain: "amazon.de", buttonLabel: "Amazon.de (DE)" },
+  fr: { name: "Amazon.fr (FR)", code: "FR", flag: "🇫🇷", domain: "amazon.fr", buttonLabel: "Amazon.fr (FR)" },
+  es: { name: "Amazon.es (ES)", code: "ES", flag: "🇪🇸", domain: "amazon.es", buttonLabel: "Amazon.es (ES)" },
+  it: { name: "Amazon.it (IT)", code: "IT", flag: "🇮🇹", domain: "amazon.it", buttonLabel: "Amazon.it (IT)" },
+  nl: { name: "Amazon.nl (NL)", code: "NL", flag: "🇳🇱", domain: "amazon.nl", buttonLabel: "Amazon.nl (NL)" },
+  pl: { name: "Amazon.pl (PL)", code: "PL", flag: "🇵🇱", domain: "amazon.pl", buttonLabel: "Amazon.pl (PL)" },
+  se: { name: "Amazon.se (SE)", code: "SE", flag: "🇸🇪", domain: "amazon.se", buttonLabel: "Amazon.se (SE)" },
+  be: { name: "Amazon.com.be (BE)", code: "BE", flag: "🇧🇪", domain: "amazon.com.be", buttonLabel: "Amazon.com.be (BE)" },
+  ie: { name: "Amazon.ie (IE)", code: "IE", flag: "🇮🇪", domain: "amazon.ie", buttonLabel: "Amazon.ie (IE)" },
+  jp: { name: "Amazon.co.jp (JP)", code: "JP", flag: "🇯🇵", domain: "amazon.co.jp", buttonLabel: "Amazon.co.jp (JP)" },
+  ca: { name: "Amazon.ca (CA)", code: "CA", flag: "🇨🇦", domain: "amazon.ca", buttonLabel: "Amazon.ca (CA)" },
+  au: { name: "Amazon.com.au (AU)", code: "AU", flag: "🇦🇺", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
 };
 
 // ============================================================================
@@ -44,7 +56,7 @@ const BOOKS = [
       "assets/Innocent.Paws/10.png",
       "assets/Innocent.Paws/Back.Cover.png"
     ],
-    defaultMarket: "com",
+    defaultMarket: "us",
     asin: "B0HFGBJW8Y"
   },
   {
@@ -64,7 +76,7 @@ const BOOKS = [
       "assets/Impossible.Worlds/90.png",
       "assets/Impossible.Worlds/Back.Cover.png"
     ],
-    defaultMarket: "com",
+    defaultMarket: "us",
     asin: "B0HFZZ2TMH"
   },
   {
@@ -89,25 +101,6 @@ const BOOKS = [
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
   }
-  /*
-  // TEMPLATE PER NUOVO LIBRO:
-  {
-    id: "mio-nuovo-libro",
-    title: "Titolo Libro",
-    subtitle: "Sottotitolo del libro",
-    author: "Nome Autore",
-    language: "Italiano", // o "English", "Español", "Deutsch", ecc.
-    langCode: "it",       // "it" o "en" per il filtro automatico
-    cover: "assets/NomeCartella/Front.Cover.png",
-    preview: [
-      "assets/NomeCartella/Front.Cover.png",
-      "assets/NomeCartella/2.png",
-      "assets/NomeCartella/Back.Cover.png"
-    ],
-    defaultMarket: "it",  // "it" oppure "com", "uk", "de", ecc.
-    asin: "B0XXXXXXXX"
-  }
-  */
 ];
 
 // ============================================================================
@@ -161,6 +154,174 @@ const TRANSLATIONS = {
     noBooksFound: "No books found for this language. Switch to 'All' to explore the full collection!",
     ariaSelectMarket: (title) => `Select Amazon Marketplace for ${title}`,
     ariaViewMarket: (title, market) => `View ${title} on ${market} (opens in a new tab)`
+  },
+  de: {
+    pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
+    metaDesc: "Entdecke gemütliche Malbücher mit einer Prise schwarzem Humor und wunderschönem Chaos. Wähle deinen Amazon Store und bestelle dein Exemplar!",
+    brandSubtitle: "Gemütliches Ausmalen. Schwarzer Humor. Wundervolles Chaos.",
+    sectionTitle: "WÄHLE DEIN CHAOS",
+    filterAll: "Alle",
+    filterIt: "Italienisch",
+    filterEn: "Englisch",
+    selectStore: "Amazon Store wählen",
+    viewOn: (market) => `AUF ${market.toUpperCase()} ANSEHEN`,
+    byAuthor: "von",
+    previewBtn: "📖 Vorschau",
+    previewBadge: "📖 Buchvorschau",
+    frontCoverLabel: "Vorderseite (Cover)",
+    backCoverLabel: "Rückseite (Back)",
+    pageLabel: "Seite",
+    footerTagline: "Gemacht für alle, die Malbücher gerne ein wenig unkonventionell mögen. ✨",
+    footerCopyright: "Alle Rechte vorbehalten.",
+    followTikTok: "Folge uns auf TikTok",
+    tiktokAria: "Folge @cozycoloringchaos auf TikTok (öffnet in neuem Tab)",
+    noBooksFound: "Keine Bücher für diese Sprache gefunden. Wechsle zu 'Alle', um die Kollektion zu sehen!",
+    ariaSelectMarket: (title) => `Amazon Marketplace für ${title} wählen`,
+    ariaViewMarket: (title, market) => `${title} auf ${market} ansehen (öffnet in neuem Tab)`
+  },
+  fr: {
+    pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
+    metaDesc: "Découvrez des livres de coloriage cozy avec une touche d'humour noir et un magnifique chaos. Choisissez votre boutique Amazon et commandez votre exemplaire !",
+    brandSubtitle: "Coloriage cozy. Humour noir. Magnifique chaos.",
+    sectionTitle: "CHOISISSEZ VOTRE CHAOS",
+    filterAll: "Tous",
+    filterIt: "Italien",
+    filterEn: "Anglais",
+    selectStore: "Sélectionner la boutique Amazon",
+    viewOn: (market) => `VOIR SUR ${market.toUpperCase()}`,
+    byAuthor: "par",
+    previewBtn: "📖 Aperçu",
+    previewBadge: "📖 Aperçu du livre",
+    frontCoverLabel: "Première de couverture",
+    backCoverLabel: "Quatrième de couverture",
+    pageLabel: "Page",
+    footerTagline: "Créé pour ceux qui aiment les livres de coloriage un brin décalés. ✨",
+    footerCopyright: "Tous droits réservés.",
+    followTikTok: "Suivez-nous sur TikTok",
+    tiktokAria: "Suivre @cozycoloringchaos sur TikTok (ouvre un nouvel onglet)",
+    noBooksFound: "Aucun livre trouvé pour cette langue. Cliquez sur 'Tous' pour voir la collection !",
+    ariaSelectMarket: (title) => `Sélectionner le marketplace Amazon pour ${title}`,
+    ariaViewMarket: (title, market) => `Voir ${title} sur ${market} (ouvre un nouvel onglet)`
+  },
+  es: {
+    pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
+    metaDesc: "Descubre libros para colorear cozy con un toque de humor negro y caos creativo. ¡Elige tu tienda Amazon y pide tu copia!",
+    brandSubtitle: "Colorear cozy. Humor negro. Hermoso caos.",
+    sectionTitle: "ELIGE TU CAOS",
+    filterAll: "Todos",
+    filterIt: "Italiano",
+    filterEn: "Inglés",
+    selectStore: "Seleccionar tienda Amazon",
+    viewOn: (market) => `VER EN ${market.toUpperCase()}`,
+    byAuthor: "de",
+    previewBtn: "📖 Vista previa",
+    previewBadge: "📖 Vista previa",
+    frontCoverLabel: "Portada",
+    backCoverLabel: "Contraportada",
+    pageLabel: "Página",
+    footerTagline: "Creado para quienes aman los libros para colorear un poco diferentes. ✨",
+    footerCopyright: "Todos los derechos reservados.",
+    followTikTok: "Síguenos en TikTok",
+    tiktokAria: "Seguir a @cozycoloringchaos en TikTok (abre en nueva pestaña)",
+    noBooksFound: "No se encontraron libros en este idioma. ¡Cambia a 'Todos' para ver la colección!",
+    ariaSelectMarket: (title) => `Seleccionar tienda Amazon para ${title}`,
+    ariaViewMarket: (title, market) => `Ver ${title} en ${market} (abre en nueva pestaña)`
+  },
+  nl: {
+    pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
+    metaDesc: "Ontdek cozy kleurboeken met een vleugje zwarte humor en prachtige chaos. Kies je Amazon-winkel en bestel jouw exemplaar!",
+    brandSubtitle: "Gezellig kleuren. Zwarte humor. Prachtige chaos.",
+    sectionTitle: "KIES JE CHAOS",
+    filterAll: "Alle",
+    filterIt: "Italiaans",
+    filterEn: "Engels",
+    selectStore: "Selecteer Amazon-winkel",
+    viewOn: (market) => `BEKIJK OP ${market.toUpperCase()}`,
+    byAuthor: "door",
+    previewBtn: "📖 Voorbeeld",
+    previewBadge: "📖 Voorbeeldweergave",
+    frontCoverLabel: "Voorkant",
+    backCoverLabel: "Achterkant",
+    pageLabel: "Pagina",
+    footerTagline: "Gemaakt voor wie houdt van kleurboeken die net even anders zijn. ✨",
+    footerCopyright: "Alle rechten voorbehouden.",
+    followTikTok: "Volg op TikTok",
+    tiktokAria: "Volg @cozycoloringchaos op TikTok (opent in een nieuw tabblad)",
+    noBooksFound: "Geen boeken gevonden voor deze taal. Ga naar 'Alle' om de collectie te bekijken!",
+    ariaSelectMarket: (title) => `Selecteer Amazon-marktplaats voor ${title}`,
+    ariaViewMarket: (title, market) => `Bekijk ${title} op ${market} (opent in een nieuw tabblad)`
+  },
+  pl: {
+    pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
+    metaDesc: "Odkryj przytulne kolorowanki z nutą czarnego humoru i pięknego chaosu. Wybierz swój sklep Amazon i zamów swój egzemplarz!",
+    brandSubtitle: "Przytulne kolorowanie. Czarny humor. Piękny chaos.",
+    sectionTitle: "WYBIERZ SWÓJ CHAOS",
+    filterAll: "Wszystkie",
+    filterIt: "Włoski",
+    filterEn: "Angielski",
+    selectStore: "Wybierz sklep Amazon",
+    viewOn: (market) => `ZOBACZ NA ${market.toUpperCase()}`,
+    byAuthor: "autorstwa",
+    previewBtn: "📖 Podgląd",
+    previewBadge: "📖 Podgląd książki",
+    frontCoverLabel: "Okładka przednia",
+    backCoverLabel: "Okładka tylna",
+    pageLabel: "Strona",
+    footerTagline: "Stworzone dla tych, którzy lubią kolorowanki z odrobiną szaleństwa. ✨",
+    footerCopyright: "Wszelkie prawa zastrzeżone.",
+    followTikTok: "Obserwuj na TikToku",
+    tiktokAria: "Obserwuj @cozycoloringchaos na TikToku (otwiera w nowej karcie)",
+    noBooksFound: "Nie znaleziono książek w tym języku. Przejdź do 'Wszystkie', aby przejrzeć kolekcję!",
+    ariaSelectMarket: (title) => `Wybierz sklep Amazon dla ${title}`,
+    ariaViewMarket: (title, market) => `Zobacz ${title} na ${market} (otwiera w nowej karcie)`
+  },
+  sv: {
+    pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
+    metaDesc: "Upptäck mysiga målarböcker med en twist av mörk humor och vackert kaos. Välj din Amazon-butik och beställ ditt exemplar!",
+    brandSubtitle: "Mysig färgläggning. Mörk humor. Vackert kaos.",
+    sectionTitle: "VÄLJ DITT KAOS",
+    filterAll: "Alla",
+    filterIt: "Italienska",
+    filterEn: "Engelska",
+    selectStore: "Välj Amazon-butik",
+    viewOn: (market) => `VISA PÅ ${market.toUpperCase()}`,
+    byAuthor: "av",
+    previewBtn: "📖 Förhandsvisning",
+    previewBadge: "📖 Förhandsvisning",
+    frontCoverLabel: "Framsida",
+    backCoverLabel: "Baksida",
+    pageLabel: "Sida",
+    footerTagline: "Skapat för dig som gillar målarböcker som sticker ut. ✨",
+    footerCopyright: "Alla rättigheter förbehållna.",
+    followTikTok: "Följ på TikTok",
+    tiktokAria: "Följ @cozycoloringchaos på TikTok (öppnas i ny flik)",
+    noBooksFound: "Inga böcker hittades för detta språk. Välj 'Alla' för att utforska samlingen!",
+    ariaSelectMarket: (title) => `Välj Amazon-marknadsplats för ${title}`,
+    ariaViewMarket: (title, market) => `Visa ${title} på ${market} (öppnas i ny flik)`
+  },
+  ja: {
+    pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
+    metaDesc: "ブラックユーモアと心地よいカオスが詰まったコージーな塗り絵ブック。Amazonストアを選んで今すぐ手に入れよう！",
+    brandSubtitle: "コージーな塗り絵。ブラックユーモア。愛すべきカオス。",
+    sectionTitle: "カオスを選ぼう",
+    filterAll: "すべて",
+    filterIt: "イタリア語",
+    filterEn: "英語",
+    selectStore: "Amazonストアを選択",
+    viewOn: (market) => `${market.toUpperCase()} で見る`,
+    byAuthor: "著者:",
+    previewBtn: "📖 プレビュー",
+    previewBadge: "📖 サンプルプレビュー",
+    frontCoverLabel: "表紙",
+    backCoverLabel: "裏表紙",
+    pageLabel: "ページ",
+    footerTagline: "ひと味違うユニークな塗り絵を楽しみたいあなたへ。✨",
+    footerCopyright: "無断転載を禁じます。",
+    followTikTok: "TikTokでフォロー",
+    tiktokAria: "TikTokで@cozycoloringchaosをフォロー（新しいタブで開く）",
+    noBooksFound: "この言語の本は見つかりませんでした。「すべて」に切り替えてコレクションをご覧ください！",
+    ariaSelectMarket: (title) => `${title} のAmazonマーケットプレイスを選択`,
+    ariaViewMarket: (title, market) => `${market} で ${title} を表示（新しいタブで開く）`
   }
 };
 
@@ -174,14 +335,25 @@ const selectedMarketState = {};
 
 /**
  * Returns the default Amazon store key based on the website interface language.
- * If website is in Italian -> "it" (Amazon.it)
- * If website is in English -> book's defaultMarket or "com" (Amazon.com)
  */
 function getDefaultMarketForLanguage(book, lang) {
-  if (lang === 'it') {
-    return 'it';
+  const marketMap = {
+    it: 'it',
+    en: 'us',
+    de: 'de',
+    fr: 'fr',
+    es: 'es',
+    nl: 'nl',
+    pl: 'pl',
+    sv: 'se',
+    se: 'se',
+    ja: 'jp',
+    jp: 'jp'
+  };
+  if (marketMap[lang] && AMAZON_MARKETS[marketMap[lang]]) {
+    return marketMap[lang];
   }
-  return book.defaultMarket || 'com';
+  return book.defaultMarket || 'us';
 }
 
 /**
@@ -190,7 +362,7 @@ function getDefaultMarketForLanguage(book, lang) {
 function detectInitialLanguage() {
   try {
     const saved = localStorage.getItem('ccc_site_lang');
-    if (saved && (saved === 'it' || saved === 'en')) {
+    if (saved && TRANSLATIONS[saved]) {
       return saved;
     }
   } catch (e) {
@@ -203,6 +375,13 @@ function detectInitialLanguage() {
     if (typeof lang === 'string') {
       const lower = lang.toLowerCase();
       if (lower.startsWith('it')) return 'it';
+      if (lower.startsWith('de')) return 'de';
+      if (lower.startsWith('fr')) return 'fr';
+      if (lower.startsWith('es')) return 'es';
+      if (lower.startsWith('nl')) return 'nl';
+      if (lower.startsWith('pl')) return 'pl';
+      if (lower.startsWith('sv') || lower.startsWith('se')) return 'sv';
+      if (lower.startsWith('ja') || lower.startsWith('jp')) return 'ja';
       if (lower.startsWith('en')) return 'en';
     }
   }
@@ -229,8 +408,9 @@ function getBookUrlForMarket(book, marketKey) {
   if (book.amazonLinks && book.amazonLinks[marketKey]) {
     return book.amazonLinks[marketKey];
   }
-  if (book.asin && AMAZON_MARKETS[marketKey]) {
-    return `https://www.amazon.${AMAZON_MARKETS[marketKey].domain.replace('amazon.', '')}/dp/${book.asin}`;
+  const key = (marketKey === 'com') ? 'us' : marketKey;
+  if (book.asin && AMAZON_MARKETS[key]) {
+    return `https://www.${AMAZON_MARKETS[key].domain}/dp/${book.asin}`;
   }
   return book.amazonUrl || '#';
 }
@@ -259,8 +439,8 @@ function handleImageError(imgElement, bookTitle) {
  * default Amazon store according to the chosen website language.
  */
 function updateInterfaceLanguage(lang) {
-  currentLanguage = (lang === 'it' || lang === 'en') ? lang : 'en';
-  const t = TRANSLATIONS[currentLanguage];
+  currentLanguage = TRANSLATIONS[lang] ? lang : 'en';
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
   // Update default selected Amazon store for all books based on website language
   BOOKS.forEach((book) => {
@@ -410,7 +590,11 @@ window.openSampleModal = function(bookId) {
       marketKey = getDefaultMarketForLanguage(book, currentLanguage);
     }
     const targetUrl = getBookUrlForMarket(book, marketKey);
-    const marketInfo = AMAZON_MARKETS[marketKey] || { name: 'Amazon' };
+    const marketInfo = AMAZON_MARKETS[marketKey] || { name: 'Amazon', buttonLabel: 'Amazon' };
+    const label = marketInfo.buttonLabel || marketInfo.name;
+    const buttonText = (typeof t.viewOn === 'function') ? t.viewOn(label) : `VIEW ON ${label.toUpperCase()}`;
+    const ariaText = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(book.title, marketInfo.name) : `View ${book.title} on Amazon`;
+
     footerEl.innerHTML = `
       <a 
         href="${targetUrl}" 
@@ -418,9 +602,9 @@ window.openSampleModal = function(bookId) {
         rel="noopener noreferrer" 
         class="btn-buy" 
         style="max-width: 380px;" 
-        aria-label="${t.ariaViewMarket(book.title, marketInfo.name)}"
+        aria-label="${ariaText}"
       >
-        <span class="btn-buy-text">${t.viewOn(marketInfo.name)}</span>
+        <span class="btn-buy-text">${buttonText}</span>
         <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <line x1="7" y1="17" x2="17" y2="7"></line>
           <polyline points="7 7 17 7 17 17"></polyline>
@@ -589,16 +773,19 @@ function onMarketChange(selectElement, bookId) {
   const btnText = cardElement.querySelector('.btn-buy-text');
   
   const targetUrl = getBookUrlForMarket(book, selectedMarketKey);
-  const marketInfo = AMAZON_MARKETS[selectedMarketKey] || { name: 'Amazon' };
-  const t = TRANSLATIONS[currentLanguage];
+  const marketInfo = AMAZON_MARKETS[selectedMarketKey] || { name: 'Amazon', buttonLabel: 'Amazon' };
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
   if (btnBuy) {
     btnBuy.href = targetUrl;
-    btnBuy.setAttribute('aria-label', t.ariaViewMarket(book.title, marketInfo.name));
+    if (typeof t.ariaViewMarket === 'function') {
+      btnBuy.setAttribute('aria-label', t.ariaViewMarket(book.title, marketInfo.name));
+    }
   }
 
   if (btnText) {
-    btnText.textContent = t.viewOn(marketInfo.name);
+    const label = marketInfo.buttonLabel || marketInfo.name;
+    btnText.textContent = (typeof t.viewOn === 'function') ? t.viewOn(label) : `VIEW ON ${label.toUpperCase()}`;
   }
 }
 
@@ -606,7 +793,7 @@ function onMarketChange(selectElement, bookId) {
  * Generates HTML for a single book card.
  */
 function createBookCard(book, index) {
-  const t = TRANSLATIONS[currentLanguage];
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
   const safeTitle = escapeHtml(book.title || 'Untitled Book');
   const safeSubtitle = book.subtitle ? escapeHtml(book.subtitle) : '';
   const safeAuthor = book.author ? escapeHtml(book.author) : '';
@@ -622,7 +809,10 @@ function createBookCard(book, index) {
   selectedMarketState[book.id] = initialMarketKey;
 
   const initialUrl = getBookUrlForMarket(book, initialMarketKey);
-  const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flag: '🛒' };
+  const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flag: '🛒', buttonLabel: 'Amazon' };
+  const initialLabel = initialMarketInfo.buttonLabel || initialMarketInfo.name;
+  const buyButtonText = (typeof t.viewOn === 'function') ? t.viewOn(initialLabel) : `VIEW ON ${initialLabel.toUpperCase()}`;
+  const buyButtonAria = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(safeTitle, initialMarketInfo.name) : `View ${safeTitle} on Amazon`;
 
   // Language Badge
   const langBadgeHtml = safeLang 
@@ -637,7 +827,7 @@ function createBookCard(book, index) {
     : '';
 
   // Localized Author prefix ("di" / "by")
-  const authorPrefix = t.byAuthor;
+  const authorPrefix = t.byAuthor || 'by';
   const authorHtml = safeAuthor
     ? `<p class="book-author"><span class="author-prefix">${authorPrefix}</span> <strong class="author-name">${safeAuthor}</strong></p>`
     : '';
@@ -690,7 +880,7 @@ function createBookCard(book, index) {
         <div class="book-action-area">
           <div class="market-selector-wrapper">
             <label for="market-select-${index}" class="market-label">
-              <span>${t.selectStore}</span>
+              <span>${t.selectStore || "Select Amazon Store"}</span>
               <span>🌍</span>
             </label>
             <div class="market-select-container">
@@ -698,7 +888,7 @@ function createBookCard(book, index) {
                 id="market-select-${index}" 
                 class="market-select" 
                 onchange="onMarketChange(this, '${escapeHtml(book.id)}')"
-                aria-label="${t.ariaSelectMarket(safeTitle)}"
+                aria-label="${(typeof t.ariaSelectMarket === 'function') ? t.ariaSelectMarket(safeTitle) : `Select store for ${safeTitle}`}"
               >
                 ${marketOptionsHtml}
               </select>
@@ -713,9 +903,9 @@ function createBookCard(book, index) {
             target="_blank" 
             rel="noopener noreferrer" 
             class="btn-buy"
-            aria-label="${t.ariaViewMarket(safeTitle, initialMarketInfo.name)}"
+            aria-label="${buyButtonAria}"
           >
-            <span class="btn-buy-text">${t.viewOn(initialMarketInfo.name)}</span>
+            <span class="btn-buy-text">${buyButtonText}</span>
             <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
