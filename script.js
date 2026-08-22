@@ -56,6 +56,14 @@ const BOOKS = [
       "assets/Innocent.Paws/10.png",
       "assets/Innocent.Paws/Back.Cover.png"
     ],
+    colored: [
+      "assets/Innocent.Paws/Colored/01.jpeg",
+      "assets/Innocent.Paws/Colored/02.jpeg",
+      "assets/Innocent.Paws/Colored/03.jpeg",
+      "assets/Innocent.Paws/Colored/04.jpeg",
+      "assets/Innocent.Paws/Colored/05.jpeg",
+      "assets/Innocent.Paws/Colored/06.jpeg"
+    ],
     defaultMarket: "us",
     asin: "B0HFGBJW8Y"
   },
@@ -75,6 +83,15 @@ const BOOKS = [
       "assets/Impossible.Worlds/36.png",
       "assets/Impossible.Worlds/90.png",
       "assets/Impossible.Worlds/Back.Cover.png"
+    ],
+    colored: [
+      "assets/Impossible.Worlds/Colored/01.jpeg",
+      "assets/Impossible.Worlds/Colored/02.jpeg",
+      "assets/Impossible.Worlds/Colored/03.jpeg",
+      "assets/Impossible.Worlds/Colored/04.jpeg",
+      "assets/Impossible.Worlds/Colored/05.jpeg",
+      "assets/Impossible.Worlds/Colored/06.jpeg",
+      "assets/Impossible.Worlds/Colored/07.jpeg"
     ],
     defaultMarket: "us",
     asin: "B0HFZZ2TMH"
@@ -98,6 +115,16 @@ const BOOKS = [
       "assets/Non.Rompetemi.I.Coglioni/14.png",
       "assets/Non.Rompetemi.I.Coglioni/Back.Cover.png"
     ],
+    colored: [
+      "assets/Non.Rompetemi.I.Coglioni/Colored/01.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/02.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/03.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/04.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/05.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/06.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/07.jpeg",
+      "assets/Non.Rompetemi.I.Coglioni/Colored/08.jpeg"
+    ],
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
   }
@@ -113,13 +140,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Colorare cozy. Umorismo nero. Splendido caos.",
     sectionTitle: "SCEGLI IL TUO CAOS",
     filterAll: "Tutti",
-    filterIt: "Italiano",
     filterEn: "English",
+    filterIt: "Italiano",
     selectStore: "Seleziona Store Amazon",
     viewOn: (market) => `VEDI SU ${market.toUpperCase()}`,
     byAuthor: "di",
     previewBtn: "📖 Anteprima",
-    previewBadge: "📖 Anteprima",
+    previewBadge: "📖 Anteprima Pagine",
+    coloredBtn: "🎨 Guarda a colori",
+    coloredBadge: "🎨 Disegni Colorati",
+    coloredHeadline: "Ecco cosa puoi fare con questo libro!",
+    coloredPageLabel: "Disegno Colorato",
+    tabPages: "📖 Pagine",
+    tabColored: "🎨 A Colori",
     frontCoverLabel: "Copertina (Front)",
     backCoverLabel: "Retro Copertina (Back)",
     pageLabel: "Pagina",
@@ -137,13 +170,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Cozy coloring. Dark humor. Beautiful chaos.",
     sectionTitle: "CHOOSE YOUR CHAOS",
     filterAll: "All",
-    filterIt: "Italian",
     filterEn: "English",
+    filterIt: "Italian",
     selectStore: "Select Amazon Store",
     viewOn: (market) => `VIEW ON ${market.toUpperCase()}`,
     byAuthor: "by",
     previewBtn: "📖 Preview",
     previewBadge: "📖 Sample Preview",
+    coloredBtn: "🎨 See it colored",
+    coloredBadge: "🎨 Colored Artworks",
+    coloredHeadline: "Here's what you can create with this book!",
+    coloredPageLabel: "Colored Artwork",
+    tabPages: "📖 Pages",
+    tabColored: "🎨 Colored",
     frontCoverLabel: "Front Cover",
     backCoverLabel: "Back Cover",
     pageLabel: "Page",
@@ -161,13 +200,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Gemütliches Ausmalen. Schwarzer Humor. Wundervolles Chaos.",
     sectionTitle: "WÄHLE DEIN CHAOS",
     filterAll: "Alle",
-    filterIt: "Italienisch",
     filterEn: "Englisch",
+    filterIt: "Italienisch",
     selectStore: "Amazon Store wählen",
     viewOn: (market) => `AUF ${market.toUpperCase()} ANSEHEN`,
     byAuthor: "von",
     previewBtn: "📖 Vorschau",
     previewBadge: "📖 Buchvorschau",
+    coloredBtn: "🎨 Bunt ansehen",
+    coloredBadge: "🎨 Ausgemalte Kunstwerke",
+    coloredHeadline: "Das kannst du aus diesem Buch machen!",
+    coloredPageLabel: "Farbiges Kunstwerk",
+    tabPages: "📖 Seiten",
+    tabColored: "🎨 In Farbe",
     frontCoverLabel: "Vorderseite (Cover)",
     backCoverLabel: "Rückseite (Back)",
     pageLabel: "Seite",
@@ -185,13 +230,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Coloriage cozy. Humour noir. Magnifique chaos.",
     sectionTitle: "CHOISISSEZ VOTRE CHAOS",
     filterAll: "Tous",
-    filterIt: "Italien",
     filterEn: "Anglais",
+    filterIt: "Italien",
     selectStore: "Sélectionner la boutique Amazon",
     viewOn: (market) => `VOIR SUR ${market.toUpperCase()}`,
     byAuthor: "par",
     previewBtn: "📖 Aperçu",
     previewBadge: "📖 Aperçu du livre",
+    coloredBtn: "🎨 Voir en couleur",
+    coloredBadge: "🎨 Modèles Coloriés",
+    coloredHeadline: "Voici ce que vous pouvez créer avec ce livre !",
+    coloredPageLabel: "Œuvre Coloriée",
+    tabPages: "📖 Pages",
+    tabColored: "🎨 En Couleur",
     frontCoverLabel: "Première de couverture",
     backCoverLabel: "Quatrième de couverture",
     pageLabel: "Page",
@@ -209,13 +260,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Colorear cozy. Humor negro. Hermoso caos.",
     sectionTitle: "ELIGE TU CAOS",
     filterAll: "Todos",
-    filterIt: "Italiano",
     filterEn: "Inglés",
+    filterIt: "Italiano",
     selectStore: "Seleccionar tienda Amazon",
     viewOn: (market) => `VER EN ${market.toUpperCase()}`,
     byAuthor: "de",
     previewBtn: "📖 Vista previa",
     previewBadge: "📖 Vista previa",
+    coloredBtn: "🎨 Ver a color",
+    coloredBadge: "🎨 Ilustraciones Coloreadas",
+    coloredHeadline: "¡Mira lo que puedes crear con este libro!",
+    coloredPageLabel: "Ilustración a Color",
+    tabPages: "📖 Páginas",
+    tabColored: "🎨 A Color",
     frontCoverLabel: "Portada",
     backCoverLabel: "Contraportada",
     pageLabel: "Página",
@@ -233,13 +290,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Gezellig kleuren. Zwarte humor. Prachtige chaos.",
     sectionTitle: "KIES JE CHAOS",
     filterAll: "Alle",
-    filterIt: "Italiaans",
     filterEn: "Engels",
+    filterIt: "Italiaans",
     selectStore: "Selecteer Amazon-winkel",
     viewOn: (market) => `BEKIJK OP ${market.toUpperCase()}`,
     byAuthor: "door",
     previewBtn: "📖 Voorbeeld",
     previewBadge: "📖 Voorbeeldweergave",
+    coloredBtn: "🎨 Bekijk in kleur",
+    coloredBadge: "🎨 Ingekleurde Tekeningen",
+    coloredHeadline: "Kijk wat je kunt maken met dit boek!",
+    coloredPageLabel: "Ingekleurd Kunstwerk",
+    tabPages: "📖 Pagina's",
+    tabColored: "🎨 In Kleur",
     frontCoverLabel: "Voorkant",
     backCoverLabel: "Achterkant",
     pageLabel: "Pagina",
@@ -257,13 +320,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Przytulne kolorowanie. Czarny humor. Piękny chaos.",
     sectionTitle: "WYBIERZ SWÓJ CHAOS",
     filterAll: "Wszystkie",
-    filterIt: "Włoski",
     filterEn: "Angielski",
+    filterIt: "Włoski",
     selectStore: "Wybierz sklep Amazon",
     viewOn: (market) => `ZOBACZ NA ${market.toUpperCase()}`,
     byAuthor: "autorstwa",
     previewBtn: "📖 Podgląd",
     previewBadge: "📖 Podgląd książki",
+    coloredBtn: "🎨 Zobacz w kolorze",
+    coloredBadge: "🎨 Pokolorowane Prace",
+    coloredHeadline: "Zobacz, co możesz stworzyć z tą książką!",
+    coloredPageLabel: "Pokolorowana Praca",
+    tabPages: "📖 Strony",
+    tabColored: "🎨 W Kolorze",
     frontCoverLabel: "Okładka przednia",
     backCoverLabel: "Okładka tylna",
     pageLabel: "Strona",
@@ -281,13 +350,19 @@ const TRANSLATIONS = {
     brandSubtitle: "Mysig färgläggning. Mörk humor. Vackert kaos.",
     sectionTitle: "VÄLJ DITT KAOS",
     filterAll: "Alla",
-    filterIt: "Italienska",
     filterEn: "Engelska",
+    filterIt: "Italienska",
     selectStore: "Välj Amazon-butik",
     viewOn: (market) => `VISA PÅ ${market.toUpperCase()}`,
     byAuthor: "av",
     previewBtn: "📖 Förhandsvisning",
     previewBadge: "📖 Förhandsvisning",
+    coloredBtn: "🎨 Se i färg",
+    coloredBadge: "🎨 Färglagda Teckningar",
+    coloredHeadline: "Här är vad du kan skapa med den här boken!",
+    coloredPageLabel: "Färglagt Konstverk",
+    tabPages: "📖 Sidor",
+    tabColored: "🎨 I Färg",
     frontCoverLabel: "Framsida",
     backCoverLabel: "Baksida",
     pageLabel: "Sida",
@@ -305,13 +380,19 @@ const TRANSLATIONS = {
     brandSubtitle: "コージーな塗り絵。ブラックユーモア。愛すべきカオス。",
     sectionTitle: "カオスを選ぼう",
     filterAll: "すべて",
-    filterIt: "イタリア語",
     filterEn: "英語",
+    filterIt: "イタリア語",
     selectStore: "Amazonストアを選択",
     viewOn: (market) => `${market.toUpperCase()} で見る`,
     byAuthor: "著者:",
     previewBtn: "📖 プレビュー",
     previewBadge: "📖 サンプルプレビュー",
+    coloredBtn: "🎨 彩色ギャラリー",
+    coloredBadge: "🎨 塗り絵の完成見本",
+    coloredHeadline: "この本でこんな素敵な作品が作れます！",
+    coloredPageLabel: "完成見本",
+    tabPages: "📖 ページ",
+    tabColored: "🎨 完成見本",
     frontCoverLabel: "表紙",
     backCoverLabel: "裏表紙",
     pageLabel: "ページ",
@@ -562,27 +643,41 @@ function escapeJs(str) {
  * ============================================================================
  */
 let activePreviewBook = null;
+let activePreviewMode = 'preview'; // 'preview' or 'colored'
 let currentPreviewIndex = 0;
 
-window.openSampleModal = function(bookId) {
+window.openSampleModal = function(bookId, mode = 'preview') {
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
-  const pages = (Array.isArray(book.preview) && book.preview.length > 0)
-    ? book.preview
-    : [book.cover];
-
-  activePreviewBook = { ...book, preview: pages };
+  activePreviewBook = book;
+  activePreviewMode = (mode === 'colored' && Array.isArray(book.colored) && book.colored.length > 0)
+    ? 'colored'
+    : 'preview';
   currentPreviewIndex = 0;
 
   const modal = document.getElementById('sample-modal');
   const titleEl = document.getElementById('sample-modal-title');
-  const badgeEl = document.getElementById('sample-modal-badge');
   const footerEl = document.getElementById('sample-modal-footer');
+  const tabsContainer = document.getElementById('modal-mode-tabs');
+  const tabPreview = document.getElementById('modal-tab-preview');
+  const tabColored = document.getElementById('modal-tab-colored');
   const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
   if (titleEl) titleEl.textContent = book.title;
-  if (badgeEl) badgeEl.textContent = t.previewBadge || "📖 Anteprima";
+
+  const hasColored = Array.isArray(book.colored) && book.colored.length > 0;
+  const hasPreview = Array.isArray(book.preview) && book.preview.length > 0;
+
+  if (tabsContainer) {
+    if (hasColored && hasPreview) {
+      tabsContainer.style.display = 'inline-flex';
+      if (tabPreview) tabPreview.textContent = t.tabPages || "📖 Pages";
+      if (tabColored) tabColored.textContent = t.tabColored || "🎨 Colored";
+    } else {
+      tabsContainer.style.display = 'none';
+    }
+  }
 
   if (footerEl) {
     let marketKey = selectedMarketState[book.id];
@@ -623,6 +718,14 @@ window.openSampleModal = function(bookId) {
   }
 };
 
+window.switchModalMode = function(mode) {
+  if (!activePreviewBook) return;
+  if (mode === 'colored' && (!activePreviewBook.colored || activePreviewBook.colored.length === 0)) return;
+  activePreviewMode = mode;
+  currentPreviewIndex = 0;
+  updateSampleViewer();
+};
+
 window.closeSampleModal = function() {
   const modal = document.getElementById('sample-modal');
   if (modal) {
@@ -635,40 +738,76 @@ window.closeSampleModal = function() {
 };
 
 window.changeSamplePage = function(delta) {
-  if (!activePreviewBook || !activePreviewBook.preview) return;
+  if (!activePreviewBook) return;
+  const isColored = (activePreviewMode === 'colored');
+  const pages = isColored && Array.isArray(activePreviewBook.colored) && activePreviewBook.colored.length > 0
+    ? activePreviewBook.colored
+    : ((Array.isArray(activePreviewBook.preview) && activePreviewBook.preview.length > 0)
+      ? activePreviewBook.preview
+      : [activePreviewBook.cover]);
+
   const newIndex = currentPreviewIndex + delta;
-  if (newIndex >= 0 && newIndex < activePreviewBook.preview.length) {
+  if (newIndex >= 0 && newIndex < pages.length) {
     currentPreviewIndex = newIndex;
     updateSampleViewer();
   }
 };
 
 function updateSampleViewer() {
-  if (!activePreviewBook || !activePreviewBook.preview) return;
+  if (!activePreviewBook) return;
 
-  const pages = activePreviewBook.preview;
+  const isColored = (activePreviewMode === 'colored');
+  const pages = isColored && Array.isArray(activePreviewBook.colored) && activePreviewBook.colored.length > 0
+    ? activePreviewBook.colored
+    : ((Array.isArray(activePreviewBook.preview) && activePreviewBook.preview.length > 0)
+      ? activePreviewBook.preview
+      : [activePreviewBook.cover]);
+
   const total = pages.length;
   const imgEl = document.getElementById('sample-page-img');
   const labelEl = document.getElementById('sample-page-label');
   const counterEl = document.getElementById('sample-page-counter');
   const prevBtn = document.getElementById('sample-prev-btn');
   const nextBtn = document.getElementById('sample-next-btn');
+  const badgeEl = document.getElementById('sample-modal-badge');
+  const inspirationBanner = document.getElementById('modal-inspiration-banner');
+  const inspirationText = document.getElementById('modal-inspiration-text');
+  const tabPreview = document.getElementById('modal-tab-preview');
+  const tabColored = document.getElementById('modal-tab-colored');
   const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  if (tabPreview) tabPreview.classList.toggle('active', !isColored);
+  if (tabColored) tabColored.classList.toggle('active', isColored);
+
+  if (badgeEl) {
+    badgeEl.textContent = isColored
+      ? (t.coloredBadge || "🎨 Disegni Colorati")
+      : (t.previewBadge || "📖 Anteprima Pagine");
+  }
+
+  if (inspirationBanner) {
+    inspirationBanner.style.display = isColored ? 'flex' : 'none';
+    if (inspirationText) inspirationText.textContent = t.coloredHeadline || "Ecco cosa puoi fare con questo libro!";
+  }
 
   const currentSrc = pages[currentPreviewIndex];
 
   if (imgEl) {
     imgEl.src = currentSrc;
-    imgEl.alt = `${activePreviewBook.title} - ${currentPreviewIndex + 1}`;
+    imgEl.alt = `${activePreviewBook.title} - ${isColored ? 'Colored' : 'Page'} ${currentPreviewIndex + 1}`;
   }
 
   if (labelEl) {
-    if (currentPreviewIndex === 0) {
-      labelEl.textContent = t.frontCoverLabel || "Front Cover";
-    } else if (currentPreviewIndex === total - 1) {
-      labelEl.textContent = t.backCoverLabel || "Back Cover";
+    if (isColored) {
+      labelEl.textContent = `${t.coloredPageLabel || "Opera"} ${currentPreviewIndex + 1}`;
     } else {
-      labelEl.textContent = `${t.pageLabel || "Pagina"} ${currentPreviewIndex + 1}`;
+      if (currentPreviewIndex === 0) {
+        labelEl.textContent = t.frontCoverLabel || "Front Cover";
+      } else if (currentPreviewIndex === total - 1) {
+        labelEl.textContent = t.backCoverLabel || "Back Cover";
+      } else {
+        labelEl.textContent = `${t.pageLabel || "Pagina"} ${currentPreviewIndex + 1}`;
+      }
     }
   }
 
@@ -800,6 +939,7 @@ function createBookCard(book, index) {
   const safeLang = book.language ? escapeHtml(book.language) : '';
   const safeCover = book.cover ? escapeHtml(book.cover) : '';
   const hasPreview = Array.isArray(book.preview) && book.preview.length > 0;
+  const hasColored = Array.isArray(book.colored) && book.colored.length > 0;
 
   // Determine selected market based on state or website language
   let initialMarketKey = selectedMarketState[book.id];
@@ -821,8 +961,15 @@ function createBookCard(book, index) {
 
   // Preview Chip Button
   const previewChipHtml = hasPreview 
-    ? `<button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}')" aria-label="${t.previewBtn} - ${safeTitle}">
+    ? `<button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn} - ${safeTitle}">
         <span>${t.previewBtn}</span>
+       </button>`
+    : '';
+
+  // Colored Preview Chip Button ("See it colored")
+  const coloredChipHtml = hasColored
+    ? `<button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn} - ${safeTitle}">
+        <span>${t.coloredBtn}</span>
        </button>`
     : '';
 
@@ -847,8 +994,8 @@ function createBookCard(book, index) {
     <article class="book-card" role="listitem" id="card-${escapeHtml(book.id || index)}">
       <!-- Book Cover Image with Preview Click Trigger -->
       <div 
-        class="book-cover-container ${hasPreview ? 'has-preview' : ''}"
-        ${hasPreview ? `onclick="openSampleModal('${escapeJs(book.id)}')" title="${t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}')"` : ''}
+        class="book-cover-container ${hasPreview || hasColored ? 'has-preview' : ''}"
+        ${hasPreview || hasColored ? `onclick="openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'}')" title="${hasColored ? t.coloredBtn : t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'})"` : ''}
       >
         <img 
           src="${safeCover}" 
@@ -859,7 +1006,7 @@ function createBookCard(book, index) {
           oncontextmenu="return false;"
           onerror="handleImageError(this, '${safeTitle.replace(/'/g, "\\'")}')"
         >
-        ${hasPreview ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${t.previewBtn}</span></div>` : ''}
+        ${hasPreview || hasColored ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${hasColored ? t.coloredBtn : t.previewBtn}</span></div>` : ''}
       </div>
 
       <!-- Book Info -->
@@ -871,6 +1018,7 @@ function createBookCard(book, index) {
 
         <div class="book-meta-row">
           ${previewChipHtml}
+          ${coloredChipHtml}
         </div>
         
         ${authorHtml}

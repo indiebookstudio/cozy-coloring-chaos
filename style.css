@@ -906,6 +906,38 @@ body {
   outline-offset: 2px;
 }
 
+/* Colored Preview Chip Button */
+.chip-colored-btn {
+  background: linear-gradient(135deg, rgba(245, 158, 11, 0.12) 0%, rgba(255, 84, 54, 0.12) 100%);
+  color: #D97706;
+  border: 1.5px solid #F59E0B;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 800;
+  padding: 0.32rem 0.85rem;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  box-shadow: 0 2px 6px rgba(245, 158, 11, 0.15);
+}
+
+.chip-colored-btn:hover {
+  background: linear-gradient(135deg, #F59E0B 0%, #FF5436 100%);
+  color: #FFFFFF;
+  border-color: transparent;
+  transform: translateY(-1px) scale(1.02);
+  box-shadow: 0 4px 14px rgba(245, 158, 11, 0.35);
+}
+
+.chip-colored-btn:focus-visible {
+  outline: 2px solid #F59E0B;
+  outline-offset: 2px;
+}
+
 .book-cover-container.has-preview {
   cursor: pointer;
   position: relative;
@@ -1066,6 +1098,78 @@ body {
   color: #FFFFFF;
   border-color: var(--color-coral-primary);
   transform: rotate(90deg);
+}
+
+.modal-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  flex-shrink: 0;
+}
+
+.modal-mode-tabs {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  background: var(--color-bg-surface);
+  padding: 3px;
+  border-radius: var(--radius-pill);
+  border: 1px solid var(--color-border);
+}
+
+.modal-tab-btn {
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  padding: 0.25rem 0.6rem;
+  border-radius: var(--radius-pill);
+  border: none;
+  background: transparent;
+  color: var(--color-text-muted);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.modal-tab-btn:hover {
+  color: var(--color-text-main);
+}
+
+.modal-tab-btn.active {
+  background: #FFFFFF;
+  color: var(--color-coral-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+}
+
+/* Inspirational Colored Banner */
+.modal-inspiration-banner {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  background: linear-gradient(135deg, #FFFBEB 0%, #FEF3C7 100%);
+  border-bottom: 1px solid #FDE68A;
+  padding: 0.55rem 1rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: #92400E;
+  animation: bannerSlideDown 0.25s ease forwards;
+}
+
+@keyframes bannerSlideDown {
+  from { opacity: 0; transform: translateY(-6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.inspiration-sparkle {
+  font-size: 1rem;
+}
+
+.inspiration-text {
+  letter-spacing: -0.01em;
 }
 
 .sample-modal-body {

@@ -188,7 +188,19 @@
           <span class="sample-modal-badge" id="sample-modal-badge">📖 Anteprima</span>
           <h3 class="sample-modal-title" id="sample-modal-title">Titolo Libro</h3>
         </div>
-        <button type="button" class="sample-modal-close" onclick="closeSampleModal()" aria-label="Chiudi anteprima">✕</button>
+        <div class="modal-header-actions">
+          <div class="modal-mode-tabs" id="modal-mode-tabs" style="display: none;">
+            <button type="button" class="modal-tab-btn active" id="modal-tab-preview" onclick="switchModalMode('preview')">📖 Pagine</button>
+            <button type="button" class="modal-tab-btn" id="modal-tab-colored" onclick="switchModalMode('colored')">🎨 A Colori</button>
+          </div>
+          <button type="button" class="sample-modal-close" onclick="closeSampleModal()" aria-label="Chiudi anteprima">✕</button>
+        </div>
+      </div>
+
+      <!-- Inspirational Colored Banner (shown when viewing colored designs) -->
+      <div class="modal-inspiration-banner" id="modal-inspiration-banner" style="display: none;">
+        <span class="inspiration-sparkle">✨</span>
+        <span class="inspiration-text" id="modal-inspiration-text">Ecco cosa puoi fare con questo libro!</span>
       </div>
 
       <div class="sample-modal-body">
