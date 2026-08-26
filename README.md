@@ -23,19 +23,31 @@ Sito web statico, moderno, responsive e ultra-leggero per il brand **Cozy Colori
 
 ## 📚 Libri Attualmente Configurati
 
-1. **Innocent Paws**
-   - **Autore**: Isaac McClour
-   - **Lingua**: English (`langCode: "en"`)
-   - **ASIN**: `B0HFGBJW8Y`
-   - **Store iniziale**: Amazon.com 🇺🇸
-
-2. **Impossible Worlds**
+1. **Impossible Worlds**
    - **Autore**: Isaac McClour
    - **Lingua**: English (`langCode: "en"`)
    - **ASIN**: `B0HFZZ2TMH`
    - **Store iniziale**: Amazon.com 🇺🇸
 
-3. **Non Rompetemi i Coglioni**
+2. **Italian Girls**
+   - **Autore**: Isaac McClour
+   - **Lingua**: English (`langCode: "en"`)
+   - **ASIN**: `B0HGJBKMGZ`
+   - **Store iniziale**: Amazon.com 🇺🇸
+
+3. **Innocent Paws**
+   - **Autore**: Isaac McClour
+   - **Lingua**: English (`langCode: "en"`)
+   - **ASIN**: `B0HFGBJW8Y`
+   - **Store iniziale**: Amazon.com 🇺🇸
+
+4. **Killer Paws**
+   - **Autore**: Isaac McClour
+   - **Lingua**: English (`langCode: "en"`)
+   - **ASIN**: `B0HGGQ3GZ8`
+   - **Store iniziale**: Amazon.com 🇺🇸
+
+5. **Non Rompetemi i Coglioni**
    - **Autore**: Lucas C. Morica
    - **Lingua**: Italiano (`langCode: "it"`)
    - **ASIN**: `B0HF7WZBYD`

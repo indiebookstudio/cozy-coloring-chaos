@@ -40,6 +40,66 @@ const AMAZON_MARKETS = {
 // ============================================================================
 const BOOKS = [
   {
+    id: "impossible-worlds",
+    title: "Impossible Worlds",
+    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/Impossible.Worlds/Front.Cover.png",
+    preview: [
+      "assets/Impossible.Worlds/Front.Cover.png",
+      "assets/Impossible.Worlds/2.png",
+      "assets/Impossible.Worlds/4.png",
+      "assets/Impossible.Worlds/8.png",
+      "assets/Impossible.Worlds/36.png",
+      "assets/Impossible.Worlds/90.png",
+      "assets/Impossible.Worlds/Back.Cover.png"
+    ],
+    colored: [
+      "assets/Impossible.Worlds/Colored/01.jpeg",
+      "assets/Impossible.Worlds/Colored/02.jpeg",
+      "assets/Impossible.Worlds/Colored/03.jpeg",
+      "assets/Impossible.Worlds/Colored/04.jpeg",
+      "assets/Impossible.Worlds/Colored/05.jpeg",
+      "assets/Impossible.Worlds/Colored/06.jpeg",
+      "assets/Impossible.Worlds/Colored/07.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HFZZ2TMH"
+  },
+  {
+    id: "italian-girls",
+    title: "Italian Girls",
+    subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/Italian.Girls/Front.Cover.png",
+    preview: [
+      "assets/Italian.Girls/Front.Cover.png",
+      "assets/Italian.Girls/2.png",
+      "assets/Italian.Girls/4.png",
+      "assets/Italian.Girls/8.png",
+      "assets/Italian.Girls/10.png",
+      "assets/Italian.Girls/14.png",
+      "assets/Italian.Girls/22.png",
+      "assets/Italian.Girls/Back.Cover.png"
+    ],
+    colored: [
+      "assets/Italian.Girls/Colored/01.jpeg",
+      "assets/Italian.Girls/Colored/02.jpeg",
+      "assets/Italian.Girls/Colored/03.jpeg",
+      "assets/Italian.Girls/Colored/04.jpeg",
+      "assets/Italian.Girls/Colored/05.jpeg",
+      "assets/Italian.Girls/Colored/06.jpeg",
+      "assets/Italian.Girls/Colored/07.jpeg",
+      "assets/Italian.Girls/Colored/08.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HGJBKMGZ"
+  },
+  {
     id: "innocent-paws",
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
@@ -68,33 +128,30 @@ const BOOKS = [
     asin: "B0HFGBJW8Y"
   },
   {
-    id: "impossible-worlds",
-    title: "Impossible Worlds",
-    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
+    id: "killer-paws",
+    title: "Killer Paws",
+    subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
     language: "English",
     langCode: "en",
-    cover: "assets/Impossible.Worlds/Front.Cover.png",
+    cover: "assets/Killer.Paws/Front.Cover.png",
     preview: [
-      "assets/Impossible.Worlds/Front.Cover.png",
-      "assets/Impossible.Worlds/2.png",
-      "assets/Impossible.Worlds/4.png",
-      "assets/Impossible.Worlds/8.png",
-      "assets/Impossible.Worlds/36.png",
-      "assets/Impossible.Worlds/90.png",
-      "assets/Impossible.Worlds/Back.Cover.png"
+      "assets/Killer.Paws/Front.Cover.png",
+      "assets/Killer.Paws/2.png",
+      "assets/Killer.Paws/4.png",
+      "assets/Killer.Paws/8.png",
+      "assets/Killer.Paws/10.png",
+      "assets/Killer.Paws/12.png",
+      "assets/Killer.Paws/Back.Cover.png"
     ],
     colored: [
-      "assets/Impossible.Worlds/Colored/01.jpeg",
-      "assets/Impossible.Worlds/Colored/02.jpeg",
-      "assets/Impossible.Worlds/Colored/03.jpeg",
-      "assets/Impossible.Worlds/Colored/04.jpeg",
-      "assets/Impossible.Worlds/Colored/05.jpeg",
-      "assets/Impossible.Worlds/Colored/06.jpeg",
-      "assets/Impossible.Worlds/Colored/07.jpeg"
+      "assets/Killer.Paws/Colored/01.jpeg",
+      "assets/Killer.Paws/Colored/02.jpeg",
+      "assets/Killer.Paws/Colored/03.jpeg",
+      "assets/Killer.Paws/Colored/04.jpeg"
     ],
     defaultMarket: "us",
-    asin: "B0HFZZ2TMH"
+    asin: "B0HGGQ3GZ8"
   },
   {
     id: "non-rompetemi-i-coglioni",
