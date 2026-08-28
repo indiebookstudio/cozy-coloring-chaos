@@ -496,6 +496,12 @@ function getDefaultMarketForLanguage(book, lang) {
 
 /**
  * Detects browser local language or retrieves user preference from localStorage.
+ * 
+ * Geographic routing rules:
+ * - Spain (es-ES, ca-ES, gl-ES, eu-ES) -> Spanish ('es') & Amazon.es
+ * - Venezuela and all Latin America / Americas Spanish locales (es-VE, es-419, es-AR, es-CO, es-MX, es-CL, es-PE, etc.)
+ *   buy from Amazon.com (US) -> English ('en') & Amazon.com (US)
+ * - All other international visitors without their own dedicated marketplace store default to English ('en') & Amazon.com (US)
  */
 function detectInitialLanguage() {
   try {
@@ -511,16 +517,65 @@ function detectInitialLanguage() {
   const browserLangs = navigator.languages || [navigator.language || navigator.userLanguage || ''];
   for (const lang of browserLangs) {
     if (typeof lang === 'string') {
-      const lower = lang.toLowerCase();
+      const lower = lang.toLowerCase().trim();
+
+      // Explicit Latin American & Caribbean Spanish locales, and Spanish in the US:
+      // Customers in these regions purchase from Amazon.com (US), so default them to English ('en')
+      const isLatinAmericanSpanish = (
+        lower.startsWith('es-ve') || // Venezuela
+        lower.startsWith('es-419') || // Latin America & Caribbean generic
+        lower.startsWith('es-ar') || // Argentina
+        lower.startsWith('es-bo') || // Bolivia
+        lower.startsWith('es-cl') || // Chile
+        lower.startsWith('es-co') || // Colombia
+        lower.startsWith('es-cr') || // Costa Rica
+        lower.startsWith('es-cu') || // Cuba
+        lower.startsWith('es-do') || // Dominican Republic
+        lower.startsWith('es-ec') || // Ecuador
+        lower.startsWith('es-gt') || // Guatemala
+        lower.startsWith('es-hn') || // Honduras
+        lower.startsWith('es-mx') || // Mexico
+        lower.startsWith('es-ni') || // Nicaragua
+        lower.startsWith('es-pa') || // Panama
+        lower.startsWith('es-pe') || // Peru
+        lower.startsWith('es-pr') || // Puerto Rico
+        lower.startsWith('es-py') || // Paraguay
+        lower.startsWith('es-sv') || // El Salvador
+        lower.startsWith('es-uy') || // Uruguay
+        lower.startsWith('es-us') || // United States (Spanish)
+        lower.startsWith('es-bz') || // Belize
+        lower.startsWith('es-gq') || // Equatorial Guinea
+        lower.startsWith('es-ph') || // Philippines
+        (lower.startsWith('es-') && !lower.startsWith('es-es')) // Any other non-Spain Spanish subtag
+      );
+
+      if (isLatinAmericanSpanish) {
+        return 'en';
+      }
+
+      // Spain Spanish (only Spain residents use Amazon.es)
+      if (
+        lower === 'es-es' ||
+        lower.startsWith('es-es') ||
+        lower.startsWith('ca-es') ||
+        lower.startsWith('gl-es') ||
+        lower.startsWith('eu-es')
+      ) {
+        return 'es';
+      }
+
       if (lower.startsWith('it')) return 'it';
       if (lower.startsWith('de')) return 'de';
       if (lower.startsWith('fr')) return 'fr';
-      if (lower.startsWith('es')) return 'es';
       if (lower.startsWith('nl')) return 'nl';
       if (lower.startsWith('pl')) return 'pl';
       if (lower.startsWith('sv') || lower.startsWith('se')) return 'sv';
       if (lower.startsWith('ja') || lower.startsWith('jp')) return 'ja';
       if (lower.startsWith('en')) return 'en';
+
+      // Fallback for bare 'es' without region subtag: default to English/US store
+      // because the vast majority (>90%) of worldwide Spanish speakers are in the Americas (Amazon.com)
+      if (lower === 'es') return 'en';
     }
   }
   return 'en';
