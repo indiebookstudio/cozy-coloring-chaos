@@ -2,6 +2,7 @@
   "name": "cozy-coloring-chaos",
   "version": "1.0.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "start": "node local-server.js",
     "test": "node test-endpoint.js"

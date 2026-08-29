@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - SERVERLESS BACKEND HANDLER
+ * COZY COLORING CHAOS - SERVERLESS BACKEND HANDLER (ESM)
  * ============================================================================
  * 
  * Endpoint: POST /api/send-free-sample
@@ -13,11 +13,8 @@
  * - Anti-spam honeypot detection
  * - In-memory IP rate limiting
  * - Server-side email and input validation
- * - Dynamic PDF retrieval from disk / CDN
+ * - Dynamic PDF retrieval from GitHub Pages CDN
  */
-
-const fs = require('fs');
-const path = require('path');
 
 // ============================================================================
 // CONFIGURATION & CONSTANTS
@@ -202,7 +199,7 @@ const EMAIL_I18N = {
     intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
     badge: "📎 Archivo PDF adjunto a este correo",
     ctaTitle: "¿Te encantan estas ilustraciones? ✨",
-    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
+    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta qualità en Amazon!",
     buyBtn: (m) => `🛒 COMPRAR EN ${m.toUpperCase()}`,
     morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
     moreLink: "👉 Visita Cozy Coloring Chaos",
@@ -325,40 +322,6 @@ function getBookAmazonUrl(book, marketKey) {
   return `https://www.amazon.com/dp/${book.asin || 'B0HFZZ2TMH'}`;
 }
 
-async function loadPdfAttachmentBase64(pdfRelativePath) {
-  // 1. Try resolving from local filesystem
-  const possiblePaths = [
-    path.join(process.cwd(), pdfRelativePath),
-    path.resolve(__dirname, '..', pdfRelativePath),
-    path.resolve(__dirname, pdfRelativePath)
-  ];
-
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      try {
-        const fileBuffer = fs.readFileSync(p);
-        return fileBuffer.toString('base64');
-      } catch (err) {
-        console.warn(`[PDF Loader] Could not read local file ${p}:`, err.message);
-      }
-    }
-  }
-
-  // 2. Fallback: Fetch from public GitHub Pages CDN if serverless bundle does not include asset
-  const cdnUrl = `${CONFIG.siteUrl}${pdfRelativePath.replace(/^\/+/, '')}`;
-  try {
-    const res = await fetch(cdnUrl);
-    if (res.ok) {
-      const arrayBuffer = await res.arrayBuffer();
-      return Buffer.from(arrayBuffer).toString('base64');
-    }
-  } catch (err) {
-    console.error(`[PDF Loader] Failed to fetch PDF from CDN (${cdnUrl}):`, err.message);
-  }
-
-  return null;
-}
-
 function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, countryCode, lang }) {
   const emailLangKey = getRecipientEmailLanguage(countryCode, lang);
   const et = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
@@ -447,10 +410,6 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
   `.trim();
 }
 
-// ============================================================================
-// MAIN SERVERLESS HANDLER
-// ============================================================================
-
 function sendJson(res, statusCode, data) {
   if (typeof res.status === 'function' && typeof res.json === 'function') {
     return res.status(statusCode).json(data);
@@ -460,7 +419,11 @@ function sendJson(res, statusCode, data) {
   return res.end(JSON.stringify(data));
 }
 
-async function handler(req, res) {
+// ============================================================================
+// MAIN SERVERLESS HANDLER
+// ============================================================================
+
+export default async function handler(req, res) {
   try {
     // 1. CORS Headers
     const origin = req.headers['origin'] || req.headers['Origin'] || '';
@@ -474,8 +437,8 @@ async function handler(req, res) {
       res.setHeader('Access-Control-Allow-Origin', '*');
     }
 
-    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', '*');
 
     // 2. Handle CORS Preflight
     if (req.method === 'OPTIONS') {
@@ -507,19 +470,7 @@ async function handler(req, res) {
       } catch (e) {
         body = {};
       }
-    } else if (!body && typeof req.on === 'function' && !req.readableEnded) {
-      try {
-        const chunks = [];
-        for await (const chunk of req) {
-          chunks.push(chunk);
-        }
-        const rawData = Buffer.concat(chunks).toString();
-        body = rawData ? JSON.parse(rawData) : {};
-      } catch (parseErr) {
-        return sendJson(res, 400, { success: false, error: "Malformed JSON payload" });
-      }
     }
-
     body = body || {};
 
     // 6. Anti-Spam Honeypot Check
@@ -638,6 +589,3 @@ async function handler(req, res) {
     });
   }
 }
-
-module.exports = handler;
-module.exports.default = handler;

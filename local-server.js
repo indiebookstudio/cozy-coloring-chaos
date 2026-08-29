@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - LOCAL DEVELOPMENT SERVER
+ * COZY COLORING CHAOS - LOCAL DEVELOPMENT SERVER (ESM)
  * ============================================================================
  * Zero-dependency local Node server that serves static frontend files
  * and routes /api/send-free-sample to the serverless function.
@@ -10,9 +10,13 @@
  *   or: npm start
  */
 
-const http = require('http');
-const fs = require('fs');
-const path = require('path');
+import http from 'http';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 // 1. Simple .env parser for local environment
 function loadEnv() {
@@ -26,7 +30,6 @@ function loadEnv() {
       if (eqIdx !== -1) {
         const key = trimmed.substring(0, eqIdx).trim();
         let val = trimmed.substring(eqIdx + 1).trim();
-        // Remove outer quotes if present
         if ((val.startsWith('"') && val.endsWith('"')) || (val.startsWith("'") && val.endsWith("'"))) {
           val = val.slice(1, -1);
         }
@@ -44,7 +47,7 @@ function loadEnv() {
 loadEnv();
 
 const PORT = parseInt(process.env.PORT || '3000', 10);
-const apiHandler = require('./api/send-free-sample');
+import apiHandler from './api/send-free-sample.js';
 
 const MIME_TYPES = {
   '.html': 'text/html; charset=utf-8',
@@ -66,6 +69,17 @@ const server = http.createServer(async (req, res) => {
   // 1. Route API endpoint
   if (pathname === '/api/send-free-sample') {
     try {
+      // Parse body for local server
+      const chunks = [];
+      for await (const chunk of req) {
+        chunks.push(chunk);
+      }
+      const rawBody = Buffer.concat(chunks).toString();
+      if (rawBody) {
+        try { req.body = JSON.parse(rawBody); } catch (e) { req.body = {}; }
+      } else {
+        req.body = {};
+      }
       await apiHandler(req, res);
     } catch (err) {
       console.error('API Error:', err);
@@ -81,7 +95,6 @@ const server = http.createServer(async (req, res) => {
   // 2. Route Static Files
   let filePath = path.join(__dirname, pathname === '/' ? 'index.html' : pathname);
 
-  // Security check: prevent directory traversal
   if (!filePath.startsWith(__dirname)) {
     res.statusCode = 403;
     res.end('Forbidden');
@@ -114,4 +127,4 @@ server.listen(PORT, () => {
   console.log('====================================================');
 });
 
-module.exports = server;
+export default server;
