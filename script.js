@@ -1709,11 +1709,9 @@ window.openFreeSampleModal = function(bookId) {
   }
   if (titleEl) titleEl.textContent = book.title;
   if (subtitleEl) subtitleEl.textContent = book.subtitle || `${book.language || 'Coloring Book'} - by ${book.author}`;
-  if (pdfNameEl) pdfNameEl.textContent = t.pdfAttachedViaEmail || "PDF allegato via email";
-
+  resetFreeSampleForm();
   populateCountrySelect(defaultCountryCode);
   updateFreeSampleModalTranslations(t);
-  resetFreeSampleForm();
 
   if (modal) {
     modal.style.display = 'flex';
