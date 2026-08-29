@@ -1665,7 +1665,8 @@ window.selectCountryOption = function(code) {
   if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
 
   // AUTOMATIC LIVE FORM TRANSLATION ON COUNTRY CHANGE:
-  const targetLang = country.lang || getRecipientEmailLanguage(country.code, currentLanguage);
+  window.selectedModalLang = country.lang || currentLanguage;
+  const targetLang = window.selectedModalLang;
   const t = TRANSLATIONS[targetLang] || TRANSLATIONS.en;
   updateFreeSampleModalTranslations(t);
 };
@@ -1692,7 +1693,8 @@ window.openFreeSampleModal = function(bookId) {
   else if (currentLanguage === 'ja') defaultCountryCode = 'jp';
 
   const defaultCountry = SAMPLE_COUNTRIES.find(c => c.code === defaultCountryCode) || SAMPLE_COUNTRIES[0];
-  const targetLang = defaultCountry.lang || currentLanguage;
+  window.selectedModalLang = currentLanguage || defaultCountry.lang || 'en';
+  const targetLang = window.selectedModalLang;
   const t = TRANSLATIONS[targetLang] || TRANSLATIONS.en;
 
   // Populate book preview strip
@@ -1816,8 +1818,8 @@ window.handleFreeSampleSubmit = async function(event) {
   const amazonUrl = getBookUrlForMarket(activeSampleBook, marketKey);
   const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
 
-  // Determine localized subject & email language (prioritize current user interface language)
-  const emailLangKey = currentLanguage || countryInfo.lang || 'en';
+  // Determine localized subject & email language (prioritize active selected language)
+  const emailLangKey = window.selectedModalLang || currentLanguage || countryInfo.lang || 'en';
   const emailT = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
   const localizedSubject = emailT.subject(activeSampleBook.title);
 
