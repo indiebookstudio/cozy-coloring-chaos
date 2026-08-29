@@ -561,10 +561,10 @@ module.exports = async function handler(req, res) {
   }
 
   // 10. Load PDF Attachment
+  // 10. PDF Attachment URL (Brevo downloads directly from GitHub Pages CDN)
   const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
   const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
   const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
-  const pdfBase64 = await loadPdfAttachmentBase64(pdfPath);
 
   // 11. Generate Localized HTML Email Body
   const emailHtml = buildEmailHtml({
@@ -588,30 +588,19 @@ module.exports = async function handler(req, res) {
       { email: email, name: recipientName }
     ],
     subject: emailSubject,
-    htmlContent: emailHtml
+    htmlContent: emailHtml,
+    attachment: [
+      {
+        name: sampleFileName,
+        url: cdnPdfUrl
+      }
+    ]
   };
 
   // Add CC to admin only if recipient is not already the admin email
   if (email.toLowerCase() !== CONFIG.adminCcEmail.toLowerCase()) {
     brevoPayload.cc = [
       { email: CONFIG.adminCcEmail, name: "Cozy Coloring Chaos Team" }
-    ];
-  }
-
-  // Add PDF Attachment (using Base64 if loaded from disk, or public CDN URL if on serverless)
-  if (pdfBase64 && pdfBase64.length > 50) {
-    brevoPayload.attachment = [
-      {
-        name: sampleFileName,
-        content: pdfBase64
-      }
-    ];
-  } else {
-    brevoPayload.attachment = [
-      {
-        name: sampleFileName,
-        url: cdnPdfUrl
-      }
     ];
   }
 
