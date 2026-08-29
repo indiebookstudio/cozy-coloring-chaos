@@ -889,8 +889,19 @@ function updateInterfaceLanguage(lang) {
     }
   });
 
-  // Update Free Sample modal translations
+  // Update Free Sample modal translations and default country
   updateFreeSampleModalTranslations(t);
+  let defaultCountryCode = 'us';
+  if (currentLanguage === 'it') defaultCountryCode = 'it';
+  else if (currentLanguage === 'de') defaultCountryCode = 'de';
+  else if (currentLanguage === 'fr') defaultCountryCode = 'fr';
+  else if (currentLanguage === 'es') defaultCountryCode = 'es';
+  else if (currentLanguage === 'nl') defaultCountryCode = 'nl';
+  else if (currentLanguage === 'pl') defaultCountryCode = 'pl';
+  else if (currentLanguage === 'sv') defaultCountryCode = 'se';
+  else if (currentLanguage === 'ja') defaultCountryCode = 'jp';
+  window.currentSelectedCountryCode = defaultCountryCode;
+  populateCountrySelect(defaultCountryCode);
 
   // Update Language Switcher active buttons
   document.querySelectorAll('.lang-btn').forEach((btn) => {
@@ -1810,9 +1821,10 @@ window.handleFreeSampleSubmit = async function(event) {
   if (stateError) stateError.style.display = 'none';
   if (stateSuccess) stateSuccess.style.display = 'none';
 
-  // Determine marketplace for country
-  const countryInfo = SAMPLE_COUNTRIES.find(c => c.code === countryCode) || SAMPLE_COUNTRIES[1];
-  const marketKey = countryInfo.market || 'us';
+  // Determine marketplace for country & language
+  const effectiveCountryCode = window.currentSelectedCountryCode || countryCode || (currentLanguage === 'fr' ? 'fr' : (currentLanguage === 'de' ? 'de' : (currentLanguage === 'it' ? 'it' : (currentLanguage === 'es' ? 'es' : (currentLanguage === 'nl' ? 'nl' : (currentLanguage === 'pl' ? 'pl' : (currentLanguage === 'sv' ? 'se' : (currentLanguage === 'ja' ? 'jp' : 'us'))))))));
+  const countryInfo = SAMPLE_COUNTRIES.find(c => c.code === effectiveCountryCode) || SAMPLE_COUNTRIES.find(c => c.code === countryCode) || SAMPLE_COUNTRIES[0];
+  const marketKey = countryInfo.market || getDefaultMarketForLanguage(activeSampleBook, currentLanguage);
   const amazonUrl = getBookUrlForMarket(activeSampleBook, marketKey);
   const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
 
@@ -1838,7 +1850,7 @@ window.handleFreeSampleSubmit = async function(event) {
         firstName: firstName,
         lastName: lastName,
         email: email,
-        countryCode: countryCode,
+        countryCode: effectiveCountryCode,
         lang: emailLangKey,
         bookId: activeSampleBook.id
       })

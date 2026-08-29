@@ -433,8 +433,8 @@ export default async function handler(req) {
 
     // 6. Metadata & Localization
     const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
-    const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP.us;
-    const marketKey = countryInfo.market || book.defaultMarket || 'us';
+    const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP[requestedLang] || COUNTRY_MAP.us;
+    const marketKey = countryInfo.market || (requestedLang === 'fr' ? 'fr' : (requestedLang === 'de' ? 'de' : (requestedLang === 'it' ? 'it' : (requestedLang === 'es' ? 'es' : (requestedLang === 'nl' ? 'nl' : (requestedLang === 'pl' ? 'pl' : (requestedLang === 'sv' ? 'se' : (requestedLang === 'ja' ? 'jp' : 'us'))))))));
     const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
     const amazonUrl = getBookAmazonUrl(book, marketKey);
     const emailLangKey = getRecipientEmailLanguage(countryCode, requestedLang);
