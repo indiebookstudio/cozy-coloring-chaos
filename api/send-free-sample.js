@@ -416,12 +416,7 @@ export default async function handler(req) {
       body = req.body;
     }
 
-    // 4. Anti-Spam Honeypot Check
-    if (body.honeypot || body.website_hp || body._hp) {
-      return jsonResponse({ success: true, message: "Sample request received." }, 200);
-    }
-
-    // 5. Input Validation
+    // 4. Input Validation
     const email = (body.email || '').trim().toLowerCase();
     const firstName = (body.firstName || body.first_name || '').trim().substring(0, 100);
     const lastName = (body.lastName || body.last_name || '').trim().substring(0, 100);

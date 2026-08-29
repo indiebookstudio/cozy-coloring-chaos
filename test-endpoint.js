@@ -110,19 +110,6 @@ async function runTests() {
     assert(resInvalidEmail.statusCode === 400, 'Invalid email rejected with HTTP 400', `Got ${resInvalidEmail.statusCode}`);
     assert(resInvalidEmail.json && resInvalidEmail.json.success === false, 'Invalid email returns success: false');
 
-    console.log('\n--- Test 3: Anti-Spam Honeypot ---');
-    const resHoneypot = await makeRequest({
-      method: 'POST',
-      path: '/api/send-free-sample',
-      body: { 
-        email: 'spammer@bot.com', 
-        firstName: 'Bot', 
-        lastName: 'Spam',
-        website_hp: 'http://spam-link.com' 
-      }
-    });
-    assert(resHoneypot.statusCode === 200, 'Honeypot returns HTTP 200 to fool bot', `Got ${resHoneypot.statusCode}`);
-    assert(resHoneypot.json && resHoneypot.json.success === true, 'Honeypot returns success: true without sending');
 
     console.log('\n--- Test 4: Missing API Key Error Handling ---');
     const originalKey = process.env.BREVO_API_KEY;

@@ -1840,8 +1840,7 @@ window.handleFreeSampleSubmit = async function(event) {
         email: email,
         countryCode: countryCode,
         lang: emailLangKey,
-        bookId: activeSampleBook.id,
-        website_hp: honeypot
+        bookId: activeSampleBook.id
       })
     });
 
