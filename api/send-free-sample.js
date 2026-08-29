@@ -461,151 +461,150 @@ function sendJson(res, statusCode, data) {
 }
 
 module.exports = async function handler(req, res) {
-  // 1. CORS Headers
-  const origin = req.headers['origin'] || req.headers['Origin'] || '';
-  const isAllowedOrigin = CONFIG.allowedOrigins.some(allowed => 
-    origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
-  );
-
-  if (origin && isAllowedOrigin) {
-    res.setHeader('Access-Control-Allow-Origin', origin);
-  } else {
-    res.setHeader('Access-Control-Allow-Origin', '*');
-  }
-
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-
-  // 2. Handle CORS Preflight
-  if (req.method === 'OPTIONS') {
-    res.statusCode = 204;
-    res.end();
-    return;
-  }
-
-  // 3. Enforce POST Method
-  if (req.method !== 'POST') {
-    res.setHeader('Allow', 'POST');
-    return sendJson(res, 405, { success: false, error: "Method Not Allowed. Use POST." });
-  }
-
-  // 4. Rate Limiting Check
-  const clientIp = getClientIp(req);
-  if (!checkRateLimit(clientIp)) {
-    return sendJson(res, 429, { 
-      success: false, 
-      error: "Too many requests. Please wait a few minutes before trying again." 
-    });
-  }
-
-  // 5. Parse Request Body safely
-  let body = req.body;
-  if (typeof body === 'string') {
-    try {
-      body = JSON.parse(body);
-    } catch (e) {
-      body = {};
-    }
-  } else if (!body && typeof req.on === 'function' && !req.readableEnded) {
-    try {
-      const chunks = [];
-      for await (const chunk of req) {
-        chunks.push(chunk);
-      }
-      const rawData = Buffer.concat(chunks).toString();
-      body = rawData ? JSON.parse(rawData) : {};
-    } catch (parseErr) {
-      return sendJson(res, 400, { success: false, error: "Malformed JSON payload" });
-    }
-  }
-
-  body = body || {};
-
-  // 6. Anti-Spam Honeypot Check
-  if (body.honeypot || body.website_hp || body._hp) {
-    console.log(`[Anti-Spam] Honeypot triggered by IP ${clientIp}. Silently ignoring.`);
-    return sendJson(res, 200, { success: true, message: "Sample request received." });
-  }
-
-  // 7. Input Validation
-  const email = (body.email || '').trim().toLowerCase();
-  const firstName = (body.firstName || body.first_name || '').trim().substring(0, 100);
-  const lastName = (body.lastName || body.last_name || '').trim().substring(0, 100);
-  const countryCode = (body.countryCode || body.country || 'us').trim().toLowerCase().substring(0, 10);
-  const requestedLang = (body.lang || body.language || '').trim().toLowerCase().substring(0, 10);
-  const bookId = (body.bookId || body.book_id || 'impossible-worlds').trim().toLowerCase();
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  if (!email || !emailRegex.test(email) || email.length > 254) {
-    return sendJson(res, 400, { success: false, error: "Please provide a valid email address." });
-  }
-
-  // 8. Find Book and Country Information
-  const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
-  const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP.us;
-  const marketKey = countryInfo.market || book.defaultMarket || 'us';
-  const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
-  const amazonUrl = getBookAmazonUrl(book, marketKey);
-  const emailLangKey = countryInfo.lang || getRecipientEmailLanguage(countryCode, requestedLang);
-  const et = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
-  const emailSubject = et.subject(book.title);
-
-  // 9. Check BREVO_API_KEY from environment
-  const brevoApiKey = process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.trim() : '';
-  if (!brevoApiKey) {
-    console.error("[Brevo Error] BREVO_API_KEY environment variable is not configured.");
-    return sendJson(res, 500, { 
-      success: false, 
-      error: "Email service is temporarily unavailable. Please try again later." 
-    });
-  }
-
-  // 10. Load PDF Attachment
-  // 10. PDF Attachment URL (Brevo downloads directly from GitHub Pages CDN)
-  const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
-  const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
-  const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
-
-  // 11. Generate Localized HTML Email Body
-  const emailHtml = buildEmailHtml({
-    firstName,
-    lastName,
-    book,
-    amazonUrl,
-    marketInfo,
-    countryCode,
-    lang: emailLangKey
-  });
-
-  // 12. Build Brevo API Payload
-  const recipientName = `${firstName} ${lastName}`.trim() || "Coloring Friend";
-  const brevoPayload = {
-    sender: {
-      name: CONFIG.brandName,
-      email: CONFIG.senderEmail
-    },
-    to: [
-      { email: email, name: recipientName }
-    ],
-    subject: emailSubject,
-    htmlContent: emailHtml,
-    attachment: [
-      {
-        name: sampleFileName,
-        url: cdnPdfUrl
-      }
-    ]
-  };
-
-  // Add CC to admin only if recipient is not already the admin email
-  if (email.toLowerCase() !== CONFIG.adminCcEmail.toLowerCase()) {
-    brevoPayload.cc = [
-      { email: CONFIG.adminCcEmail, name: "Cozy Coloring Chaos Team" }
-    ];
-  }
-
-  // 13. Dispatch Email via Brevo REST API
   try {
+    // 1. CORS Headers
+    const origin = req.headers['origin'] || req.headers['Origin'] || '';
+    const isAllowedOrigin = CONFIG.allowedOrigins.some(allowed => 
+      origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
+    );
+
+    if (origin && isAllowedOrigin) {
+      res.setHeader('Access-Control-Allow-Origin', origin);
+    } else {
+      res.setHeader('Access-Control-Allow-Origin', '*');
+    }
+
+    res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
+
+    // 2. Handle CORS Preflight
+    if (req.method === 'OPTIONS') {
+      res.statusCode = 204;
+      res.end();
+      return;
+    }
+
+    // 3. Enforce POST Method
+    if (req.method !== 'POST') {
+      res.setHeader('Allow', 'POST');
+      return sendJson(res, 405, { success: false, error: "Method Not Allowed. Use POST." });
+    }
+
+    // 4. Rate Limiting Check
+    const clientIp = getClientIp(req);
+    if (!checkRateLimit(clientIp)) {
+      return sendJson(res, 429, { 
+        success: false, 
+        error: "Too many requests. Please wait a few minutes before trying again." 
+      });
+    }
+
+    // 5. Parse Request Body safely
+    let body = req.body;
+    if (typeof body === 'string') {
+      try {
+        body = JSON.parse(body);
+      } catch (e) {
+        body = {};
+      }
+    } else if (!body && typeof req.on === 'function' && !req.readableEnded) {
+      try {
+        const chunks = [];
+        for await (const chunk of req) {
+          chunks.push(chunk);
+        }
+        const rawData = Buffer.concat(chunks).toString();
+        body = rawData ? JSON.parse(rawData) : {};
+      } catch (parseErr) {
+        return sendJson(res, 400, { success: false, error: "Malformed JSON payload" });
+      }
+    }
+
+    body = body || {};
+
+    // 6. Anti-Spam Honeypot Check
+    if (body.honeypot || body.website_hp || body._hp) {
+      console.log(`[Anti-Spam] Honeypot triggered by IP ${clientIp}. Silently ignoring.`);
+      return sendJson(res, 200, { success: true, message: "Sample request received." });
+    }
+
+    // 7. Input Validation
+    const email = (body.email || '').trim().toLowerCase();
+    const firstName = (body.firstName || body.first_name || '').trim().substring(0, 100);
+    const lastName = (body.lastName || body.last_name || '').trim().substring(0, 100);
+    const countryCode = (body.countryCode || body.country || 'us').trim().toLowerCase().substring(0, 10);
+    const requestedLang = (body.lang || body.language || '').trim().toLowerCase().substring(0, 10);
+    const bookId = (body.bookId || body.book_id || 'impossible-worlds').trim().toLowerCase();
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!email || !emailRegex.test(email) || email.length > 254) {
+      return sendJson(res, 400, { success: false, error: "Please provide a valid email address." });
+    }
+
+    // 8. Find Book and Country Information
+    const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
+    const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP.us;
+    const marketKey = countryInfo.market || book.defaultMarket || 'us';
+    const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
+    const amazonUrl = getBookAmazonUrl(book, marketKey);
+    const emailLangKey = countryInfo.lang || getRecipientEmailLanguage(countryCode, requestedLang);
+    const et = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
+    const emailSubject = et.subject(book.title);
+
+    // 9. Check BREVO_API_KEY from environment
+    const brevoApiKey = process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.trim() : '';
+    if (!brevoApiKey) {
+      console.error("[Brevo Error] BREVO_API_KEY environment variable is not configured.");
+      return sendJson(res, 500, { 
+        success: false, 
+        error: "Email service is temporarily unavailable. Please try again later." 
+      });
+    }
+
+    // 10. PDF Attachment URL (Brevo downloads directly from GitHub Pages CDN)
+    const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
+    const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
+    const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
+
+    // 11. Generate Localized HTML Email Body
+    const emailHtml = buildEmailHtml({
+      firstName,
+      lastName,
+      book,
+      amazonUrl,
+      marketInfo,
+      countryCode,
+      lang: emailLangKey
+    });
+
+    // 12. Build Brevo API Payload
+    const recipientName = `${firstName} ${lastName}`.trim() || "Coloring Friend";
+    const brevoPayload = {
+      sender: {
+        name: CONFIG.brandName,
+        email: CONFIG.senderEmail
+      },
+      to: [
+        { email: email, name: recipientName }
+      ],
+      subject: emailSubject,
+      htmlContent: emailHtml,
+      attachment: [
+        {
+          name: sampleFileName,
+          url: cdnPdfUrl
+        }
+      ]
+    };
+
+    // Add CC to admin only if recipient is not already the admin email
+    if (email.toLowerCase() !== CONFIG.adminCcEmail.toLowerCase()) {
+      brevoPayload.cc = [
+        { email: CONFIG.adminCcEmail, name: "Cozy Coloring Chaos Team" }
+      ];
+    }
+
+    // 13. Dispatch Email via Brevo REST API
     const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -631,13 +630,11 @@ module.exports = async function handler(req, res) {
         error: "Unable to send sample at this time. Please try again later." 
       });
     }
-  } catch (networkErr) {
-    console.error('❌ [Brevo Network Error]:', networkErr.message);
-    res.statusCode = 503;
-    res.end(JSON.stringify({ 
-      success: false, 
-      error: "Network error communicating with email service. Please try again." 
-    }));
-    return;
+  } catch (err) {
+    console.error('❌ [Server Error]:', err);
+    return sendJson(res, 500, {
+      success: false,
+      error: "Internal server error occurred."
+    });
   }
 };
