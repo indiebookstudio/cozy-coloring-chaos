@@ -458,16 +458,30 @@ module.exports = async function handler(req, res) {
     origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
   );
 
+function sendJson(res, statusCode, data) {
+  if (typeof res.status === 'function' && typeof res.json === 'function') {
+    return res.status(statusCode).json(data);
+  }
+  res.statusCode = statusCode;
+  res.setHeader('Content-Type', 'application/json');
+  return res.end(JSON.stringify(data));
+}
+
+module.exports = async function handler(req, res) {
+  // 1. CORS Headers
+  const origin = req.headers['origin'] || req.headers['Origin'] || '';
+  const isAllowedOrigin = CONFIG.allowedOrigins.some(allowed => 
+    origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
+  );
+
   if (origin && isAllowedOrigin) {
     res.setHeader('Access-Control-Allow-Origin', origin);
-  } else if (!origin) {
-    // Non-browser or same-origin requests
+  } else {
     res.setHeader('Access-Control-Allow-Origin', '*');
   }
 
   res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
   res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Accept');
-  res.setHeader('Content-Type', 'application/json');
 
   // 2. Handle CORS Preflight
   if (req.method === 'OPTIONS') {
@@ -479,48 +493,45 @@ module.exports = async function handler(req, res) {
   // 3. Enforce POST Method
   if (req.method !== 'POST') {
     res.setHeader('Allow', 'POST');
-    res.statusCode = 405;
-    res.end(JSON.stringify({ success: false, error: "Method Not Allowed. Use POST." }));
-    return;
+    return sendJson(res, 405, { success: false, error: "Method Not Allowed. Use POST." });
   }
 
   // 4. Rate Limiting Check
   const clientIp = getClientIp(req);
   if (!checkRateLimit(clientIp)) {
-    res.statusCode = 429;
-    res.end(JSON.stringify({ 
+    return sendJson(res, 429, { 
       success: false, 
       error: "Too many requests. Please wait a few minutes before trying again." 
-    }));
-    return;
+    });
   }
 
-  // 5. Parse Request Body if needed (Express/Vercel auto-parses req.body, plain Node needs stream)
+  // 5. Parse Request Body safely
   let body = req.body;
-  if (!body && typeof req.on === 'function') {
+  if (typeof body === 'string') {
     try {
-      const buffers = [];
+      body = JSON.parse(body);
+    } catch (e) {
+      body = {};
+    }
+  } else if (!body && typeof req.on === 'function' && !req.readableEnded) {
+    try {
+      const chunks = [];
       for await (const chunk of req) {
-        buffers.push(chunk);
+        chunks.push(chunk);
       }
-      const rawData = Buffer.concat(buffers).toString();
+      const rawData = Buffer.concat(chunks).toString();
       body = rawData ? JSON.parse(rawData) : {};
     } catch (parseErr) {
-      res.statusCode = 400;
-      res.end(JSON.stringify({ success: false, error: "Malformed JSON payload" }));
-      return;
+      return sendJson(res, 400, { success: false, error: "Malformed JSON payload" });
     }
   }
 
   body = body || {};
 
   // 6. Anti-Spam Honeypot Check
-  // If honeypot fields are filled by bot, silently return success without sending email
   if (body.honeypot || body.website_hp || body._hp) {
     console.log(`[Anti-Spam] Honeypot triggered by IP ${clientIp}. Silently ignoring.`);
-    res.statusCode = 200;
-    res.end(JSON.stringify({ success: true, message: "Sample request received." }));
-    return;
+    return sendJson(res, 200, { success: true, message: "Sample request received." });
   }
 
   // 7. Input Validation
@@ -533,9 +544,7 @@ module.exports = async function handler(req, res) {
 
   const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
   if (!email || !emailRegex.test(email) || email.length > 254) {
-    res.statusCode = 400;
-    res.end(JSON.stringify({ success: false, error: "Please provide a valid email address." }));
-    return;
+    return sendJson(res, 400, { success: false, error: "Please provide a valid email address." });
   }
 
   // 8. Find Book and Country Information
@@ -552,12 +561,10 @@ module.exports = async function handler(req, res) {
   const brevoApiKey = process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.trim() : '';
   if (!brevoApiKey) {
     console.error("[Brevo Error] BREVO_API_KEY environment variable is not configured.");
-    res.statusCode = 500;
-    res.end(JSON.stringify({ 
+    return sendJson(res, 500, { 
       success: false, 
       error: "Email service is temporarily unavailable. Please try again later." 
-    }));
-    return;
+    });
   }
 
   // 10. Load PDF Attachment
@@ -590,7 +597,7 @@ module.exports = async function handler(req, res) {
     htmlContent: emailHtml
   };
 
-  // Add CC to admin only if recipient is not the admin email
+  // Add CC to admin only if recipient is not already the admin email
   if (email.toLowerCase() !== CONFIG.adminCcEmail.toLowerCase()) {
     brevoPayload.cc = [
       { email: CONFIG.adminCcEmail, name: "Cozy Coloring Chaos Team" }
@@ -622,12 +629,10 @@ module.exports = async function handler(req, res) {
     if (brevoResponse.ok || brevoResponse.status === 201) {
       const resData = await brevoResponse.json().catch(() => ({}));
       console.log(`✅ [Brevo] Free sample email sent successfully to ${email} (MessageId: ${resData.messageId || 'N/A'})`);
-      res.statusCode = 200;
-      res.end(JSON.stringify({ 
+      return sendJson(res, 200, { 
         success: true, 
         message: "Free sample sent successfully!" 
-      }));
-      return;
+      });
     } else {
       const errData = await brevoResponse.json().catch(() => ({}));
       console.error('❌ [Brevo API Error]:', brevoResponse.status, errData);
