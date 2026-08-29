@@ -451,13 +451,6 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
 // MAIN SERVERLESS HANDLER
 // ============================================================================
 
-module.exports = async function handler(req, res) {
-  // 1. CORS Headers
-  const origin = req.headers['origin'] || req.headers['Origin'] || '';
-  const isAllowedOrigin = CONFIG.allowedOrigins.some(allowed => 
-    origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
-  );
-
 function sendJson(res, statusCode, data) {
   if (typeof res.status === 'function' && typeof res.json === 'function') {
     return res.status(statusCode).json(data);
