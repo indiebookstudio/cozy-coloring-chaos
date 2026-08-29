@@ -57,39 +57,39 @@
       <div class="top-nav-bar">
         <div class="lang-switcher" role="group" aria-label="Language Selector">
           <button type="button" class="lang-btn" data-lang="en" aria-pressed="false" title="English">
-            <span class="lang-flag" aria-hidden="true">🇬🇧</span>
+            <img src="https://flagcdn.com/24x18/gb.png" srcset="https://flagcdn.com/48x36/gb.png 2x" width="18" height="13" alt="English" class="lang-flag-img" loading="eager">
             <span class="lang-code">EN</span>
           </button>
           <button type="button" class="lang-btn" data-lang="it" aria-pressed="false" title="Italiano">
-            <span class="lang-flag" aria-hidden="true">🇮🇹</span>
+            <img src="https://flagcdn.com/24x18/it.png" srcset="https://flagcdn.com/48x36/it.png 2x" width="18" height="13" alt="Italiano" class="lang-flag-img" loading="eager">
             <span class="lang-code">IT</span>
           </button>
           <button type="button" class="lang-btn" data-lang="de" aria-pressed="false" title="Deutsch">
-            <span class="lang-flag" aria-hidden="true">🇩🇪</span>
+            <img src="https://flagcdn.com/24x18/de.png" srcset="https://flagcdn.com/48x36/de.png 2x" width="18" height="13" alt="Deutsch" class="lang-flag-img" loading="eager">
             <span class="lang-code">DE</span>
           </button>
           <button type="button" class="lang-btn" data-lang="fr" aria-pressed="false" title="Français">
-            <span class="lang-flag" aria-hidden="true">🇫🇷</span>
+            <img src="https://flagcdn.com/24x18/fr.png" srcset="https://flagcdn.com/48x36/fr.png 2x" width="18" height="13" alt="Français" class="lang-flag-img" loading="eager">
             <span class="lang-code">FR</span>
           </button>
           <button type="button" class="lang-btn" data-lang="es" aria-pressed="false" title="Español">
-            <span class="lang-flag" aria-hidden="true">🇪🇸</span>
+            <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x" width="18" height="13" alt="Español" class="lang-flag-img" loading="eager">
             <span class="lang-code">ES</span>
           </button>
           <button type="button" class="lang-btn" data-lang="nl" aria-pressed="false" title="Nederlands">
-            <span class="lang-flag" aria-hidden="true">🇳🇱</span>
+            <img src="https://flagcdn.com/24x18/nl.png" srcset="https://flagcdn.com/48x36/nl.png 2x" width="18" height="13" alt="Nederlands" class="lang-flag-img" loading="eager">
             <span class="lang-code">NL</span>
           </button>
           <button type="button" class="lang-btn" data-lang="pl" aria-pressed="false" title="Polski">
-            <span class="lang-flag" aria-hidden="true">🇵🇱</span>
+            <img src="https://flagcdn.com/24x18/pl.png" srcset="https://flagcdn.com/48x36/pl.png 2x" width="18" height="13" alt="Polski" class="lang-flag-img" loading="eager">
             <span class="lang-code">PL</span>
           </button>
           <button type="button" class="lang-btn" data-lang="sv" aria-pressed="false" title="Svenska">
-            <span class="lang-flag" aria-hidden="true">🇸🇪</span>
+            <img src="https://flagcdn.com/24x18/se.png" srcset="https://flagcdn.com/48x36/se.png 2x" width="18" height="13" alt="Svenska" class="lang-flag-img" loading="eager">
             <span class="lang-code">SE</span>
           </button>
           <button type="button" class="lang-btn" data-lang="ja" aria-pressed="false" title="日本語">
-            <span class="lang-flag" aria-hidden="true">🇯🇵</span>
+            <img src="https://flagcdn.com/24x18/jp.png" srcset="https://flagcdn.com/48x36/jp.png 2x" width="18" height="13" alt="日本語" class="lang-flag-img" loading="eager">
             <span class="lang-code">JP</span>
           </button>
         </div>
@@ -240,6 +240,179 @@
       </div>
     </div>
   </div>
+
+  <!-- ======================================================================
+       MODAL FORM PER FREE SAMPLE PDF VIA EMAIL
+       ====================================================================== -->
+  <div class="sample-modal-backdrop" id="free-sample-modal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="free-sample-modal-title">
+    <div class="sample-modal-dialog free-sample-dialog">
+      <div class="sample-modal-header">
+        <div class="sample-modal-title-group">
+          <span class="sample-modal-badge" id="free-sample-modal-badge">🎁 Free Sample</span>
+          <h3 class="sample-modal-title" id="free-sample-modal-title">Ricevi il Free Sample PDF</h3>
+        </div>
+        <button type="button" class="sample-modal-close" onclick="closeFreeSampleModal()" aria-label="Chiudi form sample">✕</button>
+      </div>
+
+      <!-- Free Sample Form Container -->
+      <div class="free-sample-body" id="free-sample-body">
+        <!-- Selected Book Preview Card -->
+        <div class="sample-book-strip" id="sample-book-strip">
+          <div class="sample-book-strip-cover">
+            <img src="" alt="Copertina" id="sample-form-book-cover" />
+          </div>
+          <div class="sample-book-strip-info">
+            <h4 class="sample-form-book-title" id="sample-form-book-title">Impossible Worlds</h4>
+            <p class="sample-form-book-subtitle" id="sample-form-book-subtitle">Cozy Coloring Book</p>
+            <div class="sample-pdf-pill">
+              <span class="pdf-icon">📎</span>
+              <span class="pdf-text" id="sample-form-pdf-name">PDF allegato via email</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- The Input Form -->
+        <form class="free-sample-form" id="free-sample-form" onsubmit="handleFreeSampleSubmit(event)" novalidate>
+          <!-- Anti-Spam Honeypot (Hidden from human users, traps spam bots) -->
+          <div style="position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden;" aria-hidden="true">
+            <input type="text" id="sample-website-hp" name="website_hp" tabindex="-1" autocomplete="off" />
+          </div>
+
+          <p class="sample-form-intro" id="free-sample-modal-desc">
+            Inserisci i tuoi dati per ricevere gratuitamente via email il file PDF con una selezione di pagine da colorare in alta definizione allegate alla mail!
+          </p>
+
+          <div class="form-row-two">
+            <div class="form-group">
+              <label for="sample-firstname" class="form-label">
+                <span id="label-firstname">Nome</span> <span class="required-star">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="sample-firstname" 
+                name="firstName" 
+                class="form-input" 
+                required 
+                placeholder="es. Marco" 
+                autocomplete="given-name" 
+              />
+            </div>
+            <div class="form-group">
+              <label for="sample-lastname" class="form-label">
+                <span id="label-lastname">Cognome</span> <span class="required-star">*</span>
+              </label>
+              <input 
+                type="text" 
+                id="sample-lastname" 
+                name="lastName" 
+                class="form-input" 
+                required 
+                placeholder="es. Rossi" 
+                autocomplete="family-name" 
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sample-country" class="form-label">
+              <span id="label-country">Paese</span> <span class="required-star">*</span>
+            </label>
+            <div class="custom-country-select" id="custom-country-select">
+              <button type="button" class="country-trigger" id="country-trigger" aria-haspopup="listbox" aria-expanded="false" aria-label="Seleziona Paese">
+                <span class="country-trigger-content" id="country-trigger-content">
+                  <img src="https://flagcdn.com/24x18/it.png" alt="" class="country-flag-img" id="country-selected-flag">
+                  <span class="country-selected-name" id="country-selected-name">Italia</span>
+                </span>
+                <svg class="country-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="country-dropdown-menu" id="country-dropdown-menu" role="listbox" style="display: none;">
+                <!-- Populated dynamically by script.js with flag images -->
+              </div>
+              <select id="sample-country" name="country" class="sr-only-select" tabindex="-1" aria-hidden="true" required>
+                <!-- Kept in sync by script.js -->
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="sample-email" class="form-label">
+              <span id="label-email">Indirizzo Email</span> <span class="required-star">*</span>
+            </label>
+            <input 
+              type="email" 
+              id="sample-email" 
+              name="email" 
+              class="form-input" 
+              required 
+              placeholder="latuamail@example.com" 
+              autocomplete="email" 
+            />
+          </div>
+
+          <p class="form-privacy-note" id="form-privacy-note">
+            🔒 Niente spam. La tua email sarà usata solo per inviarti il sample e novità sui nostri libri.
+          </p>
+
+          <div class="form-action-row">
+            <button type="submit" class="btn-submit-sample" id="sample-submit-btn">
+              <span class="submit-btn-icon">📩</span>
+              <span class="submit-btn-text" id="sample-submit-text">Invia il Free Sample PDF</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Loading State -->
+        <div class="sample-form-state state-loading" id="sample-state-loading" style="display: none;">
+          <div class="sample-spinner"></div>
+          <h4 class="state-title" id="sample-loading-title">Preparazione e invio in corso...</h4>
+          <p class="state-desc" id="sample-loading-desc">Stiamo allegando il PDF del sample alla mail per te.</p>
+        </div>
+
+        <!-- Success State -->
+        <div class="sample-form-state state-success" id="sample-state-success" style="display: none;">
+          <div class="state-success-icon">🎉</div>
+          <h4 class="state-title" id="sample-success-title">Sample inviato con successo!</h4>
+          <div class="state-desc" id="sample-success-desc">
+            Abbiamo inviato l'email con il PDF allegato. Controlla la tua casella di posta!
+          </div>
+          
+          <!-- Direct Amazon Purchase Card in the Success View -->
+          <div class="success-amazon-box">
+            <p class="success-amazon-tagline" id="success-amazon-tagline">Ti piace questo libro? Ordina la copia completa cartacea:</p>
+            <a href="#" id="success-amazon-btn" target="_blank" rel="noopener noreferrer" class="btn-buy success-buy-btn">
+              <span class="btn-buy-text" id="success-amazon-btn-text">VEDI SU AMAZON</span>
+              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          </div>
+
+          <div class="success-action-row">
+            <button type="button" class="btn-close-success" onclick="closeFreeSampleModal()" id="btn-close-success">
+              Torna al catalogo
+            </button>
+          </div>
+        </div>
+
+        <!-- Error State -->
+        <div class="sample-form-state state-error" id="sample-state-error" style="display: none;">
+          <div class="state-error-icon">⚠️</div>
+          <h4 class="state-title" id="sample-error-title">Oops! Qualcosa è andato storto</h4>
+          <p class="state-desc" id="sample-error-desc">Non siamo riusciti a inviare la mail in questo momento. Riprova più tardi.</p>
+          <button type="button" class="btn-retry-sample" onclick="resetFreeSampleForm()">
+            Riprova
+          </button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- EmailJS CDN for client-side transactional emails -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
   <script src="script.js"></script>

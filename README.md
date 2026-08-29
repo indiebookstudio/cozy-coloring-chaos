@@ -19,6 +19,17 @@ Sito web statico, moderno, responsive e ultra-leggero per il brand **Cozy Colori
 3. **Link Diretto a TikTok (nel footer)**:
    - Pulsante social scuro in stile TikTok con logo, animazione hover e link diretto a **[@cozycoloringchaos](https://www.tiktok.com/@cozycoloringchaos)**.
 
+4. **Richiesta Free Sample PDF via Email 🎁**:
+   - Pulsante **"🎁 Free Sample"** su ogni scheda libro e all'interno del visualizzatore di anteprima.
+   - Modale con modulo di richiesta: **Nome**, **Cognome**, **Paese** (con autoselezione e dropdown bandiere per tutti i paesi principali) ed **Email**.
+   - Invio automatico di un'email HTML reattiva ed elegante con:
+     - **File PDF allegato direttamente** alla mail (da `assets/.../Sample/`).
+     - **Copertina del libro** in primo piano.
+     - **Pulsante Amazon personalizzato** per il marketplace del paese del destinatario.
+     - **Link cliccabile al sito vetrina** (`https://indiebookstudio.github.io/cozy-coloring-chaos/`).
+     - **CC automatico a `cozycoloringchaos@gmail.com`** per la raccolta lead.
+     - Oggetto: `[Titolo Libro] - Free Sample Download 🎨`.
+
 ---
 
 ## 📚 Libri Attualmente Configurati
@@ -75,10 +86,72 @@ Apri [**`script.js`**](script.js) e aggiungi un nuovo elemento all'array `BOOKS`
 
 ---
 
+## 🚀 Architettura & Invio Free Sample (Sicurezza & Brevo)
+
+L'invio delle email avviene tramite un backend serverless sicuro che protegge la chiave API di Brevo:
+
+```text
+                    GITHUB PAGES
+                 (Frontend statico)
+                         │
+                         │ HTTPS POST
+                         ▼
+               SERVERLESS BACKEND (api/send-free-sample.js)
+                         │
+                         │ BREVO_API_KEY (Environment Variable)
+                         ▼
+                      BREVO
+                         │
+                         ▼
+               EMAIL + PDF ALLEGATO
+```
+
+### 💻 Sviluppo Locale
+
+1. Copia `.env.example` in `.env`:
+   ```bash
+   cp .env.example .env
+   ```
+2. Inserisci la tua chiave API Brevo in `.env`:
+   ```text
+   BREVO_API_KEY=xkeysib-tua-chiave-qui
+   ```
+3. Avvia il server locale:
+   ```bash
+   npm start
+   ```
+4. Apri `http://localhost:3000` nel browser.
+
+### 🧪 Test Automatizzati
+
+Esegui la suite di test per validare metodi HTTP, CORS, honeypot anti-spam, validazione email e assenza di secret nel frontend:
+
+```bash
+npm test
+```
+
+---
+
+## 🌐 Deploy del Backend Serverless (es. Vercel)
+
+1. Importa questo repository su **[Vercel](https://vercel.com)**.
+2. Nelle impostazioni del progetto su Vercel:
+   - Vai in **Settings** > **Environment Variables**.
+   - Aggiungi la variabile:
+     - **Name**: `BREVO_API_KEY`
+     - **Value**: `la_tua_nuova_chiave_brevo`
+3. Al termine del deploy, copia l'URL generato da Vercel (es. `https://cozy-coloring-chaos.vercel.app`).
+4. Su GitHub Pages, il sito utilizzerà automaticamente l'endpoint backend serverless!
+
+---
+
 ## 🚀 Pubblicazione su GitHub Pages
 
-1. Carica i file (`index.html`, `style.css`, `script.js` e la cartella `assets/`) nel tuo repository GitHub.
+1. Carica i file nel tuo repository GitHub:
+   ```bash
+   git add .
+   git commit -m "Configure secure Brevo serverless dispatch"
+   git push origin main
+   ```
 2. Vai in **Settings** > **Pages** > Seleziona branch **`main`** / cartella **`root`** > **Save**.
-3. Inserisci il link generato nella bio di TikTok!
-
-...
+3. Inserisci il link generato (`https://indiebookstudio.github.io/cozy-coloring-chaos/`) nella bio di TikTok!

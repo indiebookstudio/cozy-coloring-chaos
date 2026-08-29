@@ -1,0 +1,18 @@
+{
+  "name": "cozy-coloring-chaos",
+  "version": "1.0.0",
+  "description": "Cozy Coloring Chaos - Official Website & Free Sample Dispatch",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "test": "node test-endpoint.js"
+  },
+  "keywords": [
+    "coloring-books",
+    "serverless",
+    "brevo"
+  ],
+  "author": "Indie Book Studio",
+  "license": "MIT"
+}
