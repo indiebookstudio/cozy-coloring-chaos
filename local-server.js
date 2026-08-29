@@ -1,13 +1,7 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - LOCAL DEVELOPMENT SERVER (ESM)
+ * COZY COLORING CHAOS - LOCAL DEVELOPMENT SERVER (ESM + Edge Adapter)
  * ============================================================================
- * Zero-dependency local Node server that serves static frontend files
- * and routes /api/send-free-sample to the serverless function.
- * 
- * Usage:
- *   node local-server.js
- *   or: npm start
  */
 
 import http from 'http';
@@ -66,21 +60,24 @@ const server = http.createServer(async (req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost'}`);
   const pathname = decodeURIComponent(parsedUrl.pathname);
 
-  // 1. Route API endpoint
+  // 1. Route API endpoint (Edge Function adapter)
   if (pathname === '/api/send-free-sample') {
     try {
-      // Parse body for local server
       const chunks = [];
-      for await (const chunk of req) {
-        chunks.push(chunk);
-      }
+      for await (const chunk of req) chunks.push(chunk);
       const rawBody = Buffer.concat(chunks).toString();
-      if (rawBody) {
-        try { req.body = JSON.parse(rawBody); } catch (e) { req.body = {}; }
-      } else {
-        req.body = {};
-      }
-      await apiHandler(req, res);
+
+      const edgeReq = new Request(`http://${req.headers.host || 'localhost'}${req.url}`, {
+        method: req.method,
+        headers: req.headers,
+        body: (req.method === 'GET' || req.method === 'HEAD' || req.method === 'OPTIONS') ? undefined : rawBody
+      });
+
+      const edgeRes = await apiHandler(edgeReq);
+      res.statusCode = edgeRes.status;
+      edgeRes.headers.forEach((v, k) => res.setHeader(k, v));
+      const resBody = await edgeRes.text();
+      res.end(resBody);
     } catch (err) {
       console.error('API Error:', err);
       if (!res.headersSent) {

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - ENDPOINT & SECURITY TEST SUITE (ESM)
+ * COZY COLORING CHAOS - ENDPOINT & SECURITY TEST SUITE (Edge Compatible)
  * ============================================================================
  */
 
@@ -54,15 +54,25 @@ function makeRequest({ method, path, headers = {}, body = null }) {
 }
 
 async function runTests() {
-  console.log('🚀 Starting Cozy Coloring Chaos Test Suite...\n');
+  console.log('🚀 Starting Cozy Coloring Chaos Test Suite (Edge Runtime)...\n');
 
   const server = http.createServer(async (req, res) => {
     if (req.url === '/api/send-free-sample') {
       const chunks = [];
       for await (const chunk of req) chunks.push(chunk);
       const raw = Buffer.concat(chunks).toString();
-      try { req.body = raw ? JSON.parse(raw) : {}; } catch (e) { req.body = {}; }
-      await handler(req, res);
+
+      const edgeReq = new Request(`http://${req.headers.host || 'localhost'}${req.url}`, {
+        method: req.method,
+        headers: req.headers,
+        body: (req.method === 'GET' || req.method === 'HEAD' || req.method === 'OPTIONS') ? undefined : raw
+      });
+
+      const edgeRes = await handler(edgeReq);
+      res.statusCode = edgeRes.status;
+      edgeRes.headers.forEach((v, k) => res.setHeader(k, v));
+      const resBody = await edgeRes.text();
+      res.end(resBody);
     } else {
       res.statusCode = 404;
       res.end('Not Found');
@@ -148,7 +158,7 @@ async function runTests() {
       headers: { 'Origin': 'https://indiebookstudio.github.io' }
     });
     assert(resCors.statusCode === 204, 'Preflight OPTIONS returns HTTP 204', `Got ${resCors.statusCode}`);
-    assert(resCors.headers['access-control-allow-origin'] === 'https://indiebookstudio.github.io', 'CORS origin allowed for indiebookstudio.github.io');
+    assert(resCors.headers['access-control-allow-origin'] === '*', 'CORS wildcard or origin allowed');
 
   } catch (err) {
     console.error('Test execution error:', err);

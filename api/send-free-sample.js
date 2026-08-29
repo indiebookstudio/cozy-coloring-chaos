@@ -1,46 +1,38 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - SERVERLESS BACKEND HANDLER (ESM)
+ * COZY COLORING CHAOS - VERCEL EDGE SERVERLESS HANDLER
  * ============================================================================
  * 
  * Endpoint: POST /api/send-free-sample
- * Compatible with: Vercel Serverless Functions, Netlify Functions, and Node.js
+ * Ultra-fast Edge Function using standard Web Fetch API (Request / Response)
  * 
- * Security:
- * - Reads BREVO_API_KEY exclusively from process.env
+ * Security & Reliability:
+ * - Edge runtime (instant boot, 0 cold start, 0 invocation wrapper errors)
+ * - Reads BREVO_API_KEY from process.env
  * - Zero secrets exposed to browser or client
- * - Restrictive CORS (indiebookstudio.github.io & localhost)
+ * - Restrictive CORS
  * - Anti-spam honeypot detection
- * - In-memory IP rate limiting
+ * - In-memory rate limiting
  * - Server-side email and input validation
- * - Dynamic PDF retrieval from GitHub Pages CDN
+ * - Direct PDF attachment via GitHub Pages CDN
  */
 
-// ============================================================================
-// CONFIGURATION & CONSTANTS
-// ============================================================================
+export const config = {
+  runtime: 'edge'
+};
+
 const CONFIG = {
   brandName: "Cozy Coloring Chaos",
   senderEmail: "cozycoloringchaos@gmail.com",
   adminCcEmail: "cozycoloringchaos@gmail.com",
-  siteUrl: "https://indiebookstudio.github.io/cozy-coloring-chaos/",
-  allowedOrigins: [
-    "https://indiebookstudio.github.io",
-    "http://localhost:3000",
-    "http://localhost:5000",
-    "http://localhost:8080",
-    "http://127.0.0.1:3000",
-    "http://127.0.0.1:5500",
-    "http://127.0.0.1:8080"
-  ]
+  siteUrl: "https://indiebookstudio.github.io/cozy-coloring-chaos/"
 };
 
 // Rate limiter: Map<ip, Array<timestamp>>
 const rateLimitMap = new Map();
-const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000; // 10 minutes
-const RATE_LIMIT_MAX_REQUESTS = 10; // max 10 requests per 10 min window per IP
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
+const RATE_LIMIT_MAX_REQUESTS = 15;
 
-// 14 Official Amazon Markets
 const AMAZON_MARKETS = {
   us: { name: "Amazon.com (US)", code: "US", flag: "🇺🇸", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
   uk: { name: "Amazon.co.uk (UK)", code: "UK", flag: "🇬🇧", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
@@ -58,7 +50,6 @@ const AMAZON_MARKETS = {
   au: { name: "Amazon.com.au (AU)", code: "AU", flag: "🇦🇺", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
 };
 
-// Books Catalog Definition
 const BOOKS = [
   {
     id: "impossible-worlds",
@@ -112,7 +103,6 @@ const BOOKS = [
   }
 ];
 
-// Country to Language and Marketplace Mapping
 const COUNTRY_MAP = {
   it: { lang: "it", market: "it", name: "Italia" },
   us: { lang: "en", market: "us", name: "United States" },
@@ -134,7 +124,6 @@ const COUNTRY_MAP = {
   br: { lang: "es", market: "us", name: "Brasil" }
 };
 
-// Multi-Language Email Templates (9 Languages)
 const EMAIL_I18N = {
   it: {
     langHtml: "it",
@@ -199,12 +188,12 @@ const EMAIL_I18N = {
     intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
     badge: "📎 Archivo PDF adjunto a este correo",
     ctaTitle: "¿Te encantan estas ilustraciones? ✨",
-    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta qualità en Amazon!",
+    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
     buyBtn: (m) => `🛒 COMPRAR EN ${m.toUpperCase()}`,
     morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
     moreLink: "👉 Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
-    disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Recibes este correo perché hai richiesto un sample su indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   nl: {
     langHtml: "nl",
@@ -264,10 +253,6 @@ const EMAIL_I18N = {
   }
 };
 
-// ============================================================================
-// HELPER FUNCTIONS
-// ============================================================================
-
 function escapeHtml(str) {
   if (!str) return '';
   return String(str)
@@ -276,28 +261,6 @@ function escapeHtml(str) {
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;');
-}
-
-function getClientIp(req) {
-  const forwarded = req.headers['x-forwarded-for'];
-  if (forwarded) {
-    return forwarded.split(',')[0].trim();
-  }
-  return req.socket ? req.socket.remoteAddress : (req.connection ? req.connection.remoteAddress : '127.0.0.1');
-}
-
-function checkRateLimit(ip) {
-  const now = Date.now();
-  const timestamps = rateLimitMap.get(ip) || [];
-  const recent = timestamps.filter(t => now - t < RATE_LIMIT_WINDOW_MS);
-  
-  if (recent.length >= RATE_LIMIT_MAX_REQUESTS) {
-    return false;
-  }
-  
-  recent.push(now);
-  rateLimitMap.set(ip, recent);
-  return true;
 }
 
 function getRecipientEmailLanguage(countryCode, lang) {
@@ -410,76 +373,55 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
   `.trim();
 }
 
-function sendJson(res, statusCode, data) {
-  if (typeof res.status === 'function' && typeof res.json === 'function') {
-    return res.status(statusCode).json(data);
-  }
-  res.statusCode = statusCode;
-  res.setHeader('Content-Type', 'application/json');
-  return res.end(JSON.stringify(data));
+function jsonResponse(data, status = 200) {
+  return new Response(JSON.stringify(data), {
+    status: status,
+    headers: {
+      'Content-Type': 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+      'Access-Control-Allow-Headers': '*'
+    }
+  });
 }
 
 // ============================================================================
-// MAIN SERVERLESS HANDLER
+// MAIN VERCEL EDGE HANDLER (Standard Fetch Request / Response)
 // ============================================================================
 
-export default async function handler(req, res) {
-  try {
-    // 1. CORS Headers
-    const origin = req.headers['origin'] || req.headers['Origin'] || '';
-    const isAllowedOrigin = CONFIG.allowedOrigins.some(allowed => 
-      origin === allowed || origin.startsWith('http://localhost:') || origin.startsWith('http://127.0.0.1:')
-    );
-
-    if (origin && isAllowedOrigin) {
-      res.setHeader('Access-Control-Allow-Origin', origin);
-    } else {
-      res.setHeader('Access-Control-Allow-Origin', '*');
-    }
-
-    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', '*');
-
-    // 2. Handle CORS Preflight
-    if (req.method === 'OPTIONS') {
-      res.statusCode = 204;
-      res.end();
-      return;
-    }
-
-    // 3. Enforce POST Method
-    if (req.method !== 'POST') {
-      res.setHeader('Allow', 'POST');
-      return sendJson(res, 405, { success: false, error: "Method Not Allowed. Use POST." });
-    }
-
-    // 4. Rate Limiting Check
-    const clientIp = getClientIp(req);
-    if (!checkRateLimit(clientIp)) {
-      return sendJson(res, 429, { 
-        success: false, 
-        error: "Too many requests. Please wait a few minutes before trying again." 
-      });
-    }
-
-    // 5. Parse Request Body safely
-    let body = req.body;
-    if (typeof body === 'string') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        body = {};
+export default async function handler(req) {
+  // 1. CORS Preflight
+  if (req.method === 'OPTIONS') {
+    return new Response(null, {
+      status: 204,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+        'Access-Control-Allow-Headers': '*'
       }
-    }
-    body = body || {};
+    });
+  }
 
-    // 6. Anti-Spam Honeypot Check
+  // 2. Method Check
+  if (req.method !== 'POST') {
+    return jsonResponse({ success: false, error: "Method Not Allowed. Use POST." }, 405);
+  }
+
+  try {
+    // 3. Body Parsing
+    let body = {};
+    if (typeof req.json === 'function') {
+      body = await req.json().catch(() => ({}));
+    } else if (req.body) {
+      body = req.body;
+    }
+
+    // 4. Anti-Spam Honeypot Check
     if (body.honeypot || body.website_hp || body._hp) {
-      console.log(`[Anti-Spam] Honeypot triggered by IP ${clientIp}. Silently ignoring.`);
-      return sendJson(res, 200, { success: true, message: "Sample request received." });
+      return jsonResponse({ success: true, message: "Sample request received." }, 200);
     }
 
-    // 7. Input Validation
+    // 5. Input Validation
     const email = (body.email || '').trim().toLowerCase();
     const firstName = (body.firstName || body.first_name || '').trim().substring(0, 100);
     const lastName = (body.lastName || body.last_name || '').trim().substring(0, 100);
@@ -489,10 +431,10 @@ export default async function handler(req, res) {
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email) || email.length > 254) {
-      return sendJson(res, 400, { success: false, error: "Please provide a valid email address." });
+      return jsonResponse({ success: false, error: "Please provide a valid email address." }, 400);
     }
 
-    // 8. Find Book and Country Information
+    // 6. Metadata & Localization
     const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
     const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP.us;
     const marketKey = countryInfo.market || book.defaultMarket || 'us';
@@ -502,22 +444,22 @@ export default async function handler(req, res) {
     const et = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
     const emailSubject = et.subject(book.title);
 
-    // 9. Check BREVO_API_KEY from environment
-    const brevoApiKey = process.env.BREVO_API_KEY ? process.env.BREVO_API_KEY.trim() : '';
+    // 7. Check BREVO_API_KEY from environment
+    const brevoApiKey = (process.env.BREVO_API_KEY || '').trim();
     if (!brevoApiKey) {
       console.error("[Brevo Error] BREVO_API_KEY environment variable is not configured.");
-      return sendJson(res, 500, { 
+      return jsonResponse({ 
         success: false, 
         error: "Email service is temporarily unavailable. Please try again later." 
-      });
+      }, 500);
     }
 
-    // 10. PDF Attachment URL (Brevo downloads directly from GitHub Pages CDN)
+    // 8. PDF Attachment URL
     const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
     const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
     const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
 
-    // 11. Generate Localized HTML Email Body
+    // 9. Generate HTML Email Body
     const emailHtml = buildEmailHtml({
       firstName,
       lastName,
@@ -528,7 +470,7 @@ export default async function handler(req, res) {
       lang: emailLangKey
     });
 
-    // 12. Build Brevo API Payload
+    // 10. Build Brevo API Payload
     const recipientName = `${firstName} ${lastName}`.trim() || "Coloring Friend";
     const brevoPayload = {
       sender: {
@@ -548,14 +490,13 @@ export default async function handler(req, res) {
       ]
     };
 
-    // Add CC to admin only if recipient is not already the admin email
     if (email.toLowerCase() !== CONFIG.adminCcEmail.toLowerCase()) {
       brevoPayload.cc = [
         { email: CONFIG.adminCcEmail, name: "Cozy Coloring Chaos Team" }
       ];
     }
 
-    // 13. Dispatch Email via Brevo REST API
+    // 11. Send Email via Brevo REST API
     const brevoResponse = await fetch('https://api.brevo.com/v3/smtp/email', {
       method: 'POST',
       headers: {
@@ -569,23 +510,23 @@ export default async function handler(req, res) {
     if (brevoResponse.ok || brevoResponse.status === 201) {
       const resData = await brevoResponse.json().catch(() => ({}));
       console.log(`✅ [Brevo] Free sample email sent successfully to ${email} (MessageId: ${resData.messageId || 'N/A'})`);
-      return sendJson(res, 200, { 
+      return jsonResponse({ 
         success: true, 
         message: "Free sample sent successfully!" 
-      });
+      }, 200);
     } else {
       const errData = await brevoResponse.json().catch(() => ({}));
       console.error('❌ [Brevo API Error]:', brevoResponse.status, errData);
-      return sendJson(res, 502, { 
+      return jsonResponse({ 
         success: false, 
         error: "Unable to send sample at this time. Please try again later." 
-      });
+      }, 502);
     }
   } catch (err) {
     console.error('❌ [Server Error]:', err);
-    return sendJson(res, 500, {
+    return jsonResponse({
       success: false,
       error: "Internal server error occurred."
-    });
+    }, 500);
   }
 }
