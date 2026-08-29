@@ -279,6 +279,32 @@ function getRecipientEmailLanguage(countryCode, lang) {
   return 'en';
 }
 
+function getMarketKey(countryCode, requestedLang) {
+  const c = (countryCode || '').toLowerCase().trim();
+  const l = (requestedLang || '').toLowerCase().trim();
+
+  // 1. If user selected a specific localized country (e.g. France, Germany, Italy, Spain, UK, etc.)
+  if (c && COUNTRY_MAP[c] && COUNTRY_MAP[c].market && c !== 'us' && c !== 'other') {
+    return COUNTRY_MAP[c].market;
+  }
+
+  // 2. Derive marketplace from interface language
+  if (l === 'fr') return 'fr';
+  if (l === 'de') return 'de';
+  if (l === 'it') return 'it';
+  if (l === 'es') return 'es';
+  if (l === 'nl') return 'nl';
+  if (l === 'pl') return 'pl';
+  if (l === 'sv' || l === 'se') return 'se';
+  if (l === 'ja' || l === 'jp') return 'jp';
+
+  if (c && COUNTRY_MAP[c] && COUNTRY_MAP[c].market) {
+    return COUNTRY_MAP[c].market;
+  }
+
+  return 'us';
+}
+
 function getBookAmazonUrl(book, marketKey) {
   const key = (marketKey === 'com' || !marketKey) ? (book.defaultMarket || 'us') : marketKey;
   if (book.asin && AMAZON_MARKETS[key]) {
@@ -433,8 +459,7 @@ export default async function handler(req) {
 
     // 6. Metadata & Localization
     const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
-    const countryInfo = COUNTRY_MAP[countryCode] || COUNTRY_MAP[requestedLang] || COUNTRY_MAP.us;
-    const marketKey = countryInfo.market || (requestedLang === 'fr' ? 'fr' : (requestedLang === 'de' ? 'de' : (requestedLang === 'it' ? 'it' : (requestedLang === 'es' ? 'es' : (requestedLang === 'nl' ? 'nl' : (requestedLang === 'pl' ? 'pl' : (requestedLang === 'sv' ? 'se' : (requestedLang === 'ja' ? 'jp' : 'us'))))))));
+    const marketKey = getMarketKey(countryCode, requestedLang);
     const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
     const amazonUrl = getBookAmazonUrl(book, marketKey);
     const emailLangKey = getRecipientEmailLanguage(countryCode, requestedLang);

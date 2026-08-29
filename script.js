@@ -1676,6 +1676,8 @@ window.selectCountryOption = function(code) {
   if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
 
   // AUTOMATIC LIVE FORM TRANSLATION ON COUNTRY CHANGE:
+  window.userExplicitlySelectedCountry = true;
+  window.currentSelectedCountryCode = country.code;
   window.selectedModalLang = country.lang || currentLanguage;
   const targetLang = window.selectedModalLang;
   const t = TRANSLATIONS[targetLang] || TRANSLATIONS.en;
@@ -1704,6 +1706,8 @@ window.openFreeSampleModal = function(bookId) {
   else if (currentLanguage === 'ja') defaultCountryCode = 'jp';
 
   const defaultCountry = SAMPLE_COUNTRIES.find(c => c.code === defaultCountryCode) || SAMPLE_COUNTRIES[0];
+  window.userExplicitlySelectedCountry = false;
+  window.currentSelectedCountryCode = defaultCountry.code;
   window.selectedModalLang = currentLanguage || defaultCountry.lang || 'en';
   const targetLang = window.selectedModalLang;
   const t = TRANSLATIONS[targetLang] || TRANSLATIONS.en;
@@ -1821,15 +1825,21 @@ window.handleFreeSampleSubmit = async function(event) {
   if (stateError) stateError.style.display = 'none';
   if (stateSuccess) stateSuccess.style.display = 'none';
 
-  // Determine marketplace for country & language
-  const effectiveCountryCode = window.currentSelectedCountryCode || countryCode || (currentLanguage === 'fr' ? 'fr' : (currentLanguage === 'de' ? 'de' : (currentLanguage === 'it' ? 'it' : (currentLanguage === 'es' ? 'es' : (currentLanguage === 'nl' ? 'nl' : (currentLanguage === 'pl' ? 'pl' : (currentLanguage === 'sv' ? 'se' : (currentLanguage === 'ja' ? 'jp' : 'us'))))))));
-  const countryInfo = SAMPLE_COUNTRIES.find(c => c.code === effectiveCountryCode) || SAMPLE_COUNTRIES.find(c => c.code === countryCode) || SAMPLE_COUNTRIES[0];
-  const marketKey = countryInfo.market || getDefaultMarketForLanguage(activeSampleBook, currentLanguage);
+  // 1. Language Resolution
+  const emailLangKey = window.selectedModalLang || currentLanguage || 'en';
+
+  // 2. Marketplace Resolution
+  let marketKey = 'us';
+  if (window.userExplicitlySelectedCountry && window.currentSelectedCountryCode) {
+    const customCountry = SAMPLE_COUNTRIES.find(c => c.code === window.currentSelectedCountryCode);
+    marketKey = customCountry ? (customCountry.market || 'us') : 'us';
+  } else {
+    marketKey = getDefaultMarketForLanguage(activeSampleBook, emailLangKey);
+  }
+
+  const effectiveCountryCode = (window.userExplicitlySelectedCountry && window.currentSelectedCountryCode) ? window.currentSelectedCountryCode : (emailLangKey === 'fr' ? 'fr' : (emailLangKey === 'de' ? 'de' : (emailLangKey === 'it' ? 'it' : (emailLangKey === 'es' ? 'es' : (emailLangKey === 'nl' ? 'nl' : (emailLangKey === 'pl' ? 'pl' : (emailLangKey === 'sv' ? 'se' : (emailLangKey === 'ja' ? 'jp' : 'us'))))))));
   const amazonUrl = getBookUrlForMarket(activeSampleBook, marketKey);
   const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
-
-  // Determine localized subject & email language (prioritize active selected language)
-  const emailLangKey = window.selectedModalLang || currentLanguage || countryInfo.lang || 'en';
   const emailT = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
   const localizedSubject = emailT.subject(activeSampleBook.title);
 
