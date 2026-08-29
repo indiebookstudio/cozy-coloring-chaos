@@ -232,7 +232,7 @@ const EMAIL_CONFIG = {
   // In production, configure window.COZY_BACKEND_URL or use the default serverless URL.
   apiEndpoint: (window.location.hostname === "localhost" || window.location.hostname === "127.0.0.1")
     ? "/api/send-free-sample"
-    : (window.COZY_BACKEND_URL || "https://cozy-coloring-chaos.vercel.app/api/send-free-sample")
+    : (window.COZY_BACKEND_URL || "https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app/api/send-free-sample")
 };
 
 // ============================================================================
