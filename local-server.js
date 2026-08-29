@@ -6,7 +6,7 @@
  * and routes /api/send-free-sample to the serverless function.
  * 
  * Usage:
- *   node server.js
+ *   node local-server.js
  *   or: npm start
  */
 
