@@ -1816,8 +1816,8 @@ window.handleFreeSampleSubmit = async function(event) {
   const amazonUrl = getBookUrlForMarket(activeSampleBook, marketKey);
   const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
 
-  // Determine localized subject & email language based on selected country
-  const emailLangKey = countryInfo.lang || getRecipientEmailLanguage(countryCode, currentLanguage);
+  // Determine localized subject & email language (prioritize current user interface language)
+  const emailLangKey = currentLanguage || countryInfo.lang || 'en';
   const emailT = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
   const localizedSubject = emailT.subject(activeSampleBook.title);
 

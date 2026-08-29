@@ -264,6 +264,9 @@ function escapeHtml(str) {
 }
 
 function getRecipientEmailLanguage(countryCode, lang) {
+  if (lang && EMAIL_I18N[lang.toLowerCase()]) {
+    return lang.toLowerCase();
+  }
   const code = (countryCode || '').toLowerCase();
   if (code === 'it') return 'it';
   if (code === 'de' || code === 'at' || code === 'ch') return 'de';
@@ -273,7 +276,6 @@ function getRecipientEmailLanguage(countryCode, lang) {
   if (code === 'pl') return 'pl';
   if (code === 'se') return 'sv';
   if (code === 'jp') return 'ja';
-  if (lang && EMAIL_I18N[lang]) return lang;
   return 'en';
 }
 
@@ -435,7 +437,7 @@ export default async function handler(req) {
     const marketKey = countryInfo.market || book.defaultMarket || 'us';
     const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
     const amazonUrl = getBookAmazonUrl(book, marketKey);
-    const emailLangKey = countryInfo.lang || getRecipientEmailLanguage(countryCode, requestedLang);
+    const emailLangKey = getRecipientEmailLanguage(countryCode, requestedLang);
     const et = EMAIL_I18N[emailLangKey] || EMAIL_I18N.en;
     const emailSubject = et.subject(book.title);
 
