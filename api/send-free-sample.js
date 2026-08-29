@@ -460,7 +460,7 @@ function sendJson(res, statusCode, data) {
   return res.end(JSON.stringify(data));
 }
 
-module.exports = async function handler(req, res) {
+async function handler(req, res) {
   try {
     // 1. CORS Headers
     const origin = req.headers['origin'] || req.headers['Origin'] || '';
@@ -637,4 +637,7 @@ module.exports = async function handler(req, res) {
       error: "Internal server error occurred."
     });
   }
-};
+}
+
+module.exports = handler;
+module.exports.default = handler;
