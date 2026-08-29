@@ -570,6 +570,7 @@ module.exports = async function handler(req, res) {
   // 10. Load PDF Attachment
   const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
   const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
+  const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
   const pdfBase64 = await loadPdfAttachmentBase64(pdfPath);
 
   // 11. Generate Localized HTML Email Body
@@ -604,12 +605,19 @@ module.exports = async function handler(req, res) {
     ];
   }
 
-  // Add PDF Attachment if available
+  // Add PDF Attachment (using Base64 if loaded from disk, or public CDN URL if on serverless)
   if (pdfBase64 && pdfBase64.length > 50) {
     brevoPayload.attachment = [
       {
         name: sampleFileName,
         content: pdfBase64
+      }
+    ];
+  } else {
+    brevoPayload.attachment = [
+      {
+        name: sampleFileName,
+        url: cdnPdfUrl
       }
     ];
   }
@@ -636,12 +644,10 @@ module.exports = async function handler(req, res) {
     } else {
       const errData = await brevoResponse.json().catch(() => ({}));
       console.error('❌ [Brevo API Error]:', brevoResponse.status, errData);
-      res.statusCode = 502;
-      res.end(JSON.stringify({ 
+      return sendJson(res, 502, { 
         success: false, 
         error: "Unable to send sample at this time. Please try again later." 
-      }));
-      return;
+      });
     }
   } catch (networkErr) {
     console.error('❌ [Brevo Network Error]:', networkErr.message);
