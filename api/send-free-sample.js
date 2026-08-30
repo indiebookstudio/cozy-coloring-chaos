@@ -34,20 +34,20 @@ const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000;
 const RATE_LIMIT_MAX_REQUESTS = 15;
 
 const AMAZON_MARKETS = {
-  us: { name: "Amazon.com (US)", code: "US", flag: "🇺🇸", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
-  uk: { name: "Amazon.co.uk (UK)", code: "UK", flag: "🇬🇧", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
-  de: { name: "Amazon.de (DE)", code: "DE", flag: "🇩🇪", domain: "amazon.de", buttonLabel: "Amazon.de (DE)" },
-  fr: { name: "Amazon.fr (FR)", code: "FR", flag: "🇫🇷", domain: "amazon.fr", buttonLabel: "Amazon.fr (FR)" },
-  es: { name: "Amazon.es (ES)", code: "ES", flag: "🇪🇸", domain: "amazon.es", buttonLabel: "Amazon.es (ES)" },
-  it: { name: "Amazon.it (IT)", code: "IT", flag: "🇮🇹", domain: "amazon.it", buttonLabel: "Amazon.it (IT)" },
-  nl: { name: "Amazon.nl (NL)", code: "NL", flag: "🇳🇱", domain: "amazon.nl", buttonLabel: "Amazon.nl (NL)" },
-  pl: { name: "Amazon.pl (PL)", code: "PL", flag: "🇵🇱", domain: "amazon.pl", buttonLabel: "Amazon.pl (PL)" },
-  se: { name: "Amazon.se (SE)", code: "SE", flag: "🇸🇪", domain: "amazon.se", buttonLabel: "Amazon.se (SE)" },
-  be: { name: "Amazon.com.be (BE)", code: "BE", flag: "🇧🇪", domain: "amazon.com.be", buttonLabel: "Amazon.com.be (BE)" },
-  ie: { name: "Amazon.ie (IE)", code: "IE", flag: "🇮🇪", domain: "amazon.ie", buttonLabel: "Amazon.ie (IE)" },
-  jp: { name: "Amazon.co.jp (JP)", code: "JP", flag: "🇯🇵", domain: "amazon.co.jp", buttonLabel: "Amazon.co.jp (JP)" },
-  ca: { name: "Amazon.ca (CA)", code: "CA", flag: "🇨🇦", domain: "amazon.ca", buttonLabel: "Amazon.ca (CA)" },
-  au: { name: "Amazon.com.au (AU)", code: "AU", flag: "🇦🇺", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
+  us: { name: "Amazon.com (US)", code: "US", flag: "", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
+  uk: { name: "Amazon.co.uk (UK)", code: "UK", flag: "", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
+  de: { name: "Amazon.de (DE)", code: "DE", flag: "", domain: "amazon.de", buttonLabel: "Amazon.de (DE)" },
+  fr: { name: "Amazon.fr (FR)", code: "FR", flag: "", domain: "amazon.fr", buttonLabel: "Amazon.fr (FR)" },
+  es: { name: "Amazon.es (ES)", code: "ES", flag: "", domain: "amazon.es", buttonLabel: "Amazon.es (ES)" },
+  it: { name: "Amazon.it (IT)", code: "IT", flag: "", domain: "amazon.it", buttonLabel: "Amazon.it (IT)" },
+  nl: { name: "Amazon.nl (NL)", code: "NL", flag: "", domain: "amazon.nl", buttonLabel: "Amazon.nl (NL)" },
+  pl: { name: "Amazon.pl (PL)", code: "PL", flag: "", domain: "amazon.pl", buttonLabel: "Amazon.pl (PL)" },
+  se: { name: "Amazon.se (SE)", code: "SE", flag: "", domain: "amazon.se", buttonLabel: "Amazon.se (SE)" },
+  be: { name: "Amazon.com.be (BE)", code: "BE", flag: "", domain: "amazon.com.be", buttonLabel: "Amazon.com.be (BE)" },
+  ie: { name: "Amazon.ie (IE)", code: "IE", flag: "", domain: "amazon.ie", buttonLabel: "Amazon.ie (IE)" },
+  jp: { name: "Amazon.co.jp (JP)", code: "JP", flag: "", domain: "amazon.co.jp", buttonLabel: "Amazon.co.jp (JP)" },
+  ca: { name: "Amazon.ca (CA)", code: "CA", flag: "", domain: "amazon.ca", buttonLabel: "Amazon.ca (CA)" },
+  au: { name: "Amazon.com.au (AU)", code: "AU", flag: "", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
 };
 
 const BOOKS = [
@@ -127,127 +127,127 @@ const COUNTRY_MAP = {
 const EMAIL_I18N = {
   it: {
     langHtml: "it",
-    subject: (title) => `${title} - Download Sample Gratuito 🎨`,
-    greeting: (f, l) => `Ciao ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Download Sample Gratuito`,
+    greeting: (f, l) => `Ciao ${f} ${l}!`.trim(),
     intro: (title) => `Grazie per il tuo interesse per <strong>${title}</strong>.<br>In <strong>allegato a questa email</strong> trovi il file PDF del <strong>Sample Gratuito</strong> con alcune delle pagine più rilassanti e divertenti pronte da stampare e colorare!`,
-    badge: "📎 File PDF allegato a questa email",
-    ctaTitle: "Ti piacciono queste pagine? ✨",
+    badge: "File PDF allegato a questa email",
+    ctaTitle: "Ti piacciono queste pagine?",
     ctaDesc: "Scopri l'intero libro con tutte le illustrazioni originali in alta qualità ordinate comodamente su Amazon!",
-    buyBtn: (m) => `🛒 ACQUISTA SU ${m.toUpperCase()}`,
+    buyBtn: (m) => `ACQUISTA SU ${m.toUpperCase()}`,
     morePrompt: "Vuoi scoprire tutti i libri da colorare della nostra collezione?",
-    moreLink: "👉 Visita il sito Cozy Coloring Chaos",
+    moreLink: "Visita il sito Cozy Coloring Chaos",
     copyright: "Tutti i diritti riservati.",
     disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   en: {
     langHtml: "en",
-    subject: (title) => `${title} - Free Sample Download 🎨`,
-    greeting: (f, l) => `Hello ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Free Sample Download`,
+    greeting: (f, l) => `Hello ${f} ${l}!`.trim(),
     intro: (title) => `Thank you for your interest in <strong>${title}</strong>.<br><strong>Attached to this email</strong> you will find the <strong>Free Sample PDF</strong> with selected cozy coloring pages ready to print and color!`,
-    badge: "📎 PDF file attached to this email",
-    ctaTitle: "Loving these coloring pages? ✨",
+    badge: "PDF file attached to this email",
+    ctaTitle: "Loving these coloring pages?",
     ctaDesc: "Get the full book with all original high-quality illustrations delivered right to your door on Amazon!",
-    buyBtn: (m) => `🛒 BUY ON ${m.toUpperCase()}`,
+    buyBtn: (m) => `BUY ON ${m.toUpperCase()}`,
     morePrompt: "Want to explore more cozy coloring books from our collection?",
-    moreLink: "👉 Visit Cozy Coloring Chaos",
+    moreLink: "Visit Cozy Coloring Chaos",
     copyright: "All rights reserved.",
     disclaimer: "You are receiving this email because you requested a free sample on indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   de: {
     langHtml: "de",
-    subject: (title) => `${title} - Kostenlose Leseprobe Download 🎨`,
-    greeting: (f, l) => `Hallo ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Kostenlose Leseprobe Download`,
+    greeting: (f, l) => `Hallo ${f} ${l}!`.trim(),
     intro: (title) => `Vielen Dank für dein Interesse an <strong>${title}</strong>.<br>Im <strong>Anhang dieser E-Mail</strong> findest du das <strong>kostenlose PDF-Sample</strong> mit ausgewählten Seiten zum Ausdrucken und Ausmalen!`,
-    badge: "📎 PDF-Datei im E-Mail-Anhang",
-    ctaTitle: "Gefallen dir diese Malvorlagen? ✨",
+    badge: "PDF-Datei im E-Mail-Anhang",
+    ctaTitle: "Gefallen dir diese Malvorlagen?",
     ctaDesc: "Hol dir das komplette Buch mit allen Original-Illustrationen in bester Druckqualität direkt bei Amazon!",
-    buyBtn: (m) => `🛒 BEI ${m.toUpperCase()} KAUFEN`,
+    buyBtn: (m) => `BEI ${m.toUpperCase()} KAUFEN`,
     morePrompt: "Möchtest du weitere Malbücher unserer Kollektion entdecken?",
-    moreLink: "👉 Besuche Cozy Coloring Chaos",
+    moreLink: "Besuche Cozy Coloring Chaos",
     copyright: "Alle Rechte vorbehalten.",
     disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf indiebookstudio.github.io/cozy-coloring-chaos/ angefordert hast."
   },
   fr: {
     langHtml: "fr",
-    subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit 🎨`,
-    greeting: (f, l) => `Bonjour ${f} ${l} ! 👋`.trim(),
+    subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit`,
+    greeting: (f, l) => `Bonjour ${f} ${l} !`.trim(),
     intro: (title) => `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
-    badge: "📎 Fichier PDF en pièce jointe",
-    ctaTitle: "Vous aimez ces coloriages ? ✨",
+    badge: "Fichier PDF en pièce jointe",
+    ctaTitle: "Vous aimez ces coloriages ?",
     ctaDesc: "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
-    buyBtn: (m) => `🛒 ACHETER SUR ${m.toUpperCase()}`,
+    buyBtn: (m) => `ACHETER SUR ${m.toUpperCase()}`,
     morePrompt: "Envie de découvrir tous les livres de notre collection ?",
-    moreLink: "👉 Visiter Cozy Coloring Chaos",
+    moreLink: "Visiter Cozy Coloring Chaos",
     copyright: "Tous droits réservés.",
     disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   es: {
     langHtml: "es",
-    subject: (title) => `${title} - Descarga de Muestra Gratis 🎨`,
-    greeting: (f, l) => `¡Hola ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Descarga de Muestra Gratis`,
+    greeting: (f, l) => `¡Hola ${f} ${l}!`.trim(),
     intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
-    badge: "📎 Archivo PDF adjunto a este correo",
-    ctaTitle: "¿Te encantan estas ilustraciones? ✨",
+    badge: "Archivo PDF adjunto a este correo",
+    ctaTitle: "¿Te encantan estas ilustraciones?",
     ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
-    buyBtn: (m) => `🛒 COMPRAR EN ${m.toUpperCase()}`,
+    buyBtn: (m) => `COMPRAR EN ${m.toUpperCase()}`,
     morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
-    moreLink: "👉 Visita Cozy Coloring Chaos",
+    moreLink: "Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
     disclaimer: "Recibes este correo perché hai richiesto un sample su indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   nl: {
     langHtml: "nl",
-    subject: (title) => `${title} - Gratis Sample Download 🎨`,
-    greeting: (f, l) => `Hallo ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Gratis Sample Download`,
+    greeting: (f, l) => `Hallo ${f} ${l}!`.trim(),
     intro: (title) => `Bedankt voor je interesse in <strong>${title}</strong>.<br>In de <strong>bijlage van deze e-mail</strong> vind je het <strong>gratis PDF-sample</strong> met leuke kleurplaten om direct te printen en in te kleuren!`,
-    badge: "📎 PDF-bestand in de bijlage",
-    ctaTitle: "Vind je deze kleurplaten leuk? ✨",
+    badge: "PDF-bestand in de bijlage",
+    ctaTitle: "Vind je deze kleurplaten leuk?",
     ctaDesc: "Bestel het complete kleurboek met alle originele illustraties eenvoudig op Amazon!",
-    buyBtn: (m) => `🛒 KOOP OP ${m.toUpperCase()}`,
+    buyBtn: (m) => `KOOP OP ${m.toUpperCase()}`,
     morePrompt: "Wil je meer gezellige kleurboeken ontdekken?",
-    moreLink: "👉 Bezoek Cozy Coloring Chaos",
+    moreLink: "Bezoek Cozy Coloring Chaos",
     copyright: "Alle rechten voorbehouden.",
     disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   pl: {
     langHtml: "pl",
-    subject: (title) => `${title} - Pobierz Darmową Próbkę 🎨`,
-    greeting: (f, l) => `Cześć ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Pobierz Darmową Próbkę`,
+    greeting: (f, l) => `Cześć ${f} ${l}!`.trim(),
     intro: (title) => `Dziękujemy za zainteresowanie książką <strong>${title}</strong>.<br>W <strong>załączniku do tej wiadomości</strong> znajdziesz <strong>darmową próbkę PDF</strong> ze stronami gotowymi do wydrukowania i kolorowania!`,
-    badge: "📎 Plik PDF w załączniku",
-    ctaTitle: "Podobają Ci się te ilustracje? ✨",
+    badge: "Plik PDF w załączniku",
+    ctaTitle: "Podobają Ci się te ilustracje?",
     ctaDesc: "Zamów pełną książkę ze wszystkimi oryginalnymi ilustracjami w wysokiej jakości na Amazon!",
-    buyBtn: (m) => `🛒 KUP NA ${m.toUpperCase()}`,
+    buyBtn: (m) => `KUP NA ${m.toUpperCase()}`,
     morePrompt: "Chcesz poznać wszystkie nasze kolorowanki?",
-    moreLink: "👉 Odwiedź Cozy Coloring Chaos",
+    moreLink: "Odwiedź Cozy Coloring Chaos",
     copyright: "Wszelkie prawa zastrzeżone.",
     disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   sv: {
     langHtml: "sv",
-    subject: (title) => `${title} - Ladda ner Gratis Prov 🎨`,
-    greeting: (f, l) => `Hej ${f} ${l}! 👋`.trim(),
+    subject: (title) => `${title} - Ladda ner Gratis Prov`,
+    greeting: (f, l) => `Hej ${f} ${l}!`.trim(),
     intro: (title) => `Tack för ditt intresse för <strong>${title}</strong>.<br>I <strong>bilagan till detta e-postmeddelande</strong> hittar du ditt <strong>gratis PDF-prov</strong> med mysiga målarbilder redo att skrivas ut och färgläggas!`,
-    badge: "📎 PDF-fil bifogad i detta mejl",
-    ctaTitle: "Gillar du dessa målarbilder? ✨",
+    badge: "PDF-fil bifogad i detta mejl",
+    ctaTitle: "Gillar du dessa målarbilder?",
     ctaDesc: "Beställ hela boken med alla originalillustrationer i högsta kvalitet direkt från Amazon!",
-    buyBtn: (m) => `🛒 KÖP PÅ ${m.toUpperCase()}`,
+    buyBtn: (m) => `KÖP PÅ ${m.toUpperCase()}`,
     morePrompt: "Vill du utforska fler målarböcker från vår kollektion?",
-    moreLink: "👉 Besök Cozy Coloring Chaos",
+    moreLink: "Besök Cozy Coloring Chaos",
     copyright: "Alla rättigheter förbehållna.",
     disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   ja: {
     langHtml: "ja",
-    subject: (title) => `${title} - 無料サンプルダウンロード 🎨`,
-    greeting: (f, l) => `こんにちは、${l ? l + ' ' : ''}${f} 様 👋`.trim(),
+    subject: (title) => `${title} - 無料サンプルダウンロード`,
+    greeting: (f, l) => `こんにちは、${l ? l + ' ' : ''}${f} 様`.trim(),
     intro: (title) => `『<strong>${title}</strong>』にご興味をお持ちいただきありがとうございます。<br>このメールに<strong>無料サンプルPDF</strong>を<strong>添付</strong>いたしました。印刷してすぐにぬりえをお楽しみいただけます！`,
-    badge: "📎 PDFファイルを添付しています",
-    ctaTitle: "これらのイラストを気に入っていただけましたか？ ✨",
+    badge: "PDFファイルを添付しています",
+    ctaTitle: "これらのイラストを気に入っていただけましたか？",
     ctaDesc: "すべてのオリジナル高画質イラストが収録された完全版をAmazonでお求めいただけます！",
-    buyBtn: (m) => `🛒 ${m.toUpperCase()} で購入する`,
+    buyBtn: (m) => `${m.toUpperCase()} で購入する`,
     morePrompt: "他のぬりえ本コレクションも見てみませんか？",
-    moreLink: "👉 Cozy Coloring Chaos 公式サイトへ",
+    moreLink: "Cozy Coloring Chaos 公式サイトへ",
     copyright: "無断転載を禁じます。",
     disclaimer: "このメールは indiebookstudio.github.io/cozy-coloring-chaos/ にて無料サンプルをご請求いただいた方にお送りしています。"
   }
@@ -531,21 +531,21 @@ export default async function handler(req) {
 
     if (brevoResponse.ok || brevoResponse.status === 201) {
       const resData = await brevoResponse.json().catch(() => ({}));
-      console.log(`✅ [Brevo] Free sample email sent successfully to ${email} (MessageId: ${resData.messageId || 'N/A'})`);
+      console.log(`[Brevo] Free sample email sent successfully to ${email} (MessageId: ${resData.messageId || 'N/A'})`);
       return jsonResponse({ 
         success: true, 
         message: "Free sample sent successfully!" 
       }, 200);
     } else {
       const errData = await brevoResponse.json().catch(() => ({}));
-      console.error('❌ [Brevo API Error]:', brevoResponse.status, errData);
+      console.error('[Brevo API Error]:', brevoResponse.status, errData);
       return jsonResponse({ 
         success: false, 
         error: "Unable to send sample at this time. Please try again later." 
       }, 502);
     }
   } catch (err) {
-    console.error('❌ [Server Error]:', err);
+    console.error('[Server Error]:', err);
     return jsonResponse({
       success: false,
       error: "Internal server error occurred."

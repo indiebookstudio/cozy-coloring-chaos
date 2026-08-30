@@ -19,20 +19,20 @@
 // AMAZON MARKETPLACE DEFINITIONS (14 Official Stores)
 // ============================================================================
 const AMAZON_MARKETS = {
-  us: { name: "Amazon.com (US)", code: "US", flag: "🇺🇸", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
-  uk: { name: "Amazon.co.uk (UK)", code: "UK", flag: "🇬🇧", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
-  de: { name: "Amazon.de (DE)", code: "DE", flag: "🇩🇪", domain: "amazon.de", buttonLabel: "Amazon.de (DE)" },
-  fr: { name: "Amazon.fr (FR)", code: "FR", flag: "🇫🇷", domain: "amazon.fr", buttonLabel: "Amazon.fr (FR)" },
-  es: { name: "Amazon.es (ES)", code: "ES", flag: "🇪🇸", domain: "amazon.es", buttonLabel: "Amazon.es (ES)" },
-  it: { name: "Amazon.it (IT)", code: "IT", flag: "🇮🇹", domain: "amazon.it", buttonLabel: "Amazon.it (IT)" },
-  nl: { name: "Amazon.nl (NL)", code: "NL", flag: "🇳🇱", domain: "amazon.nl", buttonLabel: "Amazon.nl (NL)" },
-  pl: { name: "Amazon.pl (PL)", code: "PL", flag: "🇵🇱", domain: "amazon.pl", buttonLabel: "Amazon.pl (PL)" },
-  se: { name: "Amazon.se (SE)", code: "SE", flag: "🇸🇪", domain: "amazon.se", buttonLabel: "Amazon.se (SE)" },
-  be: { name: "Amazon.com.be (BE)", code: "BE", flag: "🇧🇪", domain: "amazon.com.be", buttonLabel: "Amazon.com.be (BE)" },
-  ie: { name: "Amazon.ie (IE)", code: "IE", flag: "🇮🇪", domain: "amazon.ie", buttonLabel: "Amazon.ie (IE)" },
-  jp: { name: "Amazon.co.jp (JP)", code: "JP", flag: "🇯🇵", domain: "amazon.co.jp", buttonLabel: "Amazon.co.jp (JP)" },
-  ca: { name: "Amazon.ca (CA)", code: "CA", flag: "🇨🇦", domain: "amazon.ca", buttonLabel: "Amazon.ca (CA)" },
-  au: { name: "Amazon.com.au (AU)", code: "AU", flag: "🇦🇺", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
+  us: { name: "Amazon.com (US)", code: "US", flagCode: "us", domain: "amazon.com", buttonLabel: "Amazon.com (US)" },
+  uk: { name: "Amazon.co.uk (UK)", code: "UK", flagCode: "gb", domain: "amazon.co.uk", buttonLabel: "Amazon.co.uk (UK)" },
+  de: { name: "Amazon.de (DE)", code: "DE", flagCode: "de", domain: "amazon.de", buttonLabel: "Amazon.de (DE)" },
+  fr: { name: "Amazon.fr (FR)", code: "FR", flagCode: "fr", domain: "amazon.fr", buttonLabel: "Amazon.fr (FR)" },
+  es: { name: "Amazon.es (ES)", code: "ES", flagCode: "es", domain: "amazon.es", buttonLabel: "Amazon.es (ES)" },
+  it: { name: "Amazon.it (IT)", code: "IT", flagCode: "it", domain: "amazon.it", buttonLabel: "Amazon.it (IT)" },
+  nl: { name: "Amazon.nl (NL)", code: "NL", flagCode: "nl", domain: "amazon.nl", buttonLabel: "Amazon.nl (NL)" },
+  pl: { name: "Amazon.pl (PL)", code: "PL", flagCode: "pl", domain: "amazon.pl", buttonLabel: "Amazon.pl (PL)" },
+  se: { name: "Amazon.se (SE)", code: "SE", flagCode: "se", domain: "amazon.se", buttonLabel: "Amazon.se (SE)" },
+  be: { name: "Amazon.com.be (BE)", code: "BE", flagCode: "be", domain: "amazon.com.be", buttonLabel: "Amazon.com.be (BE)" },
+  ie: { name: "Amazon.ie (IE)", code: "IE", flagCode: "ie", domain: "amazon.ie", buttonLabel: "Amazon.ie (IE)" },
+  jp: { name: "Amazon.co.jp (JP)", code: "JP", flagCode: "jp", domain: "amazon.co.jp", buttonLabel: "Amazon.co.jp (JP)" },
+  ca: { name: "Amazon.ca (CA)", code: "CA", flagCode: "ca", domain: "amazon.ca", buttonLabel: "Amazon.ca (CA)" },
+  au: { name: "Amazon.com.au (AU)", code: "AU", flagCode: "au", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
 };
 
 // ============================================================================
@@ -196,25 +196,25 @@ const BOOKS = [
 // COUNTRY DEFINITIONS & MAPPING FOR FREE SAMPLE FORM
 // ============================================================================
 const SAMPLE_COUNTRIES = [
-  { code: "it", name: "Italia", flagCode: "it", flag: "🇮🇹", lang: "it", market: "it" },
-  { code: "us", name: "United States", flagCode: "us", flag: "🇺🇸", lang: "en", market: "us" },
-  { code: "gb", name: "United Kingdom", flagCode: "gb", flag: "🇬🇧", lang: "en", market: "uk" },
-  { code: "de", name: "Deutschland", flagCode: "de", flag: "🇩🇪", lang: "de", market: "de" },
-  { code: "fr", name: "France", flagCode: "fr", flag: "🇫🇷", lang: "fr", market: "fr" },
-  { code: "es", name: "España", flagCode: "es", flag: "🇪🇸", lang: "es", market: "es" },
-  { code: "ca", name: "Canada", flagCode: "ca", flag: "🇨🇦", lang: "en", market: "ca" },
-  { code: "au", name: "Australia", flagCode: "au", flag: "🇦🇺", lang: "en", market: "au" },
-  { code: "nl", name: "Nederland", flagCode: "nl", flag: "🇳🇱", lang: "nl", market: "nl" },
-  { code: "pl", name: "Polska", flagCode: "pl", flag: "🇵🇱", lang: "pl", market: "pl" },
-  { code: "se", name: "Sverige", flagCode: "se", flag: "🇸🇪", lang: "sv", market: "se" },
-  { code: "be", name: "Belgique / België", flagCode: "be", flag: "🇧🇪", lang: "fr", market: "be" },
-  { code: "ie", name: "Ireland", flagCode: "ie", flag: "🇮🇪", lang: "en", market: "ie" },
-  { code: "jp", name: "Japan (日本)", flagCode: "jp", flag: "🇯🇵", lang: "ja", market: "jp" },
-  { code: "at", name: "Österreich", flagCode: "at", flag: "🇦🇹", lang: "de", market: "de" },
-  { code: "ch", name: "Schweiz / Suisse", flagCode: "ch", flag: "🇨🇭", lang: "de", market: "de" },
-  { code: "mx", name: "México", flagCode: "mx", flag: "🇲🇽", lang: "es", market: "us" },
-  { code: "br", name: "Brasil", flagCode: "br", flag: "🇧🇷", lang: "es", market: "us" },
-  { code: "other", name: "Other / International", flagCode: "un", flag: "🌍", lang: "en", market: "us" }
+  { code: "it", name: "Italia", flagCode: "it", flag: "", lang: "it", market: "it" },
+  { code: "us", name: "United States", flagCode: "us", flag: "", lang: "en", market: "us" },
+  { code: "gb", name: "United Kingdom", flagCode: "gb", flag: "", lang: "en", market: "uk" },
+  { code: "de", name: "Deutschland", flagCode: "de", flag: "", lang: "de", market: "de" },
+  { code: "fr", name: "France", flagCode: "fr", flag: "", lang: "fr", market: "fr" },
+  { code: "es", name: "España", flagCode: "es", flag: "", lang: "es", market: "es" },
+  { code: "ca", name: "Canada", flagCode: "ca", flag: "", lang: "en", market: "ca" },
+  { code: "au", name: "Australia", flagCode: "au", flag: "", lang: "en", market: "au" },
+  { code: "nl", name: "Nederland", flagCode: "nl", flag: "", lang: "nl", market: "nl" },
+  { code: "pl", name: "Polska", flagCode: "pl", flag: "", lang: "pl", market: "pl" },
+  { code: "se", name: "Sverige", flagCode: "se", flag: "", lang: "sv", market: "se" },
+  { code: "be", name: "Belgique / België", flagCode: "be", flag: "", lang: "fr", market: "be" },
+  { code: "ie", name: "Ireland", flagCode: "ie", flag: "", lang: "en", market: "ie" },
+  { code: "jp", name: "Japan (日本)", flagCode: "jp", flag: "", lang: "ja", market: "jp" },
+  { code: "at", name: "Österreich", flagCode: "at", flag: "", lang: "de", market: "de" },
+  { code: "ch", name: "Schweiz / Suisse", flagCode: "ch", flag: "", lang: "de", market: "de" },
+  { code: "mx", name: "México", flagCode: "mx", flag: "", lang: "es", market: "us" },
+  { code: "br", name: "Brasil", flagCode: "br", flag: "", lang: "es", market: "us" },
+  { code: "other", name: "Other / International", flagCode: "un", flag: "", lang: "en", market: "us" }
 ];
 
 // ============================================================================
@@ -244,24 +244,24 @@ const TRANSLATIONS = {
     metaDesc: "Scopri libri da colorare cozy con un tocco di umorismo nero e caos creativo. Scegli il tuo store Amazon e ordina la tua copia!",
     brandSubtitle: "Colorare cozy. Umorismo nero. Splendido caos.",
     sectionTitle: "SCEGLI IL TUO CAOS",
-    filterAll: "Tutti",
+    filterAll: "TUTTI I LIBRI",
     filterEn: "English",
     filterIt: "Italiano",
     selectStore: "Seleziona Store Amazon",
     viewOn: (market) => `VEDI SU ${market.toUpperCase()}`,
     byAuthor: "di",
-    previewBtn: "📖 Anteprima",
-    previewBadge: "📖 Anteprima Pagine",
-    coloredBtn: "🎨 Guarda a colori",
-    coloredBadge: "🎨 Disegni Colorati",
+    previewBtn: "Anteprima",
+    previewBadge: "Anteprima Pagine",
+    coloredBtn: "Guarda a colori",
+    coloredBadge: "Disegni Colorati",
     coloredHeadline: "Ecco cosa puoi fare con questo libro!",
     coloredPageLabel: "Disegno Colorato",
-    tabPages: "📖 Pagine",
-    tabColored: "🎨 A Colori",
+    tabPages: "Pagine",
+    tabColored: "A Colori",
     frontCoverLabel: "Copertina (Front)",
     backCoverLabel: "Retro Copertina (Back)",
     pageLabel: "Pagina",
-    freeSampleBtn: "🎁 Sample Gratuito",
+    freeSampleBtn: "Sample Gratuito",
     freeSampleModalTitle: "Ricevi il Free Sample PDF",
     freeSampleModalDesc: "Inserisci i tuoi dati per ricevere gratuitamente via email il file PDF con una selezione di pagine da colorare in alta definizione allegate alla mail!",
     formFirstName: "Nome",
@@ -269,10 +269,10 @@ const TRANSLATIONS = {
     formCountry: "Paese",
     formEmail: "Indirizzo Email",
     formSubmitBtn: "Invia il Free Sample PDF",
-    formPrivacy: "🔒 Niente spam. La tua email sarà usata solo per inviarti il sample e novità sui nostri libri.",
+    formPrivacy: "Niente spam. La tua email sarà usata solo per inviarti il sample e novità sui nostri libri.",
     formLoadingTitle: "Preparazione e invio in corso...",
     formLoadingDesc: "Stiamo allegando il PDF del sample alla mail per te.",
-    formSuccessTitle: "Sample inviato con successo! 🎉",
+    formSuccessTitle: "Sample inviato con successo!",
     formSuccessDesc: (title, email) => `Abbiamo inviato l'email con il PDF di <strong>${title}</strong> allegato all'indirizzo <strong>${email}</strong>.<br>Controlla la tua casella di posta (e anche la cartella Spam o Promozioni)!`,
     formSuccessBuyTag: "Ti piace questo libro? Ordina la copia completa cartacea:",
     formSuccessClose: "Torna al catalogo",
@@ -280,7 +280,7 @@ const TRANSLATIONS = {
     formErrorDesc: "Non siamo riusciti a inviare la mail in questo momento. Riprova più tardi.",
     formRetry: "Riprova",
     pdfAttachedViaEmail: "PDF allegato via email",
-    footerTagline: "Creato per chi ama i libri da colorare un po' fuori dagli schemi. ✨",
+    footerTagline: "Creato per chi ama i libri da colorare un po' fuori dagli schemi. ",
     footerCopyright: "Tutti i diritti riservati.",
     followTikTok: "Seguici su TikTok",
     tiktokAria: "Segui @cozycoloringchaos su TikTok (apre una nuova scheda)",
@@ -293,24 +293,24 @@ const TRANSLATIONS = {
     metaDesc: "Discover vibrant cozy coloring books with a twist of dark humor and beautiful chaos. Choose your Amazon marketplace and order your copy today!",
     brandSubtitle: "Cozy coloring. Dark humor. Beautiful chaos.",
     sectionTitle: "CHOOSE YOUR CHAOS",
-    filterAll: "All",
+    filterAll: "ALL BOOKS",
     filterEn: "English",
     filterIt: "Italian",
     selectStore: "Select Amazon Store",
     viewOn: (market) => `VIEW ON ${market.toUpperCase()}`,
     byAuthor: "by",
-    previewBtn: "📖 Preview",
-    previewBadge: "📖 Sample Preview",
-    coloredBtn: "🎨 See it colored",
-    coloredBadge: "🎨 Colored Artworks",
+    previewBtn: "Preview",
+    previewBadge: "Sample Preview",
+    coloredBtn: "See it colored",
+    coloredBadge: "Colored Artworks",
     coloredHeadline: "Here's what you can create with this book!",
     coloredPageLabel: "Colored Artwork",
-    tabPages: "📖 Pages",
-    tabColored: "🎨 Colored",
+    tabPages: "Pages",
+    tabColored: "Colored",
     frontCoverLabel: "Front Cover",
     backCoverLabel: "Back Cover",
     pageLabel: "Page",
-    freeSampleBtn: "🎁 Free Sample",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Get Your Free Sample PDF",
     freeSampleModalDesc: "Enter your details to receive a free PDF sample with selected coloring pages attached to your email!",
     formFirstName: "First Name",
@@ -318,10 +318,10 @@ const TRANSLATIONS = {
     formCountry: "Country",
     formEmail: "Email Address",
     formSubmitBtn: "Send Free Sample PDF",
-    formPrivacy: "🔒 No spam. Your email will only be used to deliver your sample and book news.",
+    formPrivacy: "No spam. Your email will only be used to deliver your sample and book news.",
     formLoadingTitle: "Preparing & sending email...",
     formLoadingDesc: "Attaching your coloring book sample PDF to the email.",
-    formSuccessTitle: "Sample Sent Successfully! 🎉",
+    formSuccessTitle: "Sample Sent Successfully!",
     formSuccessDesc: (title, email) => `We sent the free sample PDF of <strong>${title}</strong> to <strong>${email}</strong>.<br>Please check your inbox (and spam or promotions folder)!`,
     formSuccessBuyTag: "Love this book? Order the full paperback on Amazon:",
     formSuccessClose: "Back to Catalog",
@@ -329,7 +329,7 @@ const TRANSLATIONS = {
     formErrorDesc: "We couldn't send the email right now. Please try again in a few moments.",
     formRetry: "Try Again",
     pdfAttachedViaEmail: "PDF attached via email",
-    footerTagline: "Made for people who like their coloring books a little weird. ✨",
+    footerTagline: "Made for people who like their coloring books a little weird. ",
     footerCopyright: "All rights reserved.",
     followTikTok: "Follow on TikTok",
     tiktokAria: "Follow @cozycoloringchaos on TikTok (opens in a new tab)",
@@ -342,24 +342,24 @@ const TRANSLATIONS = {
     metaDesc: "Entdecke gemütliche Malbücher mit einer Prise schwarzem Humor und wunderschönem Chaos. Wähle deinen Amazon Store und bestelle dein Exemplar!",
     brandSubtitle: "Gemütliches Ausmalen. Schwarzer Humor. Wundervolles Chaos.",
     sectionTitle: "WÄHLE DEIN CHAOS",
-    filterAll: "Alle",
+    filterAll: "ALLE BÜCHER",
     filterEn: "Englisch",
     filterIt: "Italienisch",
     selectStore: "Amazon Store wählen",
     viewOn: (market) => `AUF ${market.toUpperCase()} ANSEHEN`,
     byAuthor: "von",
-    previewBtn: "📖 Vorschau",
-    previewBadge: "📖 Buchvorschau",
-    coloredBtn: "🎨 Bunt ansehen",
-    coloredBadge: "🎨 Ausgemalte Kunstwerke",
+    previewBtn: "Vorschau",
+    previewBadge: "Buchvorschau",
+    coloredBtn: "Bunt ansehen",
+    coloredBadge: "Ausgemalte Kunstwerke",
     coloredHeadline: "Das kannst du aus diesem Buch machen!",
     coloredPageLabel: "Farbiges Kunstwerk",
-    tabPages: "📖 Seiten",
-    tabColored: "🎨 In Farbe",
+    tabPages: "Seiten",
+    tabColored: "In Farbe",
     frontCoverLabel: "Vorderseite (Cover)",
     backCoverLabel: "Rückseite (Back)",
     pageLabel: "Seite",
-    freeSampleBtn: "🎁 Gratis-Leseprobe",
+    freeSampleBtn: "Gratis-Leseprobe",
     freeSampleModalTitle: "Kostenlose PDF-Probe erhalten",
     freeSampleModalDesc: "Trage deine Daten ein, um eine kostenlose PDF-Leseprobe mit Ausmalseiten direkt als E-Mail-Anhang zu erhalten!",
     formFirstName: "Vorname",
@@ -367,10 +367,10 @@ const TRANSLATIONS = {
     formCountry: "Land",
     formEmail: "E-Mail-Adresse",
     formSubmitBtn: "Gratis Sample per E-Mail senden",
-    formPrivacy: "🔒 Kein Spam. Deine E-Mail wird nur für das Sample und Buch-Neuigkeiten verwendet.",
+    formPrivacy: "Kein Spam. Deine E-Mail wird nur für das Sample und Buch-Neuigkeiten verwendet.",
     formLoadingTitle: "E-Mail wird gesendet...",
     formLoadingDesc: "Wir hängen das Sample-PDF an die E-Mail an.",
-    formSuccessTitle: "Sample erfolgreich gesendet! 🎉",
+    formSuccessTitle: "Sample erfolgreich gesendet!",
     formSuccessDesc: (title, email) => `Wir haben das PDF von <strong>${title}</strong> als Anhang an <strong>${email}</strong> gesendet.<br>Bitte prüfe deinen Posteingang!`,
     formSuccessBuyTag: "Gefällt dir das Buch? Bestelle das vollständige Taschenbuch auf Amazon:",
     formSuccessClose: "Zurück zur Übersicht",
@@ -378,7 +378,7 @@ const TRANSLATIONS = {
     formErrorDesc: "Wir konnten die E-Mail derzeit nicht senden. Bitte versuche es später noch einmal.",
     formRetry: "Erneut versuchen",
     pdfAttachedViaEmail: "PDF im E-Mail-Anhang",
-    footerTagline: "Gemacht für alle, die Malbücher gerne ein wenig unkonventionell mögen. ✨",
+    footerTagline: "Gemacht für alle, die Malbücher gerne ein wenig unkonventionell mögen. ",
     footerCopyright: "Alle Rechte vorbehalten.",
     followTikTok: "Folge uns auf TikTok",
     tiktokAria: "Folge @cozycoloringchaos auf TikTok (öffnet in neuem Tab)",
@@ -391,24 +391,24 @@ const TRANSLATIONS = {
     metaDesc: "Découvrez des livres de coloriage cozy avec une touche d'humour noir et un magnifique chaos. Choisissez votre boutique Amazon et commandez votre exemplaire !",
     brandSubtitle: "Coloriage cozy. Humour noir. Magnifique chaos.",
     sectionTitle: "CHOISISSEZ VOTRE CHAOS",
-    filterAll: "Tous",
+    filterAll: "TOUS LES LIVRES",
     filterEn: "Anglais",
     filterIt: "Italien",
     selectStore: "Sélectionner la boutique Amazon",
     viewOn: (market) => `VOIR SUR ${market.toUpperCase()}`,
     byAuthor: "par",
-    previewBtn: "📖 Aperçu",
-    previewBadge: "📖 Aperçu du livre",
-    coloredBtn: "🎨 Voir en couleur",
-    coloredBadge: "🎨 Modèles Coloriés",
+    previewBtn: "Aperçu",
+    previewBadge: "Aperçu du livre",
+    coloredBtn: "Voir en couleur",
+    coloredBadge: "Modèles Coloriés",
     coloredHeadline: "Voici ce que vous pouvez créer avec ce livre !",
     coloredPageLabel: "Œuvre Coloriée",
-    tabPages: "📖 Pages",
-    tabColored: "🎨 En Couleur",
+    tabPages: "Pages",
+    tabColored: "En Couleur",
     frontCoverLabel: "Première de couverture",
     backCoverLabel: "Quatrième de couverture",
     pageLabel: "Page",
-    freeSampleBtn: "🎁 Extrait Gratuit",
+    freeSampleBtn: "Extrait Gratuit",
     freeSampleModalTitle: "Recevoir l'Extrait Gratuit PDF",
     freeSampleModalDesc: "Entrez vos coordonnées pour recevoir gratuitement par email un extrait PDF avec des pages à colorier en pièce jointe !",
     formFirstName: "Prénom",
@@ -416,10 +416,10 @@ const TRANSLATIONS = {
     formCountry: "Pays",
     formEmail: "Adresse email",
     formSubmitBtn: "Envoyer l'Extrait PDF",
-    formPrivacy: "🔒 Aucun spam. Votre email sera utilisé uniquement pour l'envoi de l'extrait.",
+    formPrivacy: "Aucun spam. Votre email sera utilisé uniquement pour l'envoi de l'extrait.",
     formLoadingTitle: "Envoi de l'email en cours...",
     formLoadingDesc: "Nous préparons le fichier PDF en pièce jointe.",
-    formSuccessTitle: "Extrait envoyé avec succès ! 🎉",
+    formSuccessTitle: "Extrait envoyé avec succès !",
     formSuccessDesc: (title, email) => `Nous avons envoyé l'email avec le PDF de <strong>${title}</strong> en pièce jointe à <strong>${email}</strong>.<br>Vérifiez votre boîte de réception !`,
     formSuccessBuyTag: "Vous aimez ce livre ? Commandez la version complète sur Amazon :",
     formSuccessClose: "Retour au catalogue",
@@ -427,7 +427,7 @@ const TRANSLATIONS = {
     formErrorDesc: "Impossible d'envoyer l'email pour le moment. Veuillez réessayer plus tard.",
     formRetry: "Réessayer",
     pdfAttachedViaEmail: "PDF en pièce jointe",
-    footerTagline: "Créé pour ceux qui aiment les livres de coloriage un brin décalés. ✨",
+    footerTagline: "Créé pour ceux qui aiment les livres de coloriage un brin décalés. ",
     footerCopyright: "Tous droits réservés.",
     followTikTok: "Suivez-nous sur TikTok",
     tiktokAria: "Suivre @cozycoloringchaos sur TikTok (ouvre un nouvel onglet)",
@@ -440,24 +440,24 @@ const TRANSLATIONS = {
     metaDesc: "Descubre libros para colorear cozy con un toque de humor negro y caos creativo. ¡Elige tu tienda Amazon y pide tu copia!",
     brandSubtitle: "Colorear cozy. Humor negro. Hermoso caos.",
     sectionTitle: "ELIGE TU CAOS",
-    filterAll: "Todos",
+    filterAll: "TODOS LOS LIBROS",
     filterEn: "Inglés",
     filterIt: "Italiano",
     selectStore: "Seleccionar tienda Amazon",
     viewOn: (market) => `VER EN ${market.toUpperCase()}`,
     byAuthor: "de",
-    previewBtn: "📖 Vista previa",
-    previewBadge: "📖 Vista previa",
-    coloredBtn: "🎨 Ver a color",
-    coloredBadge: "🎨 Ilustraciones Coloreadas",
+    previewBtn: "Vista previa",
+    previewBadge: "Vista previa",
+    coloredBtn: "Ver a color",
+    coloredBadge: "Ilustraciones Coloreadas",
     coloredHeadline: "¡Mira lo que puedes crear con este libro!",
     coloredPageLabel: "Ilustración a Color",
-    tabPages: "📖 Páginas",
-    tabColored: "🎨 A Color",
+    tabPages: "Páginas",
+    tabColored: "A Color",
     frontCoverLabel: "Portada",
     backCoverLabel: "Contraportada",
     pageLabel: "Página",
-    freeSampleBtn: "🎁 Muestra Gratis",
+    freeSampleBtn: "Muestra Gratis",
     freeSampleModalTitle: "Recibe tu Muestra Gratis PDF",
     freeSampleModalDesc: "¡Ingresa tus datos para recibir gratis por correo electrónico una muestra en PDF con páginas para colorear adjuntas al email!",
     formFirstName: "Nombre",
@@ -465,10 +465,10 @@ const TRANSLATIONS = {
     formCountry: "País",
     formEmail: "Correo Electrónico",
     formSubmitBtn: "Enviar Muestra Gratis PDF",
-    formPrivacy: "🔒 Sin spam. Tu correo solo se usará para enviarte la muestra y novedades.",
+    formPrivacy: "Sin spam. Tu correo solo se usará para enviarte la muestra y novedades.",
     formLoadingTitle: "Enviando correo...",
     formLoadingDesc: "Estamos adjuntando el archivo PDF a tu correo electrónico.",
-    formSuccessTitle: "¡Muestra enviada con éxito! 🎉",
+    formSuccessTitle: "¡Muestra enviada con éxito!",
     formSuccessDesc: (title, email) => `Hemos enviado el correo con el PDF de <strong>${title}</strong> adjunto a <strong>${email}</strong>.<br>¡Revisa tu bandeja de entrada!`,
     formSuccessBuyTag: "¿Te gusta este libro? Pide la versión completa en Amazon:",
     formSuccessClose: "Volver al catálogo",
@@ -476,7 +476,7 @@ const TRANSLATIONS = {
     formErrorDesc: "No se pudo enviar el correo en este momento. Inténtalo de nuevo más tarde.",
     formRetry: "Reintentar",
     pdfAttachedViaEmail: "PDF adjunto por email",
-    footerTagline: "Creado para quienes aman los libros para colorear un poco diferentes. ✨",
+    footerTagline: "Creado para quienes aman los libros para colorear un poco diferentes. ",
     footerCopyright: "Todos los derechos reservados.",
     followTikTok: "Síguenos en TikTok",
     tiktokAria: "Seguir a @cozycoloringchaos en TikTok (abre en nueva pestaña)",
@@ -489,24 +489,24 @@ const TRANSLATIONS = {
     metaDesc: "Ontdek cozy kleurboeken met een vleugje zwarte humor en prachtige chaos. Kies je Amazon-winkel en bestel jouw exemplaar!",
     brandSubtitle: "Gezellig kleuren. Zwarte humor. Prachtige chaos.",
     sectionTitle: "KIES JE CHAOS",
-    filterAll: "Alle",
+    filterAll: "ALLE BÜCHER",
     filterEn: "Engels",
     filterIt: "Italiaans",
     selectStore: "Selecteer Amazon-winkel",
     viewOn: (market) => `BEKIJK OP ${market.toUpperCase()}`,
     byAuthor: "door",
-    previewBtn: "📖 Voorbeeld",
-    previewBadge: "📖 Voorbeeldweergave",
-    coloredBtn: "🎨 Bekijk in kleur",
-    coloredBadge: "🎨 Ingekleurde Tekeningen",
+    previewBtn: "Voorbeeld",
+    previewBadge: "Voorbeeldweergave",
+    coloredBtn: "Bekijk in kleur",
+    coloredBadge: "Ingekleurde Tekeningen",
     coloredHeadline: "Kijk wat je kunt maken met dit boek!",
     coloredPageLabel: "Ingekleurd Kunstwerk",
-    tabPages: "📖 Pagina's",
-    tabColored: "🎨 In Kleur",
+    tabPages: "Pagina's",
+    tabColored: "In Kleur",
     frontCoverLabel: "Voorkant",
     backCoverLabel: "Achterkant",
     pageLabel: "Pagina",
-    freeSampleBtn: "🎁 Gratis Sample",
+    freeSampleBtn: "Gratis Sample",
     freeSampleModalTitle: "Ontvang je Gratis PDF Sample",
     freeSampleModalDesc: "Vul je gegevens in om gratis een PDF-proefexemplaar met kleurpagina's als bijlage in je e-mail te ontvangen!",
     formFirstName: "Voornaam",
@@ -514,10 +514,10 @@ const TRANSLATIONS = {
     formCountry: "Land",
     formEmail: "E-mailadres",
     formSubmitBtn: "Stuur Gratis Sample PDF",
-    formPrivacy: "🔒 Geen spam. Je e-mailadres wordt alleen gebruikt voor het sample.",
+    formPrivacy: "Geen spam. Je e-mailadres wordt alleen gebruikt voor het sample.",
     formLoadingTitle: "E-mail verzenden...",
     formLoadingDesc: "We voegen het PDF-bestand toe aan de e-mail.",
-    formSuccessTitle: "Sample succesvol verzonden! 🎉",
+    formSuccessTitle: "Sample succesvol verzonden!",
     formSuccessDesc: (title, email) => `We hebben de e-mail met de PDF van <strong>${title}</strong> als bijlage verstuurd naar <strong>${email}</strong>.<br>Controleer je inbox!`,
     formSuccessBuyTag: "Vind je dit boek leuk? Bestel het volledige boek op Amazon:",
     formSuccessClose: "Terug naar catalogus",
@@ -525,7 +525,7 @@ const TRANSLATIONS = {
     formErrorDesc: "We konden de e-mail op dit moment niet verzenden. Probeer het later opnieuw.",
     formRetry: "Opnieuw proberen",
     pdfAttachedViaEmail: "PDF als bijlage in e-mail",
-    footerTagline: "Gemaakt voor wie houdt van kleurboeken die net even anders zijn. ✨",
+    footerTagline: "Gemaakt voor wie houdt van kleurboeken die net even anders zijn. ",
     footerCopyright: "Alle rechten voorbehouden.",
     followTikTok: "Volg op TikTok",
     tiktokAria: "Volg @cozycoloringchaos op TikTok (opent in een nieuw tabblad)",
@@ -538,24 +538,24 @@ const TRANSLATIONS = {
     metaDesc: "Odkryj przytulne kolorowanki z nutą czarnego humoru i pięknego chaosu. Wybierz swój sklep Amazon i zamów swój egzemplarz!",
     brandSubtitle: "Przytulne kolorowanie. Czarny humor. Piękny chaos.",
     sectionTitle: "WYBIERZ SWÓJ CHAOS",
-    filterAll: "Wszystkie",
+    filterAll: "WSZYSTKIE KSIĄŻKI",
     filterEn: "Angielski",
     filterIt: "Włoski",
     selectStore: "Wybierz sklep Amazon",
     viewOn: (market) => `ZOBACZ NA ${market.toUpperCase()}`,
     byAuthor: "autorstwa",
-    previewBtn: "📖 Podgląd",
-    previewBadge: "📖 Podgląd książki",
-    coloredBtn: "🎨 Zobacz w kolorze",
-    coloredBadge: "🎨 Pokolorowane Prace",
+    previewBtn: "Podgląd",
+    previewBadge: "Podgląd książki",
+    coloredBtn: "Zobacz w kolorze",
+    coloredBadge: "Pokolorowane Prace",
     coloredHeadline: "Zobacz, co możesz stworzyć z tą książką!",
     coloredPageLabel: "Pokolorowana Praca",
-    tabPages: "📖 Strony",
-    tabColored: "🎨 W Kolorze",
+    tabPages: "Strony",
+    tabColored: "W Kolorze",
     frontCoverLabel: "Okładka przednia",
     backCoverLabel: "Okładka tylna",
     pageLabel: "Strona",
-    freeSampleBtn: "🎁 Darmowa Próbka",
+    freeSampleBtn: "Darmowa Próbka",
     freeSampleModalTitle: "Odbierz darmowy fragment PDF",
     freeSampleModalDesc: "Wpisz swoje dane, aby otrzymać darmowy fragment PDF z wybranymi stronami do kolorowania jako załącznik w wiadomości e-mail!",
     formFirstName: "Imię",
@@ -563,10 +563,10 @@ const TRANSLATIONS = {
     formCountry: "Kraj",
     formEmail: "Adres e-mail",
     formSubmitBtn: "Wyślij darmową próbkę PDF",
-    formPrivacy: "🔒 Zero spamu. Twój e-mail posłuży tylko do przesłania próbki.",
+    formPrivacy: "Zero spamu. Twój e-mail posłuży tylko do przesłania próbki.",
     formLoadingTitle: "Wysyłanie wiadomości...",
     formLoadingDesc: "Dołączamy plik PDF jako załącznik do e-maila.",
-    formSuccessTitle: "Próbka wysłana pomyślnie! 🎉",
+    formSuccessTitle: "Próbka wysłana pomyślnie!",
     formSuccessDesc: (title, email) => `Wysłaliśmy e-mail z załączonym plikiem PDF książki <strong>${title}</strong> na adres <strong>${email}</strong>.<br>Sprawdź swoją skrzynkę odbiorczą!`,
     formSuccessBuyTag: "Podoba Ci się ta książka? Zamów pełną wersję na Amazon:",
     formSuccessClose: "Wróć do katalogu",
@@ -574,7 +574,7 @@ const TRANSLATIONS = {
     formErrorDesc: "Nie udało się teraz wysłać wiadomości e-mail. Spróbuj ponownie później.",
     formRetry: "Spróbuj ponownie",
     pdfAttachedViaEmail: "PDF załączony w mailu",
-    footerTagline: "Stworzone dla tych, którzy lubią kolorowanki z odrobiną szaleństwa. ✨",
+    footerTagline: "Stworzone dla tych, którzy lubią kolorowanki z odrobiną szaleństwa. ",
     footerCopyright: "Wszelkie prawa zastrzeżone.",
     followTikTok: "Obserwuj na TikToku",
     tiktokAria: "Obserwuj @cozycoloringchaos na TikToku (otwiera w nowej karcie)",
@@ -587,24 +587,24 @@ const TRANSLATIONS = {
     metaDesc: "Upptäck mysiga målarböcker med en twist av mörk humor och vackert kaos. Välj din Amazon-butik och beställ ditt exemplar!",
     brandSubtitle: "Mysig färgläggning. Mörk humor. Vackert kaos.",
     sectionTitle: "VÄLJ DITT KAOS",
-    filterAll: "Alla",
+    filterAll: "ALLA BÖCKER",
     filterEn: "Engelska",
     filterIt: "Italienska",
     selectStore: "Välj Amazon-butik",
     viewOn: (market) => `VISA PÅ ${market.toUpperCase()}`,
     byAuthor: "av",
-    previewBtn: "📖 Förhandsvisning",
-    previewBadge: "📖 Förhandsvisning",
-    coloredBtn: "🎨 Se i färg",
-    coloredBadge: "🎨 Färglagda Teckningar",
+    previewBtn: "Förhandsvisning",
+    previewBadge: "Förhandsvisning",
+    coloredBtn: "Se i färg",
+    coloredBadge: "Färglagda Teckningar",
     coloredHeadline: "Här är vad du kan skapa med den här boken!",
     coloredPageLabel: "Färglagt Konstverk",
-    tabPages: "📖 Sidor",
-    tabColored: "🎨 I Färg",
+    tabPages: "Sidor",
+    tabColored: "I Färg",
     frontCoverLabel: "Framsida",
     backCoverLabel: "Baksida",
     pageLabel: "Sida",
-    freeSampleBtn: "🎁 Gratis Prov",
+    freeSampleBtn: "Gratis Prov",
     freeSampleModalTitle: "Få ditt gratis PDF-prov",
     freeSampleModalDesc: "Fyll i dina uppgifter för att få ett gratis PDF-prov med utvalda målarbokssidor bifogat i ett e-postmeddelande!",
     formFirstName: "Förnamn",
@@ -612,10 +612,10 @@ const TRANSLATIONS = {
     formCountry: "Land",
     formEmail: "E-postadress",
     formSubmitBtn: "Skicka Gratis PDF-prov",
-    formPrivacy: "🔒 Ingen skräppost. Din e-post används endast för provet.",
+    formPrivacy: "Ingen skräppost. Din e-post används endast för provet.",
     formLoadingTitle: "Skickar e-post...",
     formLoadingDesc: "Vi bifogar PDF-filen till ditt e-postmeddelande.",
-    formSuccessTitle: "Provet har skickats! 🎉",
+    formSuccessTitle: "Provet har skickats!",
     formSuccessDesc: (title, email) => `Vi har skickat e-postmeddelandet med PDF-filen för <strong>${title}</strong> bifogad till <strong>${email}</strong>.<br>Kolla din inkorg!`,
     formSuccessBuyTag: "Gillar du boken? Beställ hela boken på Amazon:",
     formSuccessClose: "Tillbaka till katalogen",
@@ -623,7 +623,7 @@ const TRANSLATIONS = {
     formErrorDesc: "Kunde inte skicka e-postmeddelandet just nu. Försök igen senare.",
     formRetry: "Försök igen",
     pdfAttachedViaEmail: "PDF bifogad i e-post",
-    footerTagline: "Skapat för dig som gillar målarböcker som sticker ut. ✨",
+    footerTagline: "Skapat för dig som gillar målarböcker som sticker ut. ",
     footerCopyright: "Alla rättigheter förbehållna.",
     followTikTok: "Följ på TikTok",
     tiktokAria: "Följ @cozycoloringchaos på TikTok (öppnas i ny flik)",
@@ -636,24 +636,24 @@ const TRANSLATIONS = {
     metaDesc: "ブラックユーモアと心地よいカオスが詰まったコージーな塗り絵ブック。Amazonストアを選んで今すぐ手に入れよう！",
     brandSubtitle: "コージーな塗り絵。ブラックユーモア。愛すべきカオス。",
     sectionTitle: "カオスを選ぼう",
-    filterAll: "すべて",
+    filterAll: "すべての本",
     filterEn: "英語",
     filterIt: "イタリア語",
     selectStore: "Amazonストアを選択",
     viewOn: (market) => `${market.toUpperCase()} で見る`,
     byAuthor: "著者:",
-    previewBtn: "📖 プレビュー",
-    previewBadge: "📖 サンプルプレビュー",
-    coloredBtn: "🎨 彩色ギャラリー",
-    coloredBadge: "🎨 塗り絵の完成見本",
+    previewBtn: "プレビュー",
+    previewBadge: "サンプルプレビュー",
+    coloredBtn: "彩色ギャラリー",
+    coloredBadge: "塗り絵の完成見本",
     coloredHeadline: "この本でこんな素敵な作品が作れます！",
     coloredPageLabel: "完成見本",
-    tabPages: "📖 ページ",
-    tabColored: "🎨 完成見本",
+    tabPages: "ページ",
+    tabColored: "完成見本",
     frontCoverLabel: "表紙",
     backCoverLabel: "裏表紙",
     pageLabel: "ページ",
-    freeSampleBtn: "🎁 無料サンプル",
+    freeSampleBtn: "無料サンプル",
     freeSampleModalTitle: "無料PDFサンプルを受け取る",
     freeSampleModalDesc: "お名前とメールアドレスをご入力いただくと、厳選された塗り絵ページのPDFをメール添付にてお届けします！",
     formFirstName: "名（First Name）",
@@ -661,10 +661,10 @@ const TRANSLATIONS = {
     formCountry: "国・地域",
     formEmail: "メールアドレス",
     formSubmitBtn: "無料PDFサンプルを送信",
-    formPrivacy: "🔒 スパムは一切送信しません。サンプルのお届けにのみ使用します。",
+    formPrivacy: "スパムは一切送信しません。サンプルのお届けにのみ使用します。",
     formLoadingTitle: "メールを送信中...",
     formLoadingDesc: "PDFファイルを添付してメールを送信しています。",
-    formSuccessTitle: "送信が完了しました！ 🎉",
+    formSuccessTitle: "送信が完了しました！",
     formSuccessDesc: (title, email) => `<strong>${email}</strong> 宛てに <strong>${title}</strong> のPDF添付メールを送信しました。<br>受信トレイをご確認ください！`,
     formSuccessBuyTag: "この本が気に入りましたか？ Amazonで完全版を購入できます：",
     formSuccessClose: "カタログに戻る",
@@ -672,7 +672,7 @@ const TRANSLATIONS = {
     formErrorDesc: "現在メールを送信できませんでした。しばらくしてからもう一度お試しください。",
     formRetry: "再試行",
     pdfAttachedViaEmail: "PDF添付メール",
-    footerTagline: "ひと味違うユニークな塗り絵を楽しみたいあなたへ。✨",
+    footerTagline: "ひと味違うユニークな塗り絵を楽しみたいあなたへ。",
     footerCopyright: "無断転載を禁じます。",
     followTikTok: "TikTokでフォロー",
     tiktokAria: "TikTokで@cozycoloringchaosをフォロー（新しいタブで開く）",
@@ -984,41 +984,38 @@ function updateFreeSampleModalTranslations(t) {
 }
 
 /**
- * Calculates and displays the count of books in each filter tab.
+ * Calculates and displays the count of books in each author filter tab.
  */
 function updateFilterCounts() {
   const countAll = BOOKS.length;
-  const countIt = BOOKS.filter(b => isBookLanguage(b, 'it')).length;
-  const countEn = BOOKS.filter(b => isBookLanguage(b, 'en')).length;
+  const countIsaac = BOOKS.filter(b => isBookAuthor(b, 'isaac-mcclour')).length;
+  const countLucas = BOOKS.filter(b => isBookAuthor(b, 'lucas-c-morica')).length;
 
   const elAll = document.getElementById('count-all');
-  const elIt = document.getElementById('count-it');
-  const elEn = document.getElementById('count-en');
+  const elIsaac = document.getElementById('count-isaac');
+  const elLucas = document.getElementById('count-lucas');
 
   if (elAll) elAll.textContent = countAll;
-  if (elIt) elIt.textContent = countIt;
-  if (elEn) elEn.textContent = countEn;
+  if (elIsaac) elIsaac.textContent = countIsaac;
+  if (elLucas) elLucas.textContent = countLucas;
 }
 
 /**
- * Checks if a book matches a target language filter.
+ * Checks if a book matches a target author filter.
  */
-function isBookLanguage(book, targetLang) {
-  if (targetLang === 'all') return true;
-
-  if (book.langCode && book.langCode.toLowerCase() === targetLang.toLowerCase()) {
-    return true;
+function isBookAuthor(book, targetAuthor) {
+  if (!targetAuthor || targetAuthor === 'all') return true;
+  if (targetAuthor === 'isaac-mcclour') {
+    return !!(book.author && book.author.toLowerCase().includes('isaac'));
   }
-  if (book.language) {
-    const l = book.language.toLowerCase();
-    if (targetLang === 'it' && (l.includes('it') || l.includes('ital'))) return true;
-    if (targetLang === 'en' && (l.includes('en') || l.includes('engl') || l.includes('ingl'))) return true;
+  if (targetAuthor === 'lucas-c-morica') {
+    return !!(book.author && (book.author.toLowerCase().includes('lucas') || book.author.toLowerCase().includes('morica')));
   }
-  return false;
+  return true;
 }
 
 /**
- * Sets the active book filter ('all', 'it', 'en') and re-renders the catalog.
+ * Sets the active author filter ('all', 'isaac-mcclour', 'lucas-c-morica') and re-renders the catalog.
  */
 function setBookFilter(filterKey) {
   currentBookFilter = filterKey;
@@ -1077,8 +1074,8 @@ window.openSampleModal = function(bookId, mode = 'preview') {
   if (tabsContainer) {
     if (hasColored && hasPreview) {
       tabsContainer.style.display = 'inline-flex';
-      if (tabPreview) tabPreview.textContent = t.tabPages || "📖 Pages";
-      if (tabColored) tabColored.textContent = t.tabColored || "🎨 Colored";
+      if (tabPreview) tabPreview.textContent = t.tabPages || "Pages";
+      if (tabColored) tabColored.textContent = t.tabColored || "Colored";
     } else {
       tabsContainer.style.display = 'none';
     }
@@ -1117,7 +1114,7 @@ window.openSampleModal = function(bookId, mode = 'preview') {
           onclick="closeSampleModal(); openFreeSampleModal('${escapeJs(book.id)}');" 
           style="width: 100%; justify-content: center; padding: 0.5rem 1rem; font-size: 0.86rem;"
         >
-          <span>${t.freeSampleBtn || '🎁 Free Sample'}</span>
+          <span>${t.freeSampleBtn || 'Free Sample'}</span>
         </button>
       </div>
     `;
@@ -1196,8 +1193,8 @@ function updateSampleViewer() {
 
   if (badgeEl) {
     badgeEl.textContent = isColored
-      ? (t.coloredBadge || "🎨 Disegni Colorati")
-      : (t.previewBadge || "📖 Anteprima Pagine");
+      ? (t.coloredBadge || "Disegni Colorati")
+      : (t.previewBadge || "Anteprima Pagine");
   }
 
   if (inspirationBanner) {
@@ -1353,127 +1350,127 @@ async function fetchPdfAsBase64(pdfUrl) {
 const EMAIL_I18N = {
   it: {
     langHtml: "it",
-    subject: (title) => `${title} - Download Sample Gratuito 🎨`,
-    greeting: (f, l) => `Ciao ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Download Sample Gratuito`,
+    greeting: (f, l) => `Ciao ${f} ${l}!`,
     intro: (title) => `Grazie per il tuo interesse per <strong>${title}</strong>.<br>In <strong>allegato a questa email</strong> trovi il file PDF del <strong>Sample Gratuito</strong> con alcune delle pagine più rilassanti e divertenti pronte da stampare e colorare!`,
-    badge: "📎 File PDF allegato a questa email",
-    ctaTitle: "Ti piacciono queste pagine? ✨",
+    badge: "File PDF allegato a questa email",
+    ctaTitle: "Ti piacciono queste pagine?",
     ctaDesc: "Scopri l'intero libro con tutte le illustrazioni originali in alta qualità ordinate comodamente su Amazon!",
-    buyBtn: (m) => `🛒 ACQUISTA SU ${m.toUpperCase()}`,
+    buyBtn: (m) => `ACQUISTA SU ${m.toUpperCase()}`,
     morePrompt: "Vuoi scoprire tutti i libri da colorare della nostra collezione?",
-    moreLink: "👉 Visita il sito Cozy Coloring Chaos",
+    moreLink: "Visita il sito Cozy Coloring Chaos",
     copyright: "Tutti i diritti riservati.",
     disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   en: {
     langHtml: "en",
-    subject: (title) => `${title} - Free Sample Download 🎨`,
-    greeting: (f, l) => `Hello ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Free Sample Download`,
+    greeting: (f, l) => `Hello ${f} ${l}!`,
     intro: (title) => `Thank you for your interest in <strong>${title}</strong>.<br><strong>Attached to this email</strong> you will find the <strong>Free Sample PDF</strong> with selected cozy coloring pages ready to print and color!`,
-    badge: "📎 PDF file attached to this email",
-    ctaTitle: "Loving these coloring pages? ✨",
+    badge: "PDF file attached to this email",
+    ctaTitle: "Loving these coloring pages?",
     ctaDesc: "Get the full book with all original high-quality illustrations delivered right to your door on Amazon!",
-    buyBtn: (m) => `🛒 BUY ON ${m.toUpperCase()}`,
+    buyBtn: (m) => `BUY ON ${m.toUpperCase()}`,
     morePrompt: "Want to explore more cozy coloring books from our collection?",
-    moreLink: "👉 Visit Cozy Coloring Chaos",
+    moreLink: "Visit Cozy Coloring Chaos",
     copyright: "All rights reserved.",
     disclaimer: "You are receiving this email because you requested a free sample on indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   de: {
     langHtml: "de",
-    subject: (title) => `${title} - Kostenlose Leseprobe Download 🎨`,
-    greeting: (f, l) => `Hallo ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Kostenlose Leseprobe Download`,
+    greeting: (f, l) => `Hallo ${f} ${l}!`,
     intro: (title) => `Vielen Dank für dein Interesse an <strong>${title}</strong>.<br>Im <strong>Anhang dieser E-Mail</strong> findest du das <strong>kostenlose PDF-Sample</strong> mit ausgewählten Seiten zum Ausdrucken und Ausmalen!`,
-    badge: "📎 PDF-Datei im E-Mail-Anhang",
-    ctaTitle: "Gefallen dir diese Malvorlagen? ✨",
+    badge: "PDF-Datei im E-Mail-Anhang",
+    ctaTitle: "Gefallen dir diese Malvorlagen?",
     ctaDesc: "Hol dir das komplette Buch mit allen Original-Illustrationen in bester Druckqualität direkt bei Amazon!",
-    buyBtn: (m) => `🛒 BEI ${m.toUpperCase()} KAUFEN`,
+    buyBtn: (m) => `BEI ${m.toUpperCase()} KAUFEN`,
     morePrompt: "Möchtest du weitere Malbücher unserer Kollektion entdecken?",
-    moreLink: "👉 Besuche Cozy Coloring Chaos",
+    moreLink: "Besuche Cozy Coloring Chaos",
     copyright: "Alle Rechte vorbehalten.",
     disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf indiebookstudio.github.io/cozy-coloring-chaos/ angefordert hast."
   },
   fr: {
     langHtml: "fr",
-    subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit 🎨`,
-    greeting: (f, l) => `Bonjour ${f} ${l} ! 👋`,
+    subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit`,
+    greeting: (f, l) => `Bonjour ${f} ${l} !`,
     intro: (title) => `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
-    badge: "📎 Fichier PDF en pièce jointe",
-    ctaTitle: "Vous aimez ces coloriages ? ✨",
+    badge: "Fichier PDF en pièce jointe",
+    ctaTitle: "Vous aimez ces coloriages ?",
     ctaDesc: "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
-    buyBtn: (m) => `🛒 ACHETER SUR ${m.toUpperCase()}`,
+    buyBtn: (m) => `ACHETER SUR ${m.toUpperCase()}`,
     morePrompt: "Envie de découvrir tous les livres de notre collection ?",
-    moreLink: "👉 Visiter Cozy Coloring Chaos",
+    moreLink: "Visiter Cozy Coloring Chaos",
     copyright: "Tous droits réservés.",
     disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   es: {
     langHtml: "es",
-    subject: (title) => `${title} - Descarga de Muestra Gratis 🎨`,
-    greeting: (f, l) => `¡Hola ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Descarga de Muestra Gratis`,
+    greeting: (f, l) => `¡Hola ${f} ${l}!`,
     intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
-    badge: "📎 Archivo PDF adjunto a este correo",
-    ctaTitle: "¿Te encantan estas ilustraciones? ✨",
+    badge: "Archivo PDF adjunto a este correo",
+    ctaTitle: "¿Te encantan estas ilustraciones?",
     ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
-    buyBtn: (m) => `🛒 COMPRAR EN ${m.toUpperCase()}`,
+    buyBtn: (m) => `COMPRAR EN ${m.toUpperCase()}`,
     morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
-    moreLink: "👉 Visita Cozy Coloring Chaos",
+    moreLink: "Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
     disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   nl: {
     langHtml: "nl",
-    subject: (title) => `${title} - Gratis Sample Download 🎨`,
-    greeting: (f, l) => `Hallo ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Gratis Sample Download`,
+    greeting: (f, l) => `Hallo ${f} ${l}!`,
     intro: (title) => `Bedankt voor je interesse in <strong>${title}</strong>.<br>In de <strong>bijlage van deze e-mail</strong> vind je het <strong>gratis PDF-sample</strong> met leuke kleurplaten om direct te printen en in te kleuren!`,
-    badge: "📎 PDF-bestand in de bijlage",
-    ctaTitle: "Vind je deze kleurplaten leuk? ✨",
+    badge: "PDF-bestand in de bijlage",
+    ctaTitle: "Vind je deze kleurplaten leuk?",
     ctaDesc: "Bestel het complete kleurboek met alle originele illustraties eenvoudig op Amazon!",
-    buyBtn: (m) => `🛒 KOOP OP ${m.toUpperCase()}`,
+    buyBtn: (m) => `KOOP OP ${m.toUpperCase()}`,
     morePrompt: "Wil je meer gezellige kleurboeken ontdekken?",
-    moreLink: "👉 Bezoek Cozy Coloring Chaos",
+    moreLink: "Bezoek Cozy Coloring Chaos",
     copyright: "Alle rechten voorbehouden.",
     disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   pl: {
     langHtml: "pl",
-    subject: (title) => `${title} - Pobierz Darmową Próbkę 🎨`,
-    greeting: (f, l) => `Cześć ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Pobierz Darmową Próbkę`,
+    greeting: (f, l) => `Cześć ${f} ${l}!`,
     intro: (title) => `Dziękujemy za zainteresowanie książką <strong>${title}</strong>.<br>W <strong>załączniku do tej wiadomości</strong> znajdziesz <strong>darmową próbkę PDF</strong> ze stronami gotowymi do wydrukowania i kolorowania!`,
-    badge: "📎 Plik PDF w załączniku",
-    ctaTitle: "Podobają Ci się te ilustracje? ✨",
+    badge: "Plik PDF w załączniku",
+    ctaTitle: "Podobają Ci się te ilustracje?",
     ctaDesc: "Zamów pełną książkę ze wszystkimi oryginalnymi ilustracjami w wysokiej jakości na Amazon!",
-    buyBtn: (m) => `🛒 KUP NA ${m.toUpperCase()}`,
+    buyBtn: (m) => `KUP NA ${m.toUpperCase()}`,
     morePrompt: "Chcesz poznać wszystkie nasze kolorowanki?",
-    moreLink: "👉 Odwiedź Cozy Coloring Chaos",
+    moreLink: "Odwiedź Cozy Coloring Chaos",
     copyright: "Wszelkie prawa zastrzeżone.",
     disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   sv: {
     langHtml: "sv",
-    subject: (title) => `${title} - Ladda ner Gratis Prov 🎨`,
-    greeting: (f, l) => `Hej ${f} ${l}! 👋`,
+    subject: (title) => `${title} - Ladda ner Gratis Prov`,
+    greeting: (f, l) => `Hej ${f} ${l}!`,
     intro: (title) => `Tack för ditt intresse för <strong>${title}</strong>.<br>I <strong>bilagan till detta e-postmeddelande</strong> hittar du ditt <strong>gratis PDF-prov</strong> med mysiga målarbilder redo att skrivas ut och färgläggas!`,
-    badge: "📎 PDF-fil bifogad i detta mejl",
-    ctaTitle: "Gillar du dessa målarbilder? ✨",
+    badge: "PDF-fil bifogad i detta mejl",
+    ctaTitle: "Gillar du dessa målarbilder?",
     ctaDesc: "Beställ hela boken med alla originalillustrationer i högsta kvalitet direkt från Amazon!",
-    buyBtn: (m) => `🛒 KÖP PÅ ${m.toUpperCase()}`,
+    buyBtn: (m) => `KÖP PÅ ${m.toUpperCase()}`,
     morePrompt: "Vill du utforska fler målarböcker från vår kollektion?",
-    moreLink: "👉 Besök Cozy Coloring Chaos",
+    moreLink: "Besök Cozy Coloring Chaos",
     copyright: "Alla rättigheter förbehållna.",
     disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på indiebookstudio.github.io/cozy-coloring-chaos/"
   },
   ja: {
     langHtml: "ja",
-    subject: (title) => `${title} - 無料サンプルダウンロード 🎨`,
-    greeting: (f, l) => `こんにちは、${l ? l + ' ' : ''}${f} 様 👋`,
+    subject: (title) => `${title} - 無料サンプルダウンロード`,
+    greeting: (f, l) => `こんにちは、${l ? l + ' ' : ''}${f} 様`,
     intro: (title) => `『<strong>${title}</strong>』にご興味をお持ちいただきありがとうございます。<br>このメールに<strong>無料サンプルPDF</strong>を<strong>添付</strong>いたしました。印刷してすぐにぬりえをお楽しみいただけます！`,
-    badge: "📎 PDFファイルを添付しています",
-    ctaTitle: "これらのイラストを気に入っていただけましたか？ ✨",
+    badge: "PDFファイルを添付しています",
+    ctaTitle: "これらのイラストを気に入っていただけましたか？",
     ctaDesc: "すべてのオリジナル高画質イラストが収録された完全版をAmazonでお求めいただけます！",
-    buyBtn: (m) => `🛒 ${m.toUpperCase()} で購入する`,
+    buyBtn: (m) => `${m.toUpperCase()} で購入する`,
     morePrompt: "他のぬりえ本コレクションも見てみませんか？",
-    moreLink: "👉 Cozy Coloring Chaos 公式サイトへ",
+    moreLink: "Cozy Coloring Chaos 公式サイトへ",
     copyright: "無断転載を禁じます。",
     disclaimer: "このメールは indiebookstudio.github.io/cozy-coloring-chaos/ にて無料サンプルをご請求いただいた方にお送りしています。"
   }
@@ -1626,7 +1623,7 @@ function populateCountrySelect(selectedCode) {
         <div class="country-option ${isSelected ? 'selected' : ''}" data-country-code="${c.code}" role="option" aria-selected="${isSelected ? 'true' : 'false'}" onclick="selectCountryOption('${c.code}')">
           <img src="https://flagcdn.com/24x18/${c.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${c.flagCode || 'un'}.png 2x" alt="" width="22" height="16" class="country-option-flag" loading="lazy">
           <span class="country-option-name">${escapeHtml(c.name)}</span>
-          ${isSelected ? '<span class="country-option-check">✓</span>' : ''}
+          ${isSelected ? '<span class="country-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' : ''}
         </div>
       `;
     }).join('');
@@ -1665,7 +1662,7 @@ window.selectCountryOption = function(code) {
       opt.setAttribute('aria-selected', isMatch ? 'true' : 'false');
       const checkEl = opt.querySelector('.country-option-check');
       if (isMatch && !checkEl) {
-        opt.insertAdjacentHTML('beforeend', '<span class="country-option-check">✓</span>');
+        opt.insertAdjacentHTML('beforeend', '<span class="country-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>');
       } else if (!isMatch && checkEl) {
         checkEl.remove();
       }
@@ -1872,7 +1869,7 @@ window.handleFreeSampleSubmit = async function(event) {
       throw new Error(resData.error || `HTTP ${response.status}`);
     }
 
-    console.log('✅ [Free Sample] Inviato con successo tramite backend serverless!', resData);
+    console.log('[Free Sample] Inviato con successo tramite backend serverless!', resData);
 
     // 5. Render Success State
     const activeT = TRANSLATIONS[emailLangKey] || TRANSLATIONS.en;
@@ -1888,7 +1885,7 @@ window.handleFreeSampleSubmit = async function(event) {
       const btnCloseSuccess = document.getElementById('btn-close-success');
 
       if (successTitleEl) {
-        successTitleEl.textContent = activeT.formSuccessTitle || "Sample inviato con successo! 🎉";
+        successTitleEl.textContent = activeT.formSuccessTitle || "Sample inviato con successo!";
       }
 
       if (successDescEl) {
@@ -1968,22 +1965,93 @@ function initFreeSampleModalEvents() {
 /**
  * Event listener triggered when a user changes the Amazon marketplace dropdown on a card.
  */
-function onMarketChange(selectElement, bookId) {
-  const selectedMarketKey = selectElement.value;
-  selectedMarketState[bookId] = selectedMarketKey;
+/**
+ * Toggles visibility of the custom Amazon marketplace dropdown on a book card.
+ */
+window.toggleMarketDropdown = function(bookId, event) {
+  if (event) event.stopPropagation();
+  const selectEl = document.getElementById(`custom-market-select-${bookId}`);
+  const menuEl = document.getElementById(`market-dropdown-${bookId}`);
+  const triggerBtn = selectEl ? selectEl.querySelector('.market-trigger') : null;
+  if (!selectEl || !menuEl) return;
 
+  const isOpen = (menuEl.style.display === 'block');
+
+  // Close any other open dropdowns first
+  document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
+  document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
+  document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+  const countryMenu = document.getElementById('country-dropdown-menu');
+  if (countryMenu) countryMenu.style.display = 'none';
+  const customCountry = document.getElementById('custom-country-select');
+  if (customCountry) customCountry.classList.remove('open');
+
+  if (!isOpen) {
+    menuEl.style.display = 'block';
+    selectEl.classList.add('open');
+    if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
+  }
+};
+
+/**
+ * Handles selecting an Amazon marketplace from the custom dropdown menu.
+ */
+window.selectBookMarket = function(bookId, marketKey) {
+  selectedMarketState[bookId] = marketKey;
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
-  const cardElement = selectElement.closest('.book-card');
+  const cardElement = document.getElementById(`card-${bookId}`);
   if (!cardElement) return;
 
+  const selectEl = document.getElementById(`custom-market-select-${bookId}`);
+  const menuEl = document.getElementById(`market-dropdown-${bookId}`);
+  const triggerBtn = selectEl ? selectEl.querySelector('.market-trigger') : null;
+  const nativeSelect = document.getElementById(`market-native-select-${bookId}`);
+  const marketInfo = AMAZON_MARKETS[marketKey] || { name: 'Amazon', flagCode: 'us', buttonLabel: 'Amazon' };
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  // Update Trigger button content (flag image + store name)
+  if (selectEl) {
+    const flagImg = selectEl.querySelector('.market-flag-img');
+    const nameSpan = selectEl.querySelector('.market-selected-name');
+    if (flagImg) {
+      flagImg.src = `https://flagcdn.com/24x18/${marketInfo.flagCode || 'un'}.png`;
+      flagImg.srcset = `https://flagcdn.com/48x36/${marketInfo.flagCode || 'un'}.png 2x`;
+      flagImg.alt = marketInfo.name;
+    }
+    if (nameSpan) {
+      nameSpan.textContent = marketInfo.name;
+    }
+  }
+
+  // Update hidden native select
+  if (nativeSelect) {
+    nativeSelect.value = marketKey;
+  }
+
+  // Update Menu options selected class & checkmark
+  if (menuEl) {
+    menuEl.querySelectorAll('.market-option').forEach(opt => {
+      const isMatch = (opt.getAttribute('data-market-key') === marketKey);
+      opt.classList.toggle('selected', isMatch);
+      opt.setAttribute('aria-selected', isMatch ? 'true' : 'false');
+      const checkEl = opt.querySelector('.market-option-check');
+      if (isMatch && !checkEl) {
+        opt.insertAdjacentHTML('beforeend', '<span class="market-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>');
+      } else if (!isMatch && checkEl) {
+        checkEl.remove();
+      }
+    });
+    menuEl.style.display = 'none';
+  }
+  if (selectEl) selectEl.classList.remove('open');
+  if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
+
+  // Update Buy on Amazon button
   const btnBuy = cardElement.querySelector('.btn-buy');
   const btnText = cardElement.querySelector('.btn-buy-text');
-  
-  const targetUrl = getBookUrlForMarket(book, selectedMarketKey);
-  const marketInfo = AMAZON_MARKETS[selectedMarketKey] || { name: 'Amazon', buttonLabel: 'Amazon' };
-  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+  const targetUrl = getBookUrlForMarket(book, marketKey);
 
   if (btnBuy) {
     btnBuy.href = targetUrl;
@@ -1996,7 +2064,7 @@ function onMarketChange(selectElement, bookId) {
     const label = marketInfo.buttonLabel || marketInfo.name;
     btnText.textContent = (typeof t.viewOn === 'function') ? t.viewOn(label) : `VIEW ON ${label.toUpperCase()}`;
   }
-}
+};
 
 /**
  * Generates HTML for a single book card.
@@ -2019,7 +2087,7 @@ function createBookCard(book, index) {
   selectedMarketState[book.id] = initialMarketKey;
 
   const initialUrl = getBookUrlForMarket(book, initialMarketKey);
-  const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flag: '🛒', buttonLabel: 'Amazon' };
+  const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flagCode: 'us', buttonLabel: 'Amazon' };
   const initialLabel = initialMarketInfo.buttonLabel || initialMarketInfo.name;
   const buyButtonText = (typeof t.viewOn === 'function') ? t.viewOn(initialLabel) : `VIEW ON ${initialLabel.toUpperCase()}`;
   const buyButtonAria = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(safeTitle, initialMarketInfo.name) : `View ${safeTitle} on Amazon`;
@@ -2043,10 +2111,10 @@ function createBookCard(book, index) {
        </button>`
     : '';
 
-  // Free Sample Chip Button ("🎁 Free Sample")
+  // Free Sample Chip Button ("Free Sample")
   const sampleChipHtml = `
     <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
-      <span>${t.freeSampleBtn || '🎁 Free Sample'}</span>
+      <span>${t.freeSampleBtn || 'Free Sample'}</span>
     </button>
   `;
 
@@ -2061,10 +2129,16 @@ function createBookCard(book, index) {
     ? `<p class="book-subtitle">${safeSubtitle}</p>` 
     : '';
 
-  // Marketplace Dropdown Options
+  // Custom Marketplace Dropdown Options with Flag Images
   const marketOptionsHtml = Object.entries(AMAZON_MARKETS).map(([key, info]) => {
-    const isSelected = (key === initialMarketKey) ? 'selected' : '';
-    return `<option value="${key}" ${isSelected}>${info.flag} ${info.name}</option>`;
+    const isSelected = (key === initialMarketKey);
+    return `
+      <div class="market-option ${isSelected ? 'selected' : ''}" data-market-key="${key}" role="option" aria-selected="${isSelected ? 'true' : 'false'}" onclick="selectBookMarket('${escapeJs(book.id)}', '${key}')">
+        <img src="https://flagcdn.com/24x18/${info.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${info.flagCode || 'un'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+        <span class="market-option-name">${escapeHtml(info.name)}</span>
+        ${isSelected ? '<span class="market-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' : ''}
+      </div>
+    `;
   }).join('');
 
   return `
@@ -2090,7 +2164,6 @@ function createBookCard(book, index) {
       <div class="book-details">
         <div class="book-header-row">
           <h3 class="book-title">${safeTitle}</h3>
-          ${langBadgeHtml}
         </div>
 
         <div class="book-meta-row">
@@ -2105,22 +2178,33 @@ function createBookCard(book, index) {
         <!-- Amazon Marketplace Selector & Action Area -->
         <div class="book-action-area">
           <div class="market-selector-wrapper">
-            <label for="market-select-${index}" class="market-label">
+            <label for="market-native-select-${escapeHtml(book.id)}" class="market-label">
               <span>${t.selectStore || "Select Amazon Store"}</span>
-              <span>🌍</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.6;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
             </label>
-            <div class="market-select-container">
-              <select 
-                id="market-select-${index}" 
-                class="market-select" 
-                onchange="onMarketChange(this, '${escapeHtml(book.id)}')"
+            <div class="custom-market-select" id="custom-market-select-${escapeHtml(book.id)}">
+              <button 
+                type="button" 
+                class="market-trigger" 
+                onclick="toggleMarketDropdown('${escapeJs(book.id)}', event)"
+                aria-haspopup="listbox" 
+                aria-expanded="false" 
                 aria-label="${(typeof t.ariaSelectMarket === 'function') ? t.ariaSelectMarket(safeTitle) : `Select store for ${safeTitle}`}"
               >
+                <span class="market-trigger-content">
+                  <img src="https://flagcdn.com/24x18/${initialMarketInfo.flagCode || 'us'}.png" srcset="https://flagcdn.com/48x36/${initialMarketInfo.flagCode || 'us'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+                  <span class="market-selected-name">${escapeHtml(initialMarketInfo.name)}</span>
+                </span>
+                <svg class="market-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polyline points="6 9 12 15 18 9"></polyline>
+                </svg>
+              </button>
+              <div class="market-dropdown-menu" id="market-dropdown-${escapeHtml(book.id)}" role="listbox" style="display: none;">
                 ${marketOptionsHtml}
+              </div>
+              <select id="market-native-select-${escapeHtml(book.id)}" class="sr-only-select" tabindex="-1" aria-hidden="true">
+                ${Object.entries(AMAZON_MARKETS).map(([key, info]) => `<option value="${key}" ${key === initialMarketKey ? 'selected' : ''}>${info.name}</option>`).join('')}
               </select>
-              <svg class="market-select-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <polyline points="6 9 12 15 18 9"></polyline>
-              </svg>
             </div>
           </div>
 
@@ -2152,13 +2236,13 @@ function renderBooks() {
 
   const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
-  // Filter books
-  const filteredBooks = BOOKS.filter(book => isBookLanguage(book, currentBookFilter));
+  // Filter books by author
+  const filteredBooks = BOOKS.filter(book => isBookAuthor(book, currentBookFilter));
 
   if (filteredBooks.length === 0) {
     booksContainer.innerHTML = `
       <div class="empty-state">
-        <p>${t.noBooksFound}</p>
+        <p>${t.noBooksFound || 'Nessun libro trovato.'}</p>
       </div>
     `;
     return;
@@ -2199,6 +2283,15 @@ function attachEventListeners() {
         setBookFilter(filterKey);
       }
     });
+  });
+
+  // Close any open custom dropdowns when clicking outside
+  document.addEventListener('click', (e) => {
+    if (!e.target.closest('.custom-market-select')) {
+      document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
+      document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+    }
   });
 }
 
