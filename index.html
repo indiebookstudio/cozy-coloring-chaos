@@ -28,21 +28,22 @@
   <meta property="og:type" content="website">
   <meta id="og-title" property="og:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
   <meta id="og-desc" property="og:description" content="Cozy coloring. Dark humor. Beautiful chaos. Official coloring books collection.">
-  <meta property="og:image" content="assets/Innocent.Paws/Front.Cover.png">
+  <meta property="og:image" content="assets/books/Innocent.Paws/Front.Cover.png">
   <meta property="og:site_name" content="Cozy Coloring Chaos">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta id="twitter-title" property="twitter:title" content="Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books">
   <meta id="twitter-desc" property="twitter:description" content="Cozy coloring. Dark humor. Beautiful chaos. Explore our books on Amazon.">
-  <meta property="twitter:image" content="assets/Innocent.Paws/Front.Cover.png">
+  <meta property="twitter:image" content="assets/books/Innocent.Paws/Front.Cover.png">
 
   <!-- Google Fonts: Bricolage Grotesque (Bold Modern Display) & Plus Jakarta Sans (Crisp Modern Sans) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4.2">
+  <link rel="stylesheet" href="style.css?v=4.3">
+  <link rel="stylesheet" href="campaign.css?v=1.0">
 </head>
 <body>
   <!-- Lively background ambient gradients -->
@@ -63,12 +64,12 @@
         </a>
 
         <!-- Email Contact Link -->
-        <a href="mailto:cozycoloringchaos@gmail.com" class="topbar-btn topbar-email" aria-label="Email cozycoloringchaos@gmail.com">
+        <a href="mailto:cozycoloringchaos@gmail.com" class="topbar-btn topbar-email" id="topbar-email-btn" aria-label="Email cozycoloringchaos@gmail.com">
           <svg class="topbar-icon" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <rect width="20" height="16" x="2" y="4" rx="2"></rect>
             <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
           </svg>
-          <span class="topbar-label">cozycoloringchaos@gmail.com</span>
+          <span class="topbar-label" id="topbar-email-label">cozycoloringchaos@gmail.com</span>
         </a>
       </div>
 
@@ -114,41 +115,39 @@
     </div>
   </nav>
 
-  <div class="site-wrapper">
-    <!-- ============================================
-         HEADER SECTION
-         ============================================ -->
-    <header class="site-header">
-      <div class="header-inner">
-        <!-- Brand Title -->
-        <h1 class="brand-title">COZY COLORING CHAOS</h1>
-        
-        <!-- Brand Tagline -->
-        <p class="brand-subtitle" data-i18n="brandSubtitle">Colorare cozy. Umorismo nero. Splendido caos.</p>
-      </div>
-    </header>
+  <!-- ============================================
+       HERO & SEASONAL CAMPAIGN SECTION
+       ============================================ -->
+  <section class="site-hero-section">
+    <div class="site-hero-header">
+      <!-- Brand Title -->
+      <h1 class="brand-title">COZY COLORING CHAOS</h1>
+      
+      <!-- Brand Tagline -->
+      <p class="brand-subtitle" data-i18n="brandSubtitle">Colorare cozy. Umorismo nero. Splendido caos.</p>
+    </div>
 
+    <!-- Seasonal Promotional Banner (Full 16:9 uncropped image with CTA) -->
+    <div id="seasonal-campaign-banner"></div>
+  </section>
+
+  <div class="site-wrapper">
     <!-- ============================================
          MAIN CONTENT: BOOKS SHOWCASE
          ============================================ -->
     <main class="main-content">
-      <section class="catalog-section" aria-labelledby="catalog-heading">
-        
-        <div class="section-header">
-          <h2 id="catalog-heading" class="section-title" data-i18n="sectionTitle">SCEGLI IL TUO CAOS</h2>
-          <div class="title-accent-pill" aria-hidden="true"></div>
-        </div>
+      <section class="catalog-section" id="catalog-heading" aria-label="Catalogo libri">
 
         <!-- Book Author Filter Pills -->
         <div class="book-filters-container">
           <div class="book-filters" role="tablist" aria-label="Filtra libri per autore">
             <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
               <span class="filter-text" data-i18n="filterAll">ALL BOOKS</span>
-              <span class="filter-count" id="count-all">5</span>
+              <span class="filter-count" id="count-all">7</span>
             </button>
             <button type="button" class="filter-btn" data-filter="isaac-mcclour" role="tab" aria-selected="false">
               <span class="filter-text">ISAAC MCCLOUR</span>
-              <span class="filter-count" id="count-isaac">4</span>
+              <span class="filter-count" id="count-isaac">6</span>
             </button>
             <button type="button" class="filter-btn" data-filter="lucas-c-morica" role="tab" aria-selected="false">
               <span class="filter-text">LUCAS C. MORICA</span>
@@ -437,10 +436,53 @@
     </div>
   </div>
 
+  <!-- ============================================
+       EMAIL COPY / CONTACT TOAST NOTIFICATION
+       ============================================ -->
+  <div id="email-toast" class="email-toast" role="status" aria-live="polite" aria-hidden="true">
+    <div class="email-toast-inner">
+      <div class="email-toast-header">
+        <div class="email-toast-icon">
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="20 6 9 17 4 12"></polyline>
+          </svg>
+        </div>
+        <div class="email-toast-titles">
+          <strong id="email-toast-title" class="email-toast-title">Email copiata!</strong>
+          <span id="email-toast-desc" class="email-toast-desc">cozycoloringchaos@gmail.com</span>
+        </div>
+        <button type="button" class="email-toast-close" id="email-toast-close-btn" aria-label="Chiudi notifica">
+          <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+      <div class="email-toast-actions">
+        <a id="email-toast-gmail-link" href="https://mail.google.com/mail/?view=cm&fs=1&to=cozycoloringchaos@gmail.com" target="_blank" rel="noopener noreferrer" class="email-toast-btn email-toast-gmail">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="currentColor" aria-hidden="true">
+            <path d="M24 5.457v13.909c0 .904-.732 1.636-1.636 1.636h-3.819V11.73L12 16.64l-6.545-4.91v9.272H1.636A1.636 1.636 0 0 1 0 19.366V5.457c0-2.023 2.309-3.178 3.927-1.964L5.455 4.64 12 9.548l6.545-4.91 1.528-1.145C21.69 2.28 24 3.434 24 5.457z"/>
+          </svg>
+          <span id="email-toast-gmail-label">Apri Gmail Web</span>
+        </a>
+        <a id="email-toast-app-link" href="mailto:cozycoloringchaos@gmail.com" class="email-toast-btn email-toast-app">
+          <svg viewBox="0 0 24 24" width="13" height="13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <rect width="20" height="16" x="2" y="4" rx="2"></rect>
+            <path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"></path>
+          </svg>
+          <span id="email-toast-app-label">Apri Client Email</span>
+        </a>
+      </div>
+    </div>
+  </div>
+
   <!-- EmailJS CDN for client-side transactional emails -->
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
-  <script src="script.js?v=4.2"></script>
+  <script src="script.js?v=4.3"></script>
+
+  <!-- Seasonal Promotional Campaign System (Halloween 2026) -->
+  <script src="campaign.js?v=1.0"></script>
 </body>
 </html>

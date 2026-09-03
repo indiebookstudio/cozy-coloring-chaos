@@ -40,95 +40,64 @@ const AMAZON_MARKETS = {
 // ============================================================================
 const BOOKS = [
   {
-    id: "impossible-worlds",
-    title: "Impossible Worlds",
-    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
-    author: "Isaac McClour",
-    language: "English",
-    langCode: "en",
-    cover: "assets/Impossible.Worlds/Front.Cover.png",
-    samplePdf: "assets/Impossible.Worlds/Sample/Free.Sample.pdf",
-    preview: [
-      "assets/Impossible.Worlds/Front.Cover.png",
-      "assets/Impossible.Worlds/2.png",
-      "assets/Impossible.Worlds/4.png",
-      "assets/Impossible.Worlds/8.png",
-      "assets/Impossible.Worlds/36.png",
-      "assets/Impossible.Worlds/90.png",
-      "assets/Impossible.Worlds/Back.Cover.png"
-    ],
-    colored: [
-      "assets/Impossible.Worlds/Colored/01.jpeg",
-      "assets/Impossible.Worlds/Colored/02.jpeg",
-      "assets/Impossible.Worlds/Colored/03.jpeg",
-      "assets/Impossible.Worlds/Colored/04.jpeg",
-      "assets/Impossible.Worlds/Colored/05.jpeg",
-      "assets/Impossible.Worlds/Colored/06.jpeg",
-      "assets/Impossible.Worlds/Colored/07.jpeg"
-    ],
-    defaultMarket: "us",
-    asin: "B0HFZZ2TMH"
-  },
-  {
-    id: "italian-girls",
-    title: "Italian Girls",
-    subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
-    author: "Isaac McClour",
-    language: "English",
-    langCode: "en",
-    cover: "assets/Italian.Girls/Front.Cover.png",
-    samplePdf: "assets/Italian.Girls/Sample/Free.Sample.pdf",
-    preview: [
-      "assets/Italian.Girls/Front.Cover.png",
-      "assets/Italian.Girls/2.png",
-      "assets/Italian.Girls/4.png",
-      "assets/Italian.Girls/8.png",
-      "assets/Italian.Girls/10.png",
-      "assets/Italian.Girls/14.png",
-      "assets/Italian.Girls/22.png",
-      "assets/Italian.Girls/Back.Cover.png"
-    ],
-    colored: [
-      "assets/Italian.Girls/Colored/01.jpeg",
-      "assets/Italian.Girls/Colored/02.jpeg",
-      "assets/Italian.Girls/Colored/03.jpeg",
-      "assets/Italian.Girls/Colored/04.jpeg",
-      "assets/Italian.Girls/Colored/05.jpeg",
-      "assets/Italian.Girls/Colored/06.jpeg",
-      "assets/Italian.Girls/Colored/07.jpeg",
-      "assets/Italian.Girls/Colored/08.jpeg"
-    ],
-    defaultMarket: "us",
-    asin: "B0HGJBKMGZ"
-  },
-  {
     id: "innocent-paws",
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
     language: "English",
     langCode: "en",
-    cover: "assets/Innocent.Paws/Front.Cover.png",
-    samplePdf: "assets/Innocent.Paws/Sample/Free.Sample.pdf",
+    cover: "assets/books/Innocent.Paws/Front.Cover.png",
+    samplePdf: "assets/books/Innocent.Paws/Sample/Free.Sample.pdf",
     preview: [
-      "assets/Innocent.Paws/Front.Cover.png",
-      "assets/Innocent.Paws/2.png",
-      "assets/Innocent.Paws/3.png",
-      "assets/Innocent.Paws/6.png",
-      "assets/Innocent.Paws/8.png",
-      "assets/Innocent.Paws/10.png",
-      "assets/Innocent.Paws/Back.Cover.png"
+      "assets/books/Innocent.Paws/Front.Cover.png",
+      "assets/books/Innocent.Paws/2.png",
+      "assets/books/Innocent.Paws/3.png",
+      "assets/books/Innocent.Paws/6.png",
+      "assets/books/Innocent.Paws/8.png",
+      "assets/books/Innocent.Paws/10.png",
+      "assets/books/Innocent.Paws/Back.Cover.png"
     ],
     colored: [
-      "assets/Innocent.Paws/Colored/01.jpeg",
-      "assets/Innocent.Paws/Colored/02.jpeg",
-      "assets/Innocent.Paws/Colored/03.jpeg",
-      "assets/Innocent.Paws/Colored/04.jpeg",
-      "assets/Innocent.Paws/Colored/05.jpeg",
-      "assets/Innocent.Paws/Colored/06.jpeg"
+      "assets/books/Innocent.Paws/Colored/01.jpeg",
+      "assets/books/Innocent.Paws/Colored/02.jpeg",
+      "assets/books/Innocent.Paws/Colored/03.jpeg",
+      "assets/books/Innocent.Paws/Colored/04.jpeg",
+      "assets/books/Innocent.Paws/Colored/05.jpeg",
+      "assets/books/Innocent.Paws/Colored/06.jpeg"
     ],
     defaultMarket: "us",
     asin: "B0HFGBJW8Y"
+  },
+  {
+    id: "cozy-terror",
+    title: "Cozy Terror",
+    subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Cozy.Terror/Front.Cover.png",
+    samplePdf: "assets/books/Cozy.Terror/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Cozy.Terror/Front.Cover.png",
+      "assets/books/Cozy.Terror/2.png",
+      "assets/books/Cozy.Terror/4.png",
+      "assets/books/Cozy.Terror/12.png",
+      "assets/books/Cozy.Terror/16.png",
+      "assets/books/Cozy.Terror/18.png",
+      "assets/books/Cozy.Terror/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Cozy.Terror/Colored/01.jpeg",
+      "assets/books/Cozy.Terror/Colored/02.jpeg",
+      "assets/books/Cozy.Terror/Colored/03.jpeg",
+      "assets/books/Cozy.Terror/Colored/04.jpeg",
+      "assets/books/Cozy.Terror/Colored/05.jpeg",
+      "assets/books/Cozy.Terror/Colored/06.jpeg",
+      "assets/books/Cozy.Terror/Colored/07.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HHKY6Q8V",
+    isNew: true
   },
   {
     id: "killer-paws",
@@ -137,25 +106,102 @@ const BOOKS = [
     author: "Isaac McClour",
     language: "English",
     langCode: "en",
-    cover: "assets/Killer.Paws/Front.Cover.png",
-    samplePdf: "assets/Killer.Paws/Sample/Free.Sample.pdf",
+    cover: "assets/books/Killer.Paws/Front.Cover.png",
+    samplePdf: "assets/books/Killer.Paws/Sample/Free.Sample.pdf",
     preview: [
-      "assets/Killer.Paws/Front.Cover.png",
-      "assets/Killer.Paws/2.png",
-      "assets/Killer.Paws/4.png",
-      "assets/Killer.Paws/8.png",
-      "assets/Killer.Paws/10.png",
-      "assets/Killer.Paws/12.png",
-      "assets/Killer.Paws/Back.Cover.png"
+      "assets/books/Killer.Paws/Front.Cover.png",
+      "assets/books/Killer.Paws/2.png",
+      "assets/books/Killer.Paws/4.png",
+      "assets/books/Killer.Paws/8.png",
+      "assets/books/Killer.Paws/10.png",
+      "assets/books/Killer.Paws/12.png",
+      "assets/books/Killer.Paws/Back.Cover.png"
     ],
     colored: [
-      "assets/Killer.Paws/Colored/01.jpeg",
-      "assets/Killer.Paws/Colored/02.jpeg",
-      "assets/Killer.Paws/Colored/03.jpeg",
-      "assets/Killer.Paws/Colored/04.jpeg"
+      "assets/books/Killer.Paws/Colored/01.jpeg",
+      "assets/books/Killer.Paws/Colored/02.jpeg",
+      "assets/books/Killer.Paws/Colored/03.jpeg",
+      "assets/books/Killer.Paws/Colored/04.jpeg"
     ],
     defaultMarket: "us",
     asin: "B0HGGQ3GZ8"
+  },
+  {
+    id: "impossible-worlds",
+    title: "Impossible Worlds",
+    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Impossible.Worlds/Front.Cover.png",
+    samplePdf: "assets/books/Impossible.Worlds/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Impossible.Worlds/Front.Cover.png",
+      "assets/books/Impossible.Worlds/2.png",
+      "assets/books/Impossible.Worlds/4.png",
+      "assets/books/Impossible.Worlds/8.png",
+      "assets/books/Impossible.Worlds/36.png",
+      "assets/books/Impossible.Worlds/90.png",
+      "assets/books/Impossible.Worlds/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Impossible.Worlds/Colored/01.jpeg",
+      "assets/books/Impossible.Worlds/Colored/02.jpeg",
+      "assets/books/Impossible.Worlds/Colored/03.jpeg",
+      "assets/books/Impossible.Worlds/Colored/04.jpeg",
+      "assets/books/Impossible.Worlds/Colored/05.jpeg",
+      "assets/books/Impossible.Worlds/Colored/06.jpeg",
+      "assets/books/Impossible.Worlds/Colored/07.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HFZZ2TMH"
+  },
+  {
+    id: "crazy-cozy",
+    title: "Crazy Cozy",
+    subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Crazy.Cozy/Front.Cover.png",
+    samplePdf: null,
+    preview: [],
+    colored: [],
+    defaultMarket: "us",
+    asin: null,
+    isComingSoon: true
+  },
+  {
+    id: "italian-girls",
+    title: "Italian Girls",
+    subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
+    author: "Isaac McClour",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Italian.Girls/Front.Cover.png",
+    samplePdf: "assets/books/Italian.Girls/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Italian.Girls/Front.Cover.png",
+      "assets/books/Italian.Girls/2.png",
+      "assets/books/Italian.Girls/4.png",
+      "assets/books/Italian.Girls/8.png",
+      "assets/books/Italian.Girls/10.png",
+      "assets/books/Italian.Girls/14.png",
+      "assets/books/Italian.Girls/22.png",
+      "assets/books/Italian.Girls/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Italian.Girls/Colored/01.jpeg",
+      "assets/books/Italian.Girls/Colored/02.jpeg",
+      "assets/books/Italian.Girls/Colored/03.jpeg",
+      "assets/books/Italian.Girls/Colored/04.jpeg",
+      "assets/books/Italian.Girls/Colored/05.jpeg",
+      "assets/books/Italian.Girls/Colored/06.jpeg",
+      "assets/books/Italian.Girls/Colored/07.jpeg",
+      "assets/books/Italian.Girls/Colored/08.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HGJBKMGZ"
   },
   {
     id: "non-rompetemi-i-coglioni",
@@ -164,28 +210,28 @@ const BOOKS = [
     author: "Lucas C. Morica",
     language: "Italiano",
     langCode: "it",
-    cover: "assets/Non.Rompetemi.I.Coglioni/Front.Cover.png",
-    samplePdf: "assets/Non.Rompetemi.I.Coglioni/Sample/Free.Sample.pdf",
+    cover: "assets/books/Non.Rompetemi.I.Coglioni/Front.Cover.png",
+    samplePdf: "assets/books/Non.Rompetemi.I.Coglioni/Sample/Free.Sample.pdf",
     preview: [
-      "assets/Non.Rompetemi.I.Coglioni/Front.Cover.png",
-      "assets/Non.Rompetemi.I.Coglioni/4.png",
-      "assets/Non.Rompetemi.I.Coglioni/5.png",
-      "assets/Non.Rompetemi.I.Coglioni/6.png",
-      "assets/Non.Rompetemi.I.Coglioni/8.png",
-      "assets/Non.Rompetemi.I.Coglioni/10.png",
-      "assets/Non.Rompetemi.I.Coglioni/12.png",
-      "assets/Non.Rompetemi.I.Coglioni/14.png",
-      "assets/Non.Rompetemi.I.Coglioni/Back.Cover.png"
+      "assets/books/Non.Rompetemi.I.Coglioni/Front.Cover.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/4.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/5.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/6.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/8.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/10.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/12.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/14.png",
+      "assets/books/Non.Rompetemi.I.Coglioni/Back.Cover.png"
     ],
     colored: [
-      "assets/Non.Rompetemi.I.Coglioni/Colored/01.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/02.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/03.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/04.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/05.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/06.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/07.jpeg",
-      "assets/Non.Rompetemi.I.Coglioni/Colored/08.jpeg"
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/01.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/02.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/03.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/04.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/05.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/06.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/07.jpeg",
+      "assets/books/Non.Rompetemi.I.Coglioni/Colored/08.jpeg"
     ],
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
@@ -252,6 +298,9 @@ const TRANSLATIONS = {
     byAuthor: "di",
     previewBtn: "Anteprima",
     previewBadge: "Anteprima Pagine",
+    badgeNew: "Novità",
+    badgeComingSoon: "Prossimamente",
+    comingSoonNotice: "In arrivo prossimamente su Amazon",
     coloredBtn: "Guarda a colori",
     coloredBadge: "Disegni Colorati",
     coloredHeadline: "Ecco cosa puoi fare con questo libro!",
@@ -286,7 +335,12 @@ const TRANSLATIONS = {
     tiktokAria: "Segui @cozycoloringchaos su TikTok (apre una nuova scheda)",
     noBooksFound: "Nessun libro trovato per questa lingua. Torna a 'Tutti' per esplorare la collezione!",
     ariaSelectMarket: (title) => `Seleziona il marketplace Amazon per ${title}`,
-    ariaViewMarket: (title, market) => `Visualizza ${title} su ${market} (apre una nuova scheda)`
+    ariaViewMarket: (title, market) => `Visualizza ${title} su ${market} (apre una nuova scheda)`,
+    emailCopiedToastTitle: "Email copiata!",
+    emailCopiedToastDesc: "Indirizzo copiato negli appunti (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Copiato! ✓",
+    emailOpenGmail: "Apri Gmail Web",
+    emailOpenApp: "Apri Client Email"
   },
   en: {
     pageTitle: "Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books",
@@ -301,6 +355,9 @@ const TRANSLATIONS = {
     byAuthor: "by",
     previewBtn: "Preview",
     previewBadge: "Sample Preview",
+    badgeNew: "New",
+    badgeComingSoon: "Coming Soon",
+    comingSoonNotice: "Coming soon to Amazon",
     coloredBtn: "See it colored",
     coloredBadge: "Colored Artworks",
     coloredHeadline: "Here's what you can create with this book!",
@@ -335,7 +392,12 @@ const TRANSLATIONS = {
     tiktokAria: "Follow @cozycoloringchaos on TikTok (opens in a new tab)",
     noBooksFound: "No books found for this language. Switch to 'All' to explore the full collection!",
     ariaSelectMarket: (title) => `Select Amazon Marketplace for ${title}`,
-    ariaViewMarket: (title, market) => `View ${title} on ${market} (opens in a new tab)`
+    ariaViewMarket: (title, market) => `View ${title} on ${market} (opens in a new tab)`,
+    emailCopiedToastTitle: "Email copied!",
+    emailCopiedToastDesc: "Address copied to clipboard (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Copied! ✓",
+    emailOpenGmail: "Open Gmail Web",
+    emailOpenApp: "Open Mail App"
   },
   de: {
     pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
@@ -350,6 +412,9 @@ const TRANSLATIONS = {
     byAuthor: "von",
     previewBtn: "Vorschau",
     previewBadge: "Buchvorschau",
+    badgeNew: "Neu",
+    badgeComingSoon: "Demnächst",
+    comingSoonNotice: "Demnächst auf Amazon erhältlich",
     coloredBtn: "Bunt ansehen",
     coloredBadge: "Ausgemalte Kunstwerke",
     coloredHeadline: "Das kannst du aus diesem Buch machen!",
@@ -384,7 +449,12 @@ const TRANSLATIONS = {
     tiktokAria: "Folge @cozycoloringchaos auf TikTok (öffnet in neuem Tab)",
     noBooksFound: "Keine Bücher für diese Sprache gefunden. Wechsle zu 'Alle', um die Kollektion zu sehen!",
     ariaSelectMarket: (title) => `Amazon Marketplace für ${title} wählen`,
-    ariaViewMarket: (title, market) => `${title} auf ${market} ansehen (öffnet in neuem Tab)`
+    ariaViewMarket: (title, market) => `${title} auf ${market} ansehen (öffnet in neuem Tab)`,
+    emailCopiedToastTitle: "E-Mail kopiert!",
+    emailCopiedToastDesc: "In die Zwischenablage kopiert (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Kopiert! ✓",
+    emailOpenGmail: "Gmail Web öffnen",
+    emailOpenApp: "E-Mail-App öffnen"
   },
   fr: {
     pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
@@ -399,6 +469,9 @@ const TRANSLATIONS = {
     byAuthor: "par",
     previewBtn: "Aperçu",
     previewBadge: "Aperçu du livre",
+    badgeNew: "Nouveau",
+    badgeComingSoon: "Bientôt disponible",
+    comingSoonNotice: "Bientôt disponible sur Amazon",
     coloredBtn: "Voir en couleur",
     coloredBadge: "Modèles Coloriés",
     coloredHeadline: "Voici ce que vous pouvez créer avec ce livre !",
@@ -433,7 +506,12 @@ const TRANSLATIONS = {
     tiktokAria: "Suivre @cozycoloringchaos sur TikTok (ouvre un nouvel onglet)",
     noBooksFound: "Aucun livre trouvé pour cette langue. Cliquez sur 'Tous' pour voir la collection !",
     ariaSelectMarket: (title) => `Sélectionner le marketplace Amazon pour ${title}`,
-    ariaViewMarket: (title, market) => `Voir ${title} sur ${market} (ouvre un nouvel onglet)`
+    ariaViewMarket: (title, market) => `Voir ${title} sur ${market} (ouvre un nouvel onglet)`,
+    emailCopiedToastTitle: "E-mail copié !",
+    emailCopiedToastDesc: "Copié dans le presse-papiers (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Copié ! ✓",
+    emailOpenGmail: "Ouvrir Gmail Web",
+    emailOpenApp: "Ouvrir Client Email"
   },
   es: {
     pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
@@ -448,6 +526,9 @@ const TRANSLATIONS = {
     byAuthor: "de",
     previewBtn: "Vista previa",
     previewBadge: "Vista previa",
+    badgeNew: "Nuevo",
+    badgeComingSoon: "Próximamente",
+    comingSoonNotice: "Próximamente en Amazon",
     coloredBtn: "Ver a color",
     coloredBadge: "Ilustraciones Coloreadas",
     coloredHeadline: "¡Mira lo que puedes crear con este libro!",
@@ -482,7 +563,12 @@ const TRANSLATIONS = {
     tiktokAria: "Seguir a @cozycoloringchaos en TikTok (abre en nueva pestaña)",
     noBooksFound: "No se encontraron libros en este idioma. ¡Cambia a 'Todos' para ver la colección!",
     ariaSelectMarket: (title) => `Seleccionar tienda Amazon para ${title}`,
-    ariaViewMarket: (title, market) => `Ver ${title} en ${market} (abre en nueva pestaña)`
+    ariaViewMarket: (title, market) => `Ver ${title} en ${market} (abre en nueva pestaña)`,
+    emailCopiedToastTitle: "¡Correo copiado!",
+    emailCopiedToastDesc: "Copiado al portapapeles (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "¡Copiado! ✓",
+    emailOpenGmail: "Abrir Gmail Web",
+    emailOpenApp: "Abrir App de Correo"
   },
   nl: {
     pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
@@ -497,6 +583,9 @@ const TRANSLATIONS = {
     byAuthor: "door",
     previewBtn: "Voorbeeld",
     previewBadge: "Voorbeeldweergave",
+    badgeNew: "Nieuw",
+    badgeComingSoon: "Binnenkort",
+    comingSoonNotice: "Binnenkort verkrijgbaar op Amazon",
     coloredBtn: "Bekijk in kleur",
     coloredBadge: "Ingekleurde Tekeningen",
     coloredHeadline: "Kijk wat je kunt maken met dit boek!",
@@ -531,7 +620,12 @@ const TRANSLATIONS = {
     tiktokAria: "Volg @cozycoloringchaos op TikTok (opent in een nieuw tabblad)",
     noBooksFound: "Geen boeken gevonden voor deze taal. Ga naar 'Alle' om de collectie te bekijken!",
     ariaSelectMarket: (title) => `Selecteer Amazon-marktplaats voor ${title}`,
-    ariaViewMarket: (title, market) => `Bekijk ${title} op ${market} (opent in een nieuw tabblad)`
+    ariaViewMarket: (title, market) => `Bekijk ${title} op ${market} (opent in een nieuw tabblad)`,
+    emailCopiedToastTitle: "E-mail gekopieerd!",
+    emailCopiedToastDesc: "Gekopieerd naar klembord (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Gekopieerd! ✓",
+    emailOpenGmail: "Open Gmail Web",
+    emailOpenApp: "E-mailapp openen"
   },
   pl: {
     pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
@@ -546,6 +640,9 @@ const TRANSLATIONS = {
     byAuthor: "autorstwa",
     previewBtn: "Podgląd",
     previewBadge: "Podgląd książki",
+    badgeNew: "Nowość",
+    badgeComingSoon: "Wkrótce",
+    comingSoonNotice: "Wkrótce dostępne na Amazon",
     coloredBtn: "Zobacz w kolorze",
     coloredBadge: "Pokolorowane Prace",
     coloredHeadline: "Zobacz, co możesz stworzyć z tą książką!",
@@ -580,7 +677,12 @@ const TRANSLATIONS = {
     tiktokAria: "Obserwuj @cozycoloringchaos na TikToku (otwiera w nowej karcie)",
     noBooksFound: "Nie znaleziono książek w tym języku. Przejdź do 'Wszystkie', aby przejrzeć kolekcję!",
     ariaSelectMarket: (title) => `Wybierz sklep Amazon dla ${title}`,
-    ariaViewMarket: (title, market) => `Zobacz ${title} na ${market} (otwiera w nowej karcie)`
+    ariaViewMarket: (title, market) => `Zobacz ${title} na ${market} (otwiera w nowej karcie)`,
+    emailCopiedToastTitle: "E-mail skopiowany!",
+    emailCopiedToastDesc: "Skopiowano do schowka (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Skopiowano! ✓",
+    emailOpenGmail: "Otwórz Gmail Web",
+    emailOpenApp: "Otwórz aplikację"
   },
   sv: {
     pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
@@ -595,6 +697,9 @@ const TRANSLATIONS = {
     byAuthor: "av",
     previewBtn: "Förhandsvisning",
     previewBadge: "Förhandsvisning",
+    badgeNew: "Nyhet",
+    badgeComingSoon: "Kommer snart",
+    comingSoonNotice: "Kommer snart till Amazon",
     coloredBtn: "Se i färg",
     coloredBadge: "Färglagda Teckningar",
     coloredHeadline: "Här är vad du kan skapa med den här boken!",
@@ -629,7 +734,12 @@ const TRANSLATIONS = {
     tiktokAria: "Följ @cozycoloringchaos på TikTok (öppnas i ny flik)",
     noBooksFound: "Inga böcker hittades för detta språk. Välj 'Alla' för att utforska samlingen!",
     ariaSelectMarket: (title) => `Välj Amazon-marknadsplats för ${title}`,
-    ariaViewMarket: (title, market) => `Visa ${title} på ${market} (öppnas i ny flik)`
+    ariaViewMarket: (title, market) => `Visa ${title} på ${market} (öppnas i ny flik)`,
+    emailCopiedToastTitle: "E-post kopierad!",
+    emailCopiedToastDesc: "Kopierad till urklipp (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "Kopierad! ✓",
+    emailOpenGmail: "Öppna Gmail Web",
+    emailOpenApp: "Öppna e-postapp"
   },
   ja: {
     pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
@@ -644,6 +754,9 @@ const TRANSLATIONS = {
     byAuthor: "著者:",
     previewBtn: "プレビュー",
     previewBadge: "サンプルプレビュー",
+    badgeNew: "新刊",
+    badgeComingSoon: "近日発売",
+    comingSoonNotice: "Amazonにて近日発売予定",
     coloredBtn: "彩色ギャラリー",
     coloredBadge: "塗り絵の完成見本",
     coloredHeadline: "この本でこんな素敵な作品が作れます！",
@@ -678,7 +791,12 @@ const TRANSLATIONS = {
     tiktokAria: "TikTokで@cozycoloringchaosをフォロー（新しいタブで開く）",
     noBooksFound: "この言語の本は見つかりませんでした。「すべて」に切り替えてコレクションをご覧ください！",
     ariaSelectMarket: (title) => `${title} のAmazonマーケットプレイスを選択`,
-    ariaViewMarket: (title, market) => `${market} で ${title} を表示（新しいタブで開く）`
+    ariaViewMarket: (title, market) => `${market} で ${title} を表示（新しいタブで開く）`,
+    emailCopiedToastTitle: "メールアドレスをコピーしました！",
+    emailCopiedToastDesc: "クリップボードにコピー完了 (cozycoloringchaos@gmail.com)",
+    emailCopiedBtn: "コピー完了! ✓",
+    emailOpenGmail: "Gmail Webを開く",
+    emailOpenApp: "メールアプリを開く"
   }
 };
 
@@ -903,6 +1021,16 @@ function updateInterfaceLanguage(lang) {
   window.currentSelectedCountryCode = defaultCountryCode;
   populateCountrySelect(defaultCountryCode);
 
+  // Update Email Copy Toast texts
+  const toastTitle = document.getElementById('email-toast-title');
+  const toastDesc = document.getElementById('email-toast-desc');
+  const toastGmailLabel = document.getElementById('email-toast-gmail-label');
+  const toastAppLabel = document.getElementById('email-toast-app-label');
+  if (toastTitle && t.emailCopiedToastTitle) toastTitle.textContent = t.emailCopiedToastTitle;
+  if (toastDesc && t.emailCopiedToastDesc) toastDesc.textContent = t.emailCopiedToastDesc;
+  if (toastGmailLabel && t.emailOpenGmail) toastGmailLabel.textContent = t.emailOpenGmail;
+  if (toastAppLabel && t.emailOpenApp) toastAppLabel.textContent = t.emailOpenApp;
+
   // Update Language Switcher active buttons
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     const btnLang = btn.getAttribute('data-lang');
@@ -921,6 +1049,11 @@ function updateInterfaceLanguage(lang) {
   // Re-render books so book-level labels and store selections update
   renderBooks();
   updateFilterCounts();
+
+  // Update seasonal promotional campaign translations (banner & popup)
+  if (typeof updateCampaignTranslations === 'function') {
+    updateCampaignTranslations(currentLanguage);
+  }
 }
 
 /**
@@ -2076,47 +2209,77 @@ function createBookCard(book, index) {
   const safeAuthor = book.author ? escapeHtml(book.author) : '';
   const safeLang = book.language ? escapeHtml(book.language) : '';
   const safeCover = book.cover ? escapeHtml(book.cover) : '';
-  const hasPreview = Array.isArray(book.preview) && book.preview.length > 0;
-  const hasColored = Array.isArray(book.colored) && book.colored.length > 0;
+  const isComingSoon = !!book.isComingSoon;
+  const isNew = !!book.isNew;
+  const hasPreview = !isComingSoon && Array.isArray(book.preview) && book.preview.length > 0;
+  const hasColored = !isComingSoon && Array.isArray(book.colored) && book.colored.length > 0;
 
-  // Determine selected market based on state or website language
-  let initialMarketKey = selectedMarketState[book.id];
-  if (!initialMarketKey || !AMAZON_MARKETS[initialMarketKey]) {
-    initialMarketKey = getDefaultMarketForLanguage(book, currentLanguage);
+  // Status Badge (New / Coming Soon)
+  let statusBadgeHtml = '';
+  if (isNew) {
+    statusBadgeHtml = `<span class="book-status-badge badge-new">${escapeHtml(t.badgeNew || 'New')}</span>`;
+  } else if (isComingSoon) {
+    statusBadgeHtml = `<span class="book-status-badge badge-coming-soon">${escapeHtml(t.badgeComingSoon || 'Coming Soon')}</span>`;
   }
-  selectedMarketState[book.id] = initialMarketKey;
 
-  const initialUrl = getBookUrlForMarket(book, initialMarketKey);
-  const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flagCode: 'us', buttonLabel: 'Amazon' };
-  const initialLabel = initialMarketInfo.buttonLabel || initialMarketInfo.name;
-  const buyButtonText = (typeof t.viewOn === 'function') ? t.viewOn(initialLabel) : `VIEW ON ${initialLabel.toUpperCase()}`;
-  const buyButtonAria = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(safeTitle, initialMarketInfo.name) : `View ${safeTitle} on Amazon`;
-
-  // Language Badge
-  const langBadgeHtml = safeLang 
-    ? `<span class="book-lang-badge" aria-label="Language: ${safeLang}">${safeLang}</span>` 
-    : '';
+  // Icons for buttons
+  const iconEye = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
+  const iconPalette = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`;
+  const iconSample = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="12" y2="18"/><line x1="15" y1="15" x2="12" y2="18"/></svg>`;
 
   // Preview Chip Button
-  const previewChipHtml = hasPreview 
-    ? `<button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn} - ${safeTitle}">
+  let previewChipHtml = '';
+  if (isComingSoon) {
+    previewChipHtml = `
+      <button type="button" class="chip-preview-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+        ${iconEye}
         <span>${t.previewBtn}</span>
-       </button>`
-    : '';
+      </button>
+    `;
+  } else if (hasPreview) {
+    previewChipHtml = `
+      <button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn} - ${safeTitle}">
+        ${iconEye}
+        <span>${t.previewBtn}</span>
+      </button>
+    `;
+  }
 
   // Colored Preview Chip Button ("See it colored")
-  const coloredChipHtml = hasColored
-    ? `<button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn} - ${safeTitle}">
+  let coloredChipHtml = '';
+  if (isComingSoon) {
+    coloredChipHtml = `
+      <button type="button" class="chip-colored-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+        ${iconPalette}
         <span>${t.coloredBtn}</span>
-       </button>`
-    : '';
+      </button>
+    `;
+  } else if (hasColored) {
+    coloredChipHtml = `
+      <button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn} - ${safeTitle}">
+        ${iconPalette}
+        <span>${t.coloredBtn}</span>
+      </button>
+    `;
+  }
 
   // Free Sample Chip Button ("Free Sample")
-  const sampleChipHtml = `
-    <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
-      <span>${t.freeSampleBtn || 'Free Sample'}</span>
-    </button>
-  `;
+  let sampleChipHtml = '';
+  if (isComingSoon) {
+    sampleChipHtml = `
+      <button type="button" class="chip-sample-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+        ${iconSample}
+        <span>${t.freeSampleBtn || 'Free Sample'}</span>
+      </button>
+    `;
+  } else {
+    sampleChipHtml = `
+      <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
+        ${iconSample}
+        <span>${t.freeSampleBtn || 'Free Sample'}</span>
+      </button>
+    `;
+  }
 
   // Localized Author prefix ("di" / "by")
   const authorPrefix = t.byAuthor || 'by';
@@ -2129,24 +2292,102 @@ function createBookCard(book, index) {
     ? `<p class="book-subtitle">${safeSubtitle}</p>` 
     : '';
 
-  // Custom Marketplace Dropdown Options with Flag Images
-  const marketOptionsHtml = Object.entries(AMAZON_MARKETS).map(([key, info]) => {
-    const isSelected = (key === initialMarketKey);
-    return `
-      <div class="market-option ${isSelected ? 'selected' : ''}" data-market-key="${key}" role="option" aria-selected="${isSelected ? 'true' : 'false'}" onclick="selectBookMarket('${escapeJs(book.id)}', '${key}')">
-        <img src="https://flagcdn.com/24x18/${info.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${info.flagCode || 'un'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
-        <span class="market-option-name">${escapeHtml(info.name)}</span>
-        ${isSelected ? '<span class="market-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' : ''}
+  // Action Area: if coming soon, show notice + disabled button. Otherwise Amazon store dropdown + link.
+  let actionAreaHtml = '';
+  if (isComingSoon) {
+    actionAreaHtml = `
+      <div class="book-action-area coming-soon-action-area">
+        <div class="coming-soon-notice">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <span>${escapeHtml(t.comingSoonNotice || 'In arrivo prossimamente su Amazon')}</span>
+        </div>
+        <button type="button" class="btn-buy is-disabled" disabled aria-disabled="true">
+          <span class="btn-buy-text">${escapeHtml(t.badgeComingSoon || 'Coming Soon')}</span>
+        </button>
       </div>
     `;
-  }).join('');
+  } else {
+    // Determine selected market based on state or website language
+    let initialMarketKey = selectedMarketState[book.id];
+    if (!initialMarketKey || !AMAZON_MARKETS[initialMarketKey]) {
+      initialMarketKey = getDefaultMarketForLanguage(book, currentLanguage);
+    }
+    selectedMarketState[book.id] = initialMarketKey;
+
+    const initialUrl = getBookUrlForMarket(book, initialMarketKey);
+    const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flagCode: 'us', buttonLabel: 'Amazon' };
+    const initialLabel = initialMarketInfo.buttonLabel || initialMarketInfo.name;
+    const buyButtonText = (typeof t.viewOn === 'function') ? t.viewOn(initialLabel) : `VIEW ON ${initialLabel.toUpperCase()}`;
+    const buyButtonAria = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(safeTitle, initialMarketInfo.name) : `View ${safeTitle} on Amazon`;
+
+    // Custom Marketplace Dropdown Options with Flag Images
+    const marketOptionsHtml = Object.entries(AMAZON_MARKETS).map(([key, info]) => {
+      const isSelected = (key === initialMarketKey);
+      return `
+        <div class="market-option ${isSelected ? 'selected' : ''}" data-market-key="${key}" role="option" aria-selected="${isSelected ? 'true' : 'false'}" onclick="selectBookMarket('${escapeJs(book.id)}', '${key}')">
+          <img src="https://flagcdn.com/24x18/${info.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${info.flagCode || 'un'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+          <span class="market-option-name">${escapeHtml(info.name)}</span>
+          ${isSelected ? '<span class="market-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' : ''}
+        </div>
+      `;
+    }).join('');
+
+    actionAreaHtml = `
+      <div class="book-action-area">
+        <div class="market-selector-wrapper">
+          <label for="market-native-select-${escapeHtml(book.id)}" class="market-label">
+            <span>${t.selectStore || "Select Amazon Store"}</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.6;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+          </label>
+          <div class="custom-market-select" id="custom-market-select-${escapeHtml(book.id)}">
+            <button 
+              type="button" 
+              class="market-trigger" 
+              onclick="toggleMarketDropdown('${escapeJs(book.id)}', event)"
+              aria-haspopup="listbox" 
+              aria-expanded="false" 
+              aria-label="${(typeof t.ariaSelectMarket === 'function') ? t.ariaSelectMarket(safeTitle) : `Select store for ${safeTitle}`}"
+            >
+              <span class="market-trigger-content">
+                <img src="https://flagcdn.com/24x18/${initialMarketInfo.flagCode || 'us'}.png" srcset="https://flagcdn.com/48x36/${initialMarketInfo.flagCode || 'us'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+                <span class="market-selected-name">${escapeHtml(initialMarketInfo.name)}</span>
+              </span>
+              <svg class="market-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+            <div class="market-dropdown-menu" id="market-dropdown-${escapeHtml(book.id)}" role="listbox" style="display: none;">
+              ${marketOptionsHtml}
+            </div>
+            <select id="market-native-select-${escapeHtml(book.id)}" class="sr-only-select" tabindex="-1" aria-hidden="true">
+              ${Object.entries(AMAZON_MARKETS).map(([key, info]) => `<option value="${key}" ${key === initialMarketKey ? 'selected' : ''}>${info.name}</option>`).join('')}
+            </select>
+          </div>
+        </div>
+
+        <a 
+          href="${initialUrl}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-buy"
+          aria-label="${buyButtonAria}"
+        >
+          <span class="btn-buy-text">${buyButtonText}</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    `;
+  }
 
   return `
-    <article class="book-card" role="listitem" id="card-${escapeHtml(book.id || index)}">
-      <!-- Book Cover Image with Preview Click Trigger -->
+    <article class="book-card ${isComingSoon ? 'book-card-coming-soon' : ''}" role="listitem" id="card-${escapeHtml(book.id || index)}">
+      <!-- Book Cover Image with optional Preview Click Trigger -->
       <div 
         class="book-cover-container ${hasPreview || hasColored ? 'has-preview' : ''}"
-        ${hasPreview || hasColored ? `onclick="openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'}')" title="${hasColored ? t.coloredBtn : t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'})"` : ''}
+        ${(hasPreview || hasColored) ? `onclick="openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'}')" title="${hasColored ? t.coloredBtn : t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'})"` : ''}
       >
         <img 
           src="${safeCover}" 
@@ -2157,13 +2398,14 @@ function createBookCard(book, index) {
           oncontextmenu="return false;"
           onerror="handleImageError(this, '${safeTitle.replace(/'/g, "\\'")}')"
         >
-        ${hasPreview || hasColored ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${hasColored ? t.coloredBtn : t.previewBtn}</span></div>` : ''}
+        ${(hasPreview || hasColored) ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${hasColored ? t.coloredBtn : t.previewBtn}</span></div>` : ''}
       </div>
 
       <!-- Book Info -->
       <div class="book-details">
         <div class="book-header-row">
           <h3 class="book-title">${safeTitle}</h3>
+          ${statusBadgeHtml}
         </div>
 
         <div class="book-meta-row">
@@ -2175,53 +2417,7 @@ function createBookCard(book, index) {
         ${authorHtml}
         ${subtitleHtml}
 
-        <!-- Amazon Marketplace Selector & Action Area -->
-        <div class="book-action-area">
-          <div class="market-selector-wrapper">
-            <label for="market-native-select-${escapeHtml(book.id)}" class="market-label">
-              <span>${t.selectStore || "Select Amazon Store"}</span>
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.6;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-            </label>
-            <div class="custom-market-select" id="custom-market-select-${escapeHtml(book.id)}">
-              <button 
-                type="button" 
-                class="market-trigger" 
-                onclick="toggleMarketDropdown('${escapeJs(book.id)}', event)"
-                aria-haspopup="listbox" 
-                aria-expanded="false" 
-                aria-label="${(typeof t.ariaSelectMarket === 'function') ? t.ariaSelectMarket(safeTitle) : `Select store for ${safeTitle}`}"
-              >
-                <span class="market-trigger-content">
-                  <img src="https://flagcdn.com/24x18/${initialMarketInfo.flagCode || 'us'}.png" srcset="https://flagcdn.com/48x36/${initialMarketInfo.flagCode || 'us'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
-                  <span class="market-selected-name">${escapeHtml(initialMarketInfo.name)}</span>
-                </span>
-                <svg class="market-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <polyline points="6 9 12 15 18 9"></polyline>
-                </svg>
-              </button>
-              <div class="market-dropdown-menu" id="market-dropdown-${escapeHtml(book.id)}" role="listbox" style="display: none;">
-                ${marketOptionsHtml}
-              </div>
-              <select id="market-native-select-${escapeHtml(book.id)}" class="sr-only-select" tabindex="-1" aria-hidden="true">
-                ${Object.entries(AMAZON_MARKETS).map(([key, info]) => `<option value="${key}" ${key === initialMarketKey ? 'selected' : ''}>${info.name}</option>`).join('')}
-              </select>
-            </div>
-          </div>
-
-          <a 
-            href="${initialUrl}" 
-            target="_blank" 
-            rel="noopener noreferrer" 
-            class="btn-buy"
-            aria-label="${buyButtonAria}"
-          >
-            <span class="btn-buy-text">${buyButtonText}</span>
-            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <line x1="7" y1="17" x2="17" y2="7"></line>
-              <polyline points="7 7 17 7 17 17"></polyline>
-            </svg>
-          </a>
-        </div>
+        ${actionAreaHtml}
       </div>
     </article>
   `;
@@ -2261,10 +2457,124 @@ function updateFooterYear() {
   }
 }
 
+let emailToastTimeout = null;
+
 /**
- * Attaches event listeners to language switcher and filter buttons.
+ * Copies the provided email string to the clipboard using modern APIs with legacy fallback.
+ */
+function copyEmailToClipboard(email) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    return navigator.clipboard.writeText(email);
+  }
+  return new Promise((resolve, reject) => {
+    try {
+      const textArea = document.createElement('textarea');
+      textArea.value = email;
+      textArea.style.position = 'fixed';
+      textArea.style.top = '0';
+      textArea.style.left = '0';
+      textArea.style.opacity = '0';
+      document.body.appendChild(textArea);
+      textArea.focus();
+      textArea.select();
+      const success = document.execCommand('copy');
+      document.body.removeChild(textArea);
+      if (success) resolve();
+      else reject(new Error('execCommand failed'));
+    } catch (err) {
+      reject(err);
+    }
+  });
+}
+
+/**
+ * Shows the Email Copy Toast notification with quick actions.
+ */
+function showEmailToast() {
+  const toast = document.getElementById('email-toast');
+  if (!toast) return;
+
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+  const toastTitle = document.getElementById('email-toast-title');
+  const toastDesc = document.getElementById('email-toast-desc');
+  const toastGmailLabel = document.getElementById('email-toast-gmail-label');
+  const toastAppLabel = document.getElementById('email-toast-app-label');
+
+  if (toastTitle && t.emailCopiedToastTitle) toastTitle.textContent = t.emailCopiedToastTitle;
+  if (toastDesc && t.emailCopiedToastDesc) toastDesc.textContent = t.emailCopiedToastDesc;
+  if (toastGmailLabel && t.emailOpenGmail) toastGmailLabel.textContent = t.emailOpenGmail;
+  if (toastAppLabel && t.emailOpenApp) toastAppLabel.textContent = t.emailOpenApp;
+
+  toast.classList.add('show');
+  toast.setAttribute('aria-hidden', 'false');
+
+  if (emailToastTimeout) {
+    clearTimeout(emailToastTimeout);
+  }
+  emailToastTimeout = setTimeout(() => {
+    hideEmailToast();
+  }, 6000);
+}
+
+/**
+ * Hides the Email Copy Toast notification.
+ */
+function hideEmailToast() {
+  const toast = document.getElementById('email-toast');
+  if (!toast) return;
+  toast.classList.remove('show');
+  toast.setAttribute('aria-hidden', 'true');
+  if (emailToastTimeout) {
+    clearTimeout(emailToastTimeout);
+    emailToastTimeout = null;
+  }
+}
+
+/**
+ * Handles clicks on the Topbar Email button.
+ * Prevents OS mailto scheme crashes on mobile/in-app webviews,
+ * copies the email to clipboard, provides in-button visual feedback,
+ * and opens the smart action toast.
+ */
+function handleEmailButtonClick(e) {
+  e.preventDefault();
+  const email = "cozycoloringchaos@gmail.com";
+  const btn = document.getElementById('topbar-email-btn');
+  const label = document.getElementById('topbar-email-label');
+  const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
+
+  copyEmailToClipboard(email).then(() => {
+    if (btn && label) {
+      btn.classList.add('copied-feedback');
+      label.textContent = t.emailCopiedBtn || "Copiato! ✓";
+      setTimeout(() => {
+        btn.classList.remove('copied-feedback');
+        label.textContent = email;
+      }, 2500);
+    }
+    showEmailToast();
+  }).catch(() => {
+    // Show toast even if clipboard access is denied
+    showEmailToast();
+  });
+}
+
+/**
+ * Attaches event listeners to language switcher, filter buttons, and email button.
  */
 function attachEventListeners() {
+  // Topbar Email Click Handler (Copy + Toast)
+  const emailBtn = document.getElementById('topbar-email-btn');
+  if (emailBtn) {
+    emailBtn.addEventListener('click', handleEmailButtonClick);
+  }
+
+  // Toast Close Button
+  const emailToastClose = document.getElementById('email-toast-close-btn');
+  if (emailToastClose) {
+    emailToastClose.addEventListener('click', hideEmailToast);
+  }
+
   // Language Switcher Buttons
   document.querySelectorAll('.lang-btn').forEach((btn) => {
     btn.addEventListener('click', () => {

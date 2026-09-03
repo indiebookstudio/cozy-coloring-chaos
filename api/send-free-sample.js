@@ -52,12 +52,22 @@ const AMAZON_MARKETS = {
 
 const BOOKS = [
   {
+    id: "cozy-terror",
+    title: "Cozy Terror",
+    subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
+    author: "Isaac McClour",
+    cover: "assets/books/Cozy.Terror/Front.Cover.png",
+    samplePdf: "assets/books/Cozy.Terror/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HHKY6Q8V"
+  },
+  {
     id: "impossible-worlds",
     title: "Impossible Worlds",
     subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
     author: "Isaac McClour",
-    cover: "assets/Impossible.Worlds/Front.Cover.png",
-    samplePdf: "assets/Impossible.Worlds/Sample/Free.Sample.pdf",
+    cover: "assets/books/Impossible.Worlds/Front.Cover.png",
+    samplePdf: "assets/books/Impossible.Worlds/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HFZZ2TMH"
   },
@@ -66,8 +76,8 @@ const BOOKS = [
     title: "Italian Girls",
     subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
     author: "Isaac McClour",
-    cover: "assets/Italian.Girls/Front.Cover.png",
-    samplePdf: "assets/Italian.Girls/Sample/Free.Sample.pdf",
+    cover: "assets/books/Italian.Girls/Front.Cover.png",
+    samplePdf: "assets/books/Italian.Girls/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HGJBKMGZ"
   },
@@ -76,8 +86,8 @@ const BOOKS = [
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
-    cover: "assets/Innocent.Paws/Front.Cover.png",
-    samplePdf: "assets/Innocent.Paws/Sample/Free.Sample.pdf",
+    cover: "assets/books/Innocent.Paws/Front.Cover.png",
+    samplePdf: "assets/books/Innocent.Paws/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HFGBJW8Y"
   },
@@ -86,8 +96,8 @@ const BOOKS = [
     title: "Killer Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
-    cover: "assets/Killer.Paws/Front.Cover.png",
-    samplePdf: "assets/Killer.Paws/Sample/Free.Sample.pdf",
+    cover: "assets/books/Killer.Paws/Front.Cover.png",
+    samplePdf: "assets/books/Killer.Paws/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HGGQ3GZ8"
   },
@@ -96,8 +106,8 @@ const BOOKS = [
     title: "Non Rompetemi i Coglioni",
     subtitle: "Il libro da colorare per sfogarsi senza finire nei guai | Libro antistress kawaii per adulti",
     author: "Lucas C. Morica",
-    cover: "assets/Non.Rompetemi.I.Coglioni/Front.Cover.png",
-    samplePdf: "assets/Non.Rompetemi.I.Coglioni/Sample/Free.Sample.pdf",
+    cover: "assets/books/Non.Rompetemi.I.Coglioni/Front.Cover.png",
+    samplePdf: "assets/books/Non.Rompetemi.I.Coglioni/Sample/Free.Sample.pdf",
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
   }
@@ -477,7 +487,7 @@ export default async function handler(req) {
     }
 
     // 8. PDF Attachment URL
-    const pdfPath = book.samplePdf || 'assets/Impossible.Worlds/Sample/Free.Sample.pdf';
+    const pdfPath = book.samplePdf || 'assets/books/Impossible.Worlds/Sample/Free.Sample.pdf';
     const sampleFileName = `${book.title.replace(/[^a-zA-Z0-9]/g, '-')}-Free-Sample.pdf`;
     const cdnPdfUrl = `${CONFIG.siteUrl}${pdfPath.replace(/^\/+/, '')}`;
 
