@@ -133,28 +133,29 @@ body {
 }
 
 .topbar-inner {
-  max-width: 1080px;
+  max-width: 1360px;
   margin: 0 auto;
   padding: 0.45rem 1.25rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 0.75rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
 }
 
 .topbar-links {
   display: inline-flex;
   align-items: center;
   gap: 0.45rem;
-  flex-wrap: wrap;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
 }
 
 .topbar-btn {
   display: inline-flex;
   align-items: center;
   gap: 0.35rem;
-  padding: 0.28rem 0.65rem;
+  padding: 0.28rem 0.6rem;
   font-family: var(--font-body);
   font-size: 0.78rem;
   font-weight: 600;
@@ -222,19 +223,26 @@ body {
   z-index: 1;
 }
 
+/* Language Switcher Wrapper */
+.lang-switcher-wrapper {
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+}
+
 .lang-switcher {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  flex-wrap: wrap;
-  gap: 3px;
+  flex-wrap: nowrap;
+  flex-shrink: 0;
+  gap: 2px;
   background-color: var(--color-bg-surface);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
-  padding: 4px 6px;
+  padding: 3px 5px;
   box-shadow: var(--shadow-sm);
   transition: border-color var(--transition-fast), background-color var(--transition-fast);
-  max-width: 100%;
 }
 
 .lang-switcher:hover {
@@ -244,10 +252,10 @@ body {
 .lang-btn {
   display: inline-flex;
   align-items: center;
-  gap: 0.3rem;
-  padding: 0.3rem 0.55rem;
+  gap: 0.22rem;
+  padding: 0.22rem 0.38rem;
   font-family: var(--font-body);
-  font-size: 0.78rem;
+  font-size: 0.74rem;
   font-weight: 700;
   color: var(--color-text-muted);
   background: transparent;
@@ -267,8 +275,8 @@ body {
 }
 
 .lang-flag-img {
-  width: 18px;
-  height: 13px;
+  width: 17px;
+  height: 12px;
   border-radius: 2px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
   object-fit: cover;
@@ -295,6 +303,121 @@ body {
 .lang-btn:focus-visible {
   outline: 2px solid var(--color-coral-primary);
   outline-offset: 1px;
+}
+
+/* Mobile Language Selector Dropdown */
+.lang-mobile-select {
+  display: none;
+  position: relative;
+}
+
+.lang-mobile-trigger {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.26rem 0.52rem;
+  background-color: var(--color-bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  font-family: var(--font-body);
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: var(--color-text-main);
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.lang-mobile-trigger:hover {
+  background-color: #FFFFFF;
+  border-color: var(--color-border-hover);
+}
+
+.lang-mobile-flag {
+  width: 17px;
+  height: 12px;
+  border-radius: 2px;
+  object-fit: cover;
+  flex-shrink: 0;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}
+
+.lang-mobile-code {
+  letter-spacing: 0.04em;
+}
+
+.lang-mobile-chevron {
+  transition: transform var(--transition-fast);
+  color: var(--color-text-muted);
+  flex-shrink: 0;
+}
+
+.lang-mobile-select.open .lang-mobile-chevron {
+  transform: rotate(180deg);
+}
+
+.lang-mobile-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 145px;
+  background-color: #FFFFFF;
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.04);
+  padding: 0.3rem;
+  z-index: 1001;
+  display: none;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.lang-mobile-dropdown.show {
+  display: flex;
+}
+
+.lang-mobile-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 100%;
+  padding: 0.42rem 0.55rem;
+  border: none;
+  background: transparent;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-body);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-main);
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-fast), color var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+  white-space: nowrap;
+}
+
+.lang-mobile-item:hover {
+  background-color: var(--color-bg-alt);
+  color: var(--color-coral-primary);
+}
+
+.lang-mobile-item.active {
+  background-color: rgba(255, 84, 54, 0.08);
+  color: var(--color-coral-primary);
+  font-weight: 700;
+}
+
+.lang-mobile-name {
+  flex: 1;
+}
+
+.lang-mobile-short {
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--color-text-light);
+  letter-spacing: 0.04em;
 }
 
 .header-inner {
@@ -993,18 +1116,70 @@ body {
   color: var(--color-text-light);
 }
 
+/* Responsive labels for topbar */
+.topbar-label-mobile {
+  display: none;
+}
+
+@media (max-width: 960px) {
+  .topbar-label-desktop {
+    display: none !important;
+  }
+  .topbar-label-mobile {
+    display: inline !important;
+  }
+}
+
+/* Breakpoint for Desktop Flags Bar vs Mobile Dropdown */
+@media (max-width: 860px) {
+  .lang-switcher-desktop {
+    display: none !important;
+  }
+  .lang-mobile-select {
+    display: inline-flex !important;
+  }
+}
+
 /* --------------------------------------------------------------------------
    8. MOBILE OPTIMIZATIONS
    -------------------------------------------------------------------------- */
 @media (max-width: 768px) {
   .topbar-inner {
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.4rem 0.75rem;
+    justify-content: space-between;
+    gap: 0.4rem;
+    padding: 0.35rem 0.65rem;
+    flex-wrap: nowrap !important;
   }
   
   .topbar-links {
-    justify-content: center;
+    justify-content: flex-start;
+    flex-wrap: nowrap !important;
+    flex-shrink: 0;
+    gap: 0.3rem;
+  }
+
+  .topbar-btn {
+    padding: 0.24rem 0.5rem;
+    font-size: 0.75rem;
+  }
+}
+
+@media (max-width: 600px) {
+  /* On small phones, show icons only for social/contact links to guarantee single row */
+  .topbar-btn.topbar-tiktok .topbar-label,
+  .topbar-btn.topbar-email .topbar-label {
+    display: none !important;
+  }
+  
+  .topbar-btn.topbar-tiktok,
+  .topbar-btn.topbar-email {
+    padding: 0.28rem 0.45rem;
+  }
+
+  .topbar-btn.topbar-nav-books,
+  .topbar-btn.topbar-nav-authors {
+    padding: 0.24rem 0.45rem;
+    font-size: 0.72rem;
   }
 }
 
@@ -1014,20 +1189,18 @@ body {
   }
 
   .topbar-inner {
-    padding: 0.35rem 0.5rem;
-    gap: 0.4rem;
+    padding: 0.3rem 0.45rem;
+    gap: 0.25rem;
+  }
+
+  .topbar-links {
+    gap: 0.22rem;
   }
 
   .topbar-btn {
-    font-size: 0.73rem;
-    padding: 0.22rem 0.5rem;
-  }
-
-  .topbar-email .topbar-label {
-    max-width: 140px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
+    font-size: 0.72rem;
+    padding: 0.22rem 0.38rem;
+    gap: 0.2rem;
   }
 
   .brand-title {
@@ -2328,4 +2501,543 @@ body {
     transform: translate(50%, 0) scale(1);
   }
 }
+
+/* ==========================================================================
+   10. AUTHORS / MEET THE AUTHORS PAGE STYLES
+   ========================================================================== */
+
+/* Topbar Navigation Active State */
+.topbar-btn.active {
+  color: #FFFFFF !important;
+  background-color: var(--color-coral-primary) !important;
+  border-color: var(--color-coral-primary) !important;
+  box-shadow: 0 2px 10px rgba(255, 84, 54, 0.3) !important;
+}
+
+.topbar-btn.active .topbar-icon {
+  stroke: #FFFFFF !important;
+}
+
+.topbar-btn.active:hover {
+  background-color: #E63D1C !important;
+  color: #FFFFFF !important;
+  border-color: #E63D1C !important;
+}
+
+/* Footer Navigation Links */
+.footer-nav-links {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.footer-nav-link {
+  color: var(--color-text-muted);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+}
+
+.footer-nav-link:hover,
+.footer-nav-link.active {
+  color: var(--color-coral-primary);
+}
+
+.footer-nav-sep {
+  color: var(--color-border-hover);
+  font-size: 0.75rem;
+}
+
+/* Authors Hero */
+.authors-hero-section {
+  padding: 3rem 1.25rem 2rem 1.25rem;
+  text-align: center;
+  position: relative;
+}
+
+.authors-hero-inner {
+  max-width: 760px;
+  margin: 0 auto;
+}
+
+.authors-hero-badge {
+  display: inline-block;
+  padding: 0.3rem 0.85rem;
+  font-family: var(--font-body);
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-coral-primary);
+  background-color: rgba(255, 84, 54, 0.1);
+  border-radius: var(--radius-pill);
+  margin-bottom: 0.85rem;
+}
+
+.authors-hero-title {
+  font-family: var(--font-display);
+  font-size: 3.1rem;
+  font-weight: 800;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  color: var(--color-text-main);
+  margin-bottom: 0.85rem;
+}
+
+.authors-hero-intro {
+  font-family: var(--font-body);
+  font-size: 1.15rem;
+  line-height: 1.55;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+
+/* Authors Main Layout */
+.authors-page-wrapper {
+  padding-top: 0.5rem;
+}
+
+.authors-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2.75rem;
+}
+
+.author-section {
+  border-radius: var(--radius-lg);
+  padding: 2.5rem;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.author-card-grid {
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 3rem;
+  align-items: center;
+}
+
+.author-card-grid-reversed {
+  grid-template-columns: 1fr 360px;
+}
+
+.author-card-grid-reversed .author-portrait-col {
+  order: 2;
+}
+
+.author-card-grid-reversed .author-content-col {
+  order: 1;
+}
+
+/* Portrait Styling */
+.author-portrait-col {
+  display: flex;
+  justify-content: center;
+}
+
+.author-portrait-frame {
+  position: relative;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+}
+
+.author-portrait-img {
+  width: 100%;
+  height: auto;
+  aspect-ratio: 511 / 685;
+  object-fit: contain;
+  display: block;
+  border-radius: 20px;
+  transition: transform 0.4s ease;
+}
+
+.author-section:hover .author-portrait-img {
+  transform: scale(1.02);
+}
+
+.author-persona-pill {
+  position: absolute;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  background-color: rgba(255, 255, 255, 0.94);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 84, 54, 0.2);
+  border-radius: var(--radius-pill);
+  padding: 0.35rem 0.85rem;
+  font-size: 0.76rem;
+  font-weight: 700;
+  color: #1C1917;
+  white-space: nowrap;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+}
+
+.author-persona-pill-dark {
+  background-color: rgba(24, 24, 27, 0.94);
+  border-color: rgba(245, 158, 11, 0.35);
+  color: #F4EFE6;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}
+
+.pill-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.pill-dot-cozy {
+  background-color: var(--color-coral-primary);
+  box-shadow: 0 0 8px var(--color-coral-primary);
+}
+
+.pill-dot-edgy {
+  background-color: #F59E0B;
+  box-shadow: 0 0 8px #F59E0B;
+}
+
+/* ==============================================
+   ISAAC MCCLOUR - SPECIFIC AESTHETIC
+   Warm, light, cozy, artistic, elegant, playful
+   ============================================== */
+.author-card-isaac {
+  background: linear-gradient(145deg, #FFFFFF 0%, #FFFDF9 50%, #FFF6EE 100%);
+  border: 1.5px solid #EFE4D6;
+  box-shadow: 0 10px 30px -4px rgba(255, 84, 54, 0.07), 0 4px 14px rgba(28, 25, 23, 0.04);
+}
+
+.author-card-isaac:hover {
+  box-shadow: 0 16px 40px -6px rgba(255, 84, 54, 0.12), 0 6px 18px rgba(28, 25, 23, 0.06);
+}
+
+.author-badge-warm {
+  display: inline-block;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--color-coral-primary);
+  background-color: rgba(255, 84, 54, 0.08);
+  border: 1px solid rgba(255, 84, 54, 0.15);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.author-card-isaac .author-name {
+  font-family: var(--font-display);
+  font-size: 2.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #1C1917;
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
+}
+
+.author-card-isaac .author-tagline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-coral-primary);
+  margin-bottom: 1.35rem;
+}
+
+.author-card-isaac .author-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #38332E;
+  margin-bottom: 1.5rem;
+}
+
+.author-creative-world-warm {
+  background-color: rgba(255, 84, 54, 0.06);
+  border-left: 3.5px solid var(--color-coral-primary);
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.65rem;
+}
+
+.author-creative-world-warm .creative-world-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: var(--color-coral-primary);
+  margin-bottom: 0.25rem;
+}
+
+.author-creative-world-warm .creative-world-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #292524;
+}
+
+.btn-author-isaac {
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(255, 84, 54, 0.28);
+}
+
+.btn-author-isaac:hover {
+  background: var(--gradient-cta-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255, 84, 54, 0.4);
+}
+
+/* ==============================================
+   LUCAS C. MORICA - SPECIFIC AESTHETIC
+   Darker, irreverent, rougher, humorous, confident
+   ============================================== */
+.author-card-lucas {
+  background: linear-gradient(150deg, #18181B 0%, #222026 50%, #151418 100%);
+  border: 1.5px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 0 14px 40px -6px rgba(0, 0, 0, 0.45);
+  color: #F4EFE6;
+}
+
+.author-card-lucas:hover {
+  box-shadow: 0 20px 48px -6px rgba(0, 0, 0, 0.6);
+  border-color: rgba(245, 158, 11, 0.35);
+}
+
+.author-card-lucas .author-portrait-frame {
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 12px 36px rgba(0, 0, 0, 0.6);
+}
+
+.author-badge-dark {
+  display: inline-block;
+  font-size: 0.73rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #F59E0B;
+  background-color: rgba(245, 158, 11, 0.12);
+  border: 1px solid rgba(245, 158, 11, 0.28);
+  border-radius: var(--radius-pill);
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.65rem;
+}
+
+.author-card-lucas .author-name {
+  font-family: var(--font-display);
+  font-size: 2.45rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #FFFFFF;
+  margin-bottom: 0.35rem;
+  line-height: 1.15;
+}
+
+.author-card-lucas .author-tagline {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #F59E0B;
+  margin-bottom: 1.35rem;
+}
+
+.author-card-lucas .author-bio {
+  display: flex;
+  flex-direction: column;
+  gap: 0.85rem;
+  font-size: 0.98rem;
+  line-height: 1.7;
+  color: #D6D3D1;
+  margin-bottom: 1.5rem;
+}
+
+.author-creative-world-dark {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 3.5px solid #F59E0B;
+  border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+  padding: 0.85rem 1.15rem;
+  margin-bottom: 1.65rem;
+}
+
+.author-creative-world-dark .creative-world-label {
+  display: block;
+  font-family: var(--font-display);
+  font-weight: 800;
+  font-size: 0.95rem;
+  color: #F59E0B;
+  margin-bottom: 0.25rem;
+}
+
+.author-creative-world-dark .creative-world-text {
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: #E7E5E4;
+}
+
+.btn-author-lucas {
+  background: linear-gradient(135deg, #F59E0B 0%, #D97706 100%);
+  color: #121110;
+  font-weight: 800;
+  box-shadow: 0 4px 16px rgba(245, 158, 11, 0.28);
+}
+
+.btn-author-lucas:hover {
+  background: linear-gradient(135deg, #FBBF24 0%, #B45309 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.42);
+}
+
+/* Common CTA Button */
+.btn-author-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.55rem;
+  padding: 0.65rem 1.35rem;
+  font-family: var(--font-body);
+  font-size: 0.88rem;
+  font-weight: 700;
+  border-radius: var(--radius-pill);
+  text-decoration: none;
+  transition: all var(--transition-fast);
+}
+
+.btn-author-cta .btn-arrow-icon {
+  transition: transform var(--transition-fast);
+}
+
+.btn-author-cta:hover .btn-arrow-icon {
+  transform: translateX(3px);
+}
+
+/* ==============================================
+   EDITORIAL NOTE: ABOUT THE AUTHORS
+   Understated, subtle, smaller typography & whitespace
+   ============================================== */
+.authors-editorial-note {
+  width: 100%;
+  margin: 0;
+  padding: 1.75rem 2.5rem;
+  background-color: rgba(244, 239, 230, 0.45);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  box-sizing: border-box;
+}
+
+.editorial-note-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 880px;
+  margin: 0 auto;
+}
+
+.editorial-note-title {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--color-text-light);
+  margin-bottom: 0.55rem;
+}
+
+.editorial-note-body {
+  display: flex;
+  flex-direction: column;
+  gap: 0.45rem;
+  font-size: 0.74rem;
+  line-height: 1.55;
+  color: var(--color-text-light);
+}
+
+/* ==============================================
+   RESPONSIVE BREAKPOINTS FOR AUTHORS PAGE
+   ============================================== */
+@media (max-width: 900px) {
+  .author-card-grid,
+  .author-card-grid-reversed {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+
+  .author-card-grid-reversed .author-portrait-col {
+    order: 1;
+  }
+
+  .author-card-grid-reversed .author-content-col {
+    order: 2;
+  }
+
+  .author-portrait-frame {
+    max-width: 320px;
+  }
+
+  .author-section {
+    padding: 1.75rem;
+  }
+
+  .authors-editorial-note {
+    padding: 1.75rem 1.5rem;
+  }
+
+  .authors-hero-title {
+    font-size: 2.5rem;
+  }
+}
+
+@media (max-width: 600px) {
+  .authors-hero-section {
+    padding: 2rem 1rem 1.25rem 1rem;
+  }
+
+  .authors-hero-title {
+    font-size: 2rem;
+  }
+
+  .authors-hero-intro {
+    font-size: 1rem;
+  }
+
+  .author-section {
+    padding: 1.25rem;
+  }
+
+  .author-card-isaac .author-name,
+  .author-card-lucas .author-name {
+    font-size: 1.85rem;
+  }
+
+  .author-card-isaac .author-tagline,
+  .author-card-lucas .author-tagline {
+    font-size: 1.05rem;
+  }
+
+  .author-portrait-frame {
+    max-width: 260px;
+  }
+
+  .authors-editorial-note {
+    padding: 1.25rem 1rem;
+  }
+
+  .editorial-note-title {
+    font-size: 0.76rem;
+  }
+
+  .editorial-note-body {
+    font-size: 0.7rem;
+  }
+}
+
 
