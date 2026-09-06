@@ -615,7 +615,14 @@ body {
   box-shadow: var(--shadow-card);
   transition: transform var(--transition-smooth), box-shadow var(--transition-smooth), border-color var(--transition-smooth);
   position: relative;
+  z-index: 1;
   animation: cardFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Ensure the card with an open marketplace dropdown floats above subsequent cards (especially in mobile 1-column layout) */
+.book-card.has-open-dropdown,
+.book-card:has(.custom-market-select.open) {
+  z-index: 60 !important;
 }
 
 @keyframes cardFadeIn {
@@ -814,6 +821,10 @@ body {
   width: 100%;
 }
 
+.custom-market-select.open {
+  z-index: 70;
+}
+
 .market-trigger {
   width: 100%;
   display: flex;
@@ -890,13 +901,16 @@ body {
   top: calc(100% + 4px);
   left: 0;
   right: 0;
-  max-height: 220px;
+  max-height: 240px;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior: contain;
+  touch-action: pan-y;
   background: #FFFFFF;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
-  z-index: 50;
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.16);
+  z-index: 80;
   padding: 4px;
 }
 

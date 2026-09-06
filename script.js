@@ -1430,6 +1430,12 @@ window.openSampleModal = function(bookId, mode = 'preview') {
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
+  // Close any open marketplace dropdowns
+  document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
+  document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
+  document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+  document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
+
   activePreviewBook = book;
   activePreviewMode = (mode === 'colored' && Array.isArray(book.colored) && book.colored.length > 0)
     ? 'colored'
@@ -2066,6 +2072,12 @@ window.openFreeSampleModal = function(bookId) {
   const book = BOOKS.find(b => b.id === bookId);
   if (!book) return;
 
+  // Close any open marketplace dropdowns
+  document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
+  document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
+  document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+  document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
+
   activeSampleBook = book;
   const modal = document.getElementById('free-sample-modal');
 
@@ -2355,10 +2367,11 @@ window.toggleMarketDropdown = function(bookId, event) {
 
   const isOpen = (menuEl.style.display === 'block');
 
-  // Close any other open dropdowns first
+  // Close any other open dropdowns first and reset book-card layering
   document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
   document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
   document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+  document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
   const countryMenu = document.getElementById('country-dropdown-menu');
   if (countryMenu) countryMenu.style.display = 'none';
   const customCountry = document.getElementById('custom-country-select');
@@ -2368,6 +2381,8 @@ window.toggleMarketDropdown = function(bookId, event) {
     menuEl.style.display = 'block';
     selectEl.classList.add('open');
     if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
+    const cardEl = selectEl.closest('.book-card');
+    if (cardEl) cardEl.classList.add('has-open-dropdown');
   }
 };
 
@@ -2425,6 +2440,7 @@ window.selectBookMarket = function(bookId, marketKey) {
   }
   if (selectEl) selectEl.classList.remove('open');
   if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'false');
+  document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
 
   // Update Buy on Amazon button
   const btnBuy = cardElement.querySelector('.btn-buy');
@@ -2867,11 +2883,22 @@ function attachEventListeners() {
       document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
       document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
       document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
     }
     if (!e.target.closest('#lang-mobile-select')) {
       if (langMobileDropdown) langMobileDropdown.classList.remove('show');
       if (langMobileSelect) langMobileSelect.classList.remove('open');
       if (langMobileTrigger) langMobileTrigger.setAttribute('aria-expanded', 'false');
+    }
+  });
+
+  // Close marketplace dropdown on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.market-dropdown-menu').forEach(m => m.style.display = 'none');
+      document.querySelectorAll('.custom-market-select').forEach(s => s.classList.remove('open'));
+      document.querySelectorAll('.market-trigger').forEach(t => t.setAttribute('aria-expanded', 'false'));
+      document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
     }
   });
 }
