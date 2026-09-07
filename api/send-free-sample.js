@@ -62,6 +62,16 @@ const BOOKS = [
     asin: "B0HHKY6Q8V"
   },
   {
+    id: "crazy-cozy",
+    title: "Crazy Cozy",
+    subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
+    author: "Isaac McClour",
+    cover: "assets/books/Crazy.Cozy/Front.Cover.png",
+    samplePdf: "assets/books/Crazy.Cozy/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HHZWYGNF"
+  },
+  {
     id: "impossible-worlds",
     title: "Impossible Worlds",
     subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",

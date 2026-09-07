@@ -96,8 +96,7 @@ const BOOKS = [
       "assets/books/Cozy.Terror/Colored/07.jpeg"
     ],
     defaultMarket: "us",
-    asin: "B0HHKY6Q8V",
-    isNew: true
+    asin: "B0HHKY6Q8V"
   },
   {
     id: "killer-paws",
@@ -164,12 +163,29 @@ const BOOKS = [
     language: "English",
     langCode: "en",
     cover: "assets/books/Crazy.Cozy/Front.Cover.png",
-    samplePdf: null,
-    preview: [],
-    colored: [],
+    samplePdf: "assets/books/Crazy.Cozy/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Crazy.Cozy/Front.Cover.png",
+      "assets/books/Crazy.Cozy/2.png",
+      "assets/books/Crazy.Cozy/4.png",
+      "assets/books/Crazy.Cozy/12.png",
+      "assets/books/Crazy.Cozy/18.png",
+      "assets/books/Crazy.Cozy/20.png",
+      "assets/books/Crazy.Cozy/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Crazy.Cozy/Colored/01.jpeg",
+      "assets/books/Crazy.Cozy/Colored/02.jpeg",
+      "assets/books/Crazy.Cozy/Colored/03.jpeg",
+      "assets/books/Crazy.Cozy/Colored/04.jpeg",
+      "assets/books/Crazy.Cozy/Colored/05.jpeg",
+      "assets/books/Crazy.Cozy/Colored/06.jpeg",
+      "assets/books/Crazy.Cozy/Colored/07.jpeg",
+      "assets/books/Crazy.Cozy/Colored/08.jpeg"
+    ],
     defaultMarket: "us",
-    asin: null,
-    isComingSoon: true
+    asin: "B0HHZWYGNF",
+    isNew: true
   },
   {
     id: "italian-girls",
