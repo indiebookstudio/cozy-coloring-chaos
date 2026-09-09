@@ -118,10 +118,9 @@ const BOOKS = [
     subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
     author: "Lucia C. Marcos",
     cover: "assets/books/The.Black.Sword/Front.Cover.png",
-    samplePdf: null,
+    samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HJ92FNRK",
-    isComingSoon: true
+    asin: "B0HJ92FNRK"
   },
   {
     id: "non-rompetemi-i-coglioni",
