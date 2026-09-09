@@ -59,7 +59,8 @@ const BOOKS = [
     cover: "assets/books/Cozy.Terror/Front.Cover.png",
     samplePdf: "assets/books/Cozy.Terror/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HHKY6Q8V"
+    asin: "B0HHKY6Q8V",
+    isNew: true
   },
   {
     id: "crazy-cozy",
@@ -110,6 +111,17 @@ const BOOKS = [
     samplePdf: "assets/books/Killer.Paws/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HGGQ3GZ8"
+  },
+  {
+    id: "the-black-sword",
+    title: "The Black Sword",
+    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
+    author: "Lucia C. Marcos",
+    cover: "assets/books/The.Black.Sword/Front.Cover.png",
+    samplePdf: null,
+    defaultMarket: "us",
+    asin: "B0HJ92FNRK",
+    isComingSoon: true
   },
   {
     id: "non-rompetemi-i-coglioni",

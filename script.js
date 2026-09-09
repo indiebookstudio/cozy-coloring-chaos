@@ -44,6 +44,7 @@ const BOOKS = [
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Innocent.Paws/Front.Cover.png",
@@ -73,6 +74,7 @@ const BOOKS = [
     title: "Cozy Terror",
     subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Cozy.Terror/Front.Cover.png",
@@ -96,13 +98,15 @@ const BOOKS = [
       "assets/books/Cozy.Terror/Colored/07.jpeg"
     ],
     defaultMarket: "us",
-    asin: "B0HHKY6Q8V"
+    asin: "B0HHKY6Q8V",
+    isNew: true
   },
   {
     id: "killer-paws",
     title: "Killer Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Killer.Paws/Front.Cover.png",
@@ -130,6 +134,7 @@ const BOOKS = [
     title: "Impossible Worlds",
     subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Impossible.Worlds/Front.Cover.png",
@@ -160,6 +165,7 @@ const BOOKS = [
     title: "Crazy Cozy",
     subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Crazy.Cozy/Front.Cover.png",
@@ -192,6 +198,7 @@ const BOOKS = [
     title: "Italian Girls",
     subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     language: "English",
     langCode: "en",
     cover: "assets/books/Italian.Girls/Front.Cover.png",
@@ -220,10 +227,30 @@ const BOOKS = [
     asin: "B0HGJBKMGZ"
   },
   {
+    id: "the-black-sword",
+    title: "The Black Sword",
+    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
+    author: "Lucia C. Marcos",
+    category: "pixel-art",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/The.Black.Sword/Front.Cover.png",
+    samplePdf: null,
+    preview: [
+      "assets/books/The.Black.Sword/Front.Cover.png",
+      "assets/books/The.Black.Sword/Back.Cover.png"
+    ],
+    colored: [],
+    defaultMarket: "us",
+    asin: "B0HJ92FNRK",
+    isComingSoon: true
+  },
+  {
     id: "non-rompetemi-i-coglioni",
     title: "Non Rompetemi i Coglioni",
     subtitle: "Il libro da colorare per sfogarsi senza finire nei guai | Libro antistress kawaii per adulti",
     author: "Lucas C. Morica",
+    category: "humour",
     language: "Italiano",
     langCode: "it",
     cover: "assets/books/Non.Rompetemi.I.Coglioni/Front.Cover.png",
@@ -307,6 +334,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Colorare cozy. Umorismo nero. Splendido caos.",
     sectionTitle: "SCEGLI IL TUO CAOS",
     filterAll: "TUTTI I LIBRI",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "UMORISMO",
     filterEn: "English",
     filterIt: "Italiano",
     selectStore: "Seleziona Store Amazon",
@@ -349,7 +379,7 @@ const TRANSLATIONS = {
     footerCopyright: "Tutti i diritti riservati.",
     followTikTok: "Seguici su TikTok",
     tiktokAria: "Segui @cozycoloringchaos su TikTok (apre una nuova scheda)",
-    noBooksFound: "Nessun libro trovato per questa lingua. Torna a 'Tutti' per esplorare la collezione!",
+    noBooksFound: "Nessun libro trovato per questa categoria. Torna a 'Tutti i libri' per esplorare la collezione!",
     ariaSelectMarket: (title) => `Seleziona il marketplace Amazon per ${title}`,
     ariaViewMarket: (title, market) => `Visualizza ${title} su ${market} (apre una nuova scheda)`,
     emailCopiedToastTitle: "Email copiata!",
@@ -360,16 +390,23 @@ const TRANSLATIONS = {
     navBooks: "Libri",
     navAuthors: "Autori",
     authorsPageTitle: "Incontra gli Autori | Cozy Coloring Chaos",
-    authorsMetaDesc: "Scopri Isaac McClour e Lucas C. Morica, i personaggi creativi dietro Cozy Coloring Chaos e due universi editoriali distinti.",
+    authorsMetaDesc: "Scopri Isaac McClour, Lucia C. Marcos e Lucas C. Morica, i personaggi creativi dietro Cozy Coloring Chaos e tre universi editoriali distinti.",
     authorsHeroTitle: "Incontra gli Autori",
-    authorsHeroIntro: "Due nomi. Due voci molto diverse. Due modi di guardare il mondo.",
+    authorsHeroIntro: "Tre nomi. Tre voci molto diverse. Tre modi di guardare il mondo.",
     isaacTagline: "Cozy. Curioso. Un pizzico dark.",
     isaacBioP1: "Isaac McClour crea libri da colorare per chi ama i momenti di relax e intimità con un tocco inaspettato.",
     isaacBioP2: "Il suo lavoro trova l'umorismo nelle situazioni ordinarie, nei dettagli curiosi e nel lato magnificamente insolito della vita di tutti i giorni. Da gatti sospettosi a mondi impossibili, le illustrazioni di Isaac sono pensate per rilassare, divertire e sorprendere quanto basta per farti guardare due volte.",
     isaacBioP3: "Crede che un libro da colorare non debba prendersi troppo sul serio. A volte può essere dolce. A volte strano. E a volte, idealmente, entrambe le cose.",
     creativeWorldLabel: "Il suo universo creativo:",
+    creativeWorldLabelHer: "Il suo universo creativo:",
     isaacCreativeWorldText: "estetica cozy, umorismo nero, personaggi affascinanti e splendido caos.",
     isaacCtaBtn: "Esplora i Libri di Isaac",
+    luciaTagline: "Misteriosa. Avventurosa. Mai del tutto ciò che sembra.",
+    luciaBioP1: "Lucia C. Marcos crea libri da colorare per chi ama perdersi in una bella storia.",
+    luciaBioP2: "I suoi libri uniscono avventura, mistero e mondi immaginari, trasformando ogni pagina in una piccola scoperta. Indizi nascosti, incontri inaspettati e luoghi strani invitano a rallentare, esplorare la scena e scoprire cosa accadrà dopo.",
+    luciaBioP3: "Lucia crede che un libro da colorare possa essere molto più di una raccolta di disegni. Può essere un'avventura a cui dai vita tu stesso, un colore alla volta.",
+    luciaCreativeWorldText: "mistero, avventura, fantasy, segreti nascosti e storie che aspettano solo di essere svelate.",
+    luciaCtaBtn: "Esplora i Libri di Lucia",
     lucasTagline: "Niente pazienza. Niente filtri. Niente scuse.",
     lucasBioP1: "Lucas C. Morica ha un approccio decisamente diverso.",
     lucasBioP2: "Scrive della vita di tutti i giorni, dei comportamenti umani e di tutte quelle piccole cose capaci di farti perdere silenziosamente la testa. Il suo umorismo è diretto, irriverente e talvolta completamente irragionevole — ed è esattamente questo il punto.",
@@ -378,9 +415,9 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "sarcasmo, assurdità, irriverenza e assolutamente nessuna stronzata inutile.",
     lucasCtaBtn: "Esplora i Libri di Lucas",
     editorialNoteTitle: "Una nota sugli autori",
-    editorialNoteP1: "Isaac McClour e Lucas C. Morica sono personaggi creativi finzionali creati per rappresentare due voci e due universi creativi differenti.",
-    editorialNoteP2: "I loro ritratti illustrati sono intenzionalmente di fantasia. Le persone dietro ai libri hanno scelto di mantenere le proprie identità personali separate da questi alter ego d'autore, permettendo all'opera stessa — idee, illustrazioni e storie — di rimanere al centro dell'attenzione.",
-    editorialNoteP3: "Pensate a Isaac e Lucas meno come a biografie d'autore tradizionali e più come ai personaggi dietro a due universi creativi molto diversi."
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos e Lucas C. Morica sono personaggi creativi finzionali creati per rappresentare tre voci distinte, personalità e universi creativi differenti.",
+    editorialNoteP2: "I loro ritratti illustrati sono intenzionalmente di fantasia. Le persone dietro a questi libri hanno scelto di mantenere le proprie identità personali separate da questi alter ego d'autore, permettendo all'opera stessa — idee, illustrazioni e storie — di rimanere al centro dell'attenzione.",
+    editorialNoteP3: "Pensate a Isaac, Lucia e Lucas meno come a biografie d'autore tradizionali e più come ai personaggi creativi dietro a tre universi molto diversi — ognuno con la propria voce, senso dell'umorismo e modo di guardare il mondo."
   },
   en: {
     pageTitle: "Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books",
@@ -388,6 +425,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Cozy coloring. Dark humor. Beautiful chaos.",
     sectionTitle: "CHOOSE YOUR CHAOS",
     filterAll: "ALL BOOKS",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "English",
     filterIt: "Italian",
     selectStore: "Select Amazon Store",
@@ -430,7 +470,7 @@ const TRANSLATIONS = {
     footerCopyright: "All rights reserved.",
     followTikTok: "Follow on TikTok",
     tiktokAria: "Follow @cozycoloringchaos on TikTok (opens in a new tab)",
-    noBooksFound: "No books found for this language. Switch to 'All' to explore the full collection!",
+    noBooksFound: "No books found for this category. Switch to 'All Books' to explore the full collection!",
     ariaSelectMarket: (title) => `Select Amazon Marketplace for ${title}`,
     ariaViewMarket: (title, market) => `View ${title} on ${market} (opens in a new tab)`,
     emailCopiedToastTitle: "Email copied!",
@@ -441,16 +481,23 @@ const TRANSLATIONS = {
     navBooks: "Books",
     navAuthors: "Authors",
     authorsPageTitle: "Meet the Authors | Cozy Coloring Chaos",
-    authorsMetaDesc: "Meet Isaac McClour and Lucas C. Morica, the fictional creative personas behind Cozy Coloring Chaos and two distinct publishing worlds.",
+    authorsMetaDesc: "Meet Isaac McClour, Lucia C. Marcos and Lucas C. Morica, the fictional creative personas behind Cozy Coloring Chaos and three distinct publishing worlds.",
     authorsHeroTitle: "Meet the Authors",
-    authorsHeroIntro: "Two names. Two very different voices. Two ways of looking at the world.",
+    authorsHeroIntro: "Three names. Three very different voices. Three ways of looking at the world.",
     isaacTagline: "Cozy. Curious. A little bit dark.",
     isaacBioP1: "Isaac McClour creates coloring books for people who like their cozy moments with a twist.",
     isaacBioP2: "His work finds humor in ordinary situations, strange little details and the wonderfully unexpected side of everyday life. From suspicious cats to impossible worlds, Isaac's illustrations are designed to be relaxing, entertaining and just unusual enough to make you look twice.",
     isaacBioP3: "He believes a coloring book doesn't have to take itself too seriously. Sometimes it can be cute. Sometimes it can be weird. And sometimes, ideally, it can be both.",
     creativeWorldLabel: "His creative world:",
+    creativeWorldLabelHer: "Her creative world:",
     isaacCreativeWorldText: "cozy aesthetics, dark humor, charming characters and beautiful chaos.",
     isaacCtaBtn: "Explore Isaac's Books",
+    luciaTagline: "Mysterious. Adventurous. Never quite what it seems.",
+    luciaBioP1: "Lucia C. Marcos creates coloring books for people who enjoy getting lost in a good story.",
+    luciaBioP2: "Her books mix adventure, mystery and imaginative worlds, turning every page into a small discovery. Hidden clues, unexpected encounters and strange places invite readers to slow down, explore the scene and see what happens next.",
+    luciaBioP3: "Lucia believes a coloring book can be more than a collection of pictures. It can be an adventure you help bring to life, one color at a time.",
+    luciaCreativeWorldText: "mystery, adventure, fantasy, hidden secrets and stories waiting to be revealed.",
+    luciaCtaBtn: "Explore Lucia's Books",
     lucasTagline: "No patience. No filter. No apologies.",
     lucasBioP1: "Lucas C. Morica has a rather different approach.",
     lucasBioP2: "He writes about everyday life, human behavior and all the little things that can make you quietly lose your mind. His humor is direct, irreverent and occasionally completely unreasonable — which is precisely the point.",
@@ -458,10 +505,10 @@ const TRANSLATIONS = {
     lucasBioP4: "Sometimes you just need someone to say what everyone else was thinking.",
     lucasCreativeWorldText: "sarcasm, absurdity, irreverence and absolutely no unnecessary bullshit.",
     lucasCtaBtn: "Explore Lucas's Books",
-    editorialNoteTitle: "A note about the authors",
-    editorialNoteP1: "Isaac McClour and Lucas C. Morica are fictional creative personas created to represent two different voices and creative worlds.",
-    editorialNoteP2: "Their illustrated portraits are intentionally fictional. The people behind the books have chosen to keep their personal identities separate from these author personas, allowing the work itself — the ideas, illustrations and stories — to take center stage.",
-    editorialNoteP3: "Think of Isaac and Lucas less as traditional author biographies and more as the characters behind two very different creative universes."
+    editorialNoteTitle: "A Note About the Authors",
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos and Lucas C. Morica are fictional creative personas created to represent three distinct voices, personalities and creative worlds.",
+    editorialNoteP2: "Their illustrated portraits are intentionally fictional. The people behind these books have chosen to keep their personal identities separate from these author personas, allowing the work itself — the ideas, illustrations and stories — to take center stage.",
+    editorialNoteP3: "Think of Isaac, Lucia and Lucas less as traditional author biographies and more as the creative characters behind three very different universes — each with its own voice, sense of humor and way of seeing the world."
   },
   de: {
     pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
@@ -469,6 +516,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Gemütliches Ausmalen. Schwarzer Humor. Wundervolles Chaos.",
     sectionTitle: "WÄHLE DEIN CHAOS",
     filterAll: "ALLE BÜCHER",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "Englisch",
     filterIt: "Italienisch",
     selectStore: "Amazon Store wählen",
@@ -511,7 +561,7 @@ const TRANSLATIONS = {
     footerCopyright: "Alle Rechte vorbehalten.",
     followTikTok: "Folge uns auf TikTok",
     tiktokAria: "Folge @cozycoloringchaos auf TikTok (öffnet in neuem Tab)",
-    noBooksFound: "Keine Bücher für diese Sprache gefunden. Wechsle zu 'Alle', um die Kollektion zu sehen!",
+    noBooksFound: "Keine Bücher für diese Kategorie gefunden. Wechsle zu 'Alle Bücher', um die Kollektion zu sehen!",
     ariaSelectMarket: (title) => `Amazon Marketplace für ${title} wählen`,
     ariaViewMarket: (title, market) => `${title} auf ${market} ansehen (öffnet in neuem Tab)`,
     emailCopiedToastTitle: "E-Mail kopiert!",
@@ -522,16 +572,23 @@ const TRANSLATIONS = {
     navBooks: "Bücher",
     navAuthors: "Autoren",
     authorsPageTitle: "Lerne die Autoren kennen | Cozy Coloring Chaos",
-    authorsMetaDesc: "Lerne Isaac McClour und Lucas C. Morica kennen, die kreativen Persönlichkeiten hinter Cozy Coloring Chaos und zwei unverwechselbaren Verlagswelten.",
+    authorsMetaDesc: "Lerne Isaac McClour, Lucia C. Marcos und Lucas C. Morica kennen, die kreativen Persönlichkeiten hinter Cozy Coloring Chaos und drei unverwechselbaren Verlagswelten.",
     authorsHeroTitle: "Lerne die Autoren kennen",
-    authorsHeroIntro: "Zwei Namen. Zwei sehr unterschiedliche Stimmen. Zwei Arten, die Welt zu betrachten.",
+    authorsHeroIntro: "Drei Namen. Drei sehr unterschiedliche Stimmen. Drei Arten, die Welt zu sehen.",
     isaacTagline: "Gemütlich. Neugierig. Ein bisschen düster.",
     isaacBioP1: "Isaac McClour kreiert Malbücher für alle, die ihre gemütlichen Momente gerne mit einer unerwarteten Wendung mögen.",
     isaacBioP2: "Seine Arbeiten finden Humor in alltäglichen Situationen, merkwürdigen kleinen Details und der wunderbar unerwarteten Seite des Alltags. Von verdächtigen Katzen bis hin zu unmöglichen Welten sind Isaacs Illustrationen darauf ausgelegt, zu entspannen, zu unterhalten und genau ungewöhnlich genug zu sein, um zweimal hinzusehen.",
     isaacBioP3: "Er glaubt, dass ein Malbuch sich nicht zu ernst nehmen muss. Manchmal darf es niedlich sein. Manchmal seltsam. Und manchmal, im Idealfall, beides.",
     creativeWorldLabel: "Seine kreative Welt:",
+    creativeWorldLabelHer: "Ihre kreative Welt:",
     isaacCreativeWorldText: "gemütliche Ästhetik, schwarzer Humor, charmante Charaktere und wunderschönes Chaos.",
     isaacCtaBtn: "Entdecke Isaacs Bücher",
+    luciaTagline: "Geheimnisvoll. Abenteuerlustig. Nie ganz das, was es scheint.",
+    luciaBioP1: "Lucia C. Marcos gestaltet Malbücher für Menschen, die sich gerne in einer guten Geschichte verlieren.",
+    luciaBioP2: "Ihre Bücher verbinden Abenteuer, Geheimnis und fantastische Welten und verwandeln jede Seite in eine kleine Entdeckung. Versteckte Hinweise, unerwartete Begegnungen und fremde Orte laden dazu ein, innezuhalten, die Szene zu erkunden und zu sehen, was als Nächstes passiert.",
+    luciaBioP3: "Lucia glaubt, dass ein Malbuch mehr als eine Sammlung von Bildern sein kann. Es kann ein Abenteuer sein, das du mit jeder einzelnen Farbe zum Leben erweckst.",
+    luciaCreativeWorldText: "Mysterium, Abenteuer, Fantasy, verborgene Geheimnisse und Geschichten, die darauf warten, enthüllt zu werden.",
+    luciaCtaBtn: "Lucias Bücher entdecken",
     lucasTagline: "Keine Geduld. Kein Filter. Keine Entschuldigungen.",
     lucasBioP1: "Lucas C. Morica verfolgt einen ganz anderen Ansatz.",
     lucasBioP2: "Er schreibt über den Alltag, menschliches Verhalten und all die kleinen Dinge, die einen leise den Verstand verlieren lassen. Sein Humor ist direkt, respektlos und gelegentlich völlig unvernünftig – genau das ist der Punkt.",
@@ -540,9 +597,9 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "Sarkasmus, Absurdität, Respektlosigkeit und absolut kein unnötiger Bullshit.",
     lucasCtaBtn: "Entdecke Lucas' Bücher",
     editorialNoteTitle: "Ein Hinweis zu den Autoren",
-    editorialNoteP1: "Isaac McClour und Lucas C. Morica sind fiktive kreative Persönlichkeiten, die erschaffen wurden, um zwei verschiedene Stimmen und kreative Welten zu verkörpern.",
-    editorialNoteP2: "Ihre illustrierten Porträts sind bewusst fiktiv. Die Personen hinter den Büchern haben sich dafür entschieden, ihre persönliche Identität von diesen Autoren-Personas getrennt zu halten, damit das Werk selbst – die Ideen, Illustrationen und Geschichten – im Mittelpunkt steht.",
-    editorialNoteP3: "Betrachte Isaac und Lucas weniger als traditionelle Autorenbiografien, sondern vielmehr als die Charaktere hinter zwei sehr unterschiedlichen kreativen Universen."
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos und Lucas C. Morica sind fiktive kreative Persönlichkeiten, die erschaffen wurden, um drei verschiedene Stimmen, Persönlichkeiten und kreative Welten zu verkörpern.",
+    editorialNoteP2: "Ihre illustrierten Porträts sind bewusst fiktiv. Die Personen hinter diesen Büchern haben sich dafür entschieden, ihre persönlichen Identitäten von diesen Autoren-Personas getrennt zu halten, damit das Werk selbst im Mittelpunkt steht.",
+    editorialNoteP3: "Betrachte Isaac, Lucia und Lucas weniger als traditionelle Autorenbiografien, sondern vielmehr als die kreativen Köpfe hinter drei völlig unterschiedlichen Universen."
   },
   fr: {
     pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
@@ -550,6 +607,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Coloriage cozy. Humour noir. Magnifique chaos.",
     sectionTitle: "CHOISISSEZ VOTRE CHAOS",
     filterAll: "TOUS LES LIVRES",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOUR",
     filterEn: "Anglais",
     filterIt: "Italien",
     selectStore: "Sélectionner la boutique Amazon",
@@ -592,7 +652,7 @@ const TRANSLATIONS = {
     footerCopyright: "Tous droits réservés.",
     followTikTok: "Suivez-nous sur TikTok",
     tiktokAria: "Suivre @cozycoloringchaos sur TikTok (ouvre un nouvel onglet)",
-    noBooksFound: "Aucun livre trouvé pour cette langue. Cliquez sur 'Tous' pour voir la collection !",
+    noBooksFound: "Aucun livre trouvé pour cette catégorie. Cliquez sur 'Tous les livres' pour voir la collection !",
     ariaSelectMarket: (title) => `Sélectionner le marketplace Amazon pour ${title}`,
     ariaViewMarket: (title, market) => `Voir ${title} sur ${market} (ouvre un nouvel onglet)`,
     emailCopiedToastTitle: "E-mail copié !",
@@ -603,16 +663,23 @@ const TRANSLATIONS = {
     navBooks: "Livres",
     navAuthors: "Auteurs",
     authorsPageTitle: "Rencontrez les Auteurs | Cozy Coloring Chaos",
-    authorsMetaDesc: "Découvrez Isaac McClour et Lucas C. Morica, les personnalités créatives derrière Cozy Coloring Chaos et deux univers éditoriaux distincts.",
+    authorsMetaDesc: "Découvrez Isaac McClour, Lucia C. Marcos et Lucas C. Morica, les personnalités créatives derrière Cozy Coloring Chaos et trois univers éditoriaux distincts.",
     authorsHeroTitle: "Rencontrez les Auteurs",
-    authorsHeroIntro: "Deux noms. Deux voix très différentes. Deux façons de voir le monde.",
+    authorsHeroIntro: "Trois noms. Trois voix très différentes. Trois façons de voir le monde.",
     isaacTagline: "Cozy. Curieux. Un brin sombre.",
     isaacBioP1: "Isaac McClour crée des livres de coloriage pour ceux qui aiment leurs moments de détente avec une touche inattendue.",
     isaacBioP2: "Son travail trouve l'humour dans les situations ordinaires, les petits détails étranges et le côté merveilleusement inattendu du quotidien. Des chats suspects aux mondes impossibles, les illustrations d'Isaac sont conçues pour être relaxantes, divertissantes et juste assez insolites pour vous faire regarder à deux fois.",
     isaacBioP3: "Il pense qu'un livre de coloriage n'a pas besoin de se prendre trop au sérieux. Parfois, il peut être mignon. Parfois, bizarre. Et parfois, idéalement, les deux.",
     creativeWorldLabel: "Son univers créatif :",
+    creativeWorldLabelHer: "Son univers créatif :",
     isaacCreativeWorldText: "esthétique cozy, humour noir, personnages charmants et magnifique chaos.",
     isaacCtaBtn: "Découvrir les Livres d'Isaac",
+    luciaTagline: "Mystérieuse. Aventureuse. Jamais tout à fait ce qu'elle paraît.",
+    luciaBioP1: "Lucia C. Marcos crée des livres de coloriage pour ceux qui aiment se perdre dans une belle histoire.",
+    luciaBioP2: "Ses livres mêlent aventure, mystère et mondes imaginaires, faisant de chaque page une petite découverte. Indices cachés, rencontres inattendues et lieux étranges invitent à ralentir, explorer la scène et découvrir la suite.",
+    luciaBioP3: "Lucia pense qu'un livre de coloriage peut être bien plus qu'un simple recueil d'images. C'est une aventure à laquelle vous donnez vie, couleur après couleur.",
+    luciaCreativeWorldText: "mystère, aventure, fantasy, secrets cachés et récits qui n'attendent qu'à être dévoilés.",
+    luciaCtaBtn: "Découvrir les livres de Lucia",
     lucasTagline: "Pas de patience. Pas de filtre. Pas d'excuses.",
     lucasBioP1: "Lucas C. Morica a une approche bien différente.",
     lucasBioP2: "Il écrit sur la vie quotidienne, les comportements humains et toutes ces petites choses qui peuvent vous faire perdre la tête en silence. Son humour est direct, irrévérencieux et parfois totalement déraisonnable — et c'est précisément le but.",
@@ -621,9 +688,9 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "sarcasme, absurdité, irrévérence et absolument aucun baratin inutile.",
     lucasCtaBtn: "Découvrir les Livres de Lucas",
     editorialNoteTitle: "Une note à propos des auteurs",
-    editorialNoteP1: "Isaac McClour et Lucas C. Morica sont des personnages créatifs fictifs créés pour représenter deux voix et deux univers créatifs différents.",
-    editorialNoteP2: "Leurs portraits illustrés sont intentionnellement fictifs. Les personnes derrière les livres ont choisi de garder leur identité personnelle séparée de ces personnages d'auteurs, permettant à l'œuvre elle-même — idées, illustrations et histoires — d'occuper le devant de la scène.",
-    editorialNoteP3: "Pensez à Isaac et Lucas moins comme à des biographies d'auteurs traditionnelles et plus comme aux personnages derrière deux univers créatifs très différents."
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos et Lucas C. Morica sont des alter ego créatifs de fiction créés pour représenter trois voix distinctes, personnalités et univers créatifs.",
+    editorialNoteP2: "Leurs portraits illustrés sont intentionnellement fictifs. Les personnes derrière ces livres ont choisi de garder leur identité personnelle séparée de ces personnages d'auteurs, permettant à l'œuvre elle-même — idées, illustrations et histoires — d'occuper le devant de la scène.",
+    editorialNoteP3: "Pensez à Isaac, Lucia et Lucas moins comme à des biographies d'auteurs traditionnelles et plus comme aux personnages créatifs derrière trois univers très différents — chacun avec sa voix, son sens de l'humour et sa façon de voir le monde."
   },
   es: {
     pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
@@ -631,6 +698,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Colorear cozy. Humor negro. Hermoso caos.",
     sectionTitle: "ELIGE TU CAOS",
     filterAll: "TODOS LOS LIBROS",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "Inglés",
     filterIt: "Italiano",
     selectStore: "Seleccionar tienda Amazon",
@@ -673,7 +743,7 @@ const TRANSLATIONS = {
     footerCopyright: "Todos los derechos reservados.",
     followTikTok: "Síguenos en TikTok",
     tiktokAria: "Seguir a @cozycoloringchaos en TikTok (abre en nueva pestaña)",
-    noBooksFound: "No se encontraron libros en este idioma. ¡Cambia a 'Todos' para ver la colección!",
+    noBooksFound: "No se encontraron libros para esta categoría. ¡Cambia a 'Todos los libros' para ver la colección!",
     ariaSelectMarket: (title) => `Seleccionar tienda Amazon para ${title}`,
     ariaViewMarket: (title, market) => `Ver ${title} en ${market} (abre en nueva pestaña)`,
     emailCopiedToastTitle: "¡Correo copiado!",
@@ -684,16 +754,23 @@ const TRANSLATIONS = {
     navBooks: "Libros",
     navAuthors: "Autores",
     authorsPageTitle: "Conoce a los Autores | Cozy Coloring Chaos",
-    authorsMetaDesc: "Conoce a Isaac McClour y Lucas C. Morica, los personajes creativos detrás de Cozy Coloring Chaos y dos mundos editoriales distintos.",
+    authorsMetaDesc: "Conoce a Isaac McClour, Lucia C. Marcos y Lucas C. Morica, los personajes creativos detrás de Cozy Coloring Chaos y tres mundos editoriales distintos.",
     authorsHeroTitle: "Conoce a los Autores",
-    authorsHeroIntro: "Dos nombres. Dos voces muy diferentes. Dos formas de ver el mundo.",
+    authorsHeroIntro: "Tres nombres. Tres voces muy diferentes. Tres formas de ver el mundo.",
     isaacTagline: "Acogedor. Curioso. Un poco oscuro.",
     isaacBioP1: "Isaac McClour crea libros para colorear para personas a quienes les gustan los momentos acogedores con un giro inesperado.",
     isaacBioP2: "Su trabajo encuentra humor en situaciones cotidianas, pequeños detalles extraños y el lado maravillosamente inesperado del día a día. Desde gatos sospechosos hasta mundos imposibles, las ilustraciones de Isaac están diseñadas para relajar, entretener y ser lo suficientemente inusuales como para hacerte mirar dos veces.",
     isaacBioP3: "Cree que un libro para colorear no tiene por qué tomarse demasiado en serio. A veces puede ser tierno. A veces raro. Y a veces, idealmente, ambas cosas.",
     creativeWorldLabel: "Su mundo creativo:",
+    creativeWorldLabelHer: "Su mundo creativo:",
     isaacCreativeWorldText: "estética acogedora, humor negro, personajes encantadores y hermoso caos.",
     isaacCtaBtn: "Explorar los Libros de Isaac",
+    luciaTagline: "Misteriosa. Aventurera. Nunca del todo lo que parece.",
+    luciaBioP1: "Lucia C. Marcos crea libros para colorear para quienes disfrutan perdiéndose en una buena historia.",
+    luciaBioP2: "Sus libros combinan aventura, misterio y mundos imaginativos, convirtiendo cada página en un pequeño descubrimiento. Pistas ocultas, encuentros inesperados y lugares extraños invitan a detenerse, explorar la escena y ver qué sucede después.",
+    luciaBioP3: "Lucia cree que un libro para colorear puede ser más que una simple colección de ilustraciones. Puede ser una aventura a la que das vida, color a color.",
+    luciaCreativeWorldText: "misterio, aventura, fantasía, secretos ocultos e historias que esperan ser reveladas.",
+    luciaCtaBtn: "Explorar los libros de Lucia",
     lucasTagline: "Sin paciencia. Sin filtros. Sin disculpas.",
     lucasBioP1: "Lucas C. Morica tiene un enfoque bastante diferente.",
     lucasBioP2: "Escribe sobre la vida diaria, el comportamiento humano y todas esas pequeñas cosas que pueden hacerte perder la cabeza en silencio. Su humor es directo, irreverente y a veces completamente irrazonable — lo cual es precisamente la idea.",
@@ -702,16 +779,19 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "sarcasmo, absurdo, irreverencia y absolutamente ninguna tontería innecesaria.",
     lucasCtaBtn: "Explorar los Libros de Lucas",
     editorialNoteTitle: "Una nota sobre los autores",
-    editorialNoteP1: "Isaac McClour y Lucas C. Morica son personajes creativos ficticios creados para representar dos voces y mundos creativos diferentes.",
-    editorialNoteP2: "Sus retratos ilustrados son intencionalmente ficticios. Quienes están detrás de los libros han elegido mantener sus identidades personales separadas de estos personajes de autor, permitiendo que la obra en sí — las ideas, ilustraciones e historias — sea la protagonista.",
-    editorialNoteP3: "Piensa en Isaac y Lucas menos como biografías de autor tradicionales y más como los personajes detrás de dos universos creativos muy diferentes."
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos y Lucas C. Morica son personajes creativos ficticios creados para representar tres voces distintas, personalidades y mundos creativos.",
+    editorialNoteP2: "Sus retratos ilustrados son intencionalmente ficticios. Las personas detrás de estos libros han elegido mantener sus identidades personales separadas de estas figuras de autor, permitiendo que la obra en sí sea la protagonista.",
+    editorialNoteP3: "Piensa en Isaac, Lucia y Lucas menos como biografías tradicionales de autores y más como los personajes creativos detrás de tres universos muy diferentes."
   },
   nl: {
     pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
     metaDesc: "Ontdek cozy kleurboeken met een vleugje zwarte humor en prachtige chaos. Kies je Amazon-winkel en bestel jouw exemplaar!",
     brandSubtitle: "Gezellig kleuren. Zwarte humor. Prachtige chaos.",
     sectionTitle: "KIES JE CHAOS",
-    filterAll: "ALLE BÜCHER",
+    filterAll: "ALLE BOEKEN",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "Engels",
     filterIt: "Italiaans",
     selectStore: "Selecteer Amazon-winkel",
@@ -754,7 +834,7 @@ const TRANSLATIONS = {
     footerCopyright: "Alle rechten voorbehouden.",
     followTikTok: "Volg op TikTok",
     tiktokAria: "Volg @cozycoloringchaos op TikTok (opent in een nieuw tabblad)",
-    noBooksFound: "Geen boeken gevonden voor deze taal. Ga naar 'Alle' om de collectie te bekijken!",
+    noBooksFound: "Geen boeken gevonden voor deze categorie. Ga naar 'Alle boeken' om de collectie te bekijken!",
     ariaSelectMarket: (title) => `Selecteer Amazon-marktplaats voor ${title}`,
     ariaViewMarket: (title, market) => `Bekijk ${title} op ${market} (opent in een nieuw tabblad)`,
     emailCopiedToastTitle: "E-mail gekopieerd!",
@@ -765,16 +845,23 @@ const TRANSLATIONS = {
     navBooks: "Boeken",
     navAuthors: "Auteurs",
     authorsPageTitle: "Ontmoet de Auteurs | Cozy Coloring Chaos",
-    authorsMetaDesc: "Ontmoet Isaac McClour en Lucas C. Morica, de creatieve persona's achter Cozy Coloring Chaos en twee verschillende uitgeefwerelden.",
+    authorsMetaDesc: "Ontmoet Isaac McClour, Lucia C. Marcos en Lucas C. Morica, de creatieve personages achter Cozy Coloring Chaos en drie verschillende uitgeefwerelden.",
     authorsHeroTitle: "Ontmoet de Auteurs",
-    authorsHeroIntro: "Twee namen. Twee heel verschillende stemmen. Twee manieren om naar de wereld te kijken.",
+    authorsHeroIntro: "Drie namen. Drie heel verschillende stemmen. Drie manieren om naar de wereld te kijken.",
     isaacTagline: "Gezellig. Nieuwsgierig. Een beetje donker.",
     isaacBioP1: "Isaac McClour maakt kleurboeken voor mensen die houden van gezellige momenten met een verrassende twist.",
     isaacBioP2: "Zijn werk vindt humor in alledaagse situaties, vreemde kleine details en de wonderbaarlijk onverwachte kant van het dagelijks leven. Van verdachte katten tot onmogelijke werelden: Isaacs illustraties zijn ontworpen om te ontspannen, te vermaken en net ongewoon genoeg te zijn om je twee keer te laten kijken.",
     isaacBioP3: "Hij gelooft dat een kleurboek zichzelf niet te serieus hoeft te nemen. Soms mag het schattig zijn. Soms vreemd. En soms, idealiter, allebei.",
     creativeWorldLabel: "Zijn creatieve wereld:",
+    creativeWorldLabelHer: "Haar creatieve wereld:",
     isaacCreativeWorldText: "gezellige esthetiek, zwarte humor, charmante personages en prachtige chaos.",
     isaacCtaBtn: "Ontdek Isaacs Boeken",
+    luciaTagline: "Mysterieus. Avontuurlijk. Nooit helemaal wat het lijkt.",
+    luciaBioP1: "Lucia C. Marcos maakt kleurboeken voor mensen die graag verdwalen in een goed verhaal.",
+    luciaBioP2: "Haar boeken combineren avontuur, mysterie en fantasierijke werelden, waardoor elke pagina een kleine ontdekking wordt. Verborgen hints, onverwachte ontmoetingen en vreemde plekken nodigen lezers uit om te vertragen, de scène te verkennen en te ontdekken wat er volgt.",
+    luciaBioP3: "Lucia gelooft dat een kleurboek meer kan zijn dan een verzameling afbeeldingen. Het kan een avontuur zijn dat je tot leven brengt, kleur voor kleur.",
+    luciaCreativeWorldText: "mysterie, avontuur, fantasy, verborgen geheimen en verhalen die wachten om ontdekt te worden.",
+    luciaCtaBtn: "Ontdek Lucia's boeken",
     lucasTagline: "Geen geduld. Geen filter. Geen excuses.",
     lucasBioP1: "Lucas C. Morica pakt het heel anders aan.",
     lucasBioP2: "Hij schrijft over het dagelijks leven, menselijk gedrag en al die kleine dingen waar je stilletjes gek van kunt worden. Zijn humor is direct, oneerbiedig en af en toe volkomen onredelijk — en dat is precies de bedoeling.",
@@ -783,9 +870,9 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "sarcasme, absurditeit, oneerbiedigheid en absoluut geen onnodige onzin.",
     lucasCtaBtn: "Ontdek Lucas' Boeken",
     editorialNoteTitle: "Een opmerking over de auteurs",
-    editorialNoteP1: "Isaac McClour en Lucas C. Morica zijn fictieve creatieve persona's die zijn gecreëerd om twee verschillende stemmen en creatieve werelden te vertegenwoordigen.",
-    editorialNoteP2: "Hun geïllustreerde portretten zijn bewust fictief. De mensen achter de boeken hebben ervoor gekozen hun persoonlijke identiteit gescheiden te houden van deze auteurspersona's, zodat het werk zelf — de ideeën, illustraties en verhalen — centraal staat.",
-    editorialNoteP3: "Zie Isaac en Lucas minder als traditionele auteursbiografieën en meer als de personages achter twee heel verschillende creatieve universums."
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos en Lucas C. Morica zijn fictieve creatieve personages die zijn gecreëerd om drie verschillende stemmen, persoonlijkheden en werelden te vertegenwoordigen.",
+    editorialNoteP2: "Hun geïllustreerde portretten zijn opzettelijk fictief. De mensen achter deze boeken hebben ervoor gekozen hun persoonlijke identiteit gescheiden te houden van deze personages, zodat het werk zelf centraal staat.",
+    editorialNoteP3: "Zie Isaac, Lucia en Lucas minder als traditionele auteursbiografieën en meer als de creatieve personages achter drie heel verschillende universums."
   },
   pl: {
     pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
@@ -793,6 +880,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Przytulne kolorowanie. Czarny humor. Piękny chaos.",
     sectionTitle: "WYBIERZ SWÓJ CHAOS",
     filterAll: "WSZYSTKIE KSIĄŻKI",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "Angielski",
     filterIt: "Włoski",
     selectStore: "Wybierz sklep Amazon",
@@ -835,7 +925,7 @@ const TRANSLATIONS = {
     footerCopyright: "Wszelkie prawa zastrzeżone.",
     followTikTok: "Obserwuj na TikToku",
     tiktokAria: "Obserwuj @cozycoloringchaos na TikToku (otwiera w nowej karcie)",
-    noBooksFound: "Nie znaleziono książek w tym języku. Przejdź do 'Wszystkie', aby przejrzeć kolekcję!",
+    noBooksFound: "Nie znaleziono książek dla tej kategorii. Przejdź do 'Wszystkie książki', aby przejrzeć kolekcję!",
     ariaSelectMarket: (title) => `Wybierz sklep Amazon dla ${title}`,
     ariaViewMarket: (title, market) => `Zobacz ${title} na ${market} (otwiera w nowej karcie)`,
     emailCopiedToastTitle: "E-mail skopiowany!",
@@ -846,16 +936,23 @@ const TRANSLATIONS = {
     navBooks: "Książki",
     navAuthors: "Autorzy",
     authorsPageTitle: "Poznaj Autorów | Cozy Coloring Chaos",
-    authorsMetaDesc: "Poznaj Isaaca McCloura i Lucasa C. Moricę, fikcyjne postaci twórcze stojące za Cozy Coloring Chaos i dwoma różnymi światami.",
+    authorsMetaDesc: "Poznaj Isaaca McCloura, Lucię C. Marcos i Lucasa C. Moricę, fikcyjne postaci twórcze stojące za Cozy Coloring Chaos i trzema różnymi światami.",
     authorsHeroTitle: "Poznaj Autorów",
-    authorsHeroIntro: "Dwa nazwiska. Dwa zupełnie różne głosy. Dwa spojrzenia na świat.",
+    authorsHeroIntro: "Trzy nazwiska. Trzy bardzo różne głosy. Trzy spojrzenia na świat.",
     isaacTagline: "Przytulny. Ciekawski. Z nutą mroku.",
     isaacBioP1: "Isaac McClour tworzy kolorowanki dla tych, którzy lubią przytulne chwile z nieoczekiwanym twistem.",
     isaacBioP2: "Jego twórczość odnajduje humor w zwykłych sytuacjach, dziwnych detalach i cudownie nieoczekiwanych stronach codzienności. Od podejrzliwych kotów po niemożliwe światy – ilustracje Isaaca mają relaksować, bawić i być na tyle niezwykłe, by spojrzeć na nie drugi raz.",
     isaacBioP3: "Wierzy, że kolorowanka nie musi traktować siebie zbyt poważnie. Czasem może być urocza. Czasem dziwaczna. A czasem, najlepiej, jedno i drugie naraz.",
     creativeWorldLabel: "Jego świat twórczy:",
+    creativeWorldLabelHer: "Jej świat twórczy:",
     isaacCreativeWorldText: "przytulna estetyka, czarny humor, urocze postacie i piękny chaos.",
     isaacCtaBtn: "Odkryj Książki Isaaca",
+    luciaTagline: "Tajemnicza. Pełna przygód. Zawsze niejednoznaczna.",
+    luciaBioP1: "Lucia C. Marcos tworzy kolorowanki dla tych, którzy lubią zatracić się w dobrej opowieści.",
+    luciaBioP2: "Jej książki łączą przygodę, tajemnicę i światy wyobraźni, zmieniając każdą stronę w małe odkrycie. Ukryte wskazówki, niespodziewane spotkania i niezwykłe miejsca zapraszają do zwolnienia tempa, uważnego odkrywania sceny i śledzenia biegu wydarzeń.",
+    luciaBioP3: "Lucia wierzy, że kolorowanka może być czymś więcej niż zbiorem rysunków. Może być przygodą, którą ożywiasz własnoręcznie, kolor po kolorze.",
+    luciaCreativeWorldText: "tajemnica, przygoda, fantasy, ukryte sekrety i historie czekające na odkrycie.",
+    luciaCtaBtn: "Odkryj książki Lucii",
     lucasTagline: "Zero cierpliwości. Zero filtrów. Zero przeprosin.",
     lucasBioP1: "Lucas C. Morica ma zgoła odmienne podejście.",
     lucasBioP2: "Pisze o codziennym życiu, ludzkich zachowaniach i tych wszystkich drobiazgach, które po cichu doprowadzają do szału. Jego humor jest bezpośredni, bezczelny i momentami zupełnie nierozsądny — i właśnie o to chodzi.",
@@ -863,10 +960,10 @@ const TRANSLATIONS = {
     lucasBioP4: "Czasami po prostu potrzebujesz kogoś, kto powie to, o czym wszyscy inni po cichu myśleli.",
     lucasCreativeWorldText: "sarkazm, absurd, bezczelność i absolutny brak zbędnych bzdur.",
     lucasCtaBtn: "Odkryj Książki Lucasa",
-    editorialNoteTitle: "Uwaga na temat autorów",
-    editorialNoteP1: "Isaac McClour i Lucas C. Morica to fikcyjne postaci twórcze, stworzone po to, by reprezentować dwa różne głosy i światy wyobraźni.",
-    editorialNoteP2: "Ich ilustrowane portrety są celowo fikcyjne. Twórcy stojący za książkami zdecydowali się oddzielić swoją tożsamość od tych autorskich alter ego, pozwalając, aby samo dzieło — pomysły, ilustracje i historie — grało główną rolę.",
-    editorialNoteP3: "Pomyśl o Isaacu i Lucasie mniej jak o tradycyjnych biografiach autorskich, a bardziej jak o postaciach stojących za dwoma zupełnie różnymi wszechświatami twórczości."
+    editorialNoteTitle: "Słowo o autorach",
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos i Lucas C. Morica to fikcyjne kreacje artystyczne stworzone, aby reprezentować trzy odrębne głosy, osobowości i światy twórcze.",
+    editorialNoteP2: "Ich ilustrowane portrety są celowo fikcyjne. Twórcy stojący za tymi książkami postanowili oddzielić swoje tożsamości od person autorskich, stawiając na pierwszym miejscu samo dzieło.",
+    editorialNoteP3: "Pomyśl o Isaacu, Lucii i Lucasie mniej jak o tradycyjnych biografiach autorów, a bardziej jak o postaciach stojących za trzema różnymi uniwersami."
   },
   sv: {
     pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
@@ -874,6 +971,9 @@ const TRANSLATIONS = {
     brandSubtitle: "Mysig färgläggning. Mörk humor. Vackert kaos.",
     sectionTitle: "VÄLJ DITT KAOS",
     filterAll: "ALLA BÖCKER",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "HUMOR",
     filterEn: "Engelska",
     filterIt: "Italienska",
     selectStore: "Välj Amazon-butik",
@@ -916,7 +1016,7 @@ const TRANSLATIONS = {
     footerCopyright: "Alla rättigheter förbehållna.",
     followTikTok: "Följ på TikTok",
     tiktokAria: "Följ @cozycoloringchaos på TikTok (öppnas i ny flik)",
-    noBooksFound: "Inga böcker hittades för detta språk. Välj 'Alla' för att utforska samlingen!",
+    noBooksFound: "Inga böcker hittades för denna kategori. Välj 'Alla böcker' för att utforska samlingen!",
     ariaSelectMarket: (title) => `Välj Amazon-marknadsplats för ${title}`,
     ariaViewMarket: (title, market) => `Visa ${title} på ${market} (öppnas i ny flik)`,
     emailCopiedToastTitle: "E-post kopierad!",
@@ -927,16 +1027,23 @@ const TRANSLATIONS = {
     navBooks: "Böcker",
     navAuthors: "Författare",
     authorsPageTitle: "Möt Författarna | Cozy Coloring Chaos",
-    authorsMetaDesc: "Möt Isaac McClour och Lucas C. Morica, de fiktiva kreativa personligheterna bakom Cozy Coloring Chaos och två distinkta förlagsvärldar.",
+    authorsMetaDesc: "Möt Isaac McClour, Lucia C. Marcos och Lucas C. Morica, de fiktiva kreativa personerna bakom Cozy Coloring Chaos och tre distinkta förlagsvärldar.",
     authorsHeroTitle: "Möt Författarna",
-    authorsHeroIntro: "Två namn. Två väldigt olika röster. Två sätt att se på världen.",
+    authorsHeroIntro: "Tre namn. Tre mycket olika röster. Tre sätt att se på världen.",
     isaacTagline: "Mysig. Nyfiken. Lite mörk.",
     isaacBioP1: "Isaac McClour skapar målarböcker för alla som gillar sina mysiga stunder med en oväntad twist.",
     isaacBioP2: "Hans arbete finner humor i vardagliga situationer, märkliga små detaljer och den underbart oväntade sidan av vardagen. Från misstänksamma katter till omöjliga världar är Isaacs illustrationer skapade för att vara avkopplande, underhållande och precis lagom ovanliga för att få dig att titta två gånger.",
     isaacBioP3: "Han anser att en målarbok inte behöver ta sig själv på för stort allvar. Ibland kan den vara söt. Ibland konstig. Och ibland, allra bäst, både och.",
     creativeWorldLabel: "Hans kreativa värld:",
+    creativeWorldLabelHer: "Hennes kreativa värld:",
     isaacCreativeWorldText: "mysig estetik, svart humor, charmiga karaktärer och vackert kaos.",
     isaacCtaBtn: "Utforska Isaacs Böcker",
+    luciaTagline: "Mystisk. Äventyrlig. Aldrig riktigt vad det verkar.",
+    luciaBioP1: "Lucia C. Marcos skapar målarböcker för alla som älskar att försvinna in i en bra berättelse.",
+    luciaBioP2: "Hennes böcker blandar äventyr, mystik och fantasifulla världar och gör varje sida till en liten upptäckt. Dolda ledtrådar, oväntade möten och märkliga platser bjuder in läsaren att varva ner, utforska scenen och se vad som händer härnäst.",
+    luciaBioP3: "Lucia anser att en målarbok kan vara mycket mer än bara en samling bilder. Det kan vara ett äventyr du själv väcker till liv, en färg i taget.",
+    luciaCreativeWorldText: "mystik, äventyr, fantasy, dolda hemligheter och berättelser som väntar på att avslöjas.",
+    luciaCtaBtn: "Utforska Lucias böcker",
     lucasTagline: "Inget tålamod. Inget filter. Inga ursäkter.",
     lucasBioP1: "Lucas C. Morica har en helt annan inställning.",
     lucasBioP2: "Han skriver om vardagen, mänskligt beteende och alla de små sakerna som i det tysta kan driva en till vansinne. Hans humor är direkt, respektlös och emellanåt helt orimlig — vilket är precis poängen.",
@@ -944,10 +1051,10 @@ const TRANSLATIONS = {
     lucasBioP4: "Ibland behöver man bara någon som säger vad alla andra tänkte.",
     lucasCreativeWorldText: "sarkasm, absurditet, respektlöshet och absolut inget onödigt skitsnack.",
     lucasCtaBtn: "Utforska Lucas Böcker",
-    editorialNoteTitle: "En anteckning om författarna",
-    editorialNoteP1: "Isaac McClour och Lucas C. Morica är fiktiva kreativa personligheter skapade för att representera två olika röster och kreativa världar.",
-    editorialNoteP2: "Deras illustrerade porträtt är avsiktligt fiktiva. Personerna bakom böckerna har valt att hålla sina personliga identiteter åtskilda från dessa författarpersonas, så att själva verket — idéerna, illustrationerna och berättelserna — får stå i centrum.",
-    editorialNoteP3: "Se på Isaac och Lucas mindre som traditionella författarbiografier och mer som karaktärerna bakom två väldigt olika kreativa universum."
+    editorialNoteTitle: "Ett ord om författarna",
+    editorialNoteP1: "Isaac McClour, Lucia C. Marcos och Lucas C. Morica är fiktiva kreativa personer skapade för att representera tre distinkta röster, personligheter och kreativa världar.",
+    editorialNoteP2: "Deras illustrerade porträtt är medvetet fiktiva. Skaparna bakom böckerna har valt att hålla sina personliga identiteter åtskilda från dessa författarpersonor.",
+    editorialNoteP3: "Se Isaac, Lucia och Lucas mindre som traditionella författarbiografier och mer som de kreativa karaktärerna bakom tre mycket olika universum."
   },
   ja: {
     pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
@@ -955,6 +1062,9 @@ const TRANSLATIONS = {
     brandSubtitle: "コージーな塗り絵。ブラックユーモア。愛すべきカオス。",
     sectionTitle: "カオスを選ぼう",
     filterAll: "すべての本",
+    filterBoldAndEasy: "BOLD AND EASY",
+    filterPixelArt: "PIXEL ART",
+    filterHumour: "ユーモア",
     filterEn: "英語",
     filterIt: "イタリア語",
     selectStore: "Amazonストアを選択",
@@ -997,7 +1107,7 @@ const TRANSLATIONS = {
     footerCopyright: "無断転載を禁じます。",
     followTikTok: "TikTokでフォロー",
     tiktokAria: "TikTokで@cozycoloringchaosをフォロー（新しいタブで開く）",
-    noBooksFound: "この言語の本は見つかりませんでした。「すべて」に切り替えてコレクションをご覧ください！",
+    noBooksFound: "このカテゴリーの本は見つかりませんでした。「すべての本」に切り替えてコレクションをご覧ください！",
     ariaSelectMarket: (title) => `${title} のAmazonマーケットプレイスを選択`,
     ariaViewMarket: (title, market) => `${market} で ${title} を表示（新しいタブで開く）`,
     emailCopiedToastTitle: "メールアドレスをコピーしました！",
@@ -1008,16 +1118,23 @@ const TRANSLATIONS = {
     navBooks: "本",
     navAuthors: "著者",
     authorsPageTitle: "著者紹介 | Cozy Coloring Chaos",
-    authorsMetaDesc: "Cozy Coloring Chaosと2つの異なる出版の世界を手がける創作ペルソナ、アイザック・マックルーアとルーカス・C・モリカをご紹介します。",
+    authorsMetaDesc: "Cozy Coloring Chaosの背後にある3つの個性、アイザック・マックルーア、ルシア・C・マルコス、ルーカス・C・モリカをご紹介します。",
     authorsHeroTitle: "著者紹介",
-    authorsHeroIntro: "2つの名前。2つのまったく異なる声。世界を見つめる2つの視点。",
+    authorsHeroIntro: "3つの名前。3つのまったく異なる個性。3つの世界の見方。",
     isaacTagline: "コージー。好奇心旺盛。そしてちょっぴりダーク。",
     isaacBioP1: "アイザック・マックルーアは、心地よいひとときに少しのひねりを加えたい人々のための塗り絵を制作しています。",
     isaacBioP2: "彼の作品は、日常のありふれた場面や奇妙な細部、そして日々の暮らしの素晴らしく予想外な一面からユーモアを見出します。怪しげな猫たちからありえない世界まで、アイザックのイラストはリラックスでき、楽しく、思わず二度見してしまう絶妙なユニークさを備えています。",
     isaacBioP3: "彼は、塗り絵が真面目すぎる必要はないと考えています。時には可愛らしく。時には奇妙に。そして理想を言えば、その両方であってもいいのです。",
     creativeWorldLabel: "創作の世界観：",
+    creativeWorldLabelHer: "創作の世界観：",
     isaacCreativeWorldText: "心地よい美学、ダークユーモア、愛らしいキャラクター、そして美しい混沌。",
     isaacCtaBtn: "アイザックの本を見る",
+    luciaTagline: "ミステリアス。冒険心。決して見た目通りではない世界。",
+    luciaBioP1: "ルシア・C・マルコスは、素晴らしい物語の世界に没頭するのが好きな人々のための塗り絵を制作しています。",
+    luciaBioP2: "冒険、ミステリー、空想の世界が融合した彼女の作品は、1ページごとに小さな発見が待っています。隠された手がかり、予期せぬ出会い、見知らぬ場所が、読者に立ち止まり、じっくりと場面を探索する楽しさを与えてくれます。",
+    luciaBioP3: "ルシアは、塗り絵は単なるイラストの集まり以上のものであるべきだと信じています。それは色を重ねるごとに自らの手で命を吹き込んでいく冒険なのです。",
+    luciaCreativeWorldText: "ミステリー、冒険、ファンタジー、隠された秘密、そして解き明かされるのを待つ物語。",
+    luciaCtaBtn: "ルシアの本を見る",
     lucasTagline: "我慢ゼロ。フィルターなし。弁解無用。",
     lucasBioP1: "ルーカス・C・モリカのアプローチはまったく異なります。",
     lucasBioP2: "彼は日々の生活、人間の行動、そして静かに人を狂わせるような日常のささいな事柄について書いています。彼のユーモアは率直で、不遜で、時にまったく理不尽ですが――それこそがまさに狙いなのです。",
@@ -1026,9 +1143,9 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "皮肉、不条理、不遜さ、そして無駄な建前は一切なし。",
     lucasCtaBtn: "ルーカスの本を見る",
     editorialNoteTitle: "著者について",
-    editorialNoteP1: "アイザック・マックルーアとルーカス・C・モリカは、2つの異なる声と創作世界を表現するために作られた架空の創作ペルソナです。",
-    editorialNoteP2: "彼らのイラスト肖像画は意図的に作られた架空のものです。本の制作陣は自身の個人情報をこれらの著者ペルソナと切り離すことを選択し、作品そのもの――アイデア、イラスト、物語――が主役となるようにしています。",
-    editorialNoteP3: "アイザックとルーカスは、伝統的な著者の経歴というよりも、2つのまったく異なる創作世界の背後にいるキャラクターとして捉えてみてください。"
+    editorialNoteP1: "アイザック・マックルーア、ルシア・C・マルコス、そしてルーカス・C・モリカは、3つの異なる個性、声、そして創作世界を表現するために作られた架空のクリエイティブ・ペルソナです。",
+    editorialNoteP2: "描かれた肖像画は意図的に作られた架空のものです。本の制作者たちは、自身の個人的な正体をこれらの著者ペルソナから切り離し、作品そのもの（アイデア、イラスト、物語）を主役にすることを選びました。",
+    editorialNoteP3: "アイザック、ルシア、ルーカスを従来の著者紹介としてではなく、それぞれ独自の声やユーモア、世界観を持った3つのまったく異なる宇宙を創造するキャラクターとして捉えてみてください。"
   }
 };
 
@@ -1378,46 +1495,61 @@ function updateFreeSampleModalTranslations(t) {
 }
 
 /**
- * Calculates and displays the count of books in each author filter tab.
+ * Calculates and displays the count of books in each category filter tab.
  */
 function updateFilterCounts() {
   const countAll = BOOKS.length;
-  const countIsaac = BOOKS.filter(b => isBookAuthor(b, 'isaac-mcclour')).length;
-  const countLucas = BOOKS.filter(b => isBookAuthor(b, 'lucas-c-morica')).length;
+  const countBoldAndEasy = BOOKS.filter(b => isBookCategory(b, 'bold-and-easy')).length;
+  const countPixelArt = BOOKS.filter(b => isBookCategory(b, 'pixel-art')).length;
+  const countHumour = BOOKS.filter(b => isBookCategory(b, 'humour')).length;
 
   const elAll = document.getElementById('count-all');
-  const elIsaac = document.getElementById('count-isaac');
-  const elLucas = document.getElementById('count-lucas');
+  const elBold = document.getElementById('count-bold-and-easy') || document.getElementById('count-isaac');
+  const elPixel = document.getElementById('count-pixel-art');
+  const elHumour = document.getElementById('count-humour') || document.getElementById('count-lucas');
 
   if (elAll) elAll.textContent = countAll;
-  if (elIsaac) elIsaac.textContent = countIsaac;
-  if (elLucas) elLucas.textContent = countLucas;
+  if (elBold) elBold.textContent = countBoldAndEasy;
+  if (elPixel) elPixel.textContent = countPixelArt;
+  if (elHumour) elHumour.textContent = countHumour;
 }
 
 /**
- * Checks if a book matches a target author filter.
+ * Checks if a book matches a target category filter.
+ * Supports legacy author names for backwards compatibility.
  */
-function isBookAuthor(book, targetAuthor) {
-  if (!targetAuthor || targetAuthor === 'all') return true;
-  if (targetAuthor === 'isaac-mcclour') {
-    return !!(book.author && book.author.toLowerCase().includes('isaac'));
+function isBookCategory(book, targetCategory) {
+  if (!targetCategory || targetCategory === 'all') return true;
+  if (targetCategory === 'bold-and-easy' || targetCategory === 'isaac-mcclour') {
+    return book.category === 'bold-and-easy' || !!(book.author && book.author.toLowerCase().includes('isaac'));
   }
-  if (targetAuthor === 'lucas-c-morica') {
-    return !!(book.author && (book.author.toLowerCase().includes('lucas') || book.author.toLowerCase().includes('morica')));
+  if (targetCategory === 'pixel-art' || targetCategory === 'lucia-c-marcos') {
+    return book.category === 'pixel-art' || !!(book.author && book.author.toLowerCase().includes('lucia'));
+  }
+  if (targetCategory === 'humour' || targetCategory === 'humor' || targetCategory === 'lucas-c-morica') {
+    return book.category === 'humour' || book.category === 'humor' || !!(book.author && (book.author.toLowerCase().includes('lucas') || book.author.toLowerCase().includes('morica')));
   }
   return true;
 }
 
+// Alias for backwards compatibility
+const isBookAuthor = isBookCategory;
+
 /**
- * Sets the active author filter ('all', 'isaac-mcclour', 'lucas-c-morica') and re-renders the catalog.
+ * Sets the active category filter ('all', 'bold-and-easy', 'pixel-art', 'humour') and re-renders the catalog.
  */
 function setBookFilter(filterKey) {
-  currentBookFilter = filterKey;
+  let normalizedKey = filterKey;
+  if (filterKey === 'isaac-mcclour') normalizedKey = 'bold-and-easy';
+  else if (filterKey === 'lucia-c-marcos') normalizedKey = 'pixel-art';
+  else if (filterKey === 'lucas-c-morica' || filterKey === 'humor') normalizedKey = 'humour';
+
+  currentBookFilter = normalizedKey;
 
   // Update button active classes & ARIA
   document.querySelectorAll('.filter-btn').forEach((btn) => {
     const key = btn.getAttribute('data-filter');
-    const isActive = (key === currentBookFilter);
+    const isActive = (key === currentBookFilter || (key === 'humour' && currentBookFilter === 'humor'));
     btn.classList.toggle('active', isActive);
     btn.setAttribute('aria-selected', isActive ? 'true' : 'false');
   });
@@ -2477,6 +2609,18 @@ window.selectBookMarket = function(bookId, marketKey) {
 };
 
 /**
+ * Resolves the author page anchor URL for a given author name.
+ */
+function getAuthorUrl(author) {
+  if (!author) return 'authors.html';
+  const a = author.toLowerCase();
+  if (a.includes('isaac')) return 'authors.html#isaac-mcclour';
+  if (a.includes('lucia')) return 'authors.html#lucia-c-marcos';
+  if (a.includes('lucas') || a.includes('morica')) return 'authors.html#lucas-c-morica';
+  return 'authors.html';
+}
+
+/**
  * Generates HTML for a single book card.
  */
 function createBookCard(book, index) {
@@ -2558,10 +2702,11 @@ function createBookCard(book, index) {
     `;
   }
 
-  // Localized Author prefix ("di" / "by")
+  // Localized Author prefix ("di" / "by") and clickable bio link
   const authorPrefix = t.byAuthor || 'by';
+  const authorUrl = getAuthorUrl(book.author);
   const authorHtml = safeAuthor
-    ? `<p class="book-author"><span class="author-prefix">${authorPrefix}</span> <strong class="author-name">${safeAuthor}</strong></p>`
+    ? `<p class="book-author"><span class="author-prefix">${authorPrefix}</span> <a href="${authorUrl}" class="book-author-link" title="${safeAuthor} - Bio"><strong class="author-name">${safeAuthor}</strong></a></p>`
     : '';
 
   // Subtitle
@@ -2934,12 +3079,12 @@ function initApp() {
   // 3. Render page according to initial language & default filter 'all'
   updateInterfaceLanguage(currentLanguage);
 
-  // 4. Check URL parameter or hash for initial author filter
+  // 4. Check URL parameter or hash for initial category/author filter
   try {
     const urlParams = new URLSearchParams(window.location.search);
-    const authorParam = urlParams.get('author') || (window.location.hash ? window.location.hash.replace('#', '') : null);
-    if (authorParam && (authorParam === 'isaac-mcclour' || authorParam === 'lucas-c-morica')) {
-      setBookFilter(authorParam);
+    const filterParam = urlParams.get('category') || urlParams.get('filter') || urlParams.get('author') || (window.location.hash ? window.location.hash.replace('#', '') : null);
+    if (filterParam) {
+      setBookFilter(filterParam);
     }
   } catch (e) {}
 
