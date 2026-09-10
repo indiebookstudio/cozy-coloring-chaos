@@ -433,7 +433,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "Una nota sugli autori",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos e Lucas C. Morica sono personaggi creativi finzionali creati per rappresentare tre voci distinte, personalità e universi creativi differenti.",
     editorialNoteP2: "I loro ritratti illustrati sono intenzionalmente di fantasia. Le persone dietro a questi libri hanno scelto di mantenere le proprie identità personali separate da questi alter ego d'autore, permettendo all'opera stessa — idee, illustrazioni e storie — di rimanere al centro dell'attenzione.",
-    editorialNoteP3: "Pensate a Isaac, Lucia e Lucas meno come a biografie d'autore tradizionali e più come ai personaggi creativi dietro a tre universi molto diversi — ognuno con la propria voce, senso dell'umorismo e modo di guardare il mondo."
+    editorialNoteP3: "Pensate a Isaac, Lucia e Lucas meno come a biografie d'autore tradizionali e più come ai personaggi creativi dietro a tre universi molto diversi — ognuno con la propria voce, senso dell'umorismo e modo di guardare il mondo.",
+    bsNewRelease: "NOVITÀ",
+    bsScenes: "100 Scene Color-by-Number",
+    bsChapters: "8 Capitoli",
+    bsColors: "24 Colori",
+    bsDiscoverBook: "SCOPRI IL LIBRO",
+    bsCoverAlt: "The Black Sword - Copertina del libro",
+    bsCoverTitle: "The Black Sword - Clicca per vedere nel catalogo",
+    bsVideoAria: "Video promozionale di The Black Sword",
+    bsPlay: "Avvia",
+    bsPause: "Pausa",
+    bsAudioOn: "Audio on",
+    bsAudioOff: "Audio off"
   },
   en: {
     pageTitle: "Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books",
@@ -524,7 +536,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "A Note About the Authors",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos and Lucas C. Morica are fictional creative personas created to represent three distinct voices, personalities and creative worlds.",
     editorialNoteP2: "Their illustrated portraits are intentionally fictional. The people behind these books have chosen to keep their personal identities separate from these author personas, allowing the work itself — the ideas, illustrations and stories — to take center stage.",
-    editorialNoteP3: "Think of Isaac, Lucia and Lucas less as traditional author biographies and more as the creative characters behind three very different universes — each with its own voice, sense of humor and way of seeing the world."
+    editorialNoteP3: "Think of Isaac, Lucia and Lucas less as traditional author biographies and more as the creative characters behind three very different universes — each with its own voice, sense of humor and way of seeing the world.",
+    bsNewRelease: "NEW RELEASE",
+    bsScenes: "100 Color-by-Number Scenes",
+    bsChapters: "8 Chapters",
+    bsColors: "24 Colors",
+    bsDiscoverBook: "DISCOVER THE BOOK",
+    bsCoverAlt: "The Black Sword - Book Front Cover",
+    bsCoverTitle: "The Black Sword - Click to view in catalog",
+    bsVideoAria: "The Black Sword promotional video",
+    bsPlay: "Play",
+    bsPause: "Pause",
+    bsAudioOn: "Audio on",
+    bsAudioOff: "Audio off"
   },
   de: {
     pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
@@ -615,7 +639,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "Ein Hinweis zu den Autoren",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos und Lucas C. Morica sind fiktive kreative Persönlichkeiten, die erschaffen wurden, um drei verschiedene Stimmen, Persönlichkeiten und kreative Welten zu verkörpern.",
     editorialNoteP2: "Ihre illustrierten Porträts sind bewusst fiktiv. Die Personen hinter diesen Büchern haben sich dafür entschieden, ihre persönlichen Identitäten von diesen Autoren-Personas getrennt zu halten, damit das Werk selbst im Mittelpunkt steht.",
-    editorialNoteP3: "Betrachte Isaac, Lucia und Lucas weniger als traditionelle Autorenbiografien, sondern vielmehr als die kreativen Köpfe hinter drei völlig unterschiedlichen Universen."
+    editorialNoteP3: "Betrachte Isaac, Lucia und Lucas weniger als traditionelle Autorenbiografien, sondern vielmehr als die kreativen Köpfe hinter drei völlig unterschiedlichen Universen.",
+    bsNewRelease: "NEUERSCHEINUNG",
+    bsScenes: "100 Malen-nach-Zahlen Szenen",
+    bsChapters: "8 Kapitel",
+    bsColors: "24 Farben",
+    bsDiscoverBook: "BUCH ENTDECKEN",
+    bsCoverAlt: "The Black Sword - Buchcover",
+    bsCoverTitle: "The Black Sword - Klicken zum Anzeigen im Katalog",
+    bsVideoAria: "The Black Sword Werbevideo",
+    bsPlay: "Abspielen",
+    bsPause: "Pause",
+    bsAudioOn: "Audio an",
+    bsAudioOff: "Audio aus"
   },
   fr: {
     pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
@@ -706,7 +742,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "Une note à propos des auteurs",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos et Lucas C. Morica sont des alter ego créatifs de fiction créés pour représenter trois voix distinctes, personnalités et univers créatifs.",
     editorialNoteP2: "Leurs portraits illustrés sont intentionnellement fictifs. Les personnes derrière ces livres ont choisi de garder leur identité personnelle séparée de ces personnages d'auteurs, permettant à l'œuvre elle-même — idées, illustrations et histoires — d'occuper le devant de la scène.",
-    editorialNoteP3: "Pensez à Isaac, Lucia et Lucas moins comme à des biographies d'auteurs traditionnelles et plus comme aux personnages créatifs derrière trois univers très différents — chacun avec sa voix, son sens de l'humour et sa façon de voir le monde."
+    editorialNoteP3: "Pensez à Isaac, Lucia et Lucas moins comme à des biographies d'auteurs traditionnelles et plus comme aux personnages créatifs derrière trois univers très différents — chacun avec sa voix, son sens de l'humour et sa façon de voir le monde.",
+    bsNewRelease: "NOUVEAUTÉ",
+    bsScenes: "100 Scènes Coloriage par Numéro",
+    bsChapters: "8 Chapitres",
+    bsColors: "24 Couleurs",
+    bsDiscoverBook: "DÉCOUVRIR LE LIVRE",
+    bsCoverAlt: "The Black Sword - Couverture du livre",
+    bsCoverTitle: "The Black Sword - Cliquer pour voir dans le catalogue",
+    bsVideoAria: "Vidéo promotionnelle de The Black Sword",
+    bsPlay: "Lire",
+    bsPause: "Pause",
+    bsAudioOn: "Audio on",
+    bsAudioOff: "Audio off"
   },
   es: {
     pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
@@ -797,7 +845,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "Una nota sobre los autores",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos y Lucas C. Morica son personajes creativos ficticios creados para representar tres voces distintas, personalidades y mundos creativos.",
     editorialNoteP2: "Sus retratos ilustrados son intencionalmente ficticios. Las personas detrás de estos libros han elegido mantener sus identidades personales separadas de estas figuras de autor, permitiendo que la obra en sí sea la protagonista.",
-    editorialNoteP3: "Piensa en Isaac, Lucia y Lucas menos como biografías tradicionales de autores y más como los personajes creativos detrás de tres universos muy diferentes."
+    editorialNoteP3: "Piensa en Isaac, Lucia y Lucas menos como biografías tradicionales de autores y más como los personajes creativos detrás de tres universos muy diferentes.",
+    bsNewRelease: "NOVEDAD",
+    bsScenes: "100 Escenas Colorear por Números",
+    bsChapters: "8 Capítulos",
+    bsColors: "24 Colores",
+    bsDiscoverBook: "DESCUBRE EL LIBRO",
+    bsCoverAlt: "The Black Sword - Portada del libro",
+    bsCoverTitle: "The Black Sword - Clic para ver en el catálogo",
+    bsVideoAria: "Vídeo promocional de The Black Sword",
+    bsPlay: "Reproducir",
+    bsPause: "Pausa",
+    bsAudioOn: "Audio on",
+    bsAudioOff: "Audio off"
   },
   nl: {
     pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
@@ -887,8 +947,19 @@ const TRANSLATIONS = {
     lucasCtaBtn: "Ontdek Lucas' Boeken",
     editorialNoteTitle: "Een opmerking over de auteurs",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos en Lucas C. Morica zijn fictieve creatieve personages die zijn gecreëerd om drie verschillende stemmen, persoonlijkheden en werelden te vertegenwoordigen.",
-    editorialNoteP2: "Hun geïllustreerde portretten zijn opzettelijk fictief. De mensen achter deze boeken hebben ervoor gekozen hun persoonlijke identiteit gescheiden te houden van deze personages, zodat het werk zelf centraal staat.",
-    editorialNoteP3: "Zie Isaac, Lucia en Lucas minder als traditionele auteursbiografieën en meer als de creatieve personages achter drie heel verschillende universums."
+    editorialNoteP3: "Zie Isaac, Lucia en Lucas minder als traditionele auteursbiografieën en meer als de creatieve personages achter drie heel verschillende universums.",
+    bsNewRelease: "NIEUWE UITGAVE",
+    bsScenes: "100 Kleuren-op-Nummer Scènes",
+    bsChapters: "8 Hoofdstukken",
+    bsColors: "24 Kleuren",
+    bsDiscoverBook: "ONTDEK HET BOEK",
+    bsCoverAlt: "The Black Sword - Boekomslag",
+    bsCoverTitle: "The Black Sword - Klik om in catalogus te bekijken",
+    bsVideoAria: "Promotievideo voor The Black Sword",
+    bsPlay: "Afspelen",
+    bsPause: "Pauze",
+    bsAudioOn: "Audio aan",
+    bsAudioOff: "Audio uit"
   },
   pl: {
     pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
@@ -978,8 +1049,19 @@ const TRANSLATIONS = {
     lucasCtaBtn: "Odkryj Książki Lucasa",
     editorialNoteTitle: "Słowo o autorach",
     editorialNoteP1: "Isaac McClour, Lucia C. Marcos i Lucas C. Morica to fikcyjne kreacje artystyczne stworzone, aby reprezentować trzy odrębne głosy, osobowości i światy twórcze.",
-    editorialNoteP2: "Ich ilustrowane portrety są celowo fikcyjne. Twórcy stojący za tymi książkami postanowili oddzielić swoje tożsamości od person autorskich, stawiając na pierwszym miejscu samo dzieło.",
-    editorialNoteP3: "Pomyśl o Isaacu, Lucii i Lucasie mniej jak o tradycyjnych biografiach autorów, a bardziej jak o postaciach stojących za trzema różnymi uniwersami."
+    editorialNoteP3: "Pomyśl o Isaacu, Lucii i Lucasie mniej jak o tradycyjnych biografiach autorów, a bardziej jak o postaciach stojących za trzema różnymi uniwersami.",
+    bsNewRelease: "NOWOŚĆ",
+    bsScenes: "100 Scen Malowania po Numerach",
+    bsChapters: "8 Rozdziałów",
+    bsColors: "24 Kolory",
+    bsDiscoverBook: "ODKRYJ KSIĄŻKĘ",
+    bsCoverAlt: "The Black Sword - Okładka książki",
+    bsCoverTitle: "The Black Sword - Kliknij, aby zobaczyć w katalogu",
+    bsVideoAria: "Wideo promocyjne The Black Sword",
+    bsPlay: "Odtwórz",
+    bsPause: "Pauza",
+    bsAudioOn: "Dźwięk wł.",
+    bsAudioOff: "Dźwięk wył."
   },
   sv: {
     pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
@@ -1068,9 +1150,19 @@ const TRANSLATIONS = {
     lucasCreativeWorldText: "sarkasm, absurditet, respektlöshet och absolut inget onödigt skitsnack.",
     lucasCtaBtn: "Utforska Lucas Böcker",
     editorialNoteTitle: "Ett ord om författarna",
-    editorialNoteP1: "Isaac McClour, Lucia C. Marcos och Lucas C. Morica är fiktiva kreativa personer skapade för att representera tre distinkta röster, personligheter och kreativa världar.",
-    editorialNoteP2: "Deras illustrerade porträtt är medvetet fiktiva. Skaparna bakom böckerna har valt att hålla sina personliga identiteter åtskilda från dessa författarpersonor.",
-    editorialNoteP3: "Se Isaac, Lucia och Lucas mindre som traditionella författarbiografier och mer som de kreativa karaktärerna bakom tre mycket olika universum."
+    editorialNoteP3: "Se Isaac, Lucia och Lucas mindre som traditionella författarbiografier och mer som de kreativa karaktärerna bakom tre mycket olika universum.",
+    bsNewRelease: "NYHET",
+    bsScenes: "100 Färglägg efter Siffror Scener",
+    bsChapters: "8 Kapitel",
+    bsColors: "24 Färger",
+    bsDiscoverBook: "UPPTÄCK BOKEN",
+    bsCoverAlt: "The Black Sword - Bokomslag",
+    bsCoverTitle: "The Black Sword - Klicka för att visa i katalogen",
+    bsVideoAria: "The Black Sword reklamvideo",
+    bsPlay: "Spela",
+    bsPause: "Pausa",
+    bsAudioOn: "Ljud på",
+    bsAudioOff: "Ljud av"
   },
   ja: {
     pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
@@ -1161,7 +1253,19 @@ const TRANSLATIONS = {
     editorialNoteTitle: "著者について",
     editorialNoteP1: "アイザック・マックルーア、ルシア・C・マルコス、そしてルーカス・C・モリカは、3つの異なる個性、声、そして創作世界を表現するために作られた架空のクリエイティブ・ペルソナです。",
     editorialNoteP2: "描かれた肖像画は意図的に作られた架空のものです。本の制作者たちは、自身の個人的な正体をこれらの著者ペルソナから切り離し、作品そのもの（アイデア、イラスト、物語）を主役にすることを選びました。",
-    editorialNoteP3: "アイザック、ルシア、ルーカスを従来の著者紹介としてではなく、それぞれ独自の声やユーモア、世界観を持った3つのまったく異なる宇宙を創造するキャラクターとして捉えてみてください。"
+    editorialNoteP3: "アイザック、ルシア、ルーカスを従来の著者紹介としてではなく、それぞれ独自の声やユーモア、世界観を持った3つのまったく異なる宇宙を創造するキャラクターとして捉えてみてください。",
+    bsNewRelease: "新刊リリース",
+    bsScenes: "100の数字塗り絵シーン",
+    bsChapters: "全8章",
+    bsColors: "24色",
+    bsDiscoverBook: "本を見る",
+    bsCoverAlt: "The Black Sword - 表紙",
+    bsCoverTitle: "The Black Sword - カタログで見る",
+    bsVideoAria: "The Black Sword プロモーション動画",
+    bsPlay: "再生",
+    bsPause: "一時停止",
+    bsAudioOn: "音声オン",
+    bsAudioOff: "音声オフ"
   }
 };
 
@@ -1375,6 +1479,27 @@ function updateInterfaceLanguage(lang) {
       }
     }
   });
+  document.querySelectorAll('[data-i18n-title]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-title');
+    if (t[key]) el.setAttribute('title', t[key]);
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-alt');
+    if (t[key]) el.setAttribute('alt', t[key]);
+  });
+  document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-aria');
+    if (t[key]) el.setAttribute('aria-label', t[key]);
+  });
+
+  // Sync Black Sword video controls UI with current language
+  try {
+    const promoVid = document.getElementById('black-sword-promo-video');
+    if (promoVid && typeof updateBlackSwordPlayUI === 'function') {
+      updateBlackSwordPlayUI(!promoVid.paused);
+      updateBlackSwordSoundUI(promoVid.muted);
+    }
+  } catch (e) {}
 
   // Update Free Sample modal translations and default country
   updateFreeSampleModalTranslations(t);
@@ -3081,6 +3206,96 @@ function attachEventListeners() {
 }
 
 /**
+ * ============================================================================
+ * THE BLACK SWORD - PROMOTIONAL SECTION HANDLERS
+ * ============================================================================
+ */
+function scrollToBlackSwordBook(event) {
+  if (event) event.preventDefault();
+
+  // If current filter hides pixel-art books, switch to 'all' or 'pixel-art'
+  if (typeof setBookFilter === 'function' && typeof currentBookFilter !== 'undefined') {
+    if (currentBookFilter !== 'all' && currentBookFilter !== 'pixel-art') {
+      setBookFilter('all');
+    }
+  }
+
+  const targetCard = document.getElementById('card-the-black-sword');
+  if (targetCard) {
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetCard.classList.add('book-card-highlighted');
+    setTimeout(() => {
+      targetCard.classList.remove('book-card-highlighted');
+    }, 2400);
+  } else {
+    const catalog = document.getElementById('catalog-heading');
+    if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+
+function toggleBlackSwordPlay() {
+  const video = document.getElementById('black-sword-promo-video');
+  if (!video) return;
+
+  if (video.paused) {
+    video.play().catch(() => {});
+  } else {
+    video.pause();
+  }
+}
+
+function updateBlackSwordPlayUI(isPlaying) {
+  const t = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLanguage]) ? TRANSLATIONS[currentLanguage] : (TRANSLATIONS.it || {});
+  const iconPlay = document.getElementById('black-sword-icon-play');
+  const iconPause = document.getElementById('black-sword-icon-pause');
+  const label = document.getElementById('black-sword-play-label');
+  const btn = document.getElementById('black-sword-play-btn');
+  const centerPlay = document.getElementById('black-sword-center-play');
+
+  if (isPlaying) {
+    if (iconPlay) iconPlay.style.display = 'none';
+    if (iconPause) iconPause.style.display = 'inline-block';
+    if (label) label.textContent = t.bsPause || 'Pausa';
+    if (btn) btn.setAttribute('aria-label', t.bsPause || 'Pausa');
+    if (centerPlay) centerPlay.style.display = 'none';
+  } else {
+    if (iconPlay) iconPlay.style.display = 'inline-block';
+    if (iconPause) iconPause.style.display = 'none';
+    if (label) label.textContent = t.bsPlay || 'Avvia';
+    if (btn) btn.setAttribute('aria-label', t.bsPlay || 'Avvia');
+    if (centerPlay) centerPlay.style.display = 'flex';
+  }
+}
+
+function updateBlackSwordSoundUI(isMuted) {
+  const t = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLanguage]) ? TRANSLATIONS[currentLanguage] : (TRANSLATIONS.it || {});
+  const iconMuted = document.getElementById('black-sword-sound-icon-muted');
+  const iconUnmuted = document.getElementById('black-sword-sound-icon-unmuted');
+  const label = document.getElementById('black-sword-sound-label');
+  const btn = document.getElementById('black-sword-sound-btn');
+
+  if (isMuted) {
+    if (iconMuted) iconMuted.style.display = 'inline-block';
+    if (iconUnmuted) iconUnmuted.style.display = 'none';
+    if (label) label.textContent = t.bsAudioOff || 'Audio off';
+    if (btn) btn.setAttribute('aria-label', t.bsAudioOff || 'Audio off');
+  } else {
+    if (iconMuted) iconMuted.style.display = 'none';
+    if (iconUnmuted) iconUnmuted.style.display = 'inline-block';
+    if (label) label.textContent = t.bsAudioOn || 'Audio on';
+    if (btn) btn.setAttribute('aria-label', t.bsAudioOn || 'Audio on');
+  }
+}
+
+function toggleBlackSwordSound() {
+  const video = document.getElementById('black-sword-promo-video');
+  if (!video) return;
+
+  video.muted = !video.muted;
+  updateBlackSwordSoundUI(video.muted);
+}
+
+/**
  * App initialization
  */
 function initApp() {
@@ -3105,6 +3320,16 @@ function initApp() {
   } catch (e) {}
 
   updateFooterYear();
+
+  // 5. Ensure promotional video starts autoplaying (muted) and sync UI
+  try {
+    const promoVideo = document.getElementById('black-sword-promo-video');
+    if (promoVideo) {
+      promoVideo.addEventListener('play', () => updateBlackSwordPlayUI(true));
+      promoVideo.addEventListener('pause', () => updateBlackSwordPlayUI(false));
+      promoVideo.play().catch(() => {});
+    }
+  } catch (e) {}
 }
 
 // Initialize on DOM ready

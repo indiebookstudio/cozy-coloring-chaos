@@ -210,6 +210,175 @@
     <div id="seasonal-campaign-banner"></div>
   </section>
 
+  <!-- ============================================
+       NEW RELEASE PROMOTIONAL FEATURE: THE BLACK SWORD
+       ============================================ -->
+  <section class="black-sword-feature" id="black-sword-feature" aria-label="The Black Sword - New Release">
+    <div class="black-sword-container">
+      <div class="black-sword-card">
+        
+        <!-- Kicker Badge: NEW RELEASE -->
+        <div class="black-sword-badge-wrapper">
+          <span class="black-sword-badge">
+            <svg class="black-sword-badge-icon" viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+            </svg>
+            <span data-i18n="bsNewRelease">NOVITÀ</span>
+          </span>
+        </div>
+
+        <!-- Centerpiece Duo: Book Cover (Left) + Vertical Video (Right) -->
+        <div class="black-sword-duo-wrapper">
+          
+          <!-- Left: Book Cover Display -->
+          <div class="black-sword-cover-frame" onclick="scrollToBlackSwordBook(event)" role="button" tabindex="0" data-i18n-title="bsCoverTitle" title="The Black Sword - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToBlackSwordBook(event)">
+            <img
+              src="assets/books/The.Black.Sword/Front.Cover.png"
+              srcset="assets/books/The.Black.Sword/Front.Cover-opt.png 800w, assets/books/The.Black.Sword/Front.Cover.png 1533w"
+              sizes="(max-width: 768px) 290px, 450px"
+              data-i18n-alt="bsCoverAlt"
+              alt="The Black Sword - Copertina del libro"
+              width="800"
+              height="1043"
+              class="black-sword-cover-img"
+              loading="eager"
+              decoding="sync"
+            />
+          </div>
+
+          <!-- Right: Vertical Video (9:16) with Play/Pause & Sound Controls -->
+          <div class="black-sword-video-frame">
+            <video
+              id="black-sword-promo-video"
+              class="black-sword-video"
+              autoplay
+              muted
+              loop
+              playsinline
+              preload="metadata"
+              poster="assets/books/The.Black.Sword/Front.Cover.png"
+              data-i18n-aria="bsVideoAria"
+              aria-label="Video promozionale di The Black Sword"
+              onclick="toggleBlackSwordPlay()"
+            >
+              <source src="assets/books/The.Black.Sword/Video/The.Black.Sword.mp4" type="video/mp4">
+              Your browser does not support HTML5 video.
+            </video>
+
+            <!-- Video Controls Bar (Play/Pause & Sound Toggle) -->
+            <div class="black-sword-video-controls" aria-label="Controlli video">
+              <!-- Play / Pause Button -->
+              <button
+                type="button"
+                id="black-sword-play-btn"
+                class="black-sword-ctrl-btn"
+                aria-label="Pausa video"
+                onclick="toggleBlackSwordPlay()"
+              >
+                <!-- Pause Icon (default when playing) -->
+                <svg id="black-sword-icon-pause" class="black-sword-ctrl-svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true">
+                  <rect x="6" y="4" width="4" height="16" rx="1.5"></rect>
+                  <rect x="14" y="4" width="4" height="16" rx="1.5"></rect>
+                </svg>
+                <!-- Play Icon (shown when paused) -->
+                <svg id="black-sword-icon-play" class="black-sword-ctrl-svg" viewBox="0 0 24 24" width="15" height="15" fill="currentColor" aria-hidden="true" style="display: none;">
+                  <polygon points="6 4 20 12 6 20 6 4"></polygon>
+                </svg>
+                <span id="black-sword-play-label" class="black-sword-ctrl-text" data-i18n="bsPause">Pausa</span>
+              </button>
+
+              <!-- Audio Toggle Button -->
+              <button
+                type="button"
+                id="black-sword-sound-btn"
+                class="black-sword-ctrl-btn"
+                aria-label="Attiva audio"
+                onclick="toggleBlackSwordSound()"
+              >
+                <svg id="black-sword-sound-icon-muted" class="black-sword-ctrl-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <line x1="23" y1="9" x2="17" y2="15"></line>
+                  <line x1="17" y1="9" x2="23" y2="15"></line>
+                </svg>
+                <svg id="black-sword-sound-icon-unmuted" class="black-sword-ctrl-svg" viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display: none;">
+                  <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"></polygon>
+                  <path d="M19.07 4.93a10 10 0 0 1 0 14.14M15.54 8.46a5 5 0 0 1 0 7.07"></path>
+                </svg>
+                <span id="black-sword-sound-label" class="black-sword-ctrl-text" data-i18n="bsAudioOff">Audio off</span>
+              </button>
+            </div>
+
+            <!-- Big Center Play Button Overlay (shown only when paused) -->
+            <div id="black-sword-center-play" class="black-sword-center-play" onclick="toggleBlackSwordPlay()" style="display: none;" aria-hidden="true">
+              <div class="black-sword-center-play-circle">
+                <svg viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+                  <polygon points="8 5 19 12 8 19 8 5"></polygon>
+                </svg>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- Feature Pills: 100 Scenes | 8 Chapters | 24 Colors -->
+        <div class="black-sword-features-row" role="list" aria-label="Book features">
+          <div class="black-sword-feature-pill" role="listitem">
+            <span class="black-sword-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                <polyline points="21 15 16 10 5 21"></polyline>
+              </svg>
+            </span>
+            <span class="black-sword-pill-text" data-i18n="bsScenes">100 Scene Color-by-Number</span>
+          </div>
+
+          <div class="black-sword-feature-pill" role="listitem">
+            <span class="black-sword-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"></path>
+                <path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"></path>
+              </svg>
+            </span>
+            <span class="black-sword-pill-text" data-i18n="bsChapters">8 Capitoli</span>
+          </div>
+
+          <div class="black-sword-feature-pill" role="listitem">
+            <span class="black-sword-pill-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" width="15" height="15" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+              </svg>
+            </span>
+            <span class="black-sword-pill-text" data-i18n="bsColors">24 Colori</span>
+          </div>
+        </div>
+
+        <!-- Action / CTA: Discover The Book -->
+        <div class="black-sword-cta-wrapper">
+          <a
+            href="#card-the-black-sword"
+            class="black-sword-cta-btn"
+            id="black-sword-discover-btn"
+            onclick="scrollToBlackSwordBook(event)"
+            data-i18n-aria="bsDiscoverBook"
+            aria-label="Scopri il libro The Black Sword"
+          >
+            <span class="black-sword-cta-label" data-i18n="bsDiscoverBook">SCOPRI IL LIBRO</span>
+            <svg class="black-sword-cta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="5" y1="12" x2="19" y2="12"></line>
+              <polyline points="12 5 19 12 12 19"></polyline>
+            </svg>
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
   <div class="site-wrapper">
     <!-- ============================================
          MAIN CONTENT: BOOKS SHOWCASE
