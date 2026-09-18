@@ -40,36 +40,44 @@ const AMAZON_MARKETS = {
 // ============================================================================
 const BOOKS = [
   {
-    id: "innocent-paws",
-    title: "Innocent Paws",
-    subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
-    author: "Isaac McClour",
-    category: "bold-and-easy",
+    id: "the-horror-pixel-show",
+    title: "The Horror Pixel Show",
+    subtitle: "66 Nightmares to Color by Number | A Horror Mystery Mosaic Coloring Book | Diamond-Shaped Designs | Monsters, Creatures & Dark Fantasies",
+    author: "Lucia C. Marcos",
+    category: "pixel-art",
     language: "English",
     langCode: "en",
-    cover: "assets/books/Innocent.Paws/Front.Cover.png",
-    samplePdf: "assets/books/Innocent.Paws/Sample/Free.Sample.pdf",
+    cover: "assets/books/The.Horror.Pixel.Show/Front.Cover.png",
+    samplePdf: "assets/books/The.Horror.Pixel.Show/Sample/Free.Sample.pdf",
     preview: [
-      "assets/books/Innocent.Paws/Front.Cover.png",
-      "assets/books/Innocent.Paws/2.png",
-      "assets/books/Innocent.Paws/3.png",
-      "assets/books/Innocent.Paws/6.png",
-      "assets/books/Innocent.Paws/8.png",
-      "assets/books/Innocent.Paws/10.png",
-      "assets/books/Innocent.Paws/Back.Cover.png"
+      "assets/books/The.Horror.Pixel.Show/Front.Cover.png",
+      "assets/books/The.Horror.Pixel.Show/2.png",
+      "assets/books/The.Horror.Pixel.Show/3.png",
+      "assets/books/The.Horror.Pixel.Show/4.png",
+      "assets/books/The.Horror.Pixel.Show/6.png",
+      "assets/books/The.Horror.Pixel.Show/7.png",
+      "assets/books/The.Horror.Pixel.Show/9.png",
+      "assets/books/The.Horror.Pixel.Show/10.png",
+      "assets/books/The.Horror.Pixel.Show/12.png",
+      "assets/books/The.Horror.Pixel.Show/13.png",
+      "assets/books/The.Horror.Pixel.Show/15.png",
+      "assets/books/The.Horror.Pixel.Show/Back.Cover.png"
     ],
     colored: [
-      "assets/books/Innocent.Paws/Colored/01.jpeg",
-      "assets/books/Innocent.Paws/Colored/02.jpeg",
-      "assets/books/Innocent.Paws/Colored/03.jpeg",
-      "assets/books/Innocent.Paws/Colored/04.jpeg",
-      "assets/books/Innocent.Paws/Colored/05.jpeg",
-      "assets/books/Innocent.Paws/Colored/06.jpeg"
+      "assets/books/The.Horror.Pixel.Show/Colored/8.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/14.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/23.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/53.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/89.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/128.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/164.png",
+      "assets/books/The.Horror.Pixel.Show/Colored/200.png"
     ],
     defaultMarket: "us",
-    asin: "B0HFGBJW8Y"
+    asin: "B0HK8WDHM1",
+    isNew: true
   },
-  {
+{
     id: "cozy-terror",
     title: "Cozy Terror",
     subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
@@ -100,6 +108,71 @@ const BOOKS = [
     defaultMarket: "us",
     asin: "B0HHKY6Q8V",
     isNew: true
+  },
+{
+    id: "the-black-sword",
+    title: "The Black Sword",
+    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
+    author: "Lucia C. Marcos",
+    category: "pixel-art",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/The.Black.Sword/Front.Cover.png",
+    samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/The.Black.Sword/Front.Cover.png",
+      "assets/books/The.Black.Sword/2.png",
+      "assets/books/The.Black.Sword/3.png",
+      "assets/books/The.Black.Sword/4.png",
+      "assets/books/The.Black.Sword/6.png",
+      "assets/books/The.Black.Sword/7.png",
+      "assets/books/The.Black.Sword/9.png",
+      "assets/books/The.Black.Sword/10.png",
+      "assets/books/The.Black.Sword/12.png",
+      "assets/books/The.Black.Sword/13.png",
+      "assets/books/The.Black.Sword/15.png",
+      "assets/books/The.Black.Sword/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/The.Black.Sword/Colored/11.png",
+      "assets/books/The.Black.Sword/Colored/26.png",
+      "assets/books/The.Black.Sword/Colored/41.png",
+      "assets/books/The.Black.Sword/Colored/149.png",
+      "assets/books/The.Black.Sword/Colored/182.png"
+    ],
+    defaultMarket: "us",
+    asin: "B0HJ92FNRK",
+    isNew: true
+  },
+  {
+    id: "innocent-paws",
+    title: "Innocent Paws",
+    subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
+    author: "Isaac McClour",
+    category: "bold-and-easy",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Innocent.Paws/Front.Cover.png",
+    samplePdf: "assets/books/Innocent.Paws/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Innocent.Paws/Front.Cover.png",
+      "assets/books/Innocent.Paws/2.png",
+      "assets/books/Innocent.Paws/3.png",
+      "assets/books/Innocent.Paws/6.png",
+      "assets/books/Innocent.Paws/8.png",
+      "assets/books/Innocent.Paws/10.png",
+      "assets/books/Innocent.Paws/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Innocent.Paws/Colored/01.jpeg",
+      "assets/books/Innocent.Paws/Colored/02.jpeg",
+      "assets/books/Innocent.Paws/Colored/03.jpeg",
+      "assets/books/Innocent.Paws/Colored/04.jpeg",
+      "assets/books/Innocent.Paws/Colored/05.jpeg",
+      "assets/books/Innocent.Paws/Colored/06.jpeg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HFGBJW8Y"
   },
   {
     id: "killer-paws",
@@ -225,41 +298,6 @@ const BOOKS = [
     ],
     defaultMarket: "us",
     asin: "B0HGJBKMGZ"
-  },
-  {
-    id: "the-black-sword",
-    title: "The Black Sword",
-    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
-    author: "Lucia C. Marcos",
-    category: "pixel-art",
-    language: "English",
-    langCode: "en",
-    cover: "assets/books/The.Black.Sword/Front.Cover.png",
-    samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
-    preview: [
-      "assets/books/The.Black.Sword/Front.Cover.png",
-      "assets/books/The.Black.Sword/2.png",
-      "assets/books/The.Black.Sword/3.png",
-      "assets/books/The.Black.Sword/4.png",
-      "assets/books/The.Black.Sword/6.png",
-      "assets/books/The.Black.Sword/7.png",
-      "assets/books/The.Black.Sword/9.png",
-      "assets/books/The.Black.Sword/10.png",
-      "assets/books/The.Black.Sword/12.png",
-      "assets/books/The.Black.Sword/13.png",
-      "assets/books/The.Black.Sword/15.png",
-      "assets/books/The.Black.Sword/Back.Cover.png"
-    ],
-    colored: [
-      "assets/books/The.Black.Sword/Colored/11.png",
-      "assets/books/The.Black.Sword/Colored/26.png",
-      "assets/books/The.Black.Sword/Colored/41.png",
-      "assets/books/The.Black.Sword/Colored/149.png",
-      "assets/books/The.Black.Sword/Colored/182.png"
-    ],
-    defaultMarket: "us",
-    asin: "B0HJ92FNRK",
-    isNew: true
   },
   {
     id: "non-rompetemi-i-coglioni",
@@ -445,7 +483,16 @@ const TRANSLATIONS = {
     bsPlay: "Avvia",
     bsPause: "Pausa",
     bsAudioOn: "Audio on",
-    bsAudioOff: "Audio off"
+    bsAudioOff: "Audio off",
+    promoDuoBadge: "NOVITÀ PIXEL ART",
+    bsShape: "Cerchi Color-by-Number",
+    bsScenesChapters: "100 Scene, 8 Capitoli",
+    hpsShape: "Rombi Color-by-Number",
+    hpsNightmares: "66 Incubi Terrificanti",
+    hpsColors: "16 Colori",
+    hpsDiscoverBook: "SCOPRI IL LIBRO",
+    hpsCoverAlt: "The Horror Pixel Show - Copertina del libro",
+    hpsCoverTitle: "The Horror Pixel Show - Clicca per vedere nel catalogo"
   },
   en: {
     pageTitle: "Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books",
@@ -548,7 +595,16 @@ const TRANSLATIONS = {
     bsPlay: "Play",
     bsPause: "Pause",
     bsAudioOn: "Audio on",
-    bsAudioOff: "Audio off"
+    bsAudioOff: "Audio off",
+    promoDuoBadge: "NEW PIXEL ART RELEASES",
+    bsShape: "Color-by-Number Circles",
+    bsScenesChapters: "100 Scenes, 8 Chapters",
+    hpsShape: "Color-by-Number Diamonds",
+    hpsNightmares: "66 Terrifying Nightmares",
+    hpsColors: "16 Colors",
+    hpsDiscoverBook: "DISCOVER THE BOOK",
+    hpsCoverAlt: "The Horror Pixel Show - Book Front Cover",
+    hpsCoverTitle: "The Horror Pixel Show - Click to view in catalog"
   },
   de: {
     pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
@@ -651,7 +707,16 @@ const TRANSLATIONS = {
     bsPlay: "Abspielen",
     bsPause: "Pause",
     bsAudioOn: "Audio an",
-    bsAudioOff: "Audio aus"
+    bsAudioOff: "Audio aus",
+    promoDuoBadge: "PIXEL ART NEUHEITEN",
+    bsShape: "Malen-nach-Zahlen Kreise",
+    bsScenesChapters: "100 Szenen, 8 Kapitel",
+    hpsShape: "Malen-nach-Zahlen Rauten",
+    hpsNightmares: "66 Furchterregende Albträume",
+    hpsColors: "16 Farben",
+    hpsDiscoverBook: "BUCH ENTDECKEN",
+    hpsCoverAlt: "The Horror Pixel Show - Buchcover",
+    hpsCoverTitle: "The Horror Pixel Show - Klicken zum Anzeigen im Katalog"
   },
   fr: {
     pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
@@ -754,7 +819,16 @@ const TRANSLATIONS = {
     bsPlay: "Lire",
     bsPause: "Pause",
     bsAudioOn: "Audio on",
-    bsAudioOff: "Audio off"
+    bsAudioOff: "Audio off",
+    promoDuoBadge: "NOUVEAUTÉS PIXEL ART",
+    bsShape: "Cercles Coloriage par Numéro",
+    bsScenesChapters: "100 Scènes, 8 Chapitres",
+    hpsShape: "Losanges Coloriage par Numéro",
+    hpsNightmares: "66 Cauchemars Terrifiants",
+    hpsColors: "16 Couleurs",
+    hpsDiscoverBook: "DÉCOUVRIR LE LIVRE",
+    hpsCoverAlt: "The Horror Pixel Show - Couverture du livre",
+    hpsCoverTitle: "The Horror Pixel Show - Cliquer pour voir dans le catalogue"
   },
   es: {
     pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
@@ -857,7 +931,16 @@ const TRANSLATIONS = {
     bsPlay: "Reproducir",
     bsPause: "Pausa",
     bsAudioOn: "Audio on",
-    bsAudioOff: "Audio off"
+    bsAudioOff: "Audio off",
+    promoDuoBadge: "NOVEDADES PIXEL ART",
+    bsShape: "Círculos Colorear por Números",
+    bsScenesChapters: "100 Escenas, 8 Capítulos",
+    hpsShape: "Rombos Colorear por Números",
+    hpsNightmares: "66 Pesadillas Aterradoras",
+    hpsColors: "16 Colores",
+    hpsDiscoverBook: "DESCUBRE EL LIBRO",
+    hpsCoverAlt: "The Horror Pixel Show - Portada del libro",
+    hpsCoverTitle: "The Horror Pixel Show - Clic para ver en el catálogo"
   },
   nl: {
     pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
@@ -959,7 +1042,16 @@ const TRANSLATIONS = {
     bsPlay: "Afspelen",
     bsPause: "Pauze",
     bsAudioOn: "Audio aan",
-    bsAudioOff: "Audio uit"
+    bsAudioOff: "Audio uit",
+    promoDuoBadge: "NIEUWE PIXEL ART UITGAVEN",
+    bsShape: "Kleuren-op-Nummer Cirkels",
+    bsScenesChapters: "100 Scènes, 8 Hoofdstukken",
+    hpsShape: "Kleuren-op-Nummer Ruiten",
+    hpsNightmares: "66 Angstaanjagende Nachtmerries",
+    hpsColors: "16 Kleuren",
+    hpsDiscoverBook: "ONTDEK HET BOEK",
+    hpsCoverAlt: "The Horror Pixel Show - Boekomslag",
+    hpsCoverTitle: "The Horror Pixel Show - Klik om in catalogus te bekijken"
   },
   pl: {
     pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
@@ -1061,7 +1153,16 @@ const TRANSLATIONS = {
     bsPlay: "Odtwórz",
     bsPause: "Pauza",
     bsAudioOn: "Dźwięk wł.",
-    bsAudioOff: "Dźwięk wył."
+    bsAudioOff: "Dźwięk wył.",
+    promoDuoBadge: "NOWOŚCI PIXEL ART",
+    bsShape: "Koła Kolorowanie po Numerach",
+    bsScenesChapters: "100 Scen, 8 Rozdziałów",
+    hpsShape: "Romy Kolorowanie po Numerach",
+    hpsNightmares: "66 Przerażających Koszmarów",
+    hpsColors: "16 Kolorów",
+    hpsDiscoverBook: "ODKRYJ KSIĄŻKĘ",
+    hpsCoverAlt: "The Horror Pixel Show - Okładka książki",
+    hpsCoverTitle: "The Horror Pixel Show - Kliknij, aby zobaczyć w katalogu"
   },
   sv: {
     pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
@@ -1162,7 +1263,16 @@ const TRANSLATIONS = {
     bsPlay: "Spela",
     bsPause: "Pausa",
     bsAudioOn: "Ljud på",
-    bsAudioOff: "Ljud av"
+    bsAudioOff: "Ljud av",
+    promoDuoBadge: "PIXEL ART NYHETER",
+    bsShape: "Färg-efter-Nummer Cirklar",
+    bsScenesChapters: "100 Scener, 8 Kapitel",
+    hpsShape: "Färg-efter-Nummer Romboidaler",
+    hpsNightmares: "66 Skrämmande Mardrömmar",
+    hpsColors: "16 Färger",
+    hpsDiscoverBook: "UPPTÄCK BOKEN",
+    hpsCoverAlt: "The Horror Pixel Show - Bokomslag",
+    hpsCoverTitle: "The Horror Pixel Show - Klicka för att visa i katalogen"
   },
   ja: {
     pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
@@ -1265,7 +1375,16 @@ const TRANSLATIONS = {
     bsPlay: "再生",
     bsPause: "一時停止",
     bsAudioOn: "音声オン",
-    bsAudioOff: "音声オフ"
+    bsAudioOff: "音声オフ",
+    promoDuoBadge: "ピクセルアート新作",
+    bsShape: "数字塗り絵（サークル）",
+    bsScenesChapters: "100シーン・全8章",
+    hpsShape: "数字塗り絵（ダイヤ）",
+    hpsNightmares: "66の恐ろしい悪夢",
+    hpsColors: "16色",
+    hpsDiscoverBook: "本を見る",
+    hpsCoverAlt: "The Horror Pixel Show - 表紙",
+    hpsCoverTitle: "The Horror Pixel Show - カタログで見る"
   }
 };
 
@@ -1310,6 +1429,14 @@ function getDefaultMarketForLanguage(book, lang) {
  * - All other international visitors without their own dedicated marketplace store default to English ('en') & Amazon.com (US)
  */
 function detectInitialLanguage() {
+  try {
+    const urlParams = new URLSearchParams(window.location.search);
+    const urlLang = urlParams.get('lang');
+    if (urlLang && TRANSLATIONS[urlLang.toLowerCase()]) {
+      return urlLang.toLowerCase();
+    }
+  } catch (e) {}
+
   try {
     const saved = localStorage.getItem('ccc_site_lang');
     if (saved && TRANSLATIONS[saved]) {
@@ -3210,6 +3337,29 @@ function attachEventListeners() {
  * THE BLACK SWORD - PROMOTIONAL SECTION HANDLERS
  * ============================================================================
  */
+function scrollToHorrorPixelBook(event) {
+  if (event) event.preventDefault();
+
+  if (typeof setBookFilter === 'function' && typeof currentBookFilter !== 'undefined') {
+    if (currentBookFilter !== 'all' && currentBookFilter !== 'pixel-art') {
+      setBookFilter('all');
+    }
+  }
+
+  const targetCard = document.getElementById('card-the-horror-pixel-show');
+  if (targetCard) {
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetCard.classList.add('book-card-highlighted');
+    setTimeout(() => {
+      targetCard.classList.remove('book-card-highlighted');
+    }, 2400);
+  } else {
+    const catalog = document.getElementById('catalog-heading');
+    if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+window.scrollToHorrorPixelBook = scrollToHorrorPixelBook;
+
 function scrollToBlackSwordBook(event) {
   if (event) event.preventDefault();
 
@@ -3316,6 +3466,23 @@ function initApp() {
     const filterParam = urlParams.get('category') || urlParams.get('filter') || urlParams.get('author') || (window.location.hash ? window.location.hash.replace('#', '') : null);
     if (filterParam) {
       setBookFilter(filterParam);
+    }
+    const modalParam = urlParams.get('modal');
+    if (modalParam) {
+      const modeParam = urlParams.get('mode') || 'preview';
+      openSampleModal(modalParam, modeParam);
+      const pageIndex = parseInt(urlParams.get('page'), 10);
+      if (!isNaN(pageIndex) && pageIndex > 0) {
+        changeSamplePage(pageIndex);
+      }
+    }
+    const sampleModalParam = urlParams.get('sampleModal');
+    if (sampleModalParam) {
+      openFreeSampleModal(sampleModalParam);
+    }
+    const popupParam = urlParams.get('popup');
+    if (popupParam && typeof openCampaignPopup === 'function') {
+      setTimeout(() => openCampaignPopup(), 80);
     }
   } catch (e) {}
 

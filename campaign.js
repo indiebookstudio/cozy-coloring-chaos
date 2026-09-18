@@ -13,7 +13,7 @@ const SEASONAL_CAMPAIGN = {
 
   banner: {
     enabled: true,
-    bgImage: "assets/campaigns/halloween-2026/Banner.Halloween.2026.jpeg"
+    bgImage: "assets/campaigns/halloween-2026/Banner.Halloween.2026.New.jpeg"
   },
 
   popup: {
@@ -22,7 +22,7 @@ const SEASONAL_CAMPAIGN = {
     sessionStorageKey: "ccc_campaign_halloween_2026_dismissed",
     bgImage: "assets/campaigns/halloween-2026/Popup.Halloween.2026.jpeg",
     // Horizontal row of three cards with Cozy Terror centered
-    bookIds: ["innocent-paws", "cozy-terror", "killer-paws"],
+    bookIds: ["the-horror-pixel-show", "innocent-paws", "cozy-terror", "killer-paws"],
     centerBookId: "cozy-terror"
   }
 };
@@ -36,7 +36,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "SCOPRI LA COLLEZIONE HALLOWEEN →",
     bannerAria: "Esplora la collezione di Halloween 2026",
     popupHeadline: "QUESTO HALLOWEEN, COLORA QUALCOSA DI TERRIFICANTE.",
-    popupSubheadline: "Tre incubi cozy. Un Halloween indimenticabile.",
     popupBadge: "NOVITÀ",
     buyPrefix: "ACQUISTA SU ",
     buySuffix: "",
@@ -50,7 +49,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "SHOP THE HALLOWEEN COLLECTION →",
     bannerAria: "Explore the Halloween 2026 Collection",
     popupHeadline: "THIS HALLOWEEN, COLOR SOMETHING TERRIFYING.",
-    popupSubheadline: "Three cozy nightmares. One unforgettable Halloween.",
     popupBadge: "NEW",
     buyPrefix: "BUY ON ",
     buySuffix: "",
@@ -64,7 +62,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "HALLOWEEN-KOLLEKTION ENTDECKEN →",
     bannerAria: "Halloween 2026 Kollektion entdecken",
     popupHeadline: "DIESES HALLOWEEN ETWAS WIRKLICH GRUSELIGES AUSMALEN.",
-    popupSubheadline: "Drei gemütliche Albträume. Ein unvergessliches Halloween.",
     popupBadge: "NEU",
     buyPrefix: "AUF ",
     buySuffix: " KAUFEN",
@@ -78,7 +75,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "DÉCOUVRIR LA COLLECTION HALLOWEEN →",
     bannerAria: "Découvrir la collection Halloween 2026",
     popupHeadline: "POUR HALLOWEEN, COLORIEZ QUELQUE CHOSE D'EFFRAYANT.",
-    popupSubheadline: "Trois cauchemars cozy. Un Halloween inoubliable.",
     popupBadge: "NOUVEAU",
     buyPrefix: "ACHETER SUR ",
     buySuffix: "",
@@ -92,7 +88,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "DESCUBRE LA COLECCIÓN DE HALLOWEEN →",
     bannerAria: "Descubre la colección Halloween 2026",
     popupHeadline: "ESTE HALLOWEEN, COLOREA ALGO ATERRADOR.",
-    popupSubheadline: "Tres pesadillas cozy. Un Halloween inolvidable.",
     popupBadge: "NUEVO",
     buyPrefix: "COMPRAR EN ",
     buySuffix: "",
@@ -106,7 +101,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "ONTDEK DE HALLOWEEN-COLLECTIE →",
     bannerAria: "Ontdek de Halloween 2026 collectie",
     popupHeadline: "KLEUR DEZE HALLOWEEN IETS ECHT GRIEZELIGS.",
-    popupSubheadline: "Drie cozy nachtmerries. Eén onvergetelijke Halloween.",
     popupBadge: "NIEUW",
     buyPrefix: "KOOP OP ",
     buySuffix: "",
@@ -120,7 +114,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "ODKRYJ KOLEKCJĘ HALLOWEEN →",
     bannerAria: "Odkryj kolekcję Halloween 2026",
     popupHeadline: "W TO HALLOWEEN POKOLORUJ COŚ PRZERAŻAJĄCEGO.",
-    popupSubheadline: "Trzy przytulne koszmary. Jedno niezapomniane Halloween.",
     popupBadge: "NOWOŚĆ",
     buyPrefix: "KUP NA ",
     buySuffix: "",
@@ -134,7 +127,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "UTFORSKA HALLOWEEN-KOLLEKTIONEN →",
     bannerAria: "Utforska Halloween 2026 kollektionen",
     popupHeadline: "FÄRGLÄGG NÅGOT RIKTIGT SKRÄMMANDE DENNA HALLOWEEN.",
-    popupSubheadline: "Tre mysiga mardrömmar. En oförglömlig Halloween.",
     popupBadge: "NYHET",
     buyPrefix: "KÖP PÅ ",
     buySuffix: "",
@@ -148,7 +140,6 @@ const CAMPAIGN_TRANSLATIONS = {
     bannerCta: "ハロウィンコレクションを見る →",
     bannerAria: "ハロウィン 2026 コレクションを見る",
     popupHeadline: "今年のハロウィンは、恐ろしくも愛らしい世界を塗ろう。",
-    popupSubheadline: "3つの悪夢。忘れられないハロウィンへ。",
     popupBadge: "新刊",
     buyPrefix: "",
     buySuffix: " で購入",
@@ -299,7 +290,7 @@ function generateCampaignCardsHtml(lang) {
 
     if (!book) return '';
 
-    const isCenter = (bookId === p.centerBookId);
+    const isNew = (bookId === 'the-horror-pixel-show');
     const { marketKey, domain } = getActiveMarketInfo(book, activeLang);
     
     // Obtain the correct Amazon URL matching current marketplace
@@ -316,8 +307,8 @@ function generateCampaignCardsHtml(lang) {
     const buyLabel = `${t.buyPrefix}${domain.toUpperCase()}${t.buySuffix}`;
 
     return `
-      <div class="campaign-product-card ${isCenter ? 'card-center' : ''}">
-        ${isCenter && t.popupBadge ? `<span class="campaign-card-center-badge">${t.popupBadge}</span>` : ''}
+      <div class="campaign-product-card ${isNew ? 'card-center' : ''}">
+        ${isNew && t.popupBadge ? `<span class="campaign-card-center-badge">${t.popupBadge}</span>` : ''}
         <div class="campaign-card-cover-wrapper">
           <img 
             src="${safeCover}" 
@@ -407,9 +398,6 @@ function mountCampaignPopup() {
             <h3 class="campaign-modal-headline" id="campaign-modal-headline">
               ${t.popupHeadline}
             </h3>
-            <p class="campaign-modal-subheadline" id="campaign-modal-subheadline">
-              ${t.popupSubheadline}
-            </p>
           </header>
 
           <div class="campaign-cards-row" id="campaign-cards-row">
@@ -453,14 +441,12 @@ function updateCampaignTranslations(langCode) {
 
   // 2. Update Popup texts if mounted
   const popupHeadline = document.getElementById('campaign-modal-headline');
-  const popupSubheadline = document.getElementById('campaign-modal-subheadline');
   const footerText = document.getElementById('campaign-footer-text');
   const viewAllBtn = document.getElementById('campaign-view-all-btn');
   const langHint = document.getElementById('campaign-lang-hint');
   const closeBtn = document.getElementById('campaign-modal-close');
 
   if (popupHeadline) popupHeadline.textContent = t.popupHeadline;
-  if (popupSubheadline) popupSubheadline.textContent = t.popupSubheadline;
   if (footerText) footerText.textContent = t.popupFooterText;
   if (viewAllBtn) viewAllBtn.textContent = t.popupFooterCta;
   if (langHint) langHint.textContent = t.popupLangHint;

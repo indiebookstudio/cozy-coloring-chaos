@@ -149,7 +149,7 @@
 .campaign-modal-dialog {
   position: relative;
   width: 100%;
-  max-width: 980px;
+  max-width: 1120px;
   max-height: 92vh;
   border-radius: var(--radius-lg);
   overflow-y: auto;
@@ -244,12 +244,12 @@
 }
 
 /* --------------------------------------------------------------------------
-   3. HORIZONTAL ROW OF 3 PRODUCT CARDS
+   3. HORIZONTAL ROW OF 4 PRODUCT CARDS
    -------------------------------------------------------------------------- */
 .campaign-cards-row {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.15rem;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.95rem;
   width: 100%;
   box-sizing: border-box;
 }
@@ -534,7 +534,8 @@
   }
 
   .campaign-cards-row {
-    gap: 0.75rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
   }
 
   .campaign-product-card {

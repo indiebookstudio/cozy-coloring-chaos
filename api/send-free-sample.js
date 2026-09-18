@@ -52,6 +52,16 @@ const AMAZON_MARKETS = {
 
 const BOOKS = [
   {
+    id: "the-horror-pixel-show",
+    title: "The Horror Pixel Show",
+    subtitle: "66 Nightmares to Color by Number | A Horror Mystery Mosaic Coloring Book | Diamond-Shaped Designs | Monsters, Creatures & Dark Fantasies",
+    author: "Lucia C. Marcos",
+    cover: "assets/books/The.Horror.Pixel.Show/Front.Cover.png",
+    samplePdf: "assets/books/The.Horror.Pixel.Show/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HK8WDHM1"
+  },
+  {
     id: "cozy-terror",
     title: "Cozy Terror",
     subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
@@ -63,34 +73,14 @@ const BOOKS = [
     isNew: true
   },
   {
-    id: "crazy-cozy",
-    title: "Crazy Cozy",
-    subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
-    author: "Isaac McClour",
-    cover: "assets/books/Crazy.Cozy/Front.Cover.png",
-    samplePdf: "assets/books/Crazy.Cozy/Sample/Free.Sample.pdf",
+    id: "the-black-sword",
+    title: "The Black Sword",
+    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
+    author: "Lucia C. Marcos",
+    cover: "assets/books/The.Black.Sword/Front.Cover.png",
+    samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HHZWYGNF"
-  },
-  {
-    id: "impossible-worlds",
-    title: "Impossible Worlds",
-    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
-    author: "Isaac McClour",
-    cover: "assets/books/Impossible.Worlds/Front.Cover.png",
-    samplePdf: "assets/books/Impossible.Worlds/Sample/Free.Sample.pdf",
-    defaultMarket: "us",
-    asin: "B0HFZZ2TMH"
-  },
-  {
-    id: "italian-girls",
-    title: "Italian Girls",
-    subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
-    author: "Isaac McClour",
-    cover: "assets/books/Italian.Girls/Front.Cover.png",
-    samplePdf: "assets/books/Italian.Girls/Sample/Free.Sample.pdf",
-    defaultMarket: "us",
-    asin: "B0HGJBKMGZ"
+    asin: "B0HJ92FNRK"
   },
   {
     id: "innocent-paws",
@@ -113,14 +103,34 @@ const BOOKS = [
     asin: "B0HGGQ3GZ8"
   },
   {
-    id: "the-black-sword",
-    title: "The Black Sword",
-    subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
-    author: "Lucia C. Marcos",
-    cover: "assets/books/The.Black.Sword/Front.Cover.png",
-    samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
+    id: "impossible-worlds",
+    title: "Impossible Worlds",
+    subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
+    author: "Isaac McClour",
+    cover: "assets/books/Impossible.Worlds/Front.Cover.png",
+    samplePdf: "assets/books/Impossible.Worlds/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HJ92FNRK"
+    asin: "B0HFZZ2TMH"
+  },
+  {
+    id: "crazy-cozy",
+    title: "Crazy Cozy",
+    subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
+    author: "Isaac McClour",
+    cover: "assets/books/Crazy.Cozy/Front.Cover.png",
+    samplePdf: "assets/books/Crazy.Cozy/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HHZWYGNF"
+  },
+  {
+    id: "italian-girls",
+    title: "Italian Girls",
+    subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
+    author: "Isaac McClour",
+    cover: "assets/books/Italian.Girls/Front.Cover.png",
+    samplePdf: "assets/books/Italian.Girls/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HGJBKMGZ"
   },
   {
     id: "non-rompetemi-i-coglioni",
