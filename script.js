@@ -3222,10 +3222,14 @@ function createBookCard(book, index) {
 
   return `
     <article class="book-card ${isComingSoon ? 'book-card-coming-soon' : ''}" role="listitem" id="card-${escapeHtml(book.id || index)}">
-      <!-- Book Cover Image with optional Preview Click Trigger -->
+      <!-- Book Cover Image with Free Sample Trigger -->
       <div 
-        class="book-cover-container ${hasPreview || hasColored ? 'has-preview' : ''}"
-        ${(hasPreview || hasColored) ? `onclick="openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'}')" title="${hasColored ? t.coloredBtn : t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'})"` : ''}
+        class="book-cover-container ${hasSample || hasPreview || hasColored ? 'has-preview' : ''}"
+        ${hasSample
+          ? `onclick="openFreeSampleModal('${escapeJs(book.id)}')" title="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openFreeSampleModal('${escapeJs(book.id)}')"`
+          : (hasPreview || hasColored)
+            ? `onclick="openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'}')" title="${hasColored ? t.coloredBtn : t.previewBtn} - ${safeTitle}" role="button" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ')openSampleModal('${escapeJs(book.id)}', '${hasColored ? 'colored' : 'preview'})"`
+            : ''}
       >
         <img 
           src="${safeCover}" 
@@ -3236,7 +3240,11 @@ function createBookCard(book, index) {
           oncontextmenu="return false;"
           onerror="handleImageError(this, '${safeTitle.replace(/'/g, "\\'")}')"
         >
-        ${(hasPreview || hasColored) ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${hasColored ? t.coloredBtn : t.previewBtn}</span></div>` : ''}
+        ${hasSample
+          ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${iconSample}<span>${t.freeSampleBtn || 'Free Sample'}</span></span></div>`
+          : (hasPreview || hasColored)
+            ? `<div class="cover-preview-overlay"><span class="cover-preview-badge">${hasColored ? t.coloredBtn : t.previewBtn}</span></div>`
+            : ''}
       </div>
 
       <!-- Book Info -->

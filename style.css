@@ -1824,6 +1824,10 @@ body {
 }
 
 .cover-preview-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
   background: #FFFFFF;
   color: var(--color-text-main);
   font-family: var(--font-body);
@@ -1834,6 +1838,10 @@ body {
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.25);
   transform: translateY(6px);
   transition: transform var(--transition-fast);
+}
+
+.cover-preview-badge svg {
+  flex-shrink: 0;
 }
 
 @media (hover: hover) and (pointer: fine) {
