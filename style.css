@@ -108,7 +108,7 @@ body {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   padding: 1.5rem 1.25rem 3.5rem 1.25rem;
   display: flex;
@@ -575,34 +575,34 @@ body {
    5. BOOKS GRID & CARD DESIGN (3 COLUMNS ON DESKTOP, 2 ON TABLET, 1 ON MOBILE)
    -------------------------------------------------------------------------- */
 .books-grid {
-  --grid-gap: 1.5rem;
+  --grid-gap: 1.4rem;
   --card-width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: var(--grid-gap);
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 
 @media (min-width: 640px) {
   .books-grid {
-    --grid-gap: 1.5rem;
+    --grid-gap: 1.4rem;
     --card-width: calc((100% - var(--grid-gap)) / 2);
   }
 }
 
 @media (min-width: 992px) {
   .books-grid {
-    --grid-gap: 1.65rem;
+    --grid-gap: 1.5rem;
     --card-width: calc((100% - 2 * var(--grid-gap)) / 3);
   }
 }
 
 @media (min-width: 1200px) {
   .books-grid {
-    --grid-gap: 1.85rem;
+    --grid-gap: 1.65rem;
     --card-width: calc((100% - 2 * var(--grid-gap)) / 3);
   }
 }
@@ -615,7 +615,7 @@ body {
   background-color: var(--color-bg-card);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-lg);
-  padding: 1.25rem 1.15rem;
+  padding: 1.35rem 1.25rem;
   display: flex;
   flex-direction: column;
   box-shadow: var(--shadow-card);
@@ -627,7 +627,8 @@ body {
 
 @media (max-width: 639.98px) {
   .book-card {
-    max-width: 440px;
+    max-width: 480px;
+    width: 100%;
   }
 }
 
@@ -1034,6 +1035,357 @@ body {
   .btn-buy:hover .btn-icon {
     transform: translateX(3px) translateY(-1px);
   }
+}
+
+/* Buy Buttons Row (when multiple platforms like Amazon & Lulu are available) */
+.buy-buttons-row {
+  display: flex;
+  gap: 0.55rem;
+  width: 100%;
+}
+
+.buy-buttons-row .btn-buy {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.8rem 0.65rem;
+  font-size: 0.88rem;
+  min-height: 48px;
+  gap: 0.45rem;
+}
+
+/* Store Specific Button Variants */
+.btn-buy-amazon {
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+}
+
+.btn-buy-amazon:hover {
+  background: var(--gradient-cta-hover);
+}
+
+.btn-buy-lulu {
+  background: linear-gradient(135deg, #0D4D84 0%, #083861 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 14px rgba(13, 77, 132, 0.32);
+}
+
+.btn-buy-lulu:hover {
+  background: linear-gradient(135deg, #135E9E 0%, #0D4D84 100%);
+  box-shadow: 0 6px 18px rgba(13, 77, 132, 0.48);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+  transform: translateY(-2px);
+}
+
+.btn-buy-lulu:active {
+  transform: translateY(0);
+}
+
+.btn-buy-lulu:focus-visible {
+  outline: 3px solid #38BDF8;
+  outline-offset: 3px;
+}
+
+/* Dual Store Layout (Amazon store selector + Amazon button on left, tall Lulu button on right) */
+.book-action-area-dual {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  align-items: stretch;
+}
+
+/* Thin vertical gray line separating Amazon and Lulu */
+.book-action-area-dual::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 1px;
+  background-color: rgba(0, 0, 0, 0.12);
+  transform: translateX(-50%);
+  pointer-events: none;
+}
+
+.dark .book-action-area-dual::before {
+  background-color: rgba(255, 255, 255, 0.12);
+}
+
+.dual-store-col {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+  justify-content: flex-end;
+}
+
+.market-label-row {
+  min-height: 18px;
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.35rem;
+}
+
+.dual-store-amazon {
+  gap: 0.4rem;
+}
+
+.dual-store-lulu {
+  gap: 0.4rem;
+}
+
+.market-label-compact {
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--color-text-light);
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1.2;
+}
+
+.lulu-label-compact {
+  color: var(--color-text-light);
+}
+
+.dark .lulu-label-compact {
+  color: var(--color-text-light);
+}
+
+.market-trigger-compact {
+  min-height: 38px;
+  padding: 0.4rem 0.55rem;
+  font-size: 0.78rem;
+  border-radius: var(--radius-sm);
+}
+
+.market-trigger-compact .market-selected-name {
+  font-size: 0.76rem;
+  max-width: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.market-dropdown-menu-compact {
+  min-width: 195px;
+  width: max-content;
+  max-width: 250px;
+  left: 0;
+  right: auto;
+  z-index: 95;
+}
+
+.dual-store-amazon .btn-buy-amazon {
+  min-height: 42px;
+  padding: 0.55rem 0.45rem;
+  font-size: 0.75rem;
+  font-weight: 800;
+  letter-spacing: 0.015em;
+  border-radius: var(--radius-sm);
+  width: 100%;
+  gap: 0.3rem;
+  white-space: nowrap;
+}
+
+.dual-store-amazon .btn-buy-amazon .btn-store-icon {
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.dual-store-amazon .btn-buy-amazon .btn-icon {
+  width: 12px;
+  height: 12px;
+  flex-shrink: 0;
+}
+
+.btn-buy-lulu-tall {
+  flex: 1;
+  height: 100%;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0.55rem 0.45rem;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  box-shadow: 0 4px 14px rgba(13, 77, 132, 0.32);
+  background: linear-gradient(135deg, #0D4D84 0%, #083861 100%);
+  color: #FFFFFF;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+}
+
+.btn-buy-lulu-tall:hover {
+  background: linear-gradient(135deg, #135E9E 0%, #0D4D84 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(13, 77, 132, 0.48);
+  color: #FFFFFF;
+}
+
+.lulu-tall-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.2rem;
+  width: 100%;
+}
+
+.lulu-tall-inner .btn-store-icon.lulu-icon {
+  width: 18px;
+  height: 18px;
+  margin-bottom: 1px;
+}
+
+.lulu-tall-inner .btn-buy-text {
+  font-size: 0.84rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  line-height: 1;
+}
+
+.lulu-store-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  background: rgba(255, 255, 255, 0.18);
+  color: #FFFFFF;
+  padding: 0.1rem 0.4rem;
+  border-radius: 999px;
+  backdrop-filter: blur(4px);
+  margin-top: 1px;
+  line-height: 1.2;
+  transition: transform var(--transition-fast);
+}
+
+.lulu-store-badge .btn-icon-mini {
+  width: 10px;
+  height: 10px;
+  stroke: currentColor;
+  stroke-width: 2.5;
+}
+
+.btn-buy-lulu-tall:hover .lulu-store-badge .btn-icon-mini {
+  transform: translateX(2px) translateY(-1px);
+}
+
+/* Disabled / Coming Soon Lulu Button Variant */
+.btn-buy-lulu.btn-buy-lulu-disabled {
+  position: relative;
+  background: linear-gradient(135deg, #71717A 0%, #52525B 100%);
+  color: #E4E4E7;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+  cursor: not-allowed;
+  user-select: none;
+  overflow: hidden;
+}
+
+.dark .btn-buy-lulu.btn-buy-lulu-disabled {
+  background: linear-gradient(135deg, #3F3F46 0%, #27272A 100%);
+  color: #A1A1AA;
+  border-color: rgba(255, 255, 255, 0.08);
+}
+
+.btn-buy-lulu.btn-buy-lulu-disabled:hover {
+  background: linear-gradient(135deg, #71717A 0%, #52525B 100%);
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+.dark .btn-buy-lulu.btn-buy-lulu-disabled:hover {
+  background: linear-gradient(135deg, #3F3F46 0%, #27272A 100%);
+  transform: none;
+}
+
+.btn-buy-lulu-disabled .lulu-store-badge.lulu-badge-disabled {
+  background: rgba(255, 255, 255, 0.12);
+  color: #E4E4E7;
+}
+
+.dark .btn-buy-lulu-disabled .lulu-store-badge.lulu-badge-disabled {
+  color: #A1A1AA;
+}
+
+/* Hover Overlay for Coming Soon on Lulu Button */
+.lulu-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(24, 24, 27, 0.94);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-sm);
+  z-index: 5;
+  padding: 0.35rem;
+}
+
+.btn-buy-lulu.btn-buy-lulu-disabled:hover .lulu-hover-overlay {
+  opacity: 1;
+}
+
+.lulu-hover-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #18181B;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.35rem 0.6rem;
+  border-radius: 999px;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.45);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.lulu-label-disabled {
+  color: var(--color-text-light) !important;
+}
+
+/* Store Icons inside CTA Buttons */
+.btn-store-icon {
+  flex-shrink: 0;
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.btn-store-icon.amazon-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-store-icon.lulu-icon {
+  width: 17px;
+  height: 17px;
+}
+
+.btn-store-icon.lulu-logo {
+  height: 16px;
+  width: auto;
+  max-width: 48px;
 }
 
 /* Empty State */
@@ -2352,6 +2704,17 @@ body {
   margin-bottom: 0.75rem;
 }
 
+.success-buy-row {
+  display: flex;
+  gap: 0.65rem;
+  width: 100%;
+}
+
+.success-buy-row .success-buy-btn {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
 .success-buy-btn {
   width: 100%;
   min-height: 44px;
@@ -3182,7 +3545,7 @@ body {
 }
 
 .black-sword-container {
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
 }
 

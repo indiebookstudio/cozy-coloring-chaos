@@ -46,8 +46,8 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=4.5">
-  <link rel="stylesheet" href="campaign.css?v=1.0">
+  <link rel="stylesheet" href="style.css?v=4.6">
+  <link rel="stylesheet" href="campaign.css?v=1.1">
 </head>
 <body>
   <!-- Lively background ambient gradients -->
@@ -651,13 +651,22 @@
           <!-- Direct Amazon Purchase Card in the Success View -->
           <div class="success-amazon-box">
             <p class="success-amazon-tagline" id="success-amazon-tagline">Ti piace questo libro? Ordina la copia completa cartacea:</p>
-            <a href="#" id="success-amazon-btn" target="_blank" rel="noopener noreferrer" class="btn-buy success-buy-btn">
-              <span class="btn-buy-text" id="success-amazon-btn-text">VEDI SU AMAZON</span>
-              <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                <line x1="7" y1="17" x2="17" y2="7"></line>
-                <polyline points="7 7 17 7 17 17"></polyline>
-              </svg>
-            </a>
+            <div class="success-buy-row" id="success-buy-row">
+              <a href="#" id="success-amazon-btn" target="_blank" rel="noopener noreferrer" class="btn-buy btn-buy-amazon success-buy-btn">
+                <span class="btn-buy-text" id="success-amazon-btn-text">VEDI SU AMAZON</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+              <a href="#" id="success-lulu-btn" target="_blank" rel="noopener noreferrer" class="btn-buy btn-buy-lulu success-buy-btn" style="display: none;">
+                <span class="btn-buy-text" id="success-lulu-btn-text">VEDI SU LULU</span>
+                <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="7" y1="17" x2="17" y2="7"></line>
+                  <polyline points="7 7 17 7 17 17"></polyline>
+                </svg>
+              </a>
+            </div>
           </div>
 
           <div class="success-action-row">
@@ -727,9 +736,9 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
-  <script src="script.js?v=4.6"></script>
+  <script src="script.js?v=4.7"></script>
 
   <!-- Seasonal Promotional Campaign System (Halloween 2026) -->
-  <script src="campaign.js?v=1.0"></script>
+  <script src="campaign.js?v=1.1"></script>
 </body>
 </html>

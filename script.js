@@ -35,6 +35,13 @@ const AMAZON_MARKETS = {
   au: { name: "Amazon.com.au (AU)", code: "AU", flagCode: "au", domain: "amazon.com.au", buttonLabel: "Amazon.com.au (AU)" }
 };
 
+// Official Store SVGs (Amazon and Lulu)
+const AMAZON_ICON_SVG = `<svg class="btn-store-icon amazon-icon" viewBox="0 0 16 16" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M10.813 11.968c.157.083.36.074.5-.05l.005.005a90 90 0 0 1 1.623-1.405c.173-.143.143-.372.006-.563l-.125-.17c-.345-.465-.673-.906-.673-1.791v-3.3l.001-.335c.008-1.265.014-2.421-.933-3.305C10.404.274 9.06 0 8.03 0 6.017 0 3.77.75 3.296 3.24c-.047.264.143.404.316.443l2.054.22c.19-.009.33-.196.366-.387.176-.857.896-1.271 1.703-1.271.435 0 .929.16 1.188.55.264.39.26.91.257 1.376v.432q-.3.033-.621.065c-1.113.114-2.397.246-3.36.67C3.873 5.91 2.94 7.08 2.94 8.798c0 2.2 1.387 3.298 3.168 3.298 1.506 0 2.328-.354 3.489-1.54l.167.246c.274.405.456.675 1.047 1.166ZM6.03 8.431C6.03 6.627 7.647 6.3 9.177 6.3v.57c.001.776.002 1.434-.396 2.133-.336.595-.87.961-1.465.961-.812 0-1.286-.619-1.286-1.533M.435 12.174c2.629 1.603 6.698 4.084 13.183.997.28-.116.475.078.199.431C13.538 13.96 11.312 16 7.57 16 3.832 16 .968 13.446.094 12.386c-.24-.275.036-.4.199-.299z"/><path d="M13.828 11.943c.567-.07 1.468-.027 1.645.204.135.176-.004.966-.233 1.533-.23.563-.572.961-.762 1.115s-.333.094-.23-.137c.105-.23.684-1.663.455-1.963-.213-.278-1.177-.177-1.625-.13l-.09.009q-.142.013-.233.024c-.193.021-.245.027-.274-.032-.074-.209.779-.556 1.347-.623"/></svg>`;
+
+const LULU_ICON_SVG = `<svg class="btn-store-icon lulu-icon" viewBox="0 0 128 175" width="16" height="16" fill="currentColor" aria-hidden="true"><path d="M57.08,144.29c-13.76-6.97-27.03-9.79-30.76-10.49-5.7-1.07-9.49-6.39-8.63-12.13l13.12-87.2c-5.14-.26-9.66-.28-13.2-.08-.78.04-1.41.63-1.53,1.4L.02,142.54c-.15,1.01.64,1.91,1.66,1.89,9.94-.24,55.32-.3,79.31,17.87-5.96-6.93-13.94-12.97-23.91-18.01ZM104.98,169.95s7.03-46.19,15.43-102.46C127.94,17.04,81.21,2.52,71.44.05c-.94-.24-1.88.39-2.03,1.35l-10.53,70.2c-.15,1.03-.26,2.06-.26,3.1,0,12.12,10.61,14.44,15.85,14.84,1.22.09,1.92,1.44,1.28,2.49-3.37,5.55-10.27,19.49-2.03,29.51,0,0,27.6,24.93,31.26,48.41ZM67.64,128.27c-.33-.3-.64-.63-.93-.97-6.74-8.2-7.77-19.2-3.16-31.07-8.84-3.72-14.02-11.39-14.01-21.52,0-1.37.12-2.78.36-4.44l8.15-54.33c-4.89-.8-9.53-1.24-13.65-1.32-.82-.02-1.52.59-1.64,1.4l-16.11,107.01c-.13.88.46,1.7,1.33,1.86,8.45,1.58,48.91,10.61,66.64,40.94-5.15-15.28-20.73-31.89-26.98-37.55Z"/></svg>`;
+
+const LULU_FULL_LOGO_SVG = `<svg class="btn-store-icon lulu-logo" viewBox="0 0 500 175" width="48" height="17" fill="currentColor" aria-hidden="true"><path d="M138.46,147.21l15.08-100.28c.25-1.63,1.42-2.98,3.01-3.44l30.15-8.74c1.98-.57,3.88,1.09,3.58,3.13l-15.09,100.58c-.58,4.86,1.36,6.8,6.02,6.8,1.33,0,2.85-.13,4.57-.42,2.04-.34,3.83,1.38,3.52,3.42l-3.11,20.65c-.31,2.03-1.83,3.68-3.84,4.14-6.05,1.37-10.24,1.93-15.71,1.93-20.99,0-30.9-9.72-28.18-27.79ZM351.14,175c5.46,0,9.66-.56,15.71-1.93,2.01-.45,3.53-2.1,3.84-4.14l3.11-20.65c.31-2.04-1.48-3.77-3.52-3.42-1.71.29-3.23.42-4.57.42-4.66,0-6.61-1.94-6.02-6.8l15.09-100.58c.31-2.04-1.6-3.7-3.58-3.13l-30.15,8.74c-1.59.46-2.76,1.8-3.01,3.44l-15.08,100.28c-2.72,18.07,7.19,27.79,28.18,27.79ZM311.71,144.82c-1.68.31-2.99.44-4.36.44-4.86,0-6.8-2.14-6.02-6.8l8.81-59.68c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.77,1.1-2.99,2.58l-7.39,49.3c-1.55,11.08-9.13,17.68-19.82,17.68s-15.35-7-13.6-18.27l7.07-47.83c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.78,1.1-3,2.59l-8.17,55.32c-3.69,24.87,10.3,41.78,35.56,41.78,13.41,0,25.65-4.86,33.81-12.05,3.5,7.58,12.05,12.05,25.65,12.05,5.04,0,9.64-.58,15.95-1.99,1.86-.42,3.27-1.94,3.54-3.83l3.01-20.95c.3-2.06-1.53-3.78-3.57-3.4ZM496.4,144.82c-1.68.31-2.99.44-4.36.44-4.86,0-6.8-2.14-6.02-6.8l8.81-59.68c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.77,1.1-2.99,2.58l-7.39,49.3c-1.55,11.08-9.13,17.68-19.82,17.68s-15.35-7-13.6-18.27l7.07-47.83c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.78,1.1-3,2.59l-8.17,55.32c-3.69,24.87,10.3,41.78,35.56,41.78,13.41,0,25.65-4.86,33.81-12.05,3.5,7.58,12.05,12.05,25.65,12.05,5.32,0,10.15-.65,17-2.23,1.22-.28,2.15-1.28,2.33-2.52l3.17-22.02c.3-2.06-1.53-3.78-3.57-3.4ZM57.08,144.29c-13.76-6.97-27.03-9.79-30.76-10.49-5.7-1.07-9.49-6.39-8.63-12.13l13.12-87.2c-5.14-.26-9.66-.28-13.2-.08-.78.04-1.41.63-1.53,1.4L.02,142.54c-.15,1.01.64,1.91,1.66,1.89,9.94-.24,55.32-.3,79.31,17.87-5.96-6.93-13.94-12.97-23.91-18.01ZM104.98,169.95s7.03-46.19,15.43-102.46C127.94,17.04,81.21,2.52,71.44.05c-.94-.24-1.88.39-2.03,1.35l-10.53,70.2c-.15,1.03-.26,2.06-.26,3.1,0,12.12,10.61,14.44,15.85,14.84,1.22.09,1.92,1.44,1.28,2.49-3.37,5.55-10.27,19.49-2.03,29.51,0,0,27.6,24.93,31.26,48.41ZM67.64,128.27c-.33-.3-.64-.63-.93-.97-6.74-8.2-7.77-19.2-3.16-31.07-8.84-3.72-14.02-11.39-14.01-21.52,0-1.37.12-2.78.36-4.44l8.15-54.33c-4.89-.8-9.53-1.24-13.65-1.32-.82-.02-1.52.59-1.64,1.4l-16.11,107.01c-.13.88.46,1.7,1.33,1.86,8.45,1.58,48.91,10.61,66.64,40.94-5.15-15.28-20.73-31.89-26.98-37.55Z"/></svg>`;
+
 // ============================================================================
 // ADD OR EDIT BOOKS HERE
 // ============================================================================
@@ -107,6 +114,7 @@ const BOOKS = [
     ],
     defaultMarket: "us",
     asin: "B0HHKY6Q8V",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/cozy-terror-bold-terrifying-coloring-book/paperback/product-45ej677.html?q=cozy+terror&page=1&pageSize=4",
     isNew: true
   },
 {
@@ -393,15 +401,18 @@ const TRANSLATIONS = {
     filterHumour: "UMORISMO",
     filterEn: "English",
     filterIt: "Italiano",
-    selectStore: "Seleziona Store Amazon",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `VEDI SU ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "di",
-    previewBtn: "Anteprima",
+    previewBtn: "Preview",
     previewBadge: "Anteprima Pagine",
     badgeNew: "Novità",
     badgeComingSoon: "Prossimamente",
     comingSoonNotice: "In arrivo prossimamente su Amazon",
-    coloredBtn: "Guarda a colori",
+    coloredBtn: "Colored",
     coloredBadge: "Disegni Colorati",
     coloredHeadline: "Ecco cosa puoi fare con questo libro!",
     coloredPageLabel: "Disegno Colorato",
@@ -410,7 +421,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Copertina (Front)",
     backCoverLabel: "Retro Copertina (Back)",
     pageLabel: "Pagina",
-    freeSampleBtn: "Sample Gratuito",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Ricevi il Free Sample PDF",
     freeSampleModalDesc: "Inserisci i tuoi dati per ricevere gratuitamente via email il file PDF con una selezione di pagine da colorare in alta definizione allegate alla mail!",
     formFirstName: "Nome",
@@ -436,6 +447,7 @@ const TRANSLATIONS = {
     noBooksFound: "Nessun libro trovato per questa categoria. Torna a 'Tutti i libri' per esplorare la collezione!",
     ariaSelectMarket: (title) => `Seleziona il marketplace Amazon per ${title}`,
     ariaViewMarket: (title, market) => `Visualizza ${title} su ${market} (apre una nuova scheda)`,
+    ariaViewLulu: (title) => `Visualizza ${title} su Lulu (apre una nuova scheda)`,
     emailCopiedToastTitle: "Email copiata!",
     emailCopiedToastDesc: "Indirizzo copiato negli appunti (cozycoloringchaos@gmail.com)",
     emailCopiedBtn: "Copiato! ✓",
@@ -505,15 +517,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "English",
     filterIt: "Italian",
-    selectStore: "Select Amazon Store",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `VIEW ON ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "by",
     previewBtn: "Preview",
     previewBadge: "Sample Preview",
     badgeNew: "New",
     badgeComingSoon: "Coming Soon",
     comingSoonNotice: "Coming soon to Amazon",
-    coloredBtn: "See it colored",
+    coloredBtn: "Colored",
     coloredBadge: "Colored Artworks",
     coloredHeadline: "Here's what you can create with this book!",
     coloredPageLabel: "Colored Artwork",
@@ -548,6 +563,7 @@ const TRANSLATIONS = {
     noBooksFound: "No books found for this category. Switch to 'All Books' to explore the full collection!",
     ariaSelectMarket: (title) => `Select Amazon Marketplace for ${title}`,
     ariaViewMarket: (title, market) => `View ${title} on ${market} (opens in a new tab)`,
+    ariaViewLulu: (title) => `View ${title} on Lulu (opens in a new tab)`,
     emailCopiedToastTitle: "Email copied!",
     emailCopiedToastDesc: "Address copied to clipboard (cozycoloringchaos@gmail.com)",
     emailCopiedBtn: "Copied! ✓",
@@ -617,15 +633,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "Englisch",
     filterIt: "Italienisch",
-    selectStore: "Amazon Store wählen",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `AUF ${market.toUpperCase()} ANSEHEN`,
+    viewOnLulu: "Lulu",
     byAuthor: "von",
-    previewBtn: "Vorschau",
+    previewBtn: "Preview",
     previewBadge: "Buchvorschau",
     badgeNew: "Neu",
     badgeComingSoon: "Demnächst",
     comingSoonNotice: "Demnächst auf Amazon erhältlich",
-    coloredBtn: "Bunt ansehen",
+    coloredBtn: "Colored",
     coloredBadge: "Ausgemalte Kunstwerke",
     coloredHeadline: "Das kannst du aus diesem Buch machen!",
     coloredPageLabel: "Farbiges Kunstwerk",
@@ -634,7 +653,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Vorderseite (Cover)",
     backCoverLabel: "Rückseite (Back)",
     pageLabel: "Seite",
-    freeSampleBtn: "Gratis-Leseprobe",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Kostenlose PDF-Probe erhalten",
     freeSampleModalDesc: "Trage deine Daten ein, um eine kostenlose PDF-Leseprobe mit Ausmalseiten direkt als E-Mail-Anhang zu erhalten!",
     formFirstName: "Vorname",
@@ -729,15 +748,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOUR",
     filterEn: "Anglais",
     filterIt: "Italien",
-    selectStore: "Sélectionner la boutique Amazon",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `VOIR SUR ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "par",
-    previewBtn: "Aperçu",
+    previewBtn: "Preview",
     previewBadge: "Aperçu du livre",
     badgeNew: "Nouveau",
     badgeComingSoon: "Bientôt disponible",
     comingSoonNotice: "Bientôt disponible sur Amazon",
-    coloredBtn: "Voir en couleur",
+    coloredBtn: "Colored",
     coloredBadge: "Modèles Coloriés",
     coloredHeadline: "Voici ce que vous pouvez créer avec ce livre !",
     coloredPageLabel: "Œuvre Coloriée",
@@ -746,7 +768,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Première de couverture",
     backCoverLabel: "Quatrième de couverture",
     pageLabel: "Page",
-    freeSampleBtn: "Extrait Gratuit",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Recevoir l'Extrait Gratuit PDF",
     freeSampleModalDesc: "Entrez vos coordonnées pour recevoir gratuitement par email un extrait PDF avec des pages à colorier en pièce jointe !",
     formFirstName: "Prénom",
@@ -841,15 +863,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "Inglés",
     filterIt: "Italiano",
-    selectStore: "Seleccionar tienda Amazon",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `VER EN ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "de",
-    previewBtn: "Vista previa",
+    previewBtn: "Preview",
     previewBadge: "Vista previa",
     badgeNew: "Nuevo",
     badgeComingSoon: "Próximamente",
     comingSoonNotice: "Próximamente en Amazon",
-    coloredBtn: "Ver a color",
+    coloredBtn: "Colored",
     coloredBadge: "Ilustraciones Coloreadas",
     coloredHeadline: "¡Mira lo que puedes crear con este libro!",
     coloredPageLabel: "Ilustración a Color",
@@ -858,7 +883,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Portada",
     backCoverLabel: "Contraportada",
     pageLabel: "Página",
-    freeSampleBtn: "Muestra Gratis",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Recibe tu Muestra Gratis PDF",
     freeSampleModalDesc: "¡Ingresa tus datos para recibir gratis por correo electrónico una muestra en PDF con páginas para colorear adjuntas al email!",
     formFirstName: "Nombre",
@@ -953,15 +978,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "Engels",
     filterIt: "Italiaans",
-    selectStore: "Selecteer Amazon-winkel",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `BEKIJK OP ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "door",
-    previewBtn: "Voorbeeld",
+    previewBtn: "Preview",
     previewBadge: "Voorbeeldweergave",
     badgeNew: "Nieuw",
     badgeComingSoon: "Binnenkort",
     comingSoonNotice: "Binnenkort verkrijgbaar op Amazon",
-    coloredBtn: "Bekijk in kleur",
+    coloredBtn: "Colored",
     coloredBadge: "Ingekleurde Tekeningen",
     coloredHeadline: "Kijk wat je kunt maken met dit boek!",
     coloredPageLabel: "Ingekleurd Kunstwerk",
@@ -970,7 +998,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Voorkant",
     backCoverLabel: "Achterkant",
     pageLabel: "Pagina",
-    freeSampleBtn: "Gratis Sample",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Ontvang je Gratis PDF Sample",
     freeSampleModalDesc: "Vul je gegevens in om gratis een PDF-proefexemplaar met kleurpagina's als bijlage in je e-mail te ontvangen!",
     formFirstName: "Voornaam",
@@ -1064,15 +1092,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "Angielski",
     filterIt: "Włoski",
-    selectStore: "Wybierz sklep Amazon",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `ZOBACZ NA ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "autorstwa",
-    previewBtn: "Podgląd",
+    previewBtn: "Preview",
     previewBadge: "Podgląd książki",
     badgeNew: "Nowość",
     badgeComingSoon: "Wkrótce",
     comingSoonNotice: "Wkrótce dostępne na Amazon",
-    coloredBtn: "Zobacz w kolorze",
+    coloredBtn: "Colored",
     coloredBadge: "Pokolorowane Prace",
     coloredHeadline: "Zobacz, co możesz stworzyć z tą książką!",
     coloredPageLabel: "Pokolorowana Praca",
@@ -1081,7 +1112,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Okładka przednia",
     backCoverLabel: "Okładka tylna",
     pageLabel: "Strona",
-    freeSampleBtn: "Darmowa Próbka",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Odbierz darmowy fragment PDF",
     freeSampleModalDesc: "Wpisz swoje dane, aby otrzymać darmowy fragment PDF z wybranymi stronami do kolorowania jako załącznik w wiadomości e-mail!",
     formFirstName: "Imię",
@@ -1175,15 +1206,18 @@ const TRANSLATIONS = {
     filterHumour: "HUMOR",
     filterEn: "Engelska",
     filterIt: "Italienska",
-    selectStore: "Välj Amazon-butik",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `VISA PÅ ${market.toUpperCase()}`,
+    viewOnLulu: "Lulu",
     byAuthor: "av",
-    previewBtn: "Förhandsvisning",
+    previewBtn: "Preview",
     previewBadge: "Förhandsvisning",
     badgeNew: "Nyhet",
     badgeComingSoon: "Kommer snart",
     comingSoonNotice: "Kommer snart till Amazon",
-    coloredBtn: "Se i färg",
+    coloredBtn: "Colored",
     coloredBadge: "Färglagda Teckningar",
     coloredHeadline: "Här är vad du kan skapa med den här boken!",
     coloredPageLabel: "Färglagt Konstverk",
@@ -1192,7 +1226,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "Framsida",
     backCoverLabel: "Baksida",
     pageLabel: "Sida",
-    freeSampleBtn: "Gratis Prov",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "Få ditt gratis PDF-prov",
     freeSampleModalDesc: "Fyll i dina uppgifter för att få ett gratis PDF-prov med utvalda målarbokssidor bifogat i ett e-postmeddelande!",
     formFirstName: "Förnamn",
@@ -1285,15 +1319,18 @@ const TRANSLATIONS = {
     filterHumour: "ユーモア",
     filterEn: "英語",
     filterIt: "イタリア語",
-    selectStore: "Amazonストアを選択",
+    selectStore: "BUY ON AMAZON",
+    buyOnAmazon: "BUY ON AMAZON",
+    buyOnLulu: "BUY ON LULU",
     viewOn: (market) => `${market.toUpperCase()} で見る`,
+    viewOnLulu: "Lulu",
     byAuthor: "著者:",
-    previewBtn: "プレビュー",
+    previewBtn: "Preview",
     previewBadge: "サンプルプレビュー",
     badgeNew: "新刊",
     badgeComingSoon: "近日発売",
     comingSoonNotice: "Amazonにて近日発売予定",
-    coloredBtn: "彩色ギャラリー",
+    coloredBtn: "Colored",
     coloredBadge: "塗り絵の完成見本",
     coloredHeadline: "この本でこんな素敵な作品が作れます！",
     coloredPageLabel: "完成見本",
@@ -1302,7 +1339,7 @@ const TRANSLATIONS = {
     frontCoverLabel: "表紙",
     backCoverLabel: "裏表紙",
     pageLabel: "ページ",
-    freeSampleBtn: "無料サンプル",
+    freeSampleBtn: "Free Sample",
     freeSampleModalTitle: "無料PDFサンプルを受け取る",
     freeSampleModalDesc: "お名前とメールアドレスをご入力いただくと、厳選された塗り絵ページのPDFをメール添付にてお届けします！",
     formFirstName: "名（First Name）",
@@ -1892,22 +1929,60 @@ window.openSampleModal = function(bookId, mode = 'preview') {
     const buttonText = (typeof t.viewOn === 'function') ? t.viewOn(label) : `VIEW ON ${label.toUpperCase()}`;
     const ariaText = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(book.title, marketInfo.name) : `View ${book.title} on Amazon`;
 
-    footerEl.innerHTML = `
-      <div style="display: flex; flex-direction: column; width: 100%; max-width: 380px; gap: 0.6rem; align-items: center;">
+    const buyButtonsHtml = book.luluUrl ? `
+      <div class="buy-buttons-row" style="display: flex; gap: 0.6rem; width: 100%;">
         <a 
           href="${targetUrl}" 
           target="_blank" 
           rel="noopener noreferrer" 
-          class="btn-buy" 
-          style="width: 100%;" 
+          class="btn-buy btn-buy-amazon" 
+          style="flex: 1;" 
           aria-label="${ariaText}"
         >
-          <span class="btn-buy-text">${buttonText}</span>
+          ${AMAZON_ICON_SVG}
+          <span class="btn-buy-text">Amazon</span>
           <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
             <line x1="7" y1="17" x2="17" y2="7"></line>
             <polyline points="7 7 17 7 17 17"></polyline>
           </svg>
         </a>
+        <a 
+          href="${book.luluUrl}" 
+          target="_blank" 
+          rel="noopener noreferrer" 
+          class="btn-buy btn-buy-lulu" 
+          style="flex: 1;" 
+          aria-label="${(typeof t.ariaViewLulu === 'function') ? t.ariaViewLulu(book.title) : `View ${book.title} on Lulu`}"
+        >
+          ${LULU_ICON_SVG}
+          <span class="btn-buy-text">Lulu</span>
+          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <line x1="7" y1="17" x2="17" y2="7"></line>
+            <polyline points="7 7 17 7 17 17"></polyline>
+          </svg>
+        </a>
+      </div>
+    ` : `
+      <a 
+        href="${targetUrl}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-buy btn-buy-amazon" 
+        style="width: 100%;" 
+        aria-label="${ariaText}"
+      >
+        ${AMAZON_ICON_SVG}
+        <span class="btn-buy-text">${buttonText}</span>
+        <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <line x1="7" y1="17" x2="17" y2="7"></line>
+          <polyline points="7 7 17 7 17 17"></polyline>
+        </svg>
+      </a>
+    `;
+
+    footerEl.innerHTML = `
+      <div style="display: flex; flex-direction: column; width: 100%; max-width: 380px; gap: 0.6rem; align-items: center;">
+        ${buyButtonsHtml}
         <button 
           type="button" 
           class="chip-sample-btn" 
@@ -2714,6 +2789,16 @@ window.handleFreeSampleSubmit = async function(event) {
         }
       }
 
+      const successLuluBtn = document.getElementById('success-lulu-btn');
+      if (successLuluBtn) {
+        if (activeSampleBook.luluUrl) {
+          successLuluBtn.href = activeSampleBook.luluUrl;
+          successLuluBtn.style.display = 'inline-flex';
+        } else {
+          successLuluBtn.style.display = 'none';
+        }
+      }
+
       if (btnCloseSuccess) {
         btnCloseSuccess.textContent = activeT.formSuccessClose || "Torna al catalogo";
       }
@@ -2859,8 +2944,8 @@ window.selectBookMarket = function(bookId, marketKey) {
   document.querySelectorAll('.book-card').forEach(c => c.classList.remove('has-open-dropdown'));
 
   // Update Buy on Amazon button
-  const btnBuy = cardElement.querySelector('.btn-buy');
-  const btnText = cardElement.querySelector('.btn-buy-text');
+  const btnBuy = cardElement.querySelector('.btn-buy-amazon') || cardElement.querySelector('.btn-buy');
+  const btnText = btnBuy ? btnBuy.querySelector('.btn-buy-text') : cardElement.querySelector('.btn-buy-text');
   const targetUrl = getBookUrlForMarket(book, marketKey);
 
   if (btnBuy) {
@@ -2870,9 +2955,8 @@ window.selectBookMarket = function(bookId, marketKey) {
     }
   }
 
-  if (btnText) {
-    const label = marketInfo.buttonLabel || marketInfo.name;
-    btnText.textContent = (typeof t.viewOn === 'function') ? t.viewOn(label) : `VIEW ON ${label.toUpperCase()}`;
+    if (btnText) {
+    btnText.textContent = (marketInfo.domain || 'amazon.com').toUpperCase();
   }
 };
 
@@ -2898,21 +2982,21 @@ function createBookCard(book, index) {
   const safeAuthor = book.author ? escapeHtml(book.author) : '';
   const safeLang = book.language ? escapeHtml(book.language) : '';
   const safeCover = book.cover ? escapeHtml(book.cover) : '';
-  const isComingSoon = !!book.isComingSoon;
-  const isNew = !!book.isNew;
-  const hasPreview = !isComingSoon && Array.isArray(book.preview) && book.preview.length > 0;
-  const hasColored = !isComingSoon && Array.isArray(book.colored) && book.colored.length > 0;
 
-  // Status Badge (New / Coming Soon)
+  const isComingSoon = !!book.isComingSoon;
+  const isNew = !isComingSoon && !!book.isNew;
   let statusBadgeHtml = '';
-  if (isNew) {
-    statusBadgeHtml = `<span class="book-status-badge badge-new">${escapeHtml(t.badgeNew || 'New')}</span>`;
-  } else if (isComingSoon) {
+  if (isComingSoon) {
     statusBadgeHtml = `<span class="book-status-badge badge-coming-soon">${escapeHtml(t.badgeComingSoon || 'Coming Soon')}</span>`;
+  } else if (isNew) {
+    statusBadgeHtml = `<span class="book-status-badge badge-new">${escapeHtml(t.badgeNew || 'New')}</span>`;
   }
 
-  // Icons for buttons
-  const iconEye = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg>`;
+  const hasPreview = !isComingSoon && Array.isArray(book.preview) && book.preview.length > 0;
+  const hasColored = !isComingSoon && Array.isArray(book.colored) && book.colored.length > 0;
+  const hasSample = !isComingSoon && !!book.samplePdf;
+
+  const iconEye = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
   const iconPalette = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`;
   const iconSample = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="12" y2="18"/><line x1="15" y1="15" x2="12" y2="18"/></svg>`;
 
@@ -2922,14 +3006,14 @@ function createBookCard(book, index) {
     previewChipHtml = `
       <button type="button" class="chip-preview-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
         ${iconEye}
-        <span>${t.previewBtn}</span>
+        <span>${t.previewBtn || 'Preview'}</span>
       </button>
     `;
   } else if (hasPreview) {
     previewChipHtml = `
-      <button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn} - ${safeTitle}">
+      <button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn || 'Preview'} - ${safeTitle}">
         ${iconEye}
-        <span>${t.previewBtn}</span>
+        <span>${t.previewBtn || 'Preview'}</span>
       </button>
     `;
   }
@@ -2940,14 +3024,14 @@ function createBookCard(book, index) {
     coloredChipHtml = `
       <button type="button" class="chip-colored-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
         ${iconPalette}
-        <span>${t.coloredBtn}</span>
+        <span>${t.coloredBtn || 'Colored'}</span>
       </button>
     `;
   } else if (hasColored) {
     coloredChipHtml = `
-      <button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn} - ${safeTitle}">
+      <button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn || 'Colored'} - ${safeTitle}">
         ${iconPalette}
-        <span>${t.coloredBtn}</span>
+        <span>${t.coloredBtn || 'Colored'}</span>
       </button>
     `;
   }
@@ -3006,68 +3090,132 @@ function createBookCard(book, index) {
 
     const initialUrl = getBookUrlForMarket(book, initialMarketKey);
     const initialMarketInfo = AMAZON_MARKETS[initialMarketKey] || { name: 'Amazon', flagCode: 'us', buttonLabel: 'Amazon' };
-    const initialLabel = initialMarketInfo.buttonLabel || initialMarketInfo.name;
-    const buyButtonText = (typeof t.viewOn === 'function') ? t.viewOn(initialLabel) : `VIEW ON ${initialLabel.toUpperCase()}`;
     const buyButtonAria = (typeof t.ariaViewMarket === 'function') ? t.ariaViewMarket(safeTitle, initialMarketInfo.name) : `View ${safeTitle} on Amazon`;
+    const luluButtonAria = (typeof t.ariaViewLulu === 'function') ? t.ariaViewLulu(safeTitle) : `View ${safeTitle} on Lulu`;
 
     // Custom Marketplace Dropdown Options with Flag Images
     const marketOptionsHtml = Object.entries(AMAZON_MARKETS).map(([key, info]) => {
       const isSelected = (key === initialMarketKey);
       return `
         <div class="market-option ${isSelected ? 'selected' : ''}" data-market-key="${key}" role="option" aria-selected="${isSelected ? 'true' : 'false'}" onclick="selectBookMarket('${escapeJs(book.id)}', '${key}')">
-          <img src="https://flagcdn.com/24x18/${info.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${info.flagCode || 'un'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+          <img src="https://flagcdn.com/24x18/${info.flagCode || 'un'}.png" srcset="https://flagcdn.com/48x36/${info.flagCode || 'un'}.png 2x" alt="" width="18" height="14" class="market-flag-img" loading="eager">
           <span class="market-option-name">${escapeHtml(info.name)}</span>
           ${isSelected ? '<span class="market-option-check"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polyline points="20 6 9 17 4 12"></polyline></svg></span>' : ''}
         </div>
       `;
     }).join('');
 
+    const hasLulu = !!book.luluUrl;
+    const amazonDomainText = (initialMarketInfo.domain || 'amazon.com').toUpperCase();
+
+    const luluButtonHtml = hasLulu ? `
+      <a 
+        href="${book.luluUrl}" 
+        target="_blank" 
+        rel="noopener noreferrer" 
+        class="btn-buy btn-buy-lulu btn-buy-lulu-tall"
+        aria-label="${luluButtonAria}"
+      >
+        <div class="lulu-tall-inner">
+          ${LULU_ICON_SVG}
+          <span class="btn-buy-text">Lulu</span>
+          <span class="lulu-store-badge">
+            <span>Store</span>
+            <svg class="btn-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </span>
+        </div>
+      </a>
+    ` : `
+      <div 
+        class="btn-buy btn-buy-lulu btn-buy-lulu-tall btn-buy-lulu-disabled" 
+        role="button" 
+        aria-disabled="true" 
+        tabindex="-1"
+        title="Coming soon"
+      >
+        <div class="lulu-tall-inner">
+          ${LULU_ICON_SVG}
+          <span class="btn-buy-text">Lulu</span>
+          <span class="lulu-store-badge lulu-badge-disabled">
+            <span>Store</span>
+          </span>
+        </div>
+        <!-- Hover Overlay: Coming Soon -->
+        <div class="lulu-hover-overlay" aria-hidden="true">
+          <span class="lulu-hover-pill">
+            <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"></circle>
+              <polyline points="12 6 12 12 16 14"></polyline>
+            </svg>
+            <span>Coming soon</span>
+          </span>
+        </div>
+      </div>
+    `;
+
     actionAreaHtml = `
-      <div class="book-action-area">
-        <div class="market-selector-wrapper">
-          <label for="market-native-select-${escapeHtml(book.id)}" class="market-label">
-            <span>${t.selectStore || "Select Amazon Store"}</span>
-            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="opacity: 0.6;"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
-          </label>
+      <div class="book-action-area book-action-area-dual">
+        <!-- Left Column: BUY ON AMAZON label + Amazon Store Selector + Amazon Buy Button -->
+        <div class="dual-store-col dual-store-amazon">
+          <div class="market-label-row">
+            <label for="market-native-select-${escapeHtml(book.id)}" class="market-label market-label-compact" title="${t.buyOnAmazon || 'BUY ON AMAZON'}">
+              <span>${t.buyOnAmazon || 'BUY ON AMAZON'}</span>
+            </label>
+          </div>
           <div class="custom-market-select" id="custom-market-select-${escapeHtml(book.id)}">
             <button 
               type="button" 
-              class="market-trigger" 
+              class="market-trigger market-trigger-compact" 
               onclick="toggleMarketDropdown('${escapeJs(book.id)}', event)"
               aria-haspopup="listbox" 
               aria-expanded="false" 
               aria-label="${(typeof t.ariaSelectMarket === 'function') ? t.ariaSelectMarket(safeTitle) : `Select store for ${safeTitle}`}"
             >
               <span class="market-trigger-content">
-                <img src="https://flagcdn.com/24x18/${initialMarketInfo.flagCode || 'us'}.png" srcset="https://flagcdn.com/48x36/${initialMarketInfo.flagCode || 'us'}.png 2x" alt="" width="20" height="15" class="market-flag-img" loading="eager">
+                <img src="https://flagcdn.com/24x18/${initialMarketInfo.flagCode || 'us'}.png" srcset="https://flagcdn.com/48x36/${initialMarketInfo.flagCode || 'us'}.png 2x" alt="" width="18" height="14" class="market-flag-img" loading="eager">
                 <span class="market-selected-name">${escapeHtml(initialMarketInfo.name)}</span>
               </span>
-              <svg class="market-chevron" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <svg class="market-chevron" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                 <polyline points="6 9 12 15 18 9"></polyline>
               </svg>
             </button>
-            <div class="market-dropdown-menu" id="market-dropdown-${escapeHtml(book.id)}" role="listbox" style="display: none;">
+            <div class="market-dropdown-menu market-dropdown-menu-compact" id="market-dropdown-${escapeHtml(book.id)}" role="listbox" style="display: none;">
               ${marketOptionsHtml}
             </div>
             <select id="market-native-select-${escapeHtml(book.id)}" class="sr-only-select" tabindex="-1" aria-hidden="true">
               ${Object.entries(AMAZON_MARKETS).map(([key, info]) => `<option value="${key}" ${key === initialMarketKey ? 'selected' : ''}>${info.name}</option>`).join('')}
             </select>
           </div>
+
+          <a 
+            href="${initialUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="btn-buy btn-buy-amazon"
+            aria-label="${buyButtonAria}"
+          >
+            ${AMAZON_ICON_SVG}
+            <span class="btn-buy-text">${amazonDomainText}</span>
+            <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
         </div>
 
-        <a 
-          href="${initialUrl}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="btn-buy"
-          aria-label="${buyButtonAria}"
-        >
-          <span class="btn-buy-text">${buyButtonText}</span>
-          <svg class="btn-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+        <!-- Right Column: BUY ON LULU label + Lulu Buy Button (Active or Coming Soon) -->
+        <div class="dual-store-col dual-store-lulu">
+          <div class="market-label-row">
+            <div class="market-label market-label-compact lulu-label-compact" title="${t.buyOnLulu || 'BUY ON LULU'}">
+              <span>${t.buyOnLulu || 'BUY ON LULU'}</span>
+            </div>
+          </div>
+
+          ${luluButtonHtml}
+        </div>
       </div>
     `;
   }

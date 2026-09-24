@@ -304,7 +304,7 @@ function generateCampaignCardsHtml(lang) {
     const safeTitle = book.title || '';
     const safeDesc = book.subtitle ? book.subtitle.split('|')[0].trim() : '';
     const safeCover = book.cover || '';
-    const buyLabel = `${t.buyPrefix}${domain.toUpperCase()}${t.buySuffix}`;
+    const amazonDomainUpper = domain.toUpperCase();
 
     return `
       <div class="campaign-product-card ${isNew ? 'card-center' : ''}">
@@ -319,19 +319,57 @@ function generateCampaignCardsHtml(lang) {
         </div>
         <h4 class="campaign-card-title">${safeTitle}</h4>
         <p class="campaign-card-desc" title="${safeDesc}">${safeDesc}</p>
-        <a 
-          href="${amazonUrl}" 
-          target="_blank" 
-          rel="noopener noreferrer" 
-          class="campaign-card-buy-btn"
-          aria-label="${buyLabel} - ${safeTitle}"
-        >
-          <span>${buyLabel}</span>
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-            <line x1="7" y1="17" x2="17" y2="7"></line>
-            <polyline points="7 7 17 7 17 17"></polyline>
-          </svg>
-        </a>
+        <div class="campaign-card-buy-row">
+          <a 
+            href="${amazonUrl}" 
+            target="_blank" 
+            rel="noopener noreferrer" 
+            class="campaign-card-buy-btn campaign-btn-amazon"
+            aria-label="${amazonDomainUpper} - ${safeTitle}"
+            title="${amazonDomainUpper}"
+          >
+            <span>${amazonDomainUpper}</span>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+          ${book.luluUrl ? `
+            <a 
+              href="${book.luluUrl}" 
+              target="_blank" 
+              rel="noopener noreferrer" 
+              class="campaign-card-buy-btn campaign-btn-lulu"
+              aria-label="Lulu - ${safeTitle}"
+              title="Lulu"
+            >
+              <span>Lulu</span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="7" y1="17" x2="17" y2="7"></line>
+                <polyline points="7 7 17 7 17 17"></polyline>
+              </svg>
+            </a>
+          ` : `
+            <div 
+              class="campaign-card-buy-btn campaign-btn-lulu campaign-btn-lulu-disabled" 
+              role="button" 
+              aria-disabled="true" 
+              tabindex="-1"
+              title="Coming soon"
+            >
+              <span>Lulu</span>
+              <div class="campaign-lulu-hover-overlay" aria-hidden="true">
+                <span class="campaign-lulu-hover-pill">
+                  <svg viewBox="0 0 24 24" width="10" height="10" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"></circle>
+                    <polyline points="12 6 12 12 16 14"></polyline>
+                  </svg>
+                  <span>Coming soon</span>
+                </span>
+              </div>
+            </div>
+          `}
+        </div>
       </div>
     `;
   }).join('');

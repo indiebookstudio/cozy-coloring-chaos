@@ -54,7 +54,7 @@
 /* Seasonal Banner Container: 100% complete uncropped 16:9 view */
 .seasonal-banner-wrapper {
   width: 100%;
-  max-width: 1200px;
+  max-width: 1280px;
   margin: 0 auto;
   display: block;
 }
@@ -390,6 +390,121 @@
   transform: translateX(2px);
 }
 
+.campaign-card-buy-row {
+  margin-top: auto;
+  width: 100%;
+  display: flex;
+  gap: 0.35rem;
+  align-items: stretch;
+}
+
+.campaign-card-buy-row .campaign-card-buy-btn {
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 0.52rem 0.28rem;
+  font-size: 0.68rem;
+  gap: 0.22rem;
+  margin-top: 0;
+  white-space: nowrap;
+}
+
+.campaign-card-buy-row .campaign-card-buy-btn span {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  line-height: 1;
+}
+
+.campaign-card-buy-row .campaign-card-buy-btn svg {
+  width: 11px;
+  height: 11px;
+  stroke-width: 2.5;
+  flex-shrink: 0;
+}
+
+.campaign-card-buy-row .campaign-btn-amazon {
+  font-size: 0.66rem;
+  letter-spacing: 0.01em;
+}
+
+.campaign-card-buy-btn.campaign-btn-lulu {
+  background: linear-gradient(135deg, #0D4D84 0%, #083861 100%);
+  box-shadow: 0 4px 14px rgba(13, 77, 132, 0.4);
+  border-color: rgba(255, 255, 255, 0.2);
+}
+
+.campaign-card-buy-btn.campaign-btn-lulu:hover {
+  background: linear-gradient(135deg, #135E9E 0%, #0D4D84 100%);
+  box-shadow: 0 6px 18px rgba(13, 77, 132, 0.6);
+  border-color: rgba(255, 255, 255, 0.35);
+  color: #FFFFFF;
+}
+
+/* Disabled / Coming Soon Lulu Button in Halloween Popup */
+.campaign-card-buy-btn.campaign-btn-lulu-disabled {
+  position: relative;
+  background: linear-gradient(135deg, #52525B 0%, #3F3F46 100%);
+  color: #D4D4D8;
+  border-color: rgba(255, 255, 255, 0.12);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  cursor: not-allowed;
+  user-select: none;
+  overflow: hidden;
+}
+
+.campaign-card-buy-btn.campaign-btn-lulu-disabled:hover {
+  background: linear-gradient(135deg, #52525B 0%, #3F3F46 100%);
+  transform: none;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+  color: #D4D4D8;
+}
+
+.campaign-lulu-hover-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(18, 14, 26, 0.95);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-pill);
+  z-index: 5;
+  padding: 0.15rem;
+}
+
+.campaign-card-buy-btn.campaign-btn-lulu-disabled:hover .campaign-lulu-hover-overlay {
+  opacity: 1;
+}
+
+.campaign-lulu-hover-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.2rem;
+  font-size: 0.58rem;
+  font-weight: 800;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  background: #18181B;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  padding: 0.22rem 0.38rem;
+  border-radius: 999px;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.campaign-lulu-hover-pill svg {
+  width: 9px;
+  height: 9px;
+  stroke: #A1A1AA;
+  flex-shrink: 0;
+}
+
 /* --------------------------------------------------------------------------
    4. POPUP FOOTER WITH BOTTOM-RIGHT LANGUAGE SELECTOR
    -------------------------------------------------------------------------- */
@@ -560,6 +675,15 @@
     font-size: 0.74rem;
   }
 
+  .campaign-card-buy-row .campaign-card-buy-btn {
+    padding: 0.5rem 0.22rem;
+    font-size: 0.64rem;
+  }
+
+  .campaign-card-buy-row .campaign-btn-amazon {
+    font-size: 0.62rem;
+  }
+
   .campaign-modal-footer {
     flex-direction: column;
     align-items: stretch;
@@ -646,5 +770,11 @@
 
   .campaign-card-buy-btn {
     min-height: 42px;
+  }
+
+  .campaign-card-buy-row .campaign-card-buy-btn {
+    min-height: 38px;
+    padding: 0.5rem 0.35rem;
+    font-size: 0.68rem;
   }
 }
