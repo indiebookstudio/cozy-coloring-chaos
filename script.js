@@ -272,6 +272,7 @@ const BOOKS = [
     ],
     defaultMarket: "us",
     asin: "B0HHZWYGNF",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/crazy-cozy/paperback/product-q67jpjz.html?page=1&pageSize=4",
     isNew: true
   },
   {
