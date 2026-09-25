@@ -306,7 +306,8 @@ const BOOKS = [
       "assets/books/Italian.Girls/Colored/08.jpeg"
     ],
     defaultMarket: "us",
-    asin: "B0HGJBKMGZ"
+    asin: "B0HGJBKMGZ",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/italian-girls-cozy-easy-coloring-book/paperback/product-v8nqpnv.html?page=1&pageSize=4"
   },
   {
     id: "non-rompetemi-i-coglioni",
