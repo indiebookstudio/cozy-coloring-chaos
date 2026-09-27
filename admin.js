@@ -83,12 +83,42 @@ function populateAdminBookOptions() {
   });
 }
 
+function getApiBaseUrl() {
+  const host = window.location.hostname;
+  if (host === 'localhost' || host === '127.0.0.1') {
+    return '';
+  }
+  if (host.includes('github.io')) {
+    return (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
+  }
+  return '';
+}
+
+async function adminFetch(endpoint, options = {}) {
+  const base = getApiBaseUrl();
+  const url = endpoint.startsWith('http') ? endpoint : `${base}${endpoint}`;
+  const headers = Object.assign({}, options.headers || {});
+
+  const token = sessionStorage.getItem('cozy_admin_token');
+  if (token) {
+    headers['Authorization'] = `Bearer ${token}`;
+  }
+
+  const finalOptions = {
+    ...options,
+    headers,
+    credentials: 'include'
+  };
+
+  return fetch(url, finalOptions);
+}
+
 /**
  * Checks server-side if session is valid.
  */
 async function checkAuth() {
   try {
-    const res = await fetch('/api/admin-auth');
+    const res = await adminFetch('/api/admin-auth');
     if (res.ok) {
       const data = await res.json();
       if (data.authenticated) {
@@ -130,7 +160,7 @@ window.handleAdminLogin = async function(e) {
   if (loginSubmitBtn) loginSubmitBtn.disabled = true;
 
   try {
-    const res = await fetch('/api/admin-auth', {
+    const res = await adminFetch('/api/admin-auth', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ password })
@@ -138,17 +168,20 @@ window.handleAdminLogin = async function(e) {
 
     const data = await res.json();
     if (res.ok && data.success) {
+      if (data.token) {
+        sessionStorage.setItem('cozy_admin_token', data.token);
+      }
       showDashboard();
       await fetchAdminVideos();
     } else {
       if (loginErrorAlert) {
-        loginErrorAlert.textContent = data.error || 'Invalid password. Please try again.';
+        loginErrorAlert.textContent = data.error || 'Password non valida. Riprova.';
         loginErrorAlert.style.display = 'block';
       }
     }
   } catch (err) {
     if (loginErrorAlert) {
-      loginErrorAlert.textContent = 'Network or server error. Please try again.';
+      loginErrorAlert.textContent = 'Errore di connessione o del server. Riprova.';
       loginErrorAlert.style.display = 'block';
     }
   } finally {
@@ -161,8 +194,9 @@ window.handleAdminLogin = async function(e) {
  */
 window.handleAdminLogout = async function() {
   try {
-    await fetch('/api/admin-auth', { method: 'DELETE' });
+    await adminFetch('/api/admin-auth', { method: 'DELETE' });
   } catch (e) {}
+  sessionStorage.removeItem('cozy_admin_token');
   showLogin();
 };
 
@@ -171,7 +205,7 @@ window.handleAdminLogout = async function() {
  */
 async function fetchAdminVideos() {
   try {
-    const res = await fetch('/api/admin-videos');
+    const res = await adminFetch('/api/admin-videos');
     if (res.status === 401) {
       showLogin();
       return;
@@ -432,7 +466,7 @@ window.handleImportTikTok = async function() {
   if (importSpinner) importSpinner.style.display = 'inline-block';
 
   try {
-    const res = await fetch('/api/admin-import', {
+    const res = await adminFetch('/api/admin-import', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ url })
@@ -562,7 +596,7 @@ window.handleSaveVideo = async function(e) {
 
   try {
     const method = id ? 'PUT' : 'POST';
-    const res = await fetch('/api/admin-videos', {
+    const res = await adminFetch('/api/admin-videos', {
       method: method,
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify(payload)
@@ -590,7 +624,7 @@ window.handleSaveVideo = async function(e) {
  */
 window.togglePublish = async function(id, currentStatus) {
   try {
-    const res = await fetch('/api/admin-videos', {
+    const res = await adminFetch('/api/admin-videos', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, published: !currentStatus })
@@ -609,7 +643,7 @@ window.togglePublish = async function(id, currentStatus) {
  */
 window.toggleFeatured = async function(id, currentStatus) {
   try {
-    const res = await fetch('/api/admin-videos', {
+    const res = await adminFetch('/api/admin-videos', {
       method: 'PUT',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ id, featured: !currentStatus })
@@ -651,7 +685,7 @@ window.executeDeleteVideo = async function() {
   if (!pendingDeleteId) return;
 
   try {
-    const res = await fetch(`/api/admin-videos?id=${encodeURIComponent(pendingDeleteId)}`, {
+    const res = await adminFetch(`/api/admin-videos?id=${encodeURIComponent(pendingDeleteId)}`, {
       method: 'DELETE'
     });
     const data = await res.json();

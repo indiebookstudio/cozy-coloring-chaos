@@ -3,45 +3,25 @@
  * PUBLIC API: GET /api/fan-videos
  * ============================================================================
  * Returns published fan videos with lightweight metadata for the public gallery.
+ * Universal handler: runs in Vercel Node Serverless (req, res) & Web standards.
  */
 
 import { getAllVideos } from './lib/db.js';
+import { getQueryParam, sendJson, handleOptions } from './lib/http.js';
 
-function jsonResponse(data, status = 200, extraHeaders = {}) {
-  return new Response(JSON.stringify(data), {
-    status: status,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-      'Cache-Control': 'public, max-age=60, s-maxage=300',
-      ...extraHeaders
-    }
-  });
-}
-
-export default async function handler(req) {
+export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'GET, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Authorization'
-      }
-    });
+    return handleOptions(res);
   }
 
   if (req.method !== 'GET') {
-    return jsonResponse({ success: false, error: 'Method Not Allowed' }, 405);
+    return sendJson(res, { success: false, error: 'Method Not Allowed' }, 405);
   }
 
   try {
-    const url = new URL(req.url, 'http://localhost');
-    const book = url.searchParams.get('book');
-    const category = url.searchParams.get('category');
-    const language = url.searchParams.get('language');
+    const book = getQueryParam(req, 'book');
+    const category = getQueryParam(req, 'category');
+    const language = getQueryParam(req, 'language');
 
     let videos = await getAllVideos({ includeUnpublished: false });
 
@@ -55,13 +35,15 @@ export default async function handler(req) {
       videos = videos.filter(v => v.language === language);
     }
 
-    return jsonResponse({
+    return sendJson(res, {
       success: true,
       count: videos.length,
       videos: videos
+    }, 200, null, {
+      'Cache-Control': 'public, max-age=60, s-maxage=300'
     });
   } catch (err) {
     console.error('Error fetching fan videos:', err);
-    return jsonResponse({ success: false, error: 'Failed to retrieve fan videos' }, 500);
+    return sendJson(res, { success: false, error: 'Failed to retrieve fan videos' }, 500);
   }
 }

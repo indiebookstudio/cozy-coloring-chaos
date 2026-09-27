@@ -78,10 +78,38 @@ export function verifySessionToken(token) {
 }
 
 /**
- * Extracts session cookie from a Request.
+ * Extracts session token from Authorization header or cookie.
  */
-export function getSessionCookie(req) {
-  const cookieHeader = req.headers.get ? req.headers.get('cookie') : (req.headers.cookie || '');
+export function getSessionToken(req) {
+  if (!req) return null;
+
+  // 1. Check Authorization: Bearer <token>
+  let authHeader = '';
+  if (req.headers) {
+    if (typeof req.headers.get === 'function') {
+      authHeader = req.headers.get('authorization') || '';
+    } else {
+      authHeader = req.headers['authorization'] || req.headers['Authorization'] || '';
+    }
+  }
+  if (authHeader && authHeader.toLowerCase().startsWith('bearer ')) {
+    return authHeader.substring(7).trim();
+  }
+
+  // 2. Check Node req.cookies object (Vercel Node)
+  if (req.cookies && typeof req.cookies === 'object' && req.cookies[COOKIE_NAME]) {
+    return req.cookies[COOKIE_NAME];
+  }
+
+  // 3. Check Cookie header string
+  let cookieHeader = '';
+  if (req.headers) {
+    if (typeof req.headers.get === 'function') {
+      cookieHeader = req.headers.get('cookie') || '';
+    } else {
+      cookieHeader = req.headers['cookie'] || req.headers['Cookie'] || '';
+    }
+  }
   if (!cookieHeader) return null;
 
   const cookies = cookieHeader.split(';').map(c => c.trim());
@@ -97,7 +125,7 @@ export function getSessionCookie(req) {
  * Checks if the request comes from an authenticated admin.
  */
 export function isAuthenticated(req) {
-  const token = getSessionCookie(req);
+  const token = getSessionToken(req);
   return verifySessionToken(token);
 }
 
@@ -105,14 +133,18 @@ export function isAuthenticated(req) {
  * Builds the Set-Cookie header for login.
  */
 export function buildLoginCookie(token, isSecure = false) {
-  const secureFlag = isSecure ? ' Secure;' : '';
-  return `${COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${SESSION_TTL_SECONDS};${secureFlag}`;
+  if (isSecure) {
+    return `${COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=${SESSION_TTL_SECONDS}`;
+  }
+  return `${COOKIE_NAME}=${token}; Path=/; HttpOnly; SameSite=Lax; Max-Age=${SESSION_TTL_SECONDS}`;
 }
 
 /**
  * Builds the Set-Cookie header for logout.
  */
 export function buildLogoutCookie(isSecure = false) {
-  const secureFlag = isSecure ? ' Secure;' : '';
-  return `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT;${secureFlag}`;
+  if (isSecure) {
+    return `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=None; Secure; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+  }
+  return `${COOKIE_NAME}=; Path=/; HttpOnly; SameSite=Lax; Max-Age=0; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 }

@@ -5782,21 +5782,155 @@ body.modal-open {
     margin-top: 0.85rem;
   }
 
+  .fan-controls-section {
+    padding: 0 0.75rem;
+    margin-bottom: 1.5rem;
+  }
+
   .fan-controls-card {
-    padding: 1rem;
+    padding: 0.85rem 0.85rem 1rem 0.85rem;
+    gap: 0.85rem;
+    border-radius: var(--radius-md);
   }
 
   .fan-search-sort-row {
     flex-direction: column;
     align-items: stretch;
+    gap: 0.65rem;
   }
 
   .fan-search-box {
     max-width: 100%;
+    width: 100%;
+  }
+
+  .fan-search-input {
+    width: 100%;
+    padding: 0.65rem 2.2rem 0.65rem 2.35rem;
+    font-size: 0.9rem;
   }
 
   .fan-sort-box {
+    display: flex;
+    align-items: center;
     justify-content: space-between;
+    width: 100%;
+    background-color: var(--color-bg-alt);
+    padding: 0.45rem 0.75rem;
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-border);
+  }
+
+  .fan-sort-box .fan-control-label {
+    font-size: 0.78rem;
+    white-space: nowrap;
+  }
+
+  .fan-sort-select {
+    flex: 1;
+    max-width: 220px;
+    padding: 0.45rem 1.6rem 0.45rem 0.7rem;
+    font-size: 0.84rem;
+    background-color: #FFFFFF;
+  }
+
+  .fan-filters-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0.65rem;
+    padding-top: 0.75rem;
+    border-top: 1px dashed var(--color-border);
+    width: 100%;
+  }
+
+  .fan-filter-group {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    width: 100%;
+    min-width: 0;
+  }
+
+  .fan-filter-book-group {
+    grid-column: 1 / -1;
+  }
+
+  .fan-filter-cat-group {
+    grid-column: 1;
+  }
+
+  .fan-filter-lang-group {
+    grid-column: 2;
+  }
+
+  .fan-filter-group .fan-control-label {
+    font-size: 0.75rem;
+    letter-spacing: 0.05em;
+  }
+
+  .fan-select {
+    width: 100%;
+    min-width: 0;
+    padding: 0.55rem 1.6rem 0.55rem 0.7rem;
+    font-size: 0.84rem;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+    background-position: right 0.5rem center;
+  }
+
+  .fan-custom-select {
+    width: 100%;
+  }
+
+  .fan-custom-select-trigger {
+    width: 100%;
+    min-width: 0;
+    padding: 0.55rem 0.65rem;
+    font-size: 0.84rem;
+  }
+
+  .fan-custom-select-val {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .fan-lang-name {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-size: 0.82rem;
+  }
+
+  .fan-custom-select-menu {
+    width: 100%;
+    min-width: 180px;
+    left: auto;
+    right: 0;
+    max-height: 240px;
+  }
+
+  .fan-reset-btn {
+    grid-column: 1 / -1;
+    justify-content: center;
+    width: 100%;
+    padding: 0.55rem 1rem;
+    font-size: 0.84rem;
+    margin-top: 0.25rem;
+  }
+
+  .fan-results-bar {
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+    padding-top: 0.2rem;
+  }
+
+  .fan-results-count {
+    font-size: 0.82rem;
   }
 
   .fan-videos-grid {

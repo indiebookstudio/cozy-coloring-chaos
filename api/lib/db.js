@@ -13,7 +13,13 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
-const DATA_FILE_PATH = path.join(__dirname, '..', '..', 'data', 'fan-videos.json');
+function getDataFilePath() {
+  const p1 = path.join(process.cwd(), 'data', 'fan-videos.json');
+  if (fs.existsSync(p1)) return p1;
+  const p2 = path.join(__dirname, '..', '..', 'data', 'fan-videos.json');
+  if (fs.existsSync(p2)) return p2;
+  return p1;
+}
 
 function isSupabaseConfigured() {
   return !!(process.env.SUPABASE_URL && (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY));
@@ -34,10 +40,11 @@ function getSupabaseHeaders() {
 
 function readLocalVideos() {
   try {
-    if (!fs.existsSync(DATA_FILE_PATH)) {
+    const filePath = getDataFilePath();
+    if (!fs.existsSync(filePath)) {
       return [];
     }
-    const content = fs.readFileSync(DATA_FILE_PATH, 'utf-8');
+    const content = fs.readFileSync(filePath, 'utf-8');
     return JSON.parse(content) || [];
   } catch (err) {
     console.error('Error reading local fan-videos.json:', err);
@@ -47,11 +54,12 @@ function readLocalVideos() {
 
 function writeLocalVideos(videos) {
   try {
-    const dir = path.dirname(DATA_FILE_PATH);
+    const filePath = getDataFilePath();
+    const dir = path.dirname(filePath);
     if (!fs.existsSync(dir)) {
       fs.mkdirSync(dir, { recursive: true });
     }
-    fs.writeFileSync(DATA_FILE_PATH, JSON.stringify(videos, null, 2), 'utf-8');
+    fs.writeFileSync(filePath, JSON.stringify(videos, null, 2), 'utf-8');
     return true;
   } catch (err) {
     console.error('Error writing local fan-videos.json:', err);

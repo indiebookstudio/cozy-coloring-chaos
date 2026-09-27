@@ -3,25 +3,13 @@
  * ADMIN API: /api/admin-import
  * ============================================================================
  * Imports official metadata from TikTok oEmbed for a given TikTok video URL.
- * Checks for duplicates before fetching to avoid redundant work.
- * Requires valid admin session.
+ * Universal handler: runs in Vercel Node Serverless (req, res) & Web standards.
  */
 
 import { isAuthenticated } from './lib/auth.js';
 import { getVideoByUrl } from './lib/db.js';
 import { fetchTikTokOEmbed, parseTikTokUrl } from './lib/tiktok.js';
-
-function jsonResponse(data, status = 200) {
-  return new Response(JSON.stringify(data), {
-    status: status,
-    headers: {
-      'Content-Type': 'application/json',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Cookie'
-    }
-  });
-}
+import { getRequestBody, sendJson, handleOptions } from './lib/http.js';
 
 // Known books slug mapping for heuristic detection
 const BOOK_HINTS = [
@@ -78,37 +66,31 @@ function detectLanguage(text) {
   return 'en';
 }
 
-export default async function handler(req) {
+export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return new Response(null, {
-      status: 204,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Access-Control-Allow-Methods': 'POST, OPTIONS',
-        'Access-Control-Allow-Headers': 'Content-Type, Cookie'
-      }
-    });
+    return handleOptions(res);
   }
 
   // Server-side authentication check
   if (!isAuthenticated(req)) {
-    return jsonResponse({ success: false, error: 'Unauthorized. Please log in.' }, 401);
+    return sendJson(res, { success: false, error: 'Unauthorized. Please log in.' }, 401);
   }
 
   if (req.method !== 'POST') {
-    return jsonResponse({ success: false, error: 'Method Not Allowed. Use POST.' }, 405);
+    return sendJson(res, { success: false, error: 'Method Not Allowed. Use POST.' }, 405);
   }
 
   try {
-    const { url } = await req.json();
+    const body = await getRequestBody(req);
+    const url = body.url;
 
     if (!url || typeof url !== 'string') {
-      return jsonResponse({ success: false, error: 'TikTok URL is required' }, 400);
+      return sendJson(res, { success: false, error: 'TikTok URL is required' }, 400);
     }
 
     const parsed = await parseTikTokUrl(url);
     if (!parsed) {
-      return jsonResponse({
+      return sendJson(res, {
         success: false,
         error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link da app vm.tiktok.com).'
       }, 400);
@@ -117,7 +99,7 @@ export default async function handler(req) {
     // Check if duplicate already in database (check both raw and canonical URL)
     const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
     if (existing) {
-      return jsonResponse({
+      return sendJson(res, {
         success: false,
         error: 'Questo video TikTok è già presente nella galleria.'
       }, 409);
@@ -131,7 +113,7 @@ export default async function handler(req) {
     const suggestedCategory = detectCategory(metadata.caption);
     const suggestedLang = detectLanguage(metadata.caption);
 
-    return jsonResponse({
+    return sendJson(res, {
       success: true,
       metadata: {
         ...metadata,
@@ -145,7 +127,7 @@ export default async function handler(req) {
     });
   } catch (err) {
     console.error('TikTok import error:', err);
-    return jsonResponse({
+    return sendJson(res, {
       success: false,
       error: err.message || 'Failed to import TikTok video. Please check the URL and try again.'
     }, 400);

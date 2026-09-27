@@ -45,7 +45,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=5.1">
+  <link rel="stylesheet" href="style.css?v=5.3">
 </head>
 <body class="page-fan-videos">
   <!-- Ambient background glow -->
@@ -217,7 +217,7 @@
           <!-- Filter Pills / Dropdowns Row -->
           <div class="fan-filters-row">
             <!-- Book Filter -->
-            <div class="fan-filter-group">
+            <div class="fan-filter-group fan-filter-book-group">
               <label for="fan-filter-book" class="fan-control-label" data-i18n="filterBook">Book:</label>
               <select id="fan-filter-book" class="fan-select" aria-label="Filter by book">
                 <option value="all" data-i18n="filterAllBooks">All books</option>
@@ -226,7 +226,7 @@
             </div>
 
             <!-- Category Filter -->
-            <div class="fan-filter-group">
+            <div class="fan-filter-group fan-filter-cat-group">
               <label for="fan-filter-category" class="fan-control-label" data-i18n="filterCategory">Category:</label>
               <select id="fan-filter-category" class="fan-select" aria-label="Filter by category">
                 <option value="all" data-i18n="filterAllCategories">All categories</option>
@@ -240,7 +240,7 @@
             </div>
 
             <!-- Language Filter with Real Flags -->
-            <div class="fan-filter-group">
+            <div class="fan-filter-group fan-filter-lang-group">
               <label for="fan-lang-trigger" class="fan-control-label" data-i18n="filterLanguage">Language:</label>
               
               <!-- Hidden select for form value binding & backwards compatibility -->
@@ -517,6 +517,6 @@
   <script src="script.js?v=4.9"></script>
 
   <!-- Fan Videos interactive logic -->
-  <script src="fan-videos.js?v=1.2"></script>
+  <script src="fan-videos.js?v=1.3"></script>
 </body>
 </html>
