@@ -42,6 +42,9 @@ const LULU_ICON_SVG = `<svg class="btn-store-icon lulu-icon" viewBox="0 0 128 17
 
 const LULU_FULL_LOGO_SVG = `<svg class="btn-store-icon lulu-logo" viewBox="0 0 500 175" width="48" height="17" fill="currentColor" aria-hidden="true"><path d="M138.46,147.21l15.08-100.28c.25-1.63,1.42-2.98,3.01-3.44l30.15-8.74c1.98-.57,3.88,1.09,3.58,3.13l-15.09,100.58c-.58,4.86,1.36,6.8,6.02,6.8,1.33,0,2.85-.13,4.57-.42,2.04-.34,3.83,1.38,3.52,3.42l-3.11,20.65c-.31,2.03-1.83,3.68-3.84,4.14-6.05,1.37-10.24,1.93-15.71,1.93-20.99,0-30.9-9.72-28.18-27.79ZM351.14,175c5.46,0,9.66-.56,15.71-1.93,2.01-.45,3.53-2.1,3.84-4.14l3.11-20.65c.31-2.04-1.48-3.77-3.52-3.42-1.71.29-3.23.42-4.57.42-4.66,0-6.61-1.94-6.02-6.8l15.09-100.58c.31-2.04-1.6-3.7-3.58-3.13l-30.15,8.74c-1.59.46-2.76,1.8-3.01,3.44l-15.08,100.28c-2.72,18.07,7.19,27.79,28.18,27.79ZM311.71,144.82c-1.68.31-2.99.44-4.36.44-4.86,0-6.8-2.14-6.02-6.8l8.81-59.68c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.77,1.1-2.99,2.58l-7.39,49.3c-1.55,11.08-9.13,17.68-19.82,17.68s-15.35-7-13.6-18.27l7.07-47.83c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.78,1.1-3,2.59l-8.17,55.32c-3.69,24.87,10.3,41.78,35.56,41.78,13.41,0,25.65-4.86,33.81-12.05,3.5,7.58,12.05,12.05,25.65,12.05,5.04,0,9.64-.58,15.95-1.99,1.86-.42,3.27-1.94,3.54-3.83l3.01-20.95c.3-2.06-1.53-3.78-3.57-3.4ZM496.4,144.82c-1.68.31-2.99.44-4.36.44-4.86,0-6.8-2.14-6.02-6.8l8.81-59.68c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.77,1.1-2.99,2.58l-7.39,49.3c-1.55,11.08-9.13,17.68-19.82,17.68s-15.35-7-13.6-18.27l7.07-47.83c.27-1.83-1.15-3.47-3-3.47h-29.25c-1.5,0-2.78,1.1-3,2.59l-8.17,55.32c-3.69,24.87,10.3,41.78,35.56,41.78,13.41,0,25.65-4.86,33.81-12.05,3.5,7.58,12.05,12.05,25.65,12.05,5.32,0,10.15-.65,17-2.23,1.22-.28,2.15-1.28,2.33-2.52l3.17-22.02c.3-2.06-1.53-3.78-3.57-3.4ZM57.08,144.29c-13.76-6.97-27.03-9.79-30.76-10.49-5.7-1.07-9.49-6.39-8.63-12.13l13.12-87.2c-5.14-.26-9.66-.28-13.2-.08-.78.04-1.41.63-1.53,1.4L.02,142.54c-.15,1.01.64,1.91,1.66,1.89,9.94-.24,55.32-.3,79.31,17.87-5.96-6.93-13.94-12.97-23.91-18.01ZM104.98,169.95s7.03-46.19,15.43-102.46C127.94,17.04,81.21,2.52,71.44.05c-.94-.24-1.88.39-2.03,1.35l-10.53,70.2c-.15,1.03-.26,2.06-.26,3.1,0,12.12,10.61,14.44,15.85,14.84,1.22.09,1.92,1.44,1.28,2.49-3.37,5.55-10.27,19.49-2.03,29.51,0,0,27.6,24.93,31.26,48.41ZM67.64,128.27c-.33-.3-.64-.63-.93-.97-6.74-8.2-7.77-19.2-3.16-31.07-8.84-3.72-14.02-11.39-14.01-21.52,0-1.37.12-2.78.36-4.44l8.15-54.33c-4.89-.8-9.53-1.24-13.65-1.32-.82-.02-1.52.59-1.64,1.4l-16.11,107.01c-.13.88.46,1.7,1.33,1.86,8.45,1.58,48.91,10.61,66.64,40.94-5.15-15.28-20.73-31.89-26.98-37.55Z"/></svg>`;
 
+// Set of book IDs that currently have published fan videos (default fallback: cozy-terror)
+let booksWithFanVideos = new Set(['cozy-terror']);
+
 // ============================================================================
 // ADD OR EDIT BOOKS HERE
 // ============================================================================
@@ -391,7 +394,7 @@ const EMAIL_CONFIG = {
 // ============================================================================
 // MULTI-LANGUAGE TRANSLATIONS DICTIONARY
 // ============================================================================
-const TRANSLATIONS = {
+const TRANSLATIONS = window.TRANSLATIONS = {
   it: {
     pageTitle: "Cozy Coloring Chaos | Libri da Colorare Cozy, Divertenti & Caotici",
     metaDesc: "Scopri libri da colorare cozy con un tocco di umorismo nero e caos creativo. Scegli il tuo store Amazon e ordina la tua copia!",
@@ -424,6 +427,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Retro Copertina (Back)",
     pageLabel: "Pagina",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Fan Videos",
+    ariaBookVideos: (title) => `Guarda i video della community per ${title}`,
+    noVideosAvailable: "Nessun fan video disponibile per questo libro",
     freeSampleModalTitle: "Ricevi il Free Sample PDF",
     freeSampleModalDesc: "Inserisci i tuoi dati per ricevere gratuitamente via email il file PDF con una selezione di pagine da colorare in alta definizione allegate alla mail!",
     formFirstName: "Nome",
@@ -457,6 +463,43 @@ const TRANSLATIONS = {
     emailOpenApp: "Apri Client Email",
     navBooks: "Libri",
     navAuthors: "Autori",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Fan Videos",
+    fanVideosHeroSubtitle: "Unboxing, sfogliate, coloring e recensioni dalla nostra fantastica community.",
+    fanVideosHeroCredits: "Tutti i crediti inclusi — segui questi fantastici creator.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Crediti Creator & Community Love",
+    creatorCreditsText: "Ogni video mostrato qui appartiene al suo creator originale. Mostriamo questi fantastici artisti e supporter con pieno credito e link diretti ai loro contenuti originali. Vai a seguirli e supportali!",
+    sortLabel: "Ordina:",
+    sortNewest: "Più recenti",
+    sortOldest: "Meno recenti",
+    sortFeatured: "In evidenza",
+    filterBook: "Libro:",
+    filterAllBooks: "Tutti i libri",
+    filterCategory: "Categoria:",
+    filterAllCategories: "Tutte le categorie",
+    filterLanguage: "Lingua:",
+    filterAllLanguages: "Tutte le lingue",
+    filterUnassigned: "Non assegnato / Generale",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Flip-through",
+    catColoring: "Coloring",
+    catReview: "Recensione",
+    catCollection: "Collezione",
+    catOther: "Altro",
+    resetFilters: "Reimposta",
+    searchVideosPlaceholder: "Cerca creator, libro, descrizione...",
+    noVideosTitle: "Nessun video trovato",
+    noVideosDesc: "Prova a modificare i filtri o i termini di ricerca.",
+    resetAllFilters: "Reimposta tutti i filtri",
+    showingSingleVideo: "Visualizzazione di 1 video",
+    showingMultipleVideos: (n) => `Visualizzazione di ${n} video`,
+    featuredBookHint: "Libro mostrato in questo video:",
+    videoUnavailable: "Questo video non è più disponibile su TikTok.",
+    viewOnTikTok: "Vedi su TikTok",
+    followCreator: (username) => `Segui @${username}`,
+    fanVideosPageTitle: "Fan Videos | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Guarda unboxing, sfogliate, video di coloring e recensioni realizzati dalla community di Cozy Coloring Chaos.",
     authorsPageTitle: "Incontra gli Autori | Cozy Coloring Chaos",
     authorsMetaDesc: "Scopri Isaac McClour, Lucia C. Marcos e Lucas C. Morica, i personaggi creativi dietro Cozy Coloring Chaos e tre universi editoriali distinti.",
     authorsHeroTitle: "Incontra gli Autori",
@@ -540,6 +583,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Back Cover",
     pageLabel: "Page",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Fan Videos",
+    ariaBookVideos: (title) => `Watch community fan videos for ${title}`,
+    noVideosAvailable: "No fan videos available for this book yet",
     freeSampleModalTitle: "Get Your Free Sample PDF",
     freeSampleModalDesc: "Enter your details to receive a free PDF sample with selected coloring pages attached to your email!",
     formFirstName: "First Name",
@@ -573,6 +619,43 @@ const TRANSLATIONS = {
     emailOpenApp: "Open Mail App",
     navBooks: "Books",
     navAuthors: "Authors",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Fan Videos",
+    fanVideosHeroSubtitle: "Unboxings, flip-throughs, coloring videos and reviews from our amazing community.",
+    fanVideosHeroCredits: "Full credits included — go follow these awesome creators.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Creator Credits & Community Love",
+    creatorCreditsText: "Every video featured here belongs to its original creator. We showcase these amazing artists and supporters with full credit and direct links to their original content. Please go follow them and show some love!",
+    sortLabel: "Sort:",
+    sortNewest: "Newest first",
+    sortOldest: "Oldest first",
+    sortFeatured: "Featured first",
+    filterBook: "Book:",
+    filterAllBooks: "All books",
+    filterCategory: "Category:",
+    filterAllCategories: "All categories",
+    filterLanguage: "Language:",
+    filterAllLanguages: "All languages",
+    filterUnassigned: "Unassigned / General",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Flip-through",
+    catColoring: "Coloring",
+    catReview: "Review",
+    catCollection: "Collection",
+    catOther: "Other",
+    resetFilters: "Reset",
+    searchVideosPlaceholder: "Search creator, book, caption...",
+    noVideosTitle: "No videos found",
+    noVideosDesc: "Try adjusting your filters or search keywords.",
+    resetAllFilters: "Reset all filters",
+    showingSingleVideo: "Showing 1 video",
+    showingMultipleVideos: (n) => `Showing ${n} videos`,
+    featuredBookHint: "Book featured in this video:",
+    videoUnavailable: "This video is no longer available on TikTok.",
+    viewOnTikTok: "View on TikTok",
+    followCreator: (username) => `Follow @${username}`,
+    fanVideosPageTitle: "Fan Videos | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Watch unboxings, coloring videos, flip-throughs and reviews created by the Cozy Coloring Chaos community.",
     authorsPageTitle: "Meet the Authors | Cozy Coloring Chaos",
     authorsMetaDesc: "Meet Isaac McClour, Lucia C. Marcos and Lucas C. Morica, the fictional creative personas behind Cozy Coloring Chaos and three distinct publishing worlds.",
     authorsHeroTitle: "Meet the Authors",
@@ -656,6 +739,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Rückseite (Back)",
     pageLabel: "Seite",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Fan Videos",
+    ariaBookVideos: (title) => `Community-Fanvideos für ${title} ansehen`,
+    noVideosAvailable: "Noch keine Fan-Videos für dieses Buch verfügbar",
     freeSampleModalTitle: "Kostenlose PDF-Probe erhalten",
     freeSampleModalDesc: "Trage deine Daten ein, um eine kostenlose PDF-Leseprobe mit Ausmalseiten direkt als E-Mail-Anhang zu erhalten!",
     formFirstName: "Vorname",
@@ -688,6 +774,44 @@ const TRANSLATIONS = {
     emailOpenApp: "E-Mail-App öffnen",
     navBooks: "Bücher",
     navAuthors: "Autoren",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Fan-Videos",
+    fanVideosHeroSubtitle: "Unboxings, Durchblättern, Ausmalvideos und Rezensionen aus unserer Community.",
+    fanVideosHeroCredits: "Alle Urheberrechte gewahrt – folgt diesen tollen Creatorn.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Creator-Credits & Community Love",
+    creatorCreditsText: "Jedes hier gezeigte Video gehört seinem ursprünglichen Creator. Wir präsentieren diese wunderbaren Künstler und Unterstützer mit vollem Credit und direkten Links zu ihren Originalinhalten. Bitte folgt ihnen und zeigt etwas Liebe!",
+    sortLabel: "Sortieren:",
+    sortNewest: "Neueste zuerst",
+    sortOldest: "Älteste zuerst",
+    sortFeatured: "Vorgestellt zuerst",
+    filterBook: "Buch:",
+    filterAllBooks: "Alle Bücher",
+    filterCategory: "Kategorie:",
+    filterAllCategories: "Alle Kategorien",
+    filterLanguage: "Sprache:",
+    filterAllLanguages: "Alle Sprachen",
+    filterUnassigned: "Nicht zugeordnet / Allgemein",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Durchblättern",
+    catColoring: "Ausmalen",
+    catReview: "Rezension",
+    catCollection: "Sammlung",
+    catOther: "Andere",
+    resetFilters: "Zurücksetzen",
+    searchVideosPlaceholder: "Creator, Buch, Beschreibung suchen...",
+    noVideosTitle: "Keine Videos gefunden",
+    noVideosDesc: "Passe deine Filter oder Suchbegriffe an.",
+    resetAllFilters: "Alle Filter zurücksetzen",
+    showingSingleVideo: "1 Video wird angezeigt",
+    showingMultipleVideos: (n) => `${n} Videos werden angezeigt`,
+    featuredBookHint: "In diesem Video vorgestelltes Buch:",
+    videoUnavailable: "Dieses Video ist auf TikTok nicht mehr verfügbar.",
+    viewOnTikTok: "Auf TikTok ansehen",
+    followCreator: (username) => `Folge @${username}`,
+    fanVideosPageTitle: "Fan-Videos | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Sieh dir Unboxings, Ausmalvideos, Flip-Throughs und Rezensionen aus der Cozy Coloring Chaos-Community an.",
+
     authorsPageTitle: "Lerne die Autoren kennen | Cozy Coloring Chaos",
     authorsMetaDesc: "Lerne Isaac McClour, Lucia C. Marcos und Lucas C. Morica kennen, die kreativen Persönlichkeiten hinter Cozy Coloring Chaos und drei unverwechselbaren Verlagswelten.",
     authorsHeroTitle: "Lerne die Autoren kennen",
@@ -771,6 +895,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Quatrième de couverture",
     pageLabel: "Page",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Vidéos Fan",
+    ariaBookVideos: (title) => `Regarder les vidéos fan pour ${title}`,
+    noVideosAvailable: "Aucune vidéo fan disponible pour ce livre pour l'instant",
     freeSampleModalTitle: "Recevoir l'Extrait Gratuit PDF",
     freeSampleModalDesc: "Entrez vos coordonnées pour recevoir gratuitement par email un extrait PDF avec des pages à colorier en pièce jointe !",
     formFirstName: "Prénom",
@@ -803,6 +930,44 @@ const TRANSLATIONS = {
     emailOpenApp: "Ouvrir Client Email",
     navBooks: "Livres",
     navAuthors: "Auteurs",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Vidéos de Fans",
+    fanVideosHeroSubtitle: "Unboxings, feuilletages, coloriages et avis de notre formidable communauté.",
+    fanVideosHeroCredits: "Crédits complets inclus – suivez ces merveilleux créateurs.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Crédits des Créateurs & Community Love",
+    creatorCreditsText: "Chaque vidéo présentée ici appartient à son créateur d'origine. Nous mettons en valeur ces artistes et supporters formidables en leur accordant tous les crédits et des liens directs vers leurs contenus originaux. N'hésitez pas à les suivre et à les soutenir !",
+    sortLabel: "Trier :",
+    sortNewest: "Plus récents d'abord",
+    sortOldest: "Plus anciens d'abord",
+    sortFeatured: "En vedette d'abord",
+    filterBook: "Livre :",
+    filterAllBooks: "Tous les livres",
+    filterCategory: "Catégorie :",
+    filterAllCategories: "Toutes les catégories",
+    filterLanguage: "Langue :",
+    filterAllLanguages: "Toutes les langues",
+    filterUnassigned: "Non assigné / Général",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Feuilletage",
+    catColoring: "Coloriage",
+    catReview: "Avis",
+    catCollection: "Collection",
+    catOther: "Autre",
+    resetFilters: "Réinitialiser",
+    searchVideosPlaceholder: "Rechercher créateur, livre, légende...",
+    noVideosTitle: "Aucune vidéo trouvée",
+    noVideosDesc: "Essayez de modifier vos filtres ou termes de recherche.",
+    resetAllFilters: "Réinitialiser tous les filtres",
+    showingSingleVideo: "Affichage de 1 vidéo",
+    showingMultipleVideos: (n) => `Affichage de ${n} vidéos`,
+    featuredBookHint: "Livre présenté dans cette vidéo :",
+    videoUnavailable: "Cette vidéo n'est plus disponible sur TikTok.",
+    viewOnTikTok: "Voir sur TikTok",
+    followCreator: (username) => `Suivre @${username}`,
+    fanVideosPageTitle: "Vidéos de Fans | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Découvrez les unboxings, coloriages, feuilletages et avis réalisés par la communauté Cozy Coloring Chaos.",
+
     authorsPageTitle: "Rencontrez les Auteurs | Cozy Coloring Chaos",
     authorsMetaDesc: "Découvrez Isaac McClour, Lucia C. Marcos et Lucas C. Morica, les personnalités créatives derrière Cozy Coloring Chaos et trois univers éditoriaux distincts.",
     authorsHeroTitle: "Rencontrez les Auteurs",
@@ -886,6 +1051,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Contraportada",
     pageLabel: "Página",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Vídeos Fan",
+    ariaBookVideos: (title) => `Ver vídeos de la comunidad para ${title}`,
+    noVideosAvailable: "Aún no hay vídeos de la comunidad para este libro",
     freeSampleModalTitle: "Recibe tu Muestra Gratis PDF",
     freeSampleModalDesc: "¡Ingresa tus datos para recibir gratis por correo electrónico una muestra en PDF con páginas para colorear adjuntas al email!",
     formFirstName: "Nombre",
@@ -918,6 +1086,44 @@ const TRANSLATIONS = {
     emailOpenApp: "Abrir App de Correo",
     navBooks: "Libros",
     navAuthors: "Autores",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Videos de Fans",
+    fanVideosHeroSubtitle: "Unboxings, hojeadas, coloreados y reseñas de nuestra maravillosa comunidad.",
+    fanVideosHeroCredits: "Créditos completos incluidos – sigue a estos fantásticos creadores.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Créditos de Creadores & Community Love",
+    creatorCreditsText: "Cada video presentado aquí pertenece a su creador original. Destacamos a estos increíbles artistas y seguidores con pleno crédito y enlaces directos a su contenido original. ¡Por favor, ve a seguirlos y darles mucho amor!",
+    sortLabel: "Ordenar:",
+    sortNewest: "Más recientes primero",
+    sortOldest: "Más antiguos primero",
+    sortFeatured: "Destacados primero",
+    filterBook: "Libro:",
+    filterAllBooks: "Todos los libros",
+    filterCategory: "Categoría:",
+    filterAllCategories: "Todas las categorías",
+    filterLanguage: "Idioma:",
+    filterAllLanguages: "Todos los idiomas",
+    filterUnassigned: "Sin asignar / General",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Hojeada (Flip-through)",
+    catColoring: "Coloreado",
+    catReview: "Reseña",
+    catCollection: "Colección",
+    catOther: "Otro",
+    resetFilters: "Restablecer",
+    searchVideosPlaceholder: "Buscar creador, libro, descripción...",
+    noVideosTitle: "No se encontraron videos",
+    noVideosDesc: "Intenta ajustar los filtros o los términos de búsqueda.",
+    resetAllFilters: "Restablecer todos los filtros",
+    showingSingleVideo: "Mostrando 1 video",
+    showingMultipleVideos: (n) => `Mostrando ${n} videos`,
+    featuredBookHint: "Libro destacado en este video:",
+    videoUnavailable: "Este video ya no está disponible en TikTok.",
+    viewOnTikTok: "Ver en TikTok",
+    followCreator: (username) => `Seguir a @${username}`,
+    fanVideosPageTitle: "Videos de Fans | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Mira unboxings, coloreados, hojeadas y reseñas creadas por la comunidad de Cozy Coloring Chaos.",
+
     authorsPageTitle: "Conoce a los Autores | Cozy Coloring Chaos",
     authorsMetaDesc: "Conoce a Isaac McClour, Lucia C. Marcos y Lucas C. Morica, los personajes creativos detrás de Cozy Coloring Chaos y tres mundos editoriales distintos.",
     authorsHeroTitle: "Conoce a los Autores",
@@ -1001,6 +1207,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Achterkant",
     pageLabel: "Pagina",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Fan Video's",
+    ariaBookVideos: (title) => `Bekijk community fan video's voor ${title}`,
+    noVideosAvailable: "Nog geen fan video's beschikbaar voor dit boek",
     freeSampleModalTitle: "Ontvang je Gratis PDF Sample",
     freeSampleModalDesc: "Vul je gegevens in om gratis een PDF-proefexemplaar met kleurpagina's als bijlage in je e-mail te ontvangen!",
     formFirstName: "Voornaam",
@@ -1033,6 +1242,44 @@ const TRANSLATIONS = {
     emailOpenApp: "E-mailapp openen",
     navBooks: "Boeken",
     navAuthors: "Auteurs",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Fan Videos",
+    fanVideosHeroSubtitle: "Unboxings, flip-throughs, kleurvideo's en recensies van onze geweldige community.",
+    fanVideosHeroCredits: "Volledige credits vermeld – volg deze fantastische makers.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Creator Credits & Community Love",
+    creatorCreditsText: "Elke video die hier wordt getoond, is eigendom van de originele maker. We zetten deze geweldige artiesten en supporters in de schijnwerpers met volledige credits en directe links naar hun originele content. Ga ze zeker volgen en toon wat liefde!",
+    sortLabel: "Sorteren:",
+    sortNewest: "Nieuwste eerst",
+    sortOldest: "Oudste eerst",
+    sortFeatured: "Aanbevolen eerst",
+    filterBook: "Boek:",
+    filterAllBooks: "Alle boeken",
+    filterCategory: "Categorie:",
+    filterAllCategories: "Alle categorieën",
+    filterLanguage: "Taal:",
+    filterAllLanguages: "Alle talen",
+    filterUnassigned: "Niet toegewezen / Algemeen",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Flip-through",
+    catColoring: "Kleuren",
+    catReview: "Recensie",
+    catCollection: "Collectie",
+    catOther: "Overig",
+    resetFilters: "Resetten",
+    searchVideosPlaceholder: "Zoek creator, boek, beschrijving...",
+    noVideosTitle: "Geen video's gevonden",
+    noVideosDesc: "Probeer je filters of zoektermen aan te passen.",
+    resetAllFilters: "Alle filters resetten",
+    showingSingleVideo: "1 video weergegeven",
+    showingMultipleVideos: (n) => `${n} video's weergegeven`,
+    featuredBookHint: "Boek te zien in deze video:",
+    videoUnavailable: "Deze video is niet meer beschikbaar op TikTok.",
+    viewOnTikTok: "Bekijk op TikTok",
+    followCreator: (username) => `Volg @${username}`,
+    fanVideosPageTitle: "Fan Videos | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Bekijk unboxings, kleurvideo's, flip-throughs en recensies gemaakt door de Cozy Coloring Chaos-community.",
+
     authorsPageTitle: "Ontmoet de Auteurs | Cozy Coloring Chaos",
     authorsMetaDesc: "Ontmoet Isaac McClour, Lucia C. Marcos en Lucas C. Morica, de creatieve personages achter Cozy Coloring Chaos en drie verschillende uitgeefwerelden.",
     authorsHeroTitle: "Ontmoet de Auteurs",
@@ -1115,6 +1362,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Okładka tylna",
     pageLabel: "Strona",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Filmy Fanów",
+    ariaBookVideos: (title) => `Zobacz filmy fanów dla ${title}`,
+    noVideosAvailable: "Brak jeszcze filmów fanów dla tej książki",
     freeSampleModalTitle: "Odbierz darmowy fragment PDF",
     freeSampleModalDesc: "Wpisz swoje dane, aby otrzymać darmowy fragment PDF z wybranymi stronami do kolorowania jako załącznik w wiadomości e-mail!",
     formFirstName: "Imię",
@@ -1147,6 +1397,44 @@ const TRANSLATIONS = {
     emailOpenApp: "Otwórz aplikację",
     navBooks: "Książki",
     navAuthors: "Autorzy",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Filmy Fanów",
+    fanVideosHeroSubtitle: "Unboxingi, przeglądy, kolorowanie i recenzje od naszej wspaniałej społeczności.",
+    fanVideosHeroCredits: "Wszelkie prawa i uznanie autorstwa – zaobserwuj tych fantastycznych twórców.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Twórcy & Społeczność",
+    creatorCreditsText: "Każde prezentowane tutaj wideo należy do jego oryginalnego twórcy. Wyróżniamy tych wspaniałych artystów i fanów z pełnym uznaniem autorstwa i bezpośrednimi linkami do ich oryginalnych treści. Koniecznie ich zaobserwuj i okaż im wsparcie!",
+    sortLabel: "Sortuj:",
+    sortNewest: "Od najnowszych",
+    sortOldest: "Od najstarszych",
+    sortFeatured: "Wyróżnione",
+    filterBook: "Książka:",
+    filterAllBooks: "Wszystkie książki",
+    filterCategory: "Kategoria:",
+    filterAllCategories: "Wszystkie kategorie",
+    filterLanguage: "Język:",
+    filterAllLanguages: "Wszystkie języki",
+    filterUnassigned: "Nieprzypisane / Ogólne",
+    catUnboxing: "Unboxing",
+    catFlipThrough: "Przeglądanie",
+    catColoring: "Kolorowanie",
+    catReview: "Recenzja",
+    catCollection: "Kolekcja",
+    catOther: "Inne",
+    resetFilters: "Zresetuj",
+    searchVideosPlaceholder: "Szukaj twórcy, książki, opisu...",
+    noVideosTitle: "Nie znaleziono filmów",
+    noVideosDesc: "Spróbuj zmienić filtry lub słowa kluczowe.",
+    resetAllFilters: "Zresetuj wszystkie filtry",
+    showingSingleVideo: "Wyświetlanie 1 filmu",
+    showingMultipleVideos: (n) => `Wyświetlanie ${n} filmów`,
+    featuredBookHint: "Książka pokazana w tym filmie:",
+    videoUnavailable: "To wideo nie jest już dostępne na TikToku.",
+    viewOnTikTok: "Zobacz na TikToku",
+    followCreator: (username) => `Obserwuj @${username}`,
+    fanVideosPageTitle: "Filmy Fanów | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Oglądaj unboxingi, kolorowanie, przeglądy i recenzje stworzone przez społeczność Cozy Coloring Chaos.",
+
     authorsPageTitle: "Poznaj Autorów | Cozy Coloring Chaos",
     authorsMetaDesc: "Poznaj Isaaca McCloura, Lucię C. Marcos i Lucasa C. Moricę, fikcyjne postaci twórcze stojące za Cozy Coloring Chaos i trzema różnymi światami.",
     authorsHeroTitle: "Poznaj Autorów",
@@ -1229,6 +1517,9 @@ const TRANSLATIONS = {
     backCoverLabel: "Baksida",
     pageLabel: "Sida",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "Fanvideor",
+    ariaBookVideos: (title) => `Se fanvideor för ${title}`,
+    noVideosAvailable: "Inga fanvideor tillgängliga för denna bok ännu",
     freeSampleModalTitle: "Få ditt gratis PDF-prov",
     freeSampleModalDesc: "Fyll i dina uppgifter för att få ett gratis PDF-prov med utvalda målarbokssidor bifogat i ett e-postmeddelande!",
     formFirstName: "Förnamn",
@@ -1261,6 +1552,44 @@ const TRANSLATIONS = {
     emailOpenApp: "Öppna e-postapp",
     navBooks: "Böcker",
     navAuthors: "Författare",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "Fanvideor",
+    fanVideosHeroSubtitle: "Uppackningar, bläddringar, färgläggningsvideor och recensioner från vår fantastiska gemenskap.",
+    fanVideosHeroCredits: "Fullständiga krediter – följ dessa fantastiska skapare.",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "Skaparkrediter & Community Love",
+    creatorCreditsText: "Varje video som visas här tillhör sin ursprungliga skapare. Vi lyfter fram dessa fantastiska artister och supporters med full credit och direktlänkar till deras originalinnehåll. Gå gärna in och följ dem och visa lite kärlek!",
+    sortLabel: "Sortera:",
+    sortNewest: "Senaste först",
+    sortOldest: "Äldsta först",
+    sortFeatured: "Utvalda först",
+    filterBook: "Bok:",
+    filterAllBooks: "Alla böcker",
+    filterCategory: "Kategori:",
+    filterAllCategories: "Alla kategorier",
+    filterLanguage: "Språk:",
+    filterAllLanguages: "Alla språk",
+    filterUnassigned: "Otilldelad / Allmänt",
+    catUnboxing: "Uppackning",
+    catFlipThrough: "Bläddring",
+    catColoring: "Färgläggning",
+    catReview: "Recension",
+    catCollection: "Samling",
+    catOther: "Övrigt",
+    resetFilters: "Återställ",
+    searchVideosPlaceholder: "Sök skapare, bok, bildtext...",
+    noVideosTitle: "Inga videor hittades",
+    noVideosDesc: "Prova att ändra dina filter eller sökord.",
+    resetAllFilters: "Återställ alla filter",
+    showingSingleVideo: "Visar 1 video",
+    showingMultipleVideos: (n) => `Visar ${n} videor`,
+    featuredBookHint: "Bok som visas i denna video:",
+    videoUnavailable: "Den här videon är inte längre tillgänglig på TikTok.",
+    viewOnTikTok: "Visa på TikTok",
+    followCreator: (username) => `Följ @${username}`,
+    fanVideosPageTitle: "Fanvideor | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Se uppackningar, färgläggningsvideor, bläddringar och recensioner skapade av Cozy Coloring Chaos-communityn.",
+
     authorsPageTitle: "Möt Författarna | Cozy Coloring Chaos",
     authorsMetaDesc: "Möt Isaac McClour, Lucia C. Marcos och Lucas C. Morica, de fiktiva kreativa personerna bakom Cozy Coloring Chaos och tre distinkta förlagsvärldar.",
     authorsHeroTitle: "Möt Författarna",
@@ -1342,6 +1671,9 @@ const TRANSLATIONS = {
     backCoverLabel: "裏表紙",
     pageLabel: "ページ",
     freeSampleBtn: "Free Sample",
+    bookVideosBtn: "ファン動画",
+    ariaBookVideos: (title) => `${title}のファン動画を見る`,
+    noVideosAvailable: "この本にはまだファン動画がありません",
     freeSampleModalTitle: "無料PDFサンプルを受け取る",
     freeSampleModalDesc: "お名前とメールアドレスをご入力いただくと、厳選された塗り絵ページのPDFをメール添付にてお届けします！",
     formFirstName: "名（First Name）",
@@ -1374,6 +1706,44 @@ const TRANSLATIONS = {
     emailOpenApp: "メールアプリを開く",
     navBooks: "本",
     navAuthors: "著者",
+    navFanVideos: "Fan Videos",
+    fanVideosHeroTitle: "ファン動画",
+    fanVideosHeroSubtitle: "コミュニティによる開封、パラパラめくり、ぬりえ、レビュー動画。",
+    fanVideosHeroCredits: "すべてのクレジット明記 – 素晴らしいクリエイターをぜひフォローしてください。",
+    fanVideosBadge: "COMMUNITY SHOWCASE",
+    creatorCreditsTitle: "クリエイタークレジット＆コミュニティへの愛",
+    creatorCreditsText: "ここに掲載されているすべての動画の権利は元のクリエイターに帰属します。私たちは素晴らしいアーティストやサポーターの皆さまに敬意を表し、クレジットとオリジナルコンテンツへの直接リンクを明記してご紹介しています。ぜひフォローして応援してください！",
+    sortLabel: "並び替え:",
+    sortNewest: "新しい順",
+    sortOldest: "古い順",
+    sortFeatured: "おすすめ順",
+    filterBook: "本:",
+    filterAllBooks: "すべての本",
+    filterCategory: "カテゴリー:",
+    filterAllCategories: "すべてのカテゴリー",
+    filterLanguage: "言語:",
+    filterAllLanguages: "すべての言語",
+    filterUnassigned: "未指定 / 一般",
+    catUnboxing: "開封 (Unboxing)",
+    catFlipThrough: "パラパラめくり",
+    catColoring: "ぬりえ",
+    catReview: "レビュー",
+    catCollection: "コレクション",
+    catOther: "その他",
+    resetFilters: "リセット",
+    searchVideosPlaceholder: "クリエイター、本、キャプションを検索...",
+    noVideosTitle: "動画が見つかりませんでした",
+    noVideosDesc: "フィルターや検索キーワードを変更してみてください。",
+    resetAllFilters: "すべてのフィルターをリセット",
+    showingSingleVideo: "1件の動画を表示中",
+    showingMultipleVideos: (n) => `${n}件の動画を表示中`,
+    featuredBookHint: "この動画に登場する本:",
+    videoUnavailable: "この動画はTikTokで現在利用できません。",
+    viewOnTikTok: "TikTokで見る",
+    followCreator: (username) => `@${username}をフォロー`,
+    fanVideosPageTitle: "ファン動画 | Cozy Coloring Chaos",
+    fanVideosMetaDesc: "Cozy Coloring Chaosのコミュニティによる開封動画、ぬりえ、パラパラめくり、レビューをご覧ください。",
+
     authorsPageTitle: "著者紹介 | Cozy Coloring Chaos",
     authorsMetaDesc: "Cozy Coloring Chaosの背後にある3つの個性、アイザック・マックルーア、ルシア・C・マルコス、ルーカス・C・モリカをご紹介します。",
     authorsHeroTitle: "著者紹介",
@@ -1617,8 +1987,17 @@ function updateInterfaceLanguage(lang) {
 
   // Update Page Title and Meta Description
   const isAuthorsPage = (typeof window !== 'undefined' && window.location && window.location.pathname && window.location.pathname.includes('authors'));
-  const targetTitle = (isAuthorsPage && t.authorsPageTitle) ? t.authorsPageTitle : t.pageTitle;
-  const targetDesc = (isAuthorsPage && t.authorsMetaDesc) ? t.authorsMetaDesc : t.metaDesc;
+  const isFanVideosPage = (typeof window !== 'undefined' && window.location && window.location.pathname && (window.location.pathname.includes('fan-videos') || window.location.pathname.includes('fan_videos')));
+
+  let targetTitle = t.pageTitle;
+  let targetDesc = t.metaDesc;
+  if (isAuthorsPage && t.authorsPageTitle) {
+    targetTitle = t.authorsPageTitle;
+    targetDesc = t.authorsMetaDesc;
+  } else if (isFanVideosPage && t.fanVideosPageTitle) {
+    targetTitle = t.fanVideosPageTitle;
+    targetDesc = t.fanVideosMetaDesc;
+  }
 
   if (targetTitle) {
     document.title = targetTitle;
@@ -1656,6 +2035,10 @@ function updateInterfaceLanguage(lang) {
   document.querySelectorAll('[data-i18n-aria]').forEach((el) => {
     const key = el.getAttribute('data-i18n-aria');
     if (t[key]) el.setAttribute('aria-label', t[key]);
+  });
+  document.querySelectorAll('[data-i18n-placeholder]').forEach((el) => {
+    const key = el.getAttribute('data-i18n-placeholder');
+    if (t[key]) el.setAttribute('placeholder', t[key]);
   });
 
   // Sync Black Sword video controls UI with current language
@@ -1734,6 +2117,13 @@ function updateInterfaceLanguage(lang) {
   // Re-render books so book-level labels and store selections update
   renderBooks();
   updateFilterCounts();
+
+  window.currentLanguage = currentLanguage;
+  window.TRANSLATIONS = TRANSLATIONS;
+
+  if (typeof updateFanVideosLanguage === 'function') {
+    updateFanVideosLanguage(currentLanguage, t);
+  }
 
   // Update seasonal promotional campaign translations (banner & popup)
   if (typeof updateCampaignTranslations === 'function') {
@@ -3001,6 +3391,7 @@ function createBookCard(book, index) {
   const iconEye = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
   const iconPalette = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`;
   const iconSample = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="12" y1="18" x2="12" y2="12"/><line x1="9" y1="15" x2="12" y2="18"/><line x1="15" y1="15" x2="12" y2="18"/></svg>`;
+  const iconVideos = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="currentColor" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"/></svg>`;
 
   // Preview Chip Button
   let previewChipHtml = '';
@@ -3052,6 +3443,33 @@ function createBookCard(book, index) {
       <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
         ${iconSample}
         <span>${t.freeSampleBtn || 'Free Sample'}</span>
+      </button>
+    `;
+  }
+
+  // Fan Videos Chip Button (Enabled only if the book has published community videos)
+  const hasVideos = typeof booksWithFanVideos !== 'undefined' && booksWithFanVideos.has(book.id);
+  const videosLabel = t.bookVideosBtn || 'Fan Videos';
+  let videosChipHtml = '';
+
+  if (hasVideos) {
+    const videosAria = (typeof t.ariaBookVideos === 'function') 
+      ? t.ariaBookVideos(safeTitle) 
+      : `Fan Videos - ${safeTitle}`;
+    const videosUrl = `fan-videos.html?book=${encodeURIComponent(book.id)}`;
+    videosChipHtml = `
+      <a href="${videosUrl}" class="chip-videos-btn" aria-label="${escapeHtml(videosAria)}" title="${escapeHtml(videosAria)}">
+        ${iconVideos}
+        <span>${escapeHtml(videosLabel)}</span>
+      </a>
+    `;
+  } else {
+    // Disabled state: non-clickable button with disabled tooltip for books without community videos
+    const disabledTitle = t.noVideosAvailable || 'Nessun fan video disponibile per questo libro';
+    videosChipHtml = `
+      <button type="button" class="chip-videos-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(disabledTitle)}" aria-label="${escapeHtml(disabledTitle)} - ${safeTitle}">
+        ${iconVideos}
+        <span>${escapeHtml(videosLabel)}</span>
       </button>
     `;
   }
@@ -3260,6 +3678,7 @@ function createBookCard(book, index) {
           ${previewChipHtml}
           ${coloredChipHtml}
           ${sampleChipHtml}
+          ${videosChipHtml}
         </div>
         
         ${authorHtml}
@@ -3293,6 +3712,35 @@ function renderBooks() {
   }
 
   booksContainer.innerHTML = filteredBooks.map((book, idx) => createBookCard(book, idx)).join('');
+}
+
+/**
+ * Asynchronously checks /api/fan-videos to discover which books have published community videos.
+ * If new books with videos are found, it updates the set and re-renders the book cards.
+ */
+async function fetchBooksWithFanVideos() {
+  try {
+    const res = await fetch('/api/fan-videos');
+    if (res.ok) {
+      const data = await res.json();
+      if (data.success && Array.isArray(data.videos)) {
+        const activeSlugs = new Set();
+        data.videos.forEach(v => {
+          if (v.published && v.book_slug && v.book_slug !== 'unassigned') {
+            activeSlugs.add(v.book_slug);
+          }
+        });
+        const hasChanged = activeSlugs.size !== booksWithFanVideos.size || 
+          [...activeSlugs].some(id => !booksWithFanVideos.has(id));
+        if (hasChanged) {
+          booksWithFanVideos = activeSlugs;
+          renderBooks();
+        }
+      }
+    }
+  } catch (e) {
+    // Fail silently, fallback Set remains active
+  }
 }
 
 /**
@@ -3645,6 +4093,9 @@ function initApp() {
   } catch (e) {}
 
   updateFooterYear();
+
+  // 6. Check for books with community videos asynchronously and sync UI
+  fetchBooksWithFanVideos();
 
   // 5. Ensure promotional video starts autoplaying (muted) and sync UI
   try {

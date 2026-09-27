@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cozy Coloring Chaos Admin</title>
+  <meta name="robots" content="noindex, nofollow">
+
+  <!-- Official Website Favicon -->
+  <link rel="icon" type="image/png" href="assets/icon.png">
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css?v=5.2">
+</head>
+<body class="page-admin">
+  <div class="bg-ambience" aria-hidden="true"></div>
+
+  <!-- ============================================
+       1. LOGIN VIEW (SHOWN WHEN NOT AUTHENTICATED)
+       ============================================ -->
+  <div id="admin-login-view" class="admin-login-view" style="display: none;">
+    <div class="admin-login-card">
+      <div class="admin-login-header">
+        <img src="assets/icon.png" alt="Cozy Coloring Chaos" class="admin-login-logo" width="64" height="64">
+        <h1 class="admin-login-title">Cozy Coloring Chaos Admin</h1>
+        <p class="admin-login-subtitle">Private Management CMS</p>
+      </div>
+
+      <form id="admin-login-form" class="admin-login-form" onsubmit="handleAdminLogin(event)">
+        <div class="form-group">
+          <label for="admin-password" class="form-label">Password</label>
+          <input 
+            type="password" 
+            id="admin-password" 
+            class="form-input" 
+            placeholder="Enter admin password" 
+            required 
+            autocomplete="current-password"
+            autofocus
+          >
+        </div>
+
+        <div id="admin-login-error" class="admin-alert admin-alert-error" style="display: none;"></div>
+
+        <button type="submit" id="admin-login-submit" class="btn-buy admin-btn-submit">
+          <span>LOGIN</span>
+          <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="9 18 15 12 9 6"></polyline>
+          </svg>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- ============================================
+       2. DASHBOARD VIEW (SHOWN WHEN AUTHENTICATED)
+       ============================================ -->
+  <div id="admin-dashboard-view" class="admin-dashboard-view" style="display: none;">
+    <!-- Admin Topbar -->
+    <header class="admin-topbar">
+      <div class="admin-topbar-inner">
+        <div class="admin-brand">
+          <img src="assets/icon.png" alt="Logo" class="admin-brand-icon" width="32" height="32">
+          <span class="admin-brand-title">Cozy Coloring Chaos Admin</span>
+        </div>
+
+        <div class="admin-topbar-actions">
+          <a href="fan-videos.html" target="_blank" class="admin-link-live" title="View live public gallery">
+            <span>View Public Gallery</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="7" y1="17" x2="17" y2="7"></line>
+              <polyline points="7 7 17 7 17 17"></polyline>
+            </svg>
+          </a>
+
+          <button type="button" class="admin-btn-logout" onclick="handleAdminLogout()">
+            <span>Logout</span>
+            <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+              <polyline points="16 17 21 12 16 7"></polyline>
+              <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Main Container -->
+    <main class="admin-main">
+      <div class="admin-container">
+        <!-- Section Header -->
+        <div class="admin-section-header">
+          <div class="admin-section-titles">
+            <h2 class="admin-section-title">Fan Videos</h2>
+            <p class="admin-section-desc">Manage TikTok community videos, unboxings, coloring videos, and reviews.</p>
+          </div>
+
+          <div class="admin-section-cta">
+            <button type="button" class="btn-cta admin-add-btn" onclick="openAddVideoModal()">
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="12" y1="5" x2="12" y2="19"></line>
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+              </svg>
+              <span>+ ADD VIDEO</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Global Toast / Alert -->
+        <div id="admin-toast" class="admin-toast" style="display: none;"></div>
+
+        <!-- Videos Table / List -->
+        <div class="admin-card admin-table-card">
+          <div class="admin-table-header-row">
+            <span class="admin-count-label" id="admin-video-count">Loading videos...</span>
+            <div class="admin-filter-quick">
+              <input 
+                type="text" 
+                id="admin-search-input" 
+                class="admin-search-input" 
+                placeholder="Filter by creator or title..." 
+                oninput="handleAdminSearch()"
+              >
+            </div>
+          </div>
+
+          <div class="admin-table-responsive">
+            <table class="admin-table" id="admin-videos-table">
+              <thead>
+                <tr>
+                  <th style="width: 80px;">Preview</th>
+                  <th>Creator</th>
+                  <th>Book</th>
+                  <th>Category</th>
+                  <th>Lang</th>
+                  <th>Date</th>
+                  <th>Status</th>
+                  <th>Featured</th>
+                  <th style="text-align: right; width: 140px;">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="admin-videos-tbody">
+                <!-- Populated dynamically via admin.js -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <!-- ============================================
+       3. ADD / EDIT VIDEO MODAL
+       ============================================ -->
+  <div class="sample-modal-backdrop" id="admin-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="sample-modal-dialog admin-modal-dialog">
+      <div class="sample-modal-header">
+        <div class="sample-modal-title-group">
+          <span class="sample-modal-badge" id="admin-modal-badge">Video CMS</span>
+          <h3 class="sample-modal-title" id="admin-modal-title">Add TikTok Video</h3>
+        </div>
+        <button type="button" class="sample-modal-close" onclick="closeAdminModal()" aria-label="Close modal">✕</button>
+      </div>
+
+      <div class="sample-modal-body admin-modal-body">
+        <!-- STEP 1: IMPORT FROM TIKTOK (Only shown when adding new) -->
+        <div id="admin-import-section" class="admin-import-section">
+          <h4 class="admin-step-title">1. Import from TikTok URL</h4>
+          <p class="admin-step-desc">Paste the official TikTok link. The system will automatically fetch creator, thumbnail, and caption.</p>
+
+          <div class="admin-import-input-row">
+            <input 
+              type="text" 
+              id="admin-tiktok-url" 
+              class="form-input admin-url-input" 
+              placeholder="https://www.tiktok.com/@creator/video/123456789 (o link da app vm.tiktok.com)"
+              required
+              autocomplete="off"
+              onkeydown="if(event.key==='Enter'){event.preventDefault();handleImportTikTok();}"
+            >
+            <button type="button" id="admin-import-btn" class="btn-buy admin-btn-import" onclick="handleImportTikTok()">
+              <span id="admin-import-btn-text">IMPORTA</span>
+              <div class="sample-spinner" id="admin-import-spinner" style="display: none; width: 16px; height: 16px; border-width: 2px;"></div>
+            </button>
+          </div>
+          <div id="admin-import-error" class="admin-alert admin-alert-error" style="display: none;"></div>
+          <div id="admin-import-warning" class="admin-alert admin-alert-warning" style="display: none;"></div>
+        </div>
+
+        <!-- STEP 2: PREVIEW & CUSTOMIZE FORM -->
+        <form id="admin-video-form" onsubmit="handleSaveVideo(event)">
+          <input type="hidden" id="admin-form-video-id">
+          <input type="hidden" id="admin-form-tiktok-id">
+
+          <!-- Live Preview Box -->
+          <div id="admin-preview-box" class="admin-preview-box" style="display: none;">
+            <div class="admin-preview-thumb-wrap">
+              <img id="admin-preview-img" src="" alt="Video thumbnail preview" class="admin-preview-img">
+            </div>
+            <div class="admin-preview-info">
+              <div class="admin-preview-creator">
+                <strong id="admin-preview-creator-name">Creator Name</strong>
+                <span id="admin-preview-creator-handle">@creator</span>
+              </div>
+              <p class="admin-preview-caption" id="admin-preview-caption">Caption preview...</p>
+            </div>
+          </div>
+
+          <div class="admin-form-grid">
+            <div class="form-group">
+              <label for="admin-creator-username" class="form-label">Creator TikTok Username (@)</label>
+              <input type="text" id="admin-creator-username" class="form-input" required placeholder="e.g. cozy.sparkles90">
+            </div>
+
+            <div class="form-group">
+              <label for="admin-creator-name" class="form-label">Creator Display Name</label>
+              <input type="text" id="admin-creator-name" class="form-input" placeholder="e.g. CozySparkles">
+            </div>
+
+            <div class="form-group form-group-full">
+              <label for="admin-caption" class="form-label">Caption / Title</label>
+              <textarea id="admin-caption" class="form-input form-textarea" rows="3" placeholder="Original video caption..."></textarea>
+            </div>
+
+            <div class="form-group">
+              <label for="admin-book-select" class="form-label">Featured Book</label>
+              <select id="admin-book-select" class="form-input" required>
+                <option value="unassigned">Unassigned / General</option>
+                <!-- Populated dynamically with books catalog -->
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="admin-category-select" class="form-label">Category</label>
+              <select id="admin-category-select" class="form-input" required>
+                <option value="unboxing">Unboxing</option>
+                <option value="flip-through">Flip-through</option>
+                <option value="coloring">Coloring</option>
+                <option value="review">Review</option>
+                <option value="collection">Collection</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="admin-lang-select" class="form-label">Language</label>
+              <select id="admin-lang-select" class="form-input" required>
+                <option value="en">English (en)</option>
+                <option value="it">Italiano (it)</option>
+                <option value="nl">Nederlands (nl)</option>
+                <option value="de">Deutsch (de)</option>
+                <option value="fr">Français (fr)</option>
+                <option value="es">Español (es)</option>
+                <option value="pl">Polski (pl)</option>
+                <option value="sv">Svenska (sv)</option>
+                <option value="ja">Japanese (ja)</option>
+              </select>
+            </div>
+
+            <div class="form-group">
+              <label for="admin-thumbnail-url" class="form-label">Thumbnail URL</label>
+              <input type="text" id="admin-thumbnail-url" class="form-input" placeholder="Image URL">
+            </div>
+
+            <div class="form-group">
+              <label for="admin-avatar-url" class="form-label">Creator Avatar URL (Optional)</label>
+              <input type="text" id="admin-avatar-url" class="form-input" placeholder="e.g. assets/fan-videos/avatars/creator.svg">
+            </div>
+
+            <div class="form-group">
+              <label for="admin-sort-order" class="form-label">Sort Order (0 = top)</label>
+              <input type="number" id="admin-sort-order" class="form-input" value="0">
+            </div>
+
+            <div class="form-group form-group-checkboxes">
+              <label class="admin-checkbox-label">
+                <input type="checkbox" id="admin-featured-checkbox">
+                <span>★ Featured Video</span>
+              </label>
+
+              <label class="admin-checkbox-label">
+                <input type="checkbox" id="admin-published-checkbox" checked>
+                <span>Published (Visible in gallery)</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="admin-modal-actions">
+            <button type="button" class="btn-close-success" onclick="closeAdminModal()">Cancel</button>
+            <button type="submit" id="admin-save-btn" class="btn-buy">
+              <span id="admin-save-btn-text">SAVE / PUBLISH</span>
+              <div class="sample-spinner" id="admin-save-spinner" style="display: none; width: 16px; height: 16px; border-width: 2px;"></div>
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============================================
+       4. DELETE CONFIRMATION MODAL
+       ============================================ -->
+  <div class="sample-modal-backdrop" id="admin-delete-modal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="sample-modal-dialog admin-delete-dialog">
+      <div class="sample-modal-header">
+        <h3 class="sample-modal-title">Confirm Deletion</h3>
+        <button type="button" class="sample-modal-close" onclick="closeAdminDeleteModal()" aria-label="Cancel">✕</button>
+      </div>
+      <div class="sample-modal-body">
+        <p class="admin-delete-message">
+          Are you sure you want to remove this video from the gallery?
+        </p>
+        <p class="admin-delete-submessage">
+          This will only delete the record from our website database. It will have NO effect on the original TikTok video.
+        </p>
+      </div>
+      <div class="admin-modal-actions">
+        <button type="button" class="btn-close-success" onclick="closeAdminDeleteModal()">Cancel</button>
+        <button type="button" class="btn-buy admin-btn-danger" id="admin-confirm-delete-btn" onclick="executeDeleteVideo()">
+          Delete Record
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Shared books catalog definition -->
+  <script src="script.js?v=4.9"></script>
+
+  <!-- Admin CMS script -->
+  <script src="admin.js?v=1.1"></script>
+</body>
+</html>
