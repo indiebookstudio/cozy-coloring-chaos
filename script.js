@@ -3720,7 +3720,9 @@ function renderBooks() {
  */
 async function fetchBooksWithFanVideos() {
   try {
-    const res = await fetch('/api/fan-videos');
+    const host = window.location.hostname;
+    const apiBase = (host === 'localhost' || host === '127.0.0.1') ? '' : (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
+    const res = await fetch(`${apiBase}/api/fan-videos`);
     if (res.ok) {
       const data = await res.json();
       if (data.success && Array.isArray(data.videos)) {

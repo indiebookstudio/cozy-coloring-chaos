@@ -149,7 +149,7 @@ async function loadVideosData() {
   const host = window.location.hostname;
   const apiBase = (host === 'localhost' || host === '127.0.0.1')
     ? ''
-    : (host.includes('github.io') ? (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '') : '');
+    : (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
 
   try {
     const res = await fetch(`${apiBase}/api/fan-videos`);
