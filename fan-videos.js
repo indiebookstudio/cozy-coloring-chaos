@@ -555,6 +555,7 @@ window.openFanVideoModal = function(videoId) {
 
   // Show Modal
   if (modalEl) {
+    modalEl.scrollTop = 0;
     modalEl.classList.add('active');
     modalEl.setAttribute('aria-hidden', 'false');
     document.documentElement.classList.add('modal-open');
