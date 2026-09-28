@@ -48,7 +48,7 @@ let booksWithFanVideos = new Set(['cozy-terror']);
 // ============================================================================
 // ADD OR EDIT BOOKS HERE
 // ============================================================================
-const BOOKS = [
+const BOOKS = window.BOOKS = [
   {
     id: "the-horror-pixel-show",
     title: "The Horror Pixel Show",
@@ -120,6 +120,44 @@ const BOOKS = [
     luluUrl: "https://www.lulu.com/shop/isaac-mcclour/cozy-terror-bold-terrifying-coloring-book/paperback/product-45ej677.html?q=cozy+terror&page=1&pageSize=4",
     isNew: true
   },
+  {
+    id: "the-cyberpunk-pixel-show",
+    title: "The Cyberpunk Pixel Show",
+    subtitle: "80 Cyber Dreams to Color by Number | A Cyberpunk Mystery Mosaic Coloring Book | Diamond-Shaped Designs | 24 Colors",
+    author: "Lucia C. Marcos",
+    category: "pixel-art",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.png",
+    samplePdf: "assets/books/The.Cyberpunk.Pixel.Show/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/2.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/3.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/4.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/6.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/7.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/9.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/10.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/12.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/13.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/15.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/26.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/50.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/113.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/116.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/134.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/149.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/173.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/221.png",
+      "assets/books/The.Cyberpunk.Pixel.Show/Colored/230.png"
+    ],
+    defaultMarket: "us",
+    isComingSoon: true
+  },
 {
     id: "the-black-sword",
     title: "The Black Sword",
@@ -154,6 +192,44 @@ const BOOKS = [
     defaultMarket: "us",
     asin: "B0HJ92FNRK",
     isNew: true
+  },
+  {
+    id: "homer-in-circles",
+    title: "Homer in Circles",
+    subtitle: "A Monochromatic Greek Mythology Coloring Book | The Iliad & The Odyssey in 54 Monochromatic Circle-Art Illustrations | 1 Color",
+    author: "Lucia C. Marcos",
+    category: "pixel-art",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Homer.In.Circles/Front.Cover.png",
+    samplePdf: "assets/books/Homer.In.Circles/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Homer.In.Circles/Front.Cover.png",
+      "assets/books/Homer.In.Circles/2.png",
+      "assets/books/Homer.In.Circles/3.png",
+      "assets/books/Homer.In.Circles/4.png",
+      "assets/books/Homer.In.Circles/5.png",
+      "assets/books/Homer.In.Circles/6.png",
+      "assets/books/Homer.In.Circles/8.png",
+      "assets/books/Homer.In.Circles/9.png",
+      "assets/books/Homer.In.Circles/11.png",
+      "assets/books/Homer.In.Circles/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Homer.In.Circles/Colored/7.png",
+      "assets/books/Homer.In.Circles/Colored/10.png",
+      "assets/books/Homer.In.Circles/Colored/16.png",
+      "assets/books/Homer.In.Circles/Colored/25.png",
+      "assets/books/Homer.In.Circles/Colored/31.png",
+      "assets/books/Homer.In.Circles/Colored/37.png",
+      "assets/books/Homer.In.Circles/Colored/73.png",
+      "assets/books/Homer.In.Circles/Colored/79.png",
+      "assets/books/Homer.In.Circles/Colored/136.png",
+      "assets/books/Homer.In.Circles/Colored/157.png",
+      "assets/books/Homer.In.Circles/Colored/160.png"
+    ],
+    defaultMarket: "us",
+    isComingSoon: true
   },
   {
     id: "innocent-paws",
@@ -549,7 +625,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Colori",
     hpsDiscoverBook: "SCOPRI IL LIBRO",
     hpsCoverAlt: "The Horror Pixel Show - Copertina del libro",
-    hpsCoverTitle: "The Horror Pixel Show - Clicca per vedere nel catalogo"
+    hpsCoverTitle: "The Horror Pixel Show - Clicca per vedere nel catalogo",
+    cpsShape: "Rombi Color-by-Number",
+    cpsDreams: "88 Cyber Sogni",
+    cpsColors: "24 Colori",
+    cpsDiscoverBook: "SCOPRI IL LIBRO",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Copertina del libro",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Clicca per vedere nel catalogo",
+    hicShape: "Cerchi Monocromatici",
+    hicMyths: "54 Miti Greci",
+    hicColors: "1 Colore",
+    hicDiscoverBook: "SCOPRI IL LIBRO",
+    hicCoverAlt: "Homer in Circles - Copertina del libro",
+    hicCoverTitle: "Homer in Circles - Clicca per vedere nel catalogo",
   },
   en: {
     pageTitle: "Cozy Coloring Chaos | Cozy, Dark & Funny Coloring Books",
@@ -705,7 +793,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Colors",
     hpsDiscoverBook: "DISCOVER THE BOOK",
     hpsCoverAlt: "The Horror Pixel Show - Book Front Cover",
-    hpsCoverTitle: "The Horror Pixel Show - Click to view in catalog"
+    hpsCoverTitle: "The Horror Pixel Show - Click to view in catalog",
+    cpsShape: "Color-by-Number Diamonds",
+    cpsDreams: "88 Cyber Dreams",
+    cpsColors: "24 Colors",
+    cpsDiscoverBook: "DISCOVER THE BOOK",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Book cover",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Click to view in catalog",
+    hicShape: "Monochromatic Circles",
+    hicMyths: "54 Greek Myths",
+    hicColors: "1 Color",
+    hicDiscoverBook: "DISCOVER THE BOOK",
+    hicCoverAlt: "Homer in Circles - Book cover",
+    hicCoverTitle: "Homer in Circles - Click to view in catalog",
   },
   de: {
     pageTitle: "Cozy Coloring Chaos | Gemütliche, Lustige & Chaotische Malbücher",
@@ -861,7 +961,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Farben",
     hpsDiscoverBook: "BUCH ENTDECKEN",
     hpsCoverAlt: "The Horror Pixel Show - Buchcover",
-    hpsCoverTitle: "The Horror Pixel Show - Klicken zum Anzeigen im Katalog"
+    hpsCoverTitle: "The Horror Pixel Show - Klicken zum Anzeigen im Katalog",
+    cpsShape: "Malen-nach-Zahlen Rauten",
+    cpsDreams: "88 Cyber-Träume",
+    cpsColors: "24 Farben",
+    cpsDiscoverBook: "BUCH ENTDECKEN",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Buchcover",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Klicken für Katalogansicht",
+    hicShape: "Monochrome Kreise",
+    hicMyths: "54 Griechische Mythen",
+    hicColors: "1 Farbe",
+    hicDiscoverBook: "BUCH ENTDECKEN",
+    hicCoverAlt: "Homer in Circles - Buchcover",
+    hicCoverTitle: "Homer in Circles - Klicken für Katalogansicht",
   },
   fr: {
     pageTitle: "Cozy Coloring Chaos | Livres de Coloriage Cozy, Drôles & Chaotiques",
@@ -1017,7 +1129,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Couleurs",
     hpsDiscoverBook: "DÉCOUVRIR LE LIVRE",
     hpsCoverAlt: "The Horror Pixel Show - Couverture du livre",
-    hpsCoverTitle: "The Horror Pixel Show - Cliquer pour voir dans le catalogue"
+    hpsCoverTitle: "The Horror Pixel Show - Cliquer pour voir dans le catalogue",
+    cpsShape: "Losanges Coloriage par Numéro",
+    cpsDreams: "88 Cyber Rêves",
+    cpsColors: "24 Couleurs",
+    cpsDiscoverBook: "DÉCOUVRIR LE LIVRE",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Couverture du livre",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Cliquer pour voir dans le catalogue",
+    hicShape: "Cercles Monochromatiques",
+    hicMyths: "54 Mythes Grecs",
+    hicColors: "1 Couleur",
+    hicDiscoverBook: "DÉCOUVRIR LE LIVRE",
+    hicCoverAlt: "Homer in Circles - Couverture du livre",
+    hicCoverTitle: "Homer in Circles - Cliquer pour voir dans le catalogue",
   },
   es: {
     pageTitle: "Cozy Coloring Chaos | Libros para Colorear Cozy, Divertidos y Caóticos",
@@ -1173,7 +1297,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Colores",
     hpsDiscoverBook: "DESCUBRE EL LIBRO",
     hpsCoverAlt: "The Horror Pixel Show - Portada del libro",
-    hpsCoverTitle: "The Horror Pixel Show - Clic para ver en el catálogo"
+    hpsCoverTitle: "The Horror Pixel Show - Clic para ver en el catálogo",
+    cpsShape: "Rombos Colorear por Números",
+    cpsDreams: "88 Cibersueños",
+    cpsColors: "24 Colores",
+    cpsDiscoverBook: "DESCUBRE EL LIBRO",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Portada del libro",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Clic para ver en el catálogo",
+    hicShape: "Círculos Monocromáticos",
+    hicMyths: "54 Mitos Griegos",
+    hicColors: "1 Color",
+    hicDiscoverBook: "DESCUBRE EL LIBRO",
+    hicCoverAlt: "Homer in Circles - Portada del libro",
+    hicCoverTitle: "Homer in Circles - Clic para ver en el catálogo",
   },
   nl: {
     pageTitle: "Cozy Coloring Chaos | Gezellige, Grappige & Chaotische Kleurboeken",
@@ -1328,7 +1464,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Kleuren",
     hpsDiscoverBook: "ONTDEK HET BOEK",
     hpsCoverAlt: "The Horror Pixel Show - Boekomslag",
-    hpsCoverTitle: "The Horror Pixel Show - Klik om in catalogus te bekijken"
+    hpsCoverTitle: "The Horror Pixel Show - Klik om in catalogus te bekijken",
+    cpsShape: "Kleuren-op-Nummer Ruiten",
+    cpsDreams: "88 Cyberdromen",
+    cpsColors: "24 Kleuren",
+    cpsDiscoverBook: "ONTDEK HET BOEK",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Boekomslag",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Klik om in catalogus te bekijken",
+    hicShape: "Monochrome Cirkels",
+    hicMyths: "54 Griekse Mythen",
+    hicColors: "1 Kleur",
+    hicDiscoverBook: "ONTDEK HET BOEK",
+    hicCoverAlt: "Homer in Circles - Boekomslag",
+    hicCoverTitle: "Homer in Circles - Klik om in catalogus te bekijken",
   },
   pl: {
     pageTitle: "Cozy Coloring Chaos | Przytulne, Zabawne i Chaotyczne Kolorowanki",
@@ -1483,7 +1631,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Kolorów",
     hpsDiscoverBook: "ODKRYJ KSIĄŻKĘ",
     hpsCoverAlt: "The Horror Pixel Show - Okładka książki",
-    hpsCoverTitle: "The Horror Pixel Show - Kliknij, aby zobaczyć w katalogu"
+    hpsCoverTitle: "The Horror Pixel Show - Kliknij, aby zobaczyć w katalogu",
+    cpsShape: "Romby Kolorowanie po Numerach",
+    cpsDreams: "88 Cyber-Snów",
+    cpsColors: "24 Kolory",
+    cpsDiscoverBook: "ODKRYJ KSIĄŻKĘ",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Okładka książki",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Kliknij, aby zobaczyć w katalogu",
+    hicShape: "Monochromatyczne Koła",
+    hicMyths: "54 Mity Greckie",
+    hicColors: "1 Kolor",
+    hicDiscoverBook: "ODKRYJ KSIĄŻKĘ",
+    hicCoverAlt: "Homer in Circles - Okładka książki",
+    hicCoverTitle: "Homer in Circles - Kliknij, aby zobaczyć w katalogu",
   },
   sv: {
     pageTitle: "Cozy Coloring Chaos | Mysiga, Roliga & Kaotiska Målarböcker",
@@ -1637,7 +1797,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16 Färger",
     hpsDiscoverBook: "UPPTÄCK BOKEN",
     hpsCoverAlt: "The Horror Pixel Show - Bokomslag",
-    hpsCoverTitle: "The Horror Pixel Show - Klicka för att visa i katalogen"
+    hpsCoverTitle: "The Horror Pixel Show - Klicka för att visa i katalogen",
+    cpsShape: "Färg-efter-Nummer Romboidaler",
+    cpsDreams: "88 Cyberdrömmar",
+    cpsColors: "24 Färger",
+    cpsDiscoverBook: "UPPTÄCK BOKEN",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - Bokomslag",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - Klicka för att visa i katalogen",
+    hicShape: "Monokroma Cirklar",
+    hicMyths: "54 Grekiska Myter",
+    hicColors: "1 Färg",
+    hicDiscoverBook: "UPPTÄCK BOKEN",
+    hicCoverAlt: "Homer in Circles - Bokomslag",
+    hicCoverTitle: "Homer in Circles - Klicka för att visa i katalogen",
   },
   ja: {
     pageTitle: "Cozy Coloring Chaos | コージーでシュールな大人の塗り絵",
@@ -1793,7 +1965,19 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     hpsColors: "16色",
     hpsDiscoverBook: "本を見る",
     hpsCoverAlt: "The Horror Pixel Show - 表紙",
-    hpsCoverTitle: "The Horror Pixel Show - カタログで見る"
+    hpsCoverTitle: "The Horror Pixel Show - カタログで見る",
+    cpsShape: "数字塗り絵（ダイヤ）",
+    cpsDreams: "88のサイバードリーム",
+    cpsColors: "24色",
+    cpsDiscoverBook: "本を見る",
+    cpsCoverAlt: "The Cyberpunk Pixel Show - 表紙",
+    cpsCoverTitle: "The Cyberpunk Pixel Show - カタログで見る",
+    hicShape: "数字塗り絵（モノクロサークル）",
+    hicMyths: "54のギリシャ神話",
+    hicColors: "1色",
+    hicDiscoverBook: "本を見る",
+    hicCoverAlt: "Homer in Circles - 表紙",
+    hicCoverTitle: "Homer in Circles - カタログで見る",
   }
 };
 
@@ -2231,6 +2415,9 @@ function isBookCategory(book, targetCategory) {
 
 // Alias for backwards compatibility
 const isBookAuthor = isBookCategory;
+window.isBookCategory = isBookCategory;
+window.isBookAuthor = isBookAuthor;
+window.updateFilterCounts = updateFilterCounts;
 
 /**
  * Sets the active category filter ('all', 'bold-and-easy', 'pixel-art', 'humour') and re-renders the catalog.
@@ -3384,9 +3571,9 @@ function createBookCard(book, index) {
     statusBadgeHtml = `<span class="book-status-badge badge-new">${escapeHtml(t.badgeNew || 'New')}</span>`;
   }
 
-  const hasPreview = !isComingSoon && Array.isArray(book.preview) && book.preview.length > 0;
-  const hasColored = !isComingSoon && Array.isArray(book.colored) && book.colored.length > 0;
-  const hasSample = !isComingSoon && !!book.samplePdf;
+  const hasPreview = Array.isArray(book.preview) && book.preview.length > 0;
+  const hasColored = Array.isArray(book.colored) && book.colored.length > 0;
+  const hasSample = !!book.samplePdf;
 
   const iconEye = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>`;
   const iconPalette = `<svg class="chip-icon" width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="13.5" cy="6.5" r=".5" fill="currentColor"/><circle cx="17.5" cy="10.5" r=".5" fill="currentColor"/><circle cx="8.5" cy="7.5" r=".5" fill="currentColor"/><circle cx="6.5" cy="12.5" r=".5" fill="currentColor"/><path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"/></svg>`;
@@ -3395,16 +3582,16 @@ function createBookCard(book, index) {
 
   // Preview Chip Button
   let previewChipHtml = '';
-  if (isComingSoon) {
+  if (hasPreview) {
     previewChipHtml = `
-      <button type="button" class="chip-preview-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+      <button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn || 'Preview'} - ${safeTitle}">
         ${iconEye}
         <span>${t.previewBtn || 'Preview'}</span>
       </button>
     `;
-  } else if (hasPreview) {
+  } else if (isComingSoon) {
     previewChipHtml = `
-      <button type="button" class="chip-preview-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'preview')" aria-label="${t.previewBtn || 'Preview'} - ${safeTitle}">
+      <button type="button" class="chip-preview-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
         ${iconEye}
         <span>${t.previewBtn || 'Preview'}</span>
       </button>
@@ -3413,16 +3600,16 @@ function createBookCard(book, index) {
 
   // Colored Preview Chip Button ("See it colored")
   let coloredChipHtml = '';
-  if (isComingSoon) {
+  if (hasColored) {
     coloredChipHtml = `
-      <button type="button" class="chip-colored-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+      <button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn || 'Colored'} - ${safeTitle}">
         ${iconPalette}
         <span>${t.coloredBtn || 'Colored'}</span>
       </button>
     `;
-  } else if (hasColored) {
+  } else if (isComingSoon) {
     coloredChipHtml = `
-      <button type="button" class="chip-colored-btn" onclick="openSampleModal('${escapeJs(book.id)}', 'colored')" aria-label="${t.coloredBtn || 'Colored'} - ${safeTitle}">
+      <button type="button" class="chip-colored-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
         ${iconPalette}
         <span>${t.coloredBtn || 'Colored'}</span>
       </button>
@@ -3431,16 +3618,16 @@ function createBookCard(book, index) {
 
   // Free Sample Chip Button ("Free Sample")
   let sampleChipHtml = '';
-  if (isComingSoon) {
+  if (hasSample) {
     sampleChipHtml = `
-      <button type="button" class="chip-sample-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
+      <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
         ${iconSample}
         <span>${t.freeSampleBtn || 'Free Sample'}</span>
       </button>
     `;
-  } else {
+  } else if (isComingSoon) {
     sampleChipHtml = `
-      <button type="button" class="chip-sample-btn" onclick="openFreeSampleModal('${escapeJs(book.id)}')" aria-label="${t.freeSampleBtn || 'Free Sample'} - ${safeTitle}">
+      <button type="button" class="chip-sample-btn is-disabled" disabled aria-disabled="true" title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}">
         ${iconSample}
         <span>${t.freeSampleBtn || 'Free Sample'}</span>
       </button>
@@ -3689,6 +3876,7 @@ function createBookCard(book, index) {
     </article>
   `;
 }
+window.createBookCard = createBookCard;
 
 /**
  * Initializes and renders the catalog into the DOM based on current filter.
@@ -3967,6 +4155,52 @@ function scrollToHorrorPixelBook(event) {
   }
 }
 window.scrollToHorrorPixelBook = scrollToHorrorPixelBook;
+
+function scrollToCyberpunkPixelBook(event) {
+  if (event) event.preventDefault();
+
+  if (typeof setBookFilter === 'function' && typeof currentBookFilter !== 'undefined') {
+    if (currentBookFilter !== 'all' && currentBookFilter !== 'pixel-art') {
+      setBookFilter('all');
+    }
+  }
+
+  const targetCard = document.getElementById('card-the-cyberpunk-pixel-show');
+  if (targetCard) {
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetCard.classList.add('book-card-highlighted');
+    setTimeout(() => {
+      targetCard.classList.remove('book-card-highlighted');
+    }, 2400);
+  } else {
+    const catalog = document.getElementById('catalog-heading');
+    if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+window.scrollToCyberpunkPixelBook = scrollToCyberpunkPixelBook;
+
+function scrollToHomerInCirclesBook(event) {
+  if (event) event.preventDefault();
+
+  if (typeof setBookFilter === 'function' && typeof currentBookFilter !== 'undefined') {
+    if (currentBookFilter !== 'all' && currentBookFilter !== 'pixel-art') {
+      setBookFilter('all');
+    }
+  }
+
+  const targetCard = document.getElementById('card-homer-in-circles');
+  if (targetCard) {
+    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    targetCard.classList.add('book-card-highlighted');
+    setTimeout(() => {
+      targetCard.classList.remove('book-card-highlighted');
+    }, 2400);
+  } else {
+    const catalog = document.getElementById('catalog-heading');
+    if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+  }
+}
+window.scrollToHomerInCirclesBook = scrollToHomerInCirclesBook;
 
 function scrollToBlackSwordBook(event) {
   if (event) event.preventDefault();

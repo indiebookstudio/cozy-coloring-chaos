@@ -73,6 +73,15 @@ const BOOKS = [
     isNew: true
   },
   {
+    id: "the-cyberpunk-pixel-show",
+    title: "The Cyberpunk Pixel Show",
+    subtitle: "80 Cyber Dreams to Color by Number | A Cyberpunk Mystery Mosaic Coloring Book | Diamond-Shaped Designs | 24 Colors",
+    author: "Lucia C. Marcos",
+    cover: "assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.png",
+    samplePdf: "assets/books/The.Cyberpunk.Pixel.Show/Sample/Free.Sample.pdf",
+    defaultMarket: "us"
+  },
+  {
     id: "the-black-sword",
     title: "The Black Sword",
     subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
@@ -81,6 +90,15 @@ const BOOKS = [
     samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HJ92FNRK"
+  },
+  {
+    id: "homer-in-circles",
+    title: "Homer in Circles",
+    subtitle: "A Monochromatic Greek Mythology Coloring Book | The Iliad & The Odyssey in 54 Monochromatic Circle-Art Illustrations | 1 Color",
+    author: "Lucia C. Marcos",
+    cover: "assets/books/Homer.In.Circles/Front.Cover.png",
+    samplePdf: "assets/books/Homer.In.Circles/Sample/Free.Sample.pdf",
+    defaultMarket: "us"
   },
   {
     id: "innocent-paws",

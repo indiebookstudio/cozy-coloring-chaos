@@ -14,8 +14,10 @@ import { getRequestBody, sendJson, handleOptions } from './lib/http.js';
 // Known books slug mapping for heuristic detection
 const BOOK_HINTS = [
   { slug: 'the-horror-pixel-show', keywords: ['horror pixel', 'pixel show', 'pixel art', 'mystery mosaic', 'diamond-shaped'] },
+  { slug: 'the-cyberpunk-pixel-show', keywords: ['cyberpunk', 'cyber dreams', 'cyberpunk pixel', 'cyber sogni'] },
   { slug: 'cozy-terror', keywords: ['cozy terror', 'terror', 'dark & cozy horror', 'nightmares to color'] },
   { slug: 'the-black-sword', keywords: ['black sword', 'dark fantasy', 'black & white'] },
+  { slug: 'homer-in-circles', keywords: ['homer in circles', 'homer', 'greek myths', 'miti greci', 'iliad', 'odyssey'] },
   { slug: 'innocent-paws', keywords: ['innocent paws', 'paws', 'gatti', 'cats', 'cute animals'] },
   { slug: 'killer-paws', keywords: ['killer paws', 'killer cat'] },
   { slug: 'impossible-worlds', keywords: ['impossible worlds', 'mondi impossibili', 'surreal'] },

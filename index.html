@@ -233,7 +233,7 @@
   <!-- ============================================
        PROMOTIONAL FEATURE: THE BLACK SWORD & THE HORROR PIXEL SHOW (DUO)
        ============================================ -->
-  <section class="black-sword-feature promo-duo-feature" id="black-sword-feature" aria-label="Novità Pixel Art - The Black Sword & The Horror Pixel Show">
+    <section class="black-sword-feature promo-duo-feature promo-pixel-feature" id="black-sword-feature" aria-label="Novità Pixel Art">
     <div class="black-sword-container">
       <div class="black-sword-card">
         
@@ -247,87 +247,25 @@
           </span>
         </div>
 
-        <!-- Centerpiece Duo Grid: Left = The Black Sword | Right = The Horror Pixel Show -->
-        <div class="promo-duo-grid">
+        <!-- 4-Book Grid: 1) The Horror Pixel Show | 2) The Cyberpunk Pixel Show | 3) The Black Sword | 4) Homer in Circles -->
+        <div class="promo-duo-grid promo-quad-grid">
           
-          <!-- Left Column: The Black Sword -->
-          <div class="promo-duo-column" id="promo-col-black-sword">
-            <div class="promo-duo-cover-frame" onclick="scrollToBlackSwordBook(event)" role="button" tabindex="0" data-i18n-title="bsCoverTitle" title="The Black Sword - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToBlackSwordBook(event)">
-              <img
-                src="assets/books/The.Black.Sword/Front.Cover.png"
-                data-i18n-alt="bsCoverAlt"
-                alt="The Black Sword - Copertina del libro"
-                width="800"
-                height="1043"
-                class="promo-duo-cover-img"
-                loading="eager"
-                decoding="sync"
-              />
-            </div>
-            
-            <div class="promo-duo-badges-row" role="list" aria-label="Caratteristiche The Black Sword">
-              <div class="promo-duo-pill" role="listitem">
-                <span class="promo-duo-pill-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="12" cy="12" r="8"></circle>
-                  </svg>
-                </span>
-                <span class="promo-duo-pill-text" data-i18n="bsShape">Cerchi Color-by-Number</span>
-              </div>
-              <div class="promo-duo-pill" role="listitem">
-                <span class="promo-duo-pill-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
-                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
-                    <polyline points="21 15 16 10 5 21"></polyline>
-                  </svg>
-                </span>
-                <span class="promo-duo-pill-text" data-i18n="bsScenesChapters">100 Scene, 8 Capitoli</span>
-              </div>
-              <div class="promo-duo-pill" role="listitem">
-                <span class="promo-duo-pill-icon" aria-hidden="true">
-                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
-                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
-                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
-                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
-                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
-                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
-                  </svg>
-                </span>
-                <span class="promo-duo-pill-text" data-i18n="bsColors">24 Colori</span>
-              </div>
-            </div>
-
-            <div class="promo-duo-cta-wrapper">
-              <a
-                href="#card-the-black-sword"
-                class="promo-duo-cta-btn"
-                onclick="scrollToBlackSwordBook(event)"
-                data-i18n-aria="bsDiscoverBook"
-                aria-label="Scopri il libro The Black Sword"
-              >
-                <span class="promo-duo-cta-label" data-i18n="bsDiscoverBook">SCOPRI IL LIBRO</span>
-                <svg class="promo-duo-cta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                  <line x1="5" y1="12" x2="19" y2="12"></line>
-                  <polyline points="12 5 19 12 12 19"></polyline>
-                </svg>
-              </a>
-            </div>
-          </div>
-
-          <!-- Right Column: The Horror Pixel Show -->
+          <!-- 1) The Horror Pixel Show -->
           <div class="promo-duo-column" id="promo-col-horror-pixel-show">
             <div class="promo-duo-cover-frame" onclick="scrollToHorrorPixelBook(event)" role="button" tabindex="0" data-i18n-title="hpsCoverTitle" title="The Horror Pixel Show - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToHorrorPixelBook(event)">
-              <img
-                src="assets/books/The.Horror.Pixel.Show/Front.Cover.png"
-                data-i18n-alt="hpsCoverAlt"
-                alt="The Horror Pixel Show - Copertina del libro"
-                width="800"
-                height="1043"
-                class="promo-duo-cover-img"
-                loading="eager"
-                decoding="sync"
-              />
+              <picture class="promo-duo-picture">
+                <source srcset="assets/books/The.Horror.Pixel.Show/Front.Cover.opt.webp?v=1" type="image/webp">
+                <img
+                  src="assets/books/The.Horror.Pixel.Show/Front.Cover.opt.png?v=1"
+                  data-i18n-alt="hpsCoverAlt"
+                  alt="The Horror Pixel Show - Copertina del libro"
+                  width="1000"
+                  height="1305"
+                  class="promo-duo-cover-img"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
             </div>
             
             <div class="promo-duo-badges-row" role="list" aria-label="Caratteristiche The Horror Pixel Show">
@@ -380,6 +318,202 @@
             </div>
           </div>
 
+          <!-- 2) The Cyberpunk Pixel Show -->
+          <div class="promo-duo-column" id="promo-col-cyberpunk-pixel-show">
+            <div class="promo-duo-cover-frame" onclick="scrollToCyberpunkPixelBook(event)" role="button" tabindex="0" data-i18n-title="cpsCoverTitle" title="The Cyberpunk Pixel Show - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToCyberpunkPixelBook(event)">
+              <picture class="promo-duo-picture">
+                <source srcset="assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.opt.webp?v=1" type="image/webp">
+                <img
+                  src="assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.opt.png?v=1"
+                  data-i18n-alt="cpsCoverAlt"
+                  alt="The Cyberpunk Pixel Show - Copertina del libro"
+                  width="1000"
+                  height="1305"
+                  class="promo-duo-cover-img"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            
+            <div class="promo-duo-badges-row" role="list" aria-label="Caratteristiche The Cyberpunk Pixel Show">
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <polygon points="12 3 21 12 12 21 3 12"></polygon>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="cpsShape">Rombi Color-by-Number</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="cpsDreams">88 Cyber Sogni</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="cpsColors">24 Colori</span>
+              </div>
+            </div>
+
+            <div class="promo-duo-cta-wrapper">
+              <a
+                href="#card-the-cyberpunk-pixel-show"
+                class="promo-duo-cta-btn"
+                onclick="scrollToCyberpunkPixelBook(event)"
+                data-i18n-aria="cpsDiscoverBook"
+                aria-label="Scopri il libro The Cyberpunk Pixel Show"
+              >
+                <span class="promo-duo-cta-label" data-i18n="cpsDiscoverBook">SCOPRI IL LIBRO</span>
+                <svg class="promo-duo-cta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- 3) The Black Sword -->
+          <div class="promo-duo-column" id="promo-col-black-sword">
+            <div class="promo-duo-cover-frame" onclick="scrollToBlackSwordBook(event)" role="button" tabindex="0" data-i18n-title="bsCoverTitle" title="The Black Sword - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToBlackSwordBook(event)">
+              <picture class="promo-duo-picture">
+                <source srcset="assets/books/The.Black.Sword/Front.Cover.opt.webp?v=1" type="image/webp">
+                <img
+                  src="assets/books/The.Black.Sword/Front.Cover.opt.png?v=1"
+                  data-i18n-alt="bsCoverAlt"
+                  alt="The Black Sword - Copertina del libro"
+                  width="1000"
+                  height="1305"
+                  class="promo-duo-cover-img"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            
+            <div class="promo-duo-badges-row" role="list" aria-label="Caratteristiche The Black Sword">
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8"></circle>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="bsShape">Cerchi Color-by-Number</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <rect x="3" y="3" width="18" height="18" rx="2" ry="2"></rect>
+                    <circle cx="8.5" cy="8.5" r="1.5"></circle>
+                    <polyline points="21 15 16 10 5 21"></polyline>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="bsScenesChapters">100 Scene, 8 Capitoli</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="13.5" cy="6.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="17.5" cy="10.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="8.5" cy="7.5" r=".5" fill="currentColor"></circle>
+                    <circle cx="6.5" cy="12.5" r=".5" fill="currentColor"></circle>
+                    <path d="M12 2C6.5 2 2 6.5 2 12s4.5 10 10 10c.926 0 1.648-.746 1.648-1.688 0-.437-.18-.835-.437-1.125-.29-.289-.438-.652-.438-1.125a1.64 1.64 0 0 1 1.668-1.668h1.996c3.051 0 5.555-2.503 5.555-5.554C21.965 6.012 17.461 2 12 2z"></path>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="bsColors">24 Colori</span>
+              </div>
+            </div>
+
+            <div class="promo-duo-cta-wrapper">
+              <a
+                href="#card-the-black-sword"
+                class="promo-duo-cta-btn"
+                onclick="scrollToBlackSwordBook(event)"
+                data-i18n-aria="bsDiscoverBook"
+                aria-label="Scopri il libro The Black Sword"
+              >
+                <span class="promo-duo-cta-label" data-i18n="bsDiscoverBook">SCOPRI IL LIBRO</span>
+                <svg class="promo-duo-cta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
+          <!-- 4) Homer in Circles -->
+          <div class="promo-duo-column" id="promo-col-homer-in-circles">
+            <div class="promo-duo-cover-frame" onclick="scrollToHomerInCirclesBook(event)" role="button" tabindex="0" data-i18n-title="hicCoverTitle" title="Homer in Circles - Clicca per vedere nel catalogo" onkeydown="if(event.key==='Enter'||event.key===' ')scrollToHomerInCirclesBook(event)">
+              <picture class="promo-duo-picture">
+                <source srcset="assets/books/Homer.In.Circles/Front.Cover.opt.webp?v=1" type="image/webp">
+                <img
+                  src="assets/books/Homer.In.Circles/Front.Cover.opt.png?v=1"
+                  data-i18n-alt="hicCoverAlt"
+                  alt="Homer in Circles - Copertina del libro"
+                  width="1000"
+                  height="1305"
+                  class="promo-duo-cover-img"
+                  loading="eager"
+                  decoding="async"
+                />
+              </picture>
+            </div>
+            
+            <div class="promo-duo-badges-row" role="list" aria-label="Caratteristiche Homer in Circles">
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="8"></circle>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="hicShape">Cerchi Monocromatici</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="hicMyths">54 Miti Greci</span>
+              </div>
+              <div class="promo-duo-pill" role="listitem">
+                <span class="promo-duo-pill-icon" aria-hidden="true">
+                  <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="6" fill="currentColor"></circle>
+                  </svg>
+                </span>
+                <span class="promo-duo-pill-text" data-i18n="hicColors">1 Colore</span>
+              </div>
+            </div>
+
+            <div class="promo-duo-cta-wrapper">
+              <a
+                href="#card-homer-in-circles"
+                class="promo-duo-cta-btn"
+                onclick="scrollToHomerInCirclesBook(event)"
+                data-i18n-aria="hicDiscoverBook"
+                aria-label="Scopri il libro Homer in Circles"
+              >
+                <span class="promo-duo-cta-label" data-i18n="hicDiscoverBook">SCOPRI IL LIBRO</span>
+                <svg class="promo-duo-cta-icon" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                  <polyline points="12 5 19 12 12 19"></polyline>
+                </svg>
+              </a>
+            </div>
+          </div>
+
         </div>
 
       </div>
@@ -398,7 +532,7 @@
           <div class="book-filters" role="tablist" aria-label="Filtra libri per tipologia">
             <button type="button" class="filter-btn active" data-filter="all" role="tab" aria-selected="true">
               <span class="filter-text" data-i18n="filterAll">ALL BOOKS</span>
-              <span class="filter-count" id="count-all">8</span>
+              <span class="filter-count" id="count-all">11</span>
             </button>
             <button type="button" class="filter-btn" data-filter="bold-and-easy" role="tab" aria-selected="false">
               <span class="filter-text" data-i18n="filterBoldAndEasy">BOLD AND EASY</span>
@@ -406,7 +540,7 @@
             </button>
             <button type="button" class="filter-btn" data-filter="pixel-art" role="tab" aria-selected="false">
               <span class="filter-text" data-i18n="filterPixelArt">PIXEL ART</span>
-              <span class="filter-count" id="count-pixel-art">1</span>
+              <span class="filter-count" id="count-pixel-art">4</span>
             </button>
             <button type="button" class="filter-btn" data-filter="humour" role="tab" aria-selected="false">
               <span class="filter-text" data-i18n="filterHumour">HUMOR</span>
@@ -757,7 +891,7 @@
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 
   <!-- Dynamic Book Catalog Loader & Marketplace Handler -->
-  <script src="script.js?v=5.0"></script>
+  <script src="script.js?v=5.2"></script>
 
   <!-- Seasonal Promotional Campaign System (Halloween 2026) -->
   <script src="campaign.js?v=1.1"></script>
