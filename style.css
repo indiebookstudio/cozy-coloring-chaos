@@ -4677,17 +4677,17 @@ body {
 
 /* Card Content Area */
 .fan-card-content {
-  padding: 1rem 1rem 1.15rem 1rem;
+  padding: 0.85rem 1rem 0.95rem 1rem;
   display: flex;
   flex-direction: column;
-  gap: 0.65rem;
+  justify-content: center;
   flex: 1;
 }
 
 .fan-card-creator {
   display: flex;
   align-items: center;
-  margin-top: 0.15rem;
+  width: 100%;
 }
 
 .creator-chip-link {
@@ -4778,14 +4778,7 @@ body {
 }
 
 .fan-card-caption {
-  font-size: 0.85rem;
-  color: var(--color-text-muted);
-  line-height: 1.48;
-  display: -webkit-box;
-  -webkit-line-clamp: 2;
-  -webkit-box-orient: vertical;
-  overflow: hidden;
-  margin-top: 0.25rem;
+  display: none !important;
 }
 
 /* Empty State */
@@ -6124,8 +6117,7 @@ body.modal-open {
   }
 
   .fan-card-caption {
-    font-size: 0.76rem;
-    -webkit-line-clamp: 2;
+    display: none !important;
   }
 
   .creator-chip-avatar-wrap {

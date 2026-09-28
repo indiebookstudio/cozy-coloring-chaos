@@ -479,9 +479,6 @@ function createVideoCardHtml(video) {
             </div>
           </a>
         </div>
-
-        <!-- Caption Snippet -->
-        <p class="fan-card-caption" title="${safeCaption}">${safeCaption}</p>
       </div>
     </article>
   `;
