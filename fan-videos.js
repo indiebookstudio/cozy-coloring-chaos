@@ -557,15 +557,26 @@ window.openFanVideoModal = function(videoId) {
     modalPlayerContainer.style.display = 'block';
 
     // Official TikTok Embed:
-    // We embed official TikTok player iframe with autoplay, sandbox and fullscreen support
+    // With autoplay=1, mute=0, music_info=1 and unmuted audio
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.tiktok.com/player/v1/${video.tiktok_video_id}?autoplay=1`;
+    iframe.src = `https://www.tiktok.com/player/v1/${video.tiktok_video_id}?autoplay=1&mute=0&music_info=1`;
     iframe.title = `TikTok video by @${username}`;
-    iframe.setAttribute('allow', 'accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture; fullscreen');
+    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
     iframe.setAttribute('allowfullscreen', 'true');
     iframe.setAttribute('scrolling', 'no');
     iframe.className = 'fan-tiktok-iframe';
     
+    // Automatically unmute audio and ensure play at full volume
+    const sendUnmuteAndPlay = () => {
+      try {
+        if (iframe && iframe.contentWindow) {
+          iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'unMute' }, '*');
+          iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'changeVolume', value: 100 }, '*');
+          iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'play' }, '*');
+        }
+      } catch (e) {}
+    };
+
     // Timeout check: if blocked or failed after 8s, show graceful fallback
     const fallbackTimer = setTimeout(() => {
       try {
@@ -575,9 +586,13 @@ window.openFanVideoModal = function(videoId) {
 
     iframe.onload = () => {
       clearTimeout(fallbackTimer);
-      try {
-        iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'play' }, 'https://www.tiktok.com');
-      } catch (e) {}
+      // Immediately and repeatedly send unMute and volume commands as player initializes
+      sendUnmuteAndPlay();
+      setTimeout(sendUnmuteAndPlay, 150);
+      setTimeout(sendUnmuteAndPlay, 400);
+      setTimeout(sendUnmuteAndPlay, 800);
+      setTimeout(sendUnmuteAndPlay, 1500);
+      setTimeout(sendUnmuteAndPlay, 2500);
     };
 
     iframe.onerror = () => {
@@ -586,6 +601,7 @@ window.openFanVideoModal = function(videoId) {
       if (modalPlayerFallback) modalPlayerFallback.style.display = 'flex';
     };
 
+    modalPlayerContainer.onclick = sendUnmuteAndPlay;
     modalPlayerContainer.appendChild(iframe);
   }
 
@@ -798,6 +814,29 @@ function setupModalListeners() {
     if (e.key === 'Escape' && modalEl && modalEl.classList.contains('active')) {
       closeFanVideoModal();
     }
+  });
+
+  // Listen for TikTok Embed Player events (onPlayerReady, onStateChange) to trigger unMute
+  window.addEventListener('message', (event) => {
+    try {
+      let data = event.data;
+      if (typeof data === 'string') {
+        try { data = JSON.parse(data); } catch (e) {}
+      }
+      if (data && data['x-tiktok-player']) {
+        const type = data.type;
+        if (type === 'onPlayerReady' || type === 'onStateChange') {
+          if (modalPlayerContainer) {
+            const iframe = modalPlayerContainer.querySelector('iframe');
+            if (iframe && iframe.contentWindow) {
+              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'unMute' }, '*');
+              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'changeVolume', value: 100 }, '*');
+              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'play' }, '*');
+            }
+          }
+        }
+      }
+    } catch (err) {}
   });
 }
 
