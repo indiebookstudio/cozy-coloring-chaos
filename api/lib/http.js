@@ -90,16 +90,63 @@ export function getClientIp(req) {
 }
 
 /**
+ * Resolves request origin for CORS headers.
+ */
+function getRequestOrigin(req, res) {
+  let origin = '';
+  if (req) {
+    if (req.headers) {
+      if (typeof req.headers.get === 'function') {
+        origin = req.headers.get('origin') || req.headers.get('referer');
+      } else {
+        origin = req.headers['origin'] || req.headers['referer'];
+      }
+    }
+  }
+  if (!origin && res && res.req && res.req.headers) {
+    origin = res.req.headers['origin'] || res.req.headers['referer'];
+  }
+
+  if (origin && typeof origin === 'string') {
+    try {
+      if (origin.startsWith('http://') || origin.startsWith('https://')) {
+        const parsed = new URL(origin);
+        return parsed.origin;
+      }
+    } catch (e) {}
+    return origin;
+  }
+
+  return '*';
+}
+
+/**
  * Sends unified response supporting both Vercel Node (res) and Web Response.
  */
-export function sendJson(res, data, status = 200, cookie = null, extraHeaders = {}) {
+export function sendJson(res, data, status = 200, cookie = null, extraHeaders = {}, req = null) {
+  if (!req) {
+    if (res && (typeof res.method === 'string' || (res.headers && typeof res.setHeader !== 'function'))) {
+      req = res;
+      res = null;
+    } else if (res && (res.req || res._req)) {
+      req = res.req || res._req;
+    }
+  }
+
+  const origin = getRequestOrigin(req, res);
+  const allowCredentials = (origin !== '*');
+
   // 1. Vercel Node.js Serverless Function (res is ServerResponse)
   if (res && typeof res.setHeader === 'function') {
     res.statusCode = status;
     res.setHeader('Content-Type', 'application/json');
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    if (allowCredentials) {
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie, Authorization, X-Requested-With');
+    res.setHeader('Vary', 'Origin');
     if (cookie) {
       res.setHeader('Set-Cookie', cookie);
     }
@@ -113,11 +160,15 @@ export function sendJson(res, data, status = 200, cookie = null, extraHeaders = 
   // 2. Web Standards (Edge / Local adapter)
   const headers = {
     'Content-Type': 'application/json',
-    'Access-Control-Allow-Origin': '*',
+    'Access-Control-Allow-Origin': origin,
     'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Cookie, Authorization',
+    'Access-Control-Allow-Headers': 'Content-Type, Cookie, Authorization, X-Requested-With',
+    'Vary': 'Origin',
     ...extraHeaders
   };
+  if (allowCredentials) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+  }
   if (cookie) {
     headers['Set-Cookie'] = cookie;
   }
@@ -127,22 +178,53 @@ export function sendJson(res, data, status = 200, cookie = null, extraHeaders = 
 /**
  * Handles CORS preflight OPTIONS request.
  */
-export function handleOptions(res) {
+export function handleOptions(...args) {
+  let req = null;
+  let res = null;
+
+  for (const arg of args) {
+    if (!arg) continue;
+    if (typeof arg.setHeader === 'function') {
+      res = arg;
+    } else if (typeof arg.method === 'string' || arg.headers) {
+      req = arg;
+    }
+  }
+
+  if (!req && res) {
+    req = res.req || res._req;
+  }
+
+  const origin = getRequestOrigin(req, res);
+  const allowCredentials = (origin !== '*');
+
   if (res && typeof res.setHeader === 'function') {
     res.statusCode = 204;
-    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Origin', origin);
+    if (allowCredentials) {
+      res.setHeader('Access-Control-Allow-Credentials', 'true');
+    }
     res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE, OPTIONS');
-    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie, Authorization');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type, Cookie, Authorization, X-Requested-With');
+    res.setHeader('Access-Control-Max-Age', '86400');
+    res.setHeader('Vary', 'Origin');
     res.end();
     return;
   }
 
+  const headers = {
+    'Access-Control-Allow-Origin': origin,
+    'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
+    'Access-Control-Allow-Headers': 'Content-Type, Cookie, Authorization, X-Requested-With',
+    'Access-Control-Max-Age': '86400',
+    'Vary': 'Origin'
+  };
+  if (allowCredentials) {
+    headers['Access-Control-Allow-Credentials'] = 'true';
+  }
+
   return new Response(null, {
     status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'GET, POST, PUT, DELETE, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Cookie, Authorization'
-    }
+    headers
   });
 }

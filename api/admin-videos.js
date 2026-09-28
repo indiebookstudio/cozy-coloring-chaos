@@ -12,12 +12,14 @@ import { getRequestBody, getQueryParam, sendJson, handleOptions } from './lib/ht
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return handleOptions(res);
+    return handleOptions(req, res);
   }
+
+  const reply = (data, status = 200, cookie = null, extraHeaders = {}) => sendJson(res, data, status, cookie, extraHeaders, req);
 
   // Server-side authentication check
   if (!isAuthenticated(req)) {
-    return sendJson(res, { success: false, error: 'Unauthorized. Please log in.' }, 401);
+    return reply({ success: false, error: 'Unauthorized. Please log in.' }, 401);
   }
 
   try {
@@ -28,13 +30,13 @@ export default async function handler(req, res) {
       if (id) {
         const video = await getVideoById(id);
         if (!video) {
-          return sendJson(res, { success: false, error: 'Video not found' }, 404);
+          return reply({ success: false, error: 'Video not found' }, 404);
         }
-        return sendJson(res, { success: true, video });
+        return reply({ success: true, video });
       }
 
       const videos = await getAllVideos({ includeUnpublished: true });
-      return sendJson(res, { success: true, count: videos.length, videos });
+      return reply({ success: true, count: videos.length, videos });
     }
 
     // 2. POST: Create new video record
@@ -42,17 +44,17 @@ export default async function handler(req, res) {
       const body = await getRequestBody(req);
 
       if (!body.tiktok_url || !body.creator_username) {
-        return sendJson(res, { success: false, error: 'TikTok URL and Creator Username are required' }, 400);
+        return reply({ success: false, error: 'TikTok URL and Creator Username are required' }, 400);
       }
 
       // Check duplicate URL
       const existing = await getVideoByUrl(body.tiktok_url);
       if (existing) {
-        return sendJson(res, { success: false, error: 'This TikTok has already been added.' }, 409);
+        return reply({ success: false, error: 'This TikTok has already been added.' }, 409);
       }
 
       const created = await createVideo(body);
-      return sendJson(res, { success: true, video: created, message: 'Video added successfully' }, 201);
+      return reply({ success: true, video: created, message: 'Video added successfully' }, 201);
     }
 
     // 3. PUT: Update existing video
@@ -61,16 +63,16 @@ export default async function handler(req, res) {
       const id = body.id;
 
       if (!id) {
-        return sendJson(res, { success: false, error: 'Video ID is required for update' }, 400);
+        return reply({ success: false, error: 'Video ID is required for update' }, 400);
       }
 
       const existing = await getVideoById(id);
       if (!existing) {
-        return sendJson(res, { success: false, error: 'Video not found' }, 404);
+        return reply({ success: false, error: 'Video not found' }, 404);
       }
 
       const updated = await updateVideo(id, body);
-      return sendJson(res, { success: true, video: updated, message: 'Video updated successfully' });
+      return reply({ success: true, video: updated, message: 'Video updated successfully' });
     }
 
     // 4. DELETE: Remove video record
@@ -78,25 +80,25 @@ export default async function handler(req, res) {
       const id = getQueryParam(req, 'id');
 
       if (!id) {
-        return sendJson(res, { success: false, error: 'Video ID is required for deletion' }, 400);
+        return reply({ success: false, error: 'Video ID is required for deletion' }, 400);
       }
 
       const existing = await getVideoById(id);
       if (!existing) {
-        return sendJson(res, { success: false, error: 'Video not found' }, 404);
+        return reply({ success: false, error: 'Video not found' }, 404);
       }
 
       const ok = await deleteVideo(id);
       if (!ok) {
-        return sendJson(res, { success: false, error: 'Failed to delete video record' }, 500);
+        return reply({ success: false, error: 'Failed to delete video record' }, 500);
       }
 
-      return sendJson(res, { success: true, message: 'Video removed from gallery successfully' });
+      return reply({ success: true, message: 'Video removed from gallery successfully' });
     }
 
-    return sendJson(res, { success: false, error: 'Method Not Allowed' }, 405);
+    return reply({ success: false, error: 'Method Not Allowed' }, 405);
   } catch (err) {
     console.error('Admin videos API error:', err);
-    return sendJson(res, { success: false, error: err.message || 'Internal Server Error' }, 500);
+    return reply({ success: false, error: err.message || 'Internal Server Error' }, 500);
   }
 }

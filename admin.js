@@ -88,10 +88,7 @@ function getApiBaseUrl() {
   if (host === 'localhost' || host === '127.0.0.1') {
     return '';
   }
-  if (host.includes('github.io')) {
-    return (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
-  }
-  return '';
+  return (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
 }
 
 async function adminFetch(endpoint, options = {}) {

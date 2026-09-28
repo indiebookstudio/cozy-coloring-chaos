@@ -41,7 +41,7 @@ function resetFailedAttempt(ip) {
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return handleOptions(res);
+    return handleOptions(req, res);
   }
 
   try {
@@ -51,14 +51,14 @@ export default async function handler(req, res) {
       return sendJson(res, {
         success: true,
         authenticated: valid
-      });
+      }, 200, null, {}, req);
     }
 
     // 2. Logout: DELETE
     if (req.method === 'DELETE') {
       const isProd = process.env.NODE_ENV === 'production' || !!process.env.VERCEL;
       const cookie = buildLogoutCookie(isProd);
-      return sendJson(res, { success: true, message: 'Logged out successfully' }, 200, cookie);
+      return sendJson(res, { success: true, message: 'Logged out successfully' }, 200, cookie, {}, req);
     }
 
     // 3. Login or Logout: POST
@@ -68,7 +68,7 @@ export default async function handler(req, res) {
       if (body.action === 'logout') {
         const isProd = process.env.NODE_ENV === 'production' || !!process.env.VERCEL;
         const cookie = buildLogoutCookie(isProd);
-        return sendJson(res, { success: true, message: 'Logged out successfully' }, 200, cookie);
+        return sendJson(res, { success: true, message: 'Logged out successfully' }, 200, cookie, {}, req);
       }
 
       const ip = getClientIp(req);
@@ -76,18 +76,18 @@ export default async function handler(req, res) {
         return sendJson(res, {
           success: false,
           error: 'Too many failed login attempts. Please wait 15 minutes before trying again.'
-        }, 429);
+        }, 429, null, {}, req);
       }
 
       const password = (body.password || '').trim();
       if (!password) {
-        return sendJson(res, { success: false, error: 'Password is required' }, 400);
+        return sendJson(res, { success: false, error: 'Password is required' }, 400, null, {}, req);
       }
 
       const isValid = verifyPassword(password);
       if (!isValid) {
         recordFailedAttempt(ip);
-        return sendJson(res, { success: false, error: 'Invalid password. Please try again.' }, 401);
+        return sendJson(res, { success: false, error: 'Invalid password. Please try again.' }, 401, null, {}, req);
       }
 
       resetFailedAttempt(ip);
@@ -99,12 +99,12 @@ export default async function handler(req, res) {
         success: true,
         token: token,
         message: 'Authentication successful'
-      }, 200, cookie);
+      }, 200, cookie, {}, req);
     }
 
-    return sendJson(res, { success: false, error: 'Method Not Allowed' }, 405);
+    return sendJson(res, { success: false, error: 'Method Not Allowed' }, 405, null, {}, req);
   } catch (err) {
     console.error('Admin Auth Error:', err);
-    return sendJson(res, { success: false, error: 'Internal server error: ' + (err.message || 'unknown') }, 500);
+    return sendJson(res, { success: false, error: 'Internal server error: ' + (err.message || 'unknown') }, 500, null, {}, req);
   }
 }

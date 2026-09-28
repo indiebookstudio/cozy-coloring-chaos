@@ -11,11 +11,13 @@ import { getQueryParam, sendJson, handleOptions } from './lib/http.js';
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return handleOptions(res);
+    return handleOptions(req, res);
   }
 
+  const reply = (data, status = 200, cookie = null, extraHeaders = {}) => sendJson(res, data, status, cookie, extraHeaders, req);
+
   if (req.method !== 'GET') {
-    return sendJson(res, { success: false, error: 'Method Not Allowed' }, 405);
+    return reply({ success: false, error: 'Method Not Allowed' }, 405);
   }
 
   try {
@@ -35,7 +37,7 @@ export default async function handler(req, res) {
       videos = videos.filter(v => v.language === language);
     }
 
-    return sendJson(res, {
+    return reply({
       success: true,
       count: videos.length,
       videos: videos
@@ -44,6 +46,6 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error('Error fetching fan videos:', err);
-    return sendJson(res, { success: false, error: 'Failed to retrieve fan videos' }, 500);
+    return reply({ success: false, error: 'Failed to retrieve fan videos' }, 500);
   }
 }

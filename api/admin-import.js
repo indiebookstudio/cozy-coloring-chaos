@@ -68,16 +68,18 @@ function detectLanguage(text) {
 
 export default async function handler(req, res) {
   if (req.method === 'OPTIONS') {
-    return handleOptions(res);
+    return handleOptions(req, res);
   }
+
+  const reply = (data, status = 200, cookie = null, extraHeaders = {}) => sendJson(res, data, status, cookie, extraHeaders, req);
 
   // Server-side authentication check
   if (!isAuthenticated(req)) {
-    return sendJson(res, { success: false, error: 'Unauthorized. Please log in.' }, 401);
+    return reply({ success: false, error: 'Unauthorized. Please log in.' }, 401);
   }
 
   if (req.method !== 'POST') {
-    return sendJson(res, { success: false, error: 'Method Not Allowed. Use POST.' }, 405);
+    return reply({ success: false, error: 'Method Not Allowed. Use POST.' }, 405);
   }
 
   try {
@@ -85,12 +87,12 @@ export default async function handler(req, res) {
     const url = body.url;
 
     if (!url || typeof url !== 'string') {
-      return sendJson(res, { success: false, error: 'TikTok URL is required' }, 400);
+      return reply({ success: false, error: 'TikTok URL is required' }, 400);
     }
 
     const parsed = await parseTikTokUrl(url);
     if (!parsed) {
-      return sendJson(res, {
+      return reply({
         success: false,
         error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link da app vm.tiktok.com).'
       }, 400);
@@ -99,7 +101,7 @@ export default async function handler(req, res) {
     // Check if duplicate already in database (check both raw and canonical URL)
     const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
     if (existing) {
-      return sendJson(res, {
+      return reply({
         success: false,
         error: 'Questo video TikTok è già presente nella galleria.'
       }, 409);
@@ -113,7 +115,7 @@ export default async function handler(req, res) {
     const suggestedCategory = detectCategory(metadata.caption);
     const suggestedLang = detectLanguage(metadata.caption);
 
-    return sendJson(res, {
+    return reply({
       success: true,
       metadata: {
         ...metadata,
@@ -127,7 +129,7 @@ export default async function handler(req, res) {
     });
   } catch (err) {
     console.error('TikTok import error:', err);
-    return sendJson(res, {
+    return reply({
       success: false,
       error: err.message || 'Failed to import TikTok video. Please check the URL and try again.'
     }, 400);
