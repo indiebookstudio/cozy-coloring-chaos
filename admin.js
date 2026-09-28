@@ -208,14 +208,29 @@ async function fetchAdminVideos() {
       return;
     }
     const data = await res.json();
-    if (data.success && Array.isArray(data.videos)) {
+    if (data.success && Array.isArray(data.videos) && data.videos.length > 0) {
       adminVideos = data.videos;
       renderAdminTable(adminVideos);
+      return;
     }
   } catch (err) {
-    console.error('Failed to fetch admin videos:', err);
-    showToast('Failed to load videos', 'error');
+    console.warn('Failed to fetch admin videos from API, trying static JSON fallback:', err);
   }
+
+  // Fallback to static data/fan-videos.json
+  try {
+    const staticRes = await fetch('data/fan-videos.json?v=' + Date.now());
+    if (staticRes.ok) {
+      const staticVideos = await staticRes.json();
+      if (Array.isArray(staticVideos) && staticVideos.length > 0) {
+        adminVideos = staticVideos;
+        renderAdminTable(adminVideos);
+        return;
+      }
+    }
+  } catch (e) {}
+
+  showToast('Failed to load videos', 'error');
 }
 
 /**

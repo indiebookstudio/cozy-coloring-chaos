@@ -1,10 +1,11 @@
 /**
  * ============================================================================
- * COZY COLORING CHAOS - DATABASE ADAPTER (SUPABASE REST / LOCAL JSON FALLBACK)
+ * COZY COLORING CHAOS - DATABASE ADAPTER (GITHUB API / SUPABASE / LOCAL JSON)
  * ============================================================================
- * Supports:
- * 1. Supabase / PostgreSQL REST API (zero npm dependencies, pure fetch, Edge-ready)
- * 2. Local JSON file storage (data/fan-videos.json) for instant local development
+ * Supports 3 storage engines:
+ * 1. GitHub API (auto-commits data/fan-videos.json to repo when GITHUB_TOKEN is set)
+ * 2. Supabase / PostgreSQL REST API (when SUPABASE_URL & keys are set)
+ * 3. Local JSON file storage (data/fan-videos.json) for local development
  */
 
 import fs from 'fs';
@@ -13,6 +14,7 @@ import { fileURLToPath } from 'url';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
+
 function getDataFilePath() {
   const p1 = path.join(process.cwd(), 'data', 'fan-videos.json');
   if (fs.existsSync(p1)) return p1;
@@ -20,6 +22,10 @@ function getDataFilePath() {
   if (fs.existsSync(p2)) return p2;
   return p1;
 }
+
+// ----------------------------------------------------------------------------
+// STORAGE PROVIDER DETECTION
+// ----------------------------------------------------------------------------
 
 function isSupabaseConfigured() {
   return !!(process.env.SUPABASE_URL && (process.env.SUPABASE_SERVICE_ROLE_KEY || process.env.SUPABASE_ANON_KEY));
@@ -32,6 +38,75 @@ function getSupabaseHeaders() {
     'Authorization': `Bearer ${key}`,
     'Content-Type': 'application/json'
   };
+}
+
+function isGitHubConfigured() {
+  return !!(process.env.GITHUB_TOKEN || process.env.GH_TOKEN);
+}
+
+function getGitHubRepo() {
+  return process.env.GITHUB_REPO || 'indiebookstudio/cozy-coloring-chaos';
+}
+
+function getGitHubHeaders() {
+  const token = process.env.GITHUB_TOKEN || process.env.GH_TOKEN;
+  return {
+    'Authorization': `Bearer ${token}`,
+    'Accept': 'application/vnd.github.v3+json',
+    'User-Agent': 'CozyColoringChaos-CMS'
+  };
+}
+
+// ----------------------------------------------------------------------------
+// GITHUB API REPO STORAGE IMPLEMENTATION
+// ----------------------------------------------------------------------------
+
+async function fetchFromGitHub() {
+  const repo = getGitHubRepo();
+  const url = `https://api.github.com/repos/${repo}/contents/data/fan-videos.json`;
+  const res = await fetch(url, { headers: getGitHubHeaders() });
+  if (!res.ok) {
+    throw new Error(`GitHub API error ${res.status}: ${await res.text()}`);
+  }
+  const data = await res.json();
+  const content = Buffer.from(data.content, 'base64').toString('utf8');
+  return {
+    videos: JSON.parse(content),
+    sha: data.sha
+  };
+}
+
+async function commitToGitHub(videos, message) {
+  const repo = getGitHubRepo();
+  const url = `https://api.github.com/repos/${repo}/contents/data/fan-videos.json`;
+  const getRes = await fetch(url, { headers: getGitHubHeaders() });
+  if (!getRes.ok) {
+    throw new Error(`Failed to read current file SHA from GitHub: ${getRes.status} ${await getRes.text()}`);
+  }
+  const currentData = await getRes.json();
+  const sha = currentData.sha;
+
+  const contentStr = JSON.stringify(videos, null, 2);
+  const base64Content = Buffer.from(contentStr, 'utf8').toString('base64');
+
+  const putRes = await fetch(url, {
+    method: 'PUT',
+    headers: {
+      ...getGitHubHeaders(),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: message,
+      content: base64Content,
+      sha: sha,
+      branch: 'main'
+    })
+  });
+
+  if (!putRes.ok) {
+    throw new Error(`Failed to commit to GitHub: ${putRes.status} ${await putRes.text()}`);
+  }
+  return true;
 }
 
 // ----------------------------------------------------------------------------
@@ -76,6 +151,7 @@ function writeLocalVideos(videos) {
  * Sorted by sort_order ascending, then created_at descending.
  */
 export async function getAllVideos({ includeUnpublished = false } = {}) {
+  // 1. Supabase
   if (isSupabaseConfigured()) {
     try {
       let url = `${process.env.SUPABASE_URL}/rest/v1/fan_videos?select=*&order=sort_order.asc,created_at.desc`;
@@ -88,13 +164,29 @@ export async function getAllVideos({ includeUnpublished = false } = {}) {
       }
       return await res.json();
     } catch (err) {
-      console.error('Supabase error, falling back to local file:', err);
+      console.error('Supabase error, trying next fallback:', err);
     }
   }
 
-  // Local JSON fallback
+  // 2. GitHub API (if configured)
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      const filtered = includeUnpublished ? videos : videos.filter(v => v.published !== false);
+      return filtered.sort((a, b) => {
+        const orderA = a.sort_order ?? 0;
+        const orderB = b.sort_order ?? 0;
+        if (orderA !== orderB) return orderA - orderB;
+        return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+      });
+    } catch (err) {
+      console.error('GitHub API query error, falling back to local file:', err);
+    }
+  }
+
+  // 3. Local JSON fallback
   const videos = readLocalVideos();
-  const filtered = includeUnpublished ? videos : videos.filter(v => v.published);
+  const filtered = includeUnpublished ? videos : videos.filter(v => v.published !== false);
 
   return filtered.sort((a, b) => {
     const orderA = a.sort_order ?? 0;
@@ -121,6 +213,15 @@ export async function getVideoById(id) {
     }
   }
 
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      return videos.find(v => v.id === id) || null;
+    } catch (err) {
+      console.error('GitHub getVideoById error:', err);
+    }
+  }
+
   const videos = readLocalVideos();
   return videos.find(v => v.id === id) || null;
 }
@@ -141,6 +242,15 @@ export async function getVideoByUrl(tiktokUrl) {
       }
     } catch (err) {
       console.error('Supabase getVideoByUrl error:', err);
+    }
+  }
+
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      return videos.find(v => (v.tiktok_url || '').trim().replace(/\/+$/, '').toLowerCase() === normUrl) || null;
+    } catch (err) {
+      console.error('GitHub getVideoByUrl error:', err);
     }
   }
 
@@ -173,6 +283,7 @@ export async function createVideo(videoData) {
     updated_at: now
   };
 
+  // 1. Supabase
   if (isSupabaseConfigured()) {
     try {
       const url = `${process.env.SUPABASE_URL}/rest/v1/fan_videos`;
@@ -190,13 +301,31 @@ export async function createVideo(videoData) {
       }
       throw new Error(`Failed to insert into Supabase: ${res.status} ${await res.text()}`);
     } catch (err) {
-      console.error('Supabase createVideo error, falling back to local storage:', err);
+      console.error('Supabase createVideo error:', err);
+      throw err;
     }
   }
 
+  // 2. GitHub API
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      videos.unshift(record);
+      await commitToGitHub(videos, `chore(cms): add fan video @${record.creator_username}`);
+      return record;
+    } catch (err) {
+      console.error('GitHub API error in createVideo:', err);
+      throw new Error(`Salvataggio su repository GitHub fallito: ${err.message}`);
+    }
+  }
+
+  // 3. Local filesystem fallback
   const videos = readLocalVideos();
   videos.unshift(record);
-  writeLocalVideos(videos);
+  const written = writeLocalVideos(videos);
+  if (!written) {
+    throw new Error('Impossibile salvare il video: il filesystem del server è in sola lettura (Vercel). Per abilitare il salvataggio persistente dal pannello admin, imposta la variabile d\'ambiente GITHUB_TOKEN (Personal Access Token GitHub con permesso repo) o SUPABASE_URL su Vercel.');
+  }
   return record;
 }
 
@@ -206,6 +335,7 @@ export async function createVideo(videoData) {
 export async function updateVideo(id, videoData) {
   const now = new Date().toISOString();
 
+  // 1. Supabase
   if (isSupabaseConfigured()) {
     try {
       const url = `${process.env.SUPABASE_URL}/rest/v1/fan_videos?id=eq.${encodeURIComponent(id)}`;
@@ -226,9 +356,32 @@ export async function updateVideo(id, videoData) {
       }
     } catch (err) {
       console.error('Supabase updateVideo error:', err);
+      throw err;
     }
   }
 
+  // 2. GitHub API
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      const idx = videos.findIndex(v => v.id === id);
+      if (idx === -1) return null;
+
+      videos[idx] = {
+        ...videos[idx],
+        ...videoData,
+        id: videos[idx].id,
+        updated_at: now
+      };
+      await commitToGitHub(videos, `chore(cms): update fan video @${videos[idx].creator_username}`);
+      return videos[idx];
+    } catch (err) {
+      console.error('GitHub updateVideo error:', err);
+      throw new Error(`Aggiornamento su repository GitHub fallito: ${err.message}`);
+    }
+  }
+
+  // 3. Local filesystem fallback
   const videos = readLocalVideos();
   const idx = videos.findIndex(v => v.id === id);
   if (idx === -1) return null;
@@ -239,7 +392,10 @@ export async function updateVideo(id, videoData) {
     id: videos[idx].id,
     updated_at: now
   };
-  writeLocalVideos(videos);
+  const written = writeLocalVideos(videos);
+  if (!written) {
+    throw new Error('Impossibile aggiornare il video: il filesystem del server è in sola lettura. Imposta GITHUB_TOKEN o SUPABASE_URL nelle Environment Variables di Vercel.');
+  }
   return videos[idx];
 }
 
@@ -247,6 +403,7 @@ export async function updateVideo(id, videoData) {
  * Deletes a video record by ID.
  */
 export async function deleteVideo(id) {
+  // 1. Supabase
   if (isSupabaseConfigured()) {
     try {
       const url = `${process.env.SUPABASE_URL}/rest/v1/fan_videos?id=eq.${encodeURIComponent(id)}`;
@@ -257,13 +414,33 @@ export async function deleteVideo(id) {
       if (res.ok) return true;
     } catch (err) {
       console.error('Supabase deleteVideo error:', err);
+      throw err;
     }
   }
 
+  // 2. GitHub API
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      const filtered = videos.filter(v => v.id !== id);
+      if (filtered.length === videos.length) return false;
+
+      await commitToGitHub(filtered, `chore(cms): delete fan video ${id}`);
+      return true;
+    } catch (err) {
+      console.error('GitHub deleteVideo error:', err);
+      throw new Error(`Cancellazione su repository GitHub fallita: ${err.message}`);
+    }
+  }
+
+  // 3. Local filesystem fallback
   const videos = readLocalVideos();
   const filtered = videos.filter(v => v.id !== id);
   if (filtered.length === videos.length) return false;
 
-  writeLocalVideos(filtered);
+  const written = writeLocalVideos(filtered);
+  if (!written) {
+    throw new Error('Impossibile eliminare il video: il filesystem del server è in sola lettura. Imposta GITHUB_TOKEN o SUPABASE_URL nelle Environment Variables di Vercel.');
+  }
   return true;
 }

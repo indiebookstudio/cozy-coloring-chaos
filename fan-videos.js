@@ -12,6 +12,25 @@
 // Fallback dataset in case API is unreachable or during static preview
 const FALLBACK_VIDEOS = [
   {
+    id: "video-7690538422930279712",
+    tiktok_url: "https://www.tiktok.com/@cozy.sparkles90/video/7690538422930279712",
+    tiktok_video_id: "7690538422930279712",
+    creator_username: "cozy.sparkles90",
+    creator_name: "CozySparkles",
+    creator_profile_url: "https://www.tiktok.com/@cozy.sparkles90",
+    creator_avatar_url: "assets/fan-videos/avatars/cozy.sparkles90.jpg",
+    caption: "New flip-through!  This amazing book is from @Cozy Coloring Chaos and I’m in love with this theme!  #colortok #colortokcommunity #foryoupage❤️❤️ #fyp #dutchtiktok",
+    thumbnail_url: "assets/fan-videos/7690538422930279712.jpg",
+    book_slug: "cozy-terror",
+    category: "flip-through",
+    language: "nl",
+    featured: true,
+    published: true,
+    sort_order: 1,
+    created_at: "2026-09-28T11:45:00.000Z",
+    updated_at: "2026-09-28T11:45:00.000Z"
+  },
+  {
     id: "video-7690225937111158048",
     tiktok_url: "https://www.tiktok.com/@cozy.sparkles90/video/7690225937111158048",
     tiktok_video_id: "7690225937111158048",
@@ -26,7 +45,7 @@ const FALLBACK_VIDEOS = [
     language: "nl",
     featured: true,
     published: true,
-    sort_order: 1,
+    sort_order: 2,
     created_at: "2026-09-26T14:30:00.000Z",
     updated_at: "2026-09-26T14:30:00.000Z"
   },
@@ -45,7 +64,7 @@ const FALLBACK_VIDEOS = [
     language: "en",
     featured: true,
     published: true,
-    sort_order: 2,
+    sort_order: 3,
     created_at: "2026-09-25T11:20:00.000Z",
     updated_at: "2026-09-25T11:20:00.000Z"
   }
@@ -151,20 +170,40 @@ async function loadVideosData() {
     ? ''
     : (window.COZY_BACKEND_URL || 'https://cozy-coloring-chaos-saluccimarco-3318s-projects.vercel.app').replace(/\/api\/.*$/, '');
 
+  let loaded = false;
+
+  // 1. Try dynamic backend API
   try {
     const res = await fetch(`${apiBase}/api/fan-videos`);
     if (res.ok) {
       const data = await res.json();
       if (data.success && Array.isArray(data.videos) && data.videos.length > 0) {
         allVideos = data.videos;
-      } else {
-        allVideos = FALLBACK_VIDEOS;
+        loaded = true;
       }
-    } else {
-      allVideos = FALLBACK_VIDEOS;
     }
   } catch (err) {
-    console.warn('Could not fetch from /api/fan-videos, using fallback data:', err);
+    console.warn('Could not fetch from /api/fan-videos:', err);
+  }
+
+  // 2. If API is down or returned fewer videos than static repository file, fetch data/fan-videos.json
+  if (!loaded || (allVideos && allVideos.length < FALLBACK_VIDEOS.length)) {
+    try {
+      const staticRes = await fetch('data/fan-videos.json?v=' + Date.now());
+      if (staticRes.ok) {
+        const staticData = await staticRes.json();
+        if (Array.isArray(staticData) && staticData.length >= (allVideos ? allVideos.length : 0)) {
+          allVideos = staticData.filter(v => v.published !== false);
+          loaded = true;
+        }
+      }
+    } catch (e) {
+      console.warn('Could not fetch static data/fan-videos.json:', e);
+    }
+  }
+
+  // 3. Fallback to bundled dataset if all else fails
+  if (!loaded || !allVideos || allVideos.length === 0) {
     allVideos = FALLBACK_VIDEOS;
   }
 
