@@ -14,7 +14,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700;12..96,800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 
-  <link rel="stylesheet" href="style.css?v=5.5">
+  <link rel="stylesheet" href="style.css?v=5.6">
 </head>
 <body class="page-admin">
   <div class="bg-ambience" aria-hidden="true"></div>
@@ -182,17 +182,23 @@
               autocomplete="off"
               onkeydown="if(event.key==='Enter'){event.preventDefault();handleImportTikTok();}"
             >
-            <button type="button" id="admin-import-btn" class="btn-buy admin-btn-import" onclick="handleImportTikTok()">
+            <button type="button" id="admin-import-btn" class="admin-btn-import" onclick="handleImportTikTok()">
               <span id="admin-import-btn-text">IMPORTA</span>
               <div class="sample-spinner" id="admin-import-spinner" style="display: none; width: 16px; height: 16px; border-width: 2px;"></div>
             </button>
           </div>
           <div id="admin-import-error" class="admin-alert admin-alert-error" style="display: none;"></div>
           <div id="admin-import-warning" class="admin-alert admin-alert-warning" style="display: none;"></div>
+
+          <div class="admin-import-manual-hint">
+            <button type="button" class="admin-manual-toggle-btn" onclick="showManualForm()">
+              Oppure compila i campi manualmente →
+            </button>
+          </div>
         </div>
 
-        <!-- STEP 2: PREVIEW & CUSTOMIZE FORM -->
-        <form id="admin-video-form" onsubmit="handleSaveVideo(event)">
+        <!-- STEP 2: PREVIEW & CUSTOMIZE FORM (Shown only after import or manual toggle) -->
+        <form id="admin-video-form" onsubmit="handleSaveVideo(event)" style="display: none;">
           <input type="hidden" id="admin-form-video-id">
           <input type="hidden" id="admin-form-tiktok-id">
 
@@ -331,6 +337,6 @@
   <script src="script.js?v=5.0"></script>
 
   <!-- Admin CMS script -->
-  <script src="admin.js?v=2.0"></script>
+  <script src="admin.js?v=2.1"></script>
 </body>
 </html>

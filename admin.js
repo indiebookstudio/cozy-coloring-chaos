@@ -367,6 +367,12 @@ window.openAddVideoModal = function() {
   if (importErrorAlert) importErrorAlert.style.display = 'none';
   if (importWarningAlert) importWarningAlert.style.display = 'none';
 
+  // Initially hide the form below until import completes or manual is chosen
+  if (videoForm) {
+    videoForm.style.display = 'none';
+    videoForm.classList.remove('admin-form-fadein');
+  }
+
   if (tiktokUrlInput) tiktokUrlInput.value = '';
   if (formVideoId) formVideoId.value = '';
   if (formTiktokId) formTiktokId.value = '';
@@ -388,7 +394,9 @@ window.openAddVideoModal = function() {
     modalEl.classList.add('active');
     modalEl.setAttribute('aria-hidden', 'false');
     document.body.classList.add('modal-open');
-    if (tiktokUrlInput) tiktokUrlInput.focus();
+    setTimeout(() => {
+      if (tiktokUrlInput) tiktokUrlInput.focus();
+    }, 50);
   }
 };
 
@@ -402,6 +410,12 @@ window.openEditVideoModal = function(id) {
   if (modalTitle) modalTitle.textContent = `Edit Video (@${video.creator_username})`;
   // Hide import step during edit
   if (importSection) importSection.style.display = 'none';
+
+  // Always show form when editing
+  if (videoForm) {
+    videoForm.style.display = 'block';
+    videoForm.classList.remove('admin-form-fadein');
+  }
 
   if (formVideoId) formVideoId.value = video.id;
   if (formTiktokId) formTiktokId.value = video.tiktok_video_id || '';
@@ -443,6 +457,24 @@ window.closeAdminModal = function() {
     modalEl.classList.remove('active');
     modalEl.setAttribute('aria-hidden', 'true');
     document.body.classList.remove('modal-open');
+  }
+  if (videoForm) {
+    videoForm.style.display = 'none';
+  }
+};
+
+/**
+ * Allows manual form entry without TikTok import.
+ */
+window.showManualForm = function() {
+  if (videoForm) {
+    videoForm.style.display = 'block';
+    videoForm.classList.remove('admin-form-fadein');
+    void videoForm.offsetWidth;
+    videoForm.classList.add('admin-form-fadein');
+    setTimeout(() => {
+      if (formUsername) formUsername.focus();
+    }, 50);
   }
 };
 
@@ -505,6 +537,20 @@ window.handleImportTikTok = async function() {
         if (previewCreatorHandle) previewCreatorHandle.textContent = meta.creator_username ? `@${meta.creator_username}` : '';
         if (previewCaption) previewCaption.textContent = meta.caption || '(Nessuna didascalia automatica)';
       }
+
+      // Reveal the form below with populated data
+      if (videoForm) {
+        videoForm.style.display = 'block';
+        videoForm.classList.remove('admin-form-fadein');
+        void videoForm.offsetWidth;
+        videoForm.classList.add('admin-form-fadein');
+      }
+
+      setTimeout(() => {
+        if (previewBox) {
+          previewBox.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      }, 50);
 
       if (data.warning) {
         if (importWarningAlert) {

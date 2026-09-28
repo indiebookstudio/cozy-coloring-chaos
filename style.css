@@ -5561,8 +5561,8 @@ body.modal-open {
 
 .admin-url-input,
 #admin-tiktok-url {
-  flex: 1 1 auto;
-  min-width: 0;
+  flex: 1 1 0% !important;
+  min-width: 0 !important;
   width: 100%;
   padding: 0.85rem 1.15rem;
   font-size: 0.98rem;
@@ -5571,6 +5571,7 @@ body.modal-open {
   border-radius: var(--radius-sm);
   background: #FFFFFF;
   color: var(--color-text-main);
+  box-sizing: border-box;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
 }
 
@@ -5584,13 +5585,99 @@ body.modal-open {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.85rem 1.75rem;
+  gap: 0.5rem;
+  width: auto !important;
+  min-width: 140px;
+  flex: 0 0 auto !important;
+  padding: 0.85rem 1.85rem;
+  background: var(--gradient-cta);
+  color: #FFFFFF;
+  font-family: var(--font-body);
   font-size: 0.92rem;
   font-weight: 800;
   letter-spacing: 0.04em;
-  flex-shrink: 0;
-  cursor: pointer;
+  text-transform: uppercase;
   border-radius: var(--radius-sm);
+  border: none;
+  cursor: pointer;
+  box-shadow: var(--shadow-btn);
+  white-space: nowrap;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast), opacity var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.admin-btn-import:hover {
+  background: var(--gradient-cta-hover);
+  box-shadow: var(--shadow-btn-hover);
+  transform: translateY(-1px);
+}
+
+.admin-btn-import:active {
+  transform: translateY(0);
+}
+
+.admin-btn-import:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.admin-import-manual-hint {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+}
+
+.admin-manual-toggle-btn {
+  background: none;
+  border: none;
+  color: var(--color-text-muted);
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  font-weight: 600;
+  text-decoration: underline;
+  cursor: pointer;
+  padding: 0.2rem 0.4rem;
+  transition: color var(--transition-fast);
+}
+
+.admin-manual-toggle-btn:hover {
+  color: var(--color-coral-primary);
+}
+
+@keyframes adminFormFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.admin-form-fadein {
+  animation: adminFormFadeIn 0.35s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+@media (max-width: 640px) {
+  .admin-import-input-row {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 0.75rem;
+  }
+
+  .admin-url-input,
+  #admin-tiktok-url {
+    width: 100% !important;
+    min-width: 0 !important;
+    flex: none !important;
+  }
+
+  .admin-btn-import {
+    width: 100% !important;
+    min-height: 48px;
+  }
 }
 
 .admin-alert-warning {
