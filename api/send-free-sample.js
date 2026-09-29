@@ -75,11 +75,13 @@ const BOOKS = [
   {
     id: "the-cyberpunk-pixel-show",
     title: "The Cyberpunk Pixel Show",
-    subtitle: "80 Cyber Dreams to Color by Number | A Cyberpunk Mystery Mosaic Coloring Book | Diamond-Shaped Designs | 24 Colors",
+    subtitle: "80 Cyber Dreams to Color by Number | A Relaxing Pixel Art Escape with Hidden Futuristic & Glamorous Visions to Reveal",
     author: "Lucia C. Marcos",
     cover: "assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.png",
     samplePdf: "assets/books/The.Cyberpunk.Pixel.Show/Sample/Free.Sample.pdf",
-    defaultMarket: "us"
+    defaultMarket: "us",
+    asin: "B0HL9CQXQM",
+    isNew: true
   },
   {
     id: "the-black-sword",
