@@ -422,6 +422,47 @@ const BOOKS = window.BOOKS = [
     ],
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
+  },
+  {
+    id: "non-mi-ricordo-mai-un-cazzo",
+    title: "Non mi ricordo mai un cazzo",
+    subtitle: "Per questo me lo scrivo | Il quaderno divertente e senza date per organizzare cose da fare, appuntamenti e password, per chi dimentica tutto",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    language: "Italiano",
+    langCode: "it",
+    onlyItalian: true,
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Front.Cover.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/2.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/3.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/4.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/5.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/16.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/21.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/34.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/37.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/43.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/51.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/59.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/71.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/78.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/79.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/87.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/94.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/99.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/110.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/117.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/119.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/127.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/134.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Back.Cover.png"
+    ],
+    defaultMarket: "it",
+    asin: "B0HLSY8JCZ",
+    isNew: true
   }
 ];
 
@@ -481,20 +522,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "LINEE SPESSE E SEMPLICI",
     filterPixelArt: "PIXEL ART",
     filterHumour: "UMORISMO",
+    filterNotebooks: "QUADERNI & AGENDE",
     filterEn: "English",
     filterIt: "Italiano",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "ACQUISTA SU AMAZON",
+    buyOnAmazon: "ACQUISTA SU AMAZON",
+    buyOnLulu: "ACQUISTA SU LULU",
+    storeLabel: "Store",
     viewOn: (market) => `VEDI SU ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "di",
-    previewBtn: "Preview",
+    previewBtn: "Anteprima",
     previewBadge: "Anteprima Pagine",
+    modalZoomBtn: "Lente",
+    modalZoomPill: "Lente 🔍",
     badgeNew: "Novità",
     badgeComingSoon: "Prossimamente",
     comingSoonNotice: "In arrivo prossimamente su Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "A Colori",
     coloredBadge: "Disegni Colorati",
     coloredHeadline: "Ecco cosa puoi fare con questo libro!",
     coloredPageLabel: "Disegno Colorato",
@@ -503,7 +548,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Copertina (Front)",
     backCoverLabel: "Retro Copertina (Back)",
     pageLabel: "Pagina",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Sample Gratuito",
     bookVideosBtn: "Fan Videos",
     ariaBookVideos: (title) => `Guarda i video della community per ${title}`,
     noVideosAvailable: "Nessun fan video disponibile per questo libro",
@@ -649,16 +694,20 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "BOLD AND EASY",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "NOTEBOOKS & PLANNERS",
     filterEn: "English",
     filterIt: "Italian",
     selectStore: "BUY ON AMAZON",
     buyOnAmazon: "BUY ON AMAZON",
     buyOnLulu: "BUY ON LULU",
+    storeLabel: "Store",
     viewOn: (market) => `VIEW ON ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "by",
     previewBtn: "Preview",
     previewBadge: "Sample Preview",
+    modalZoomBtn: "Zoom",
+    modalZoomPill: "Zoom 🔍",
     badgeNew: "New",
     badgeComingSoon: "Coming Soon",
     comingSoonNotice: "Coming soon to Amazon",
@@ -817,20 +866,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "EINFACH & DICKE LINIEN",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "NOTIZBÜCHER & PLANER",
     filterEn: "Englisch",
     filterIt: "Italienisch",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "BEI AMAZON KAUFEN",
+    buyOnAmazon: "BEI AMAZON KAUFEN",
+    buyOnLulu: "BEI LULU KAUFEN",
+    storeLabel: "Shop",
     viewOn: (market) => `AUF ${market.toUpperCase()} ANSEHEN`,
     viewOnLulu: "Lulu",
     byAuthor: "von",
-    previewBtn: "Preview",
+    previewBtn: "Vorschau",
     previewBadge: "Buchvorschau",
+    modalZoomBtn: "Lupe",
+    modalZoomPill: "Lupe 🔍",
     badgeNew: "Neu",
     badgeComingSoon: "Demnächst",
     comingSoonNotice: "Demnächst auf Amazon erhältlich",
-    coloredBtn: "Colored",
+    coloredBtn: "Koloriert",
     coloredBadge: "Ausgemalte Kunstwerke",
     coloredHeadline: "Das kannst du aus diesem Buch machen!",
     coloredPageLabel: "Farbiges Kunstwerk",
@@ -839,7 +892,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Vorderseite (Cover)",
     backCoverLabel: "Rückseite (Back)",
     pageLabel: "Seite",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Gratis-Probe",
     bookVideosBtn: "Fan Videos",
     ariaBookVideos: (title) => `Community-Fanvideos für ${title} ansehen`,
     noVideosAvailable: "Noch keine Fan-Videos für dieses Buch verfügbar",
@@ -985,20 +1038,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "TRAITS ÉPAIS ET FACILES",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOUR",
+    filterNotebooks: "CARNETS & AGENDAS",
     filterEn: "Anglais",
     filterIt: "Italien",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "ACHETER SUR AMAZON",
+    buyOnAmazon: "ACHETER SUR AMAZON",
+    buyOnLulu: "ACHETER SUR LULU",
+    storeLabel: "Boutique",
     viewOn: (market) => `VOIR SUR ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "par",
-    previewBtn: "Preview",
+    previewBtn: "Aperçu",
     previewBadge: "Aperçu du livre",
+    modalZoomBtn: "Loupe",
+    modalZoomPill: "Loupe 🔍",
     badgeNew: "Nouveau",
     badgeComingSoon: "Bientôt disponible",
     comingSoonNotice: "Bientôt disponible sur Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "Coloriés",
     coloredBadge: "Modèles Coloriés",
     coloredHeadline: "Voici ce que vous pouvez créer avec ce livre !",
     coloredPageLabel: "Œuvre Coloriée",
@@ -1007,7 +1064,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Première de couverture",
     backCoverLabel: "Quatrième de couverture",
     pageLabel: "Page",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Extrait Gratuit",
     bookVideosBtn: "Vidéos Fan",
     ariaBookVideos: (title) => `Regarder les vidéos fan pour ${title}`,
     noVideosAvailable: "Aucune vidéo fan disponible pour ce livre pour l'instant",
@@ -1153,20 +1210,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "LÍNEAS GRUESAS Y FÁCILES",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "CUADERNOS Y AGENDAS",
     filterEn: "Inglés",
     filterIt: "Italiano",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "COMPRAR EN AMAZON",
+    buyOnAmazon: "COMPRAR EN AMAZON",
+    buyOnLulu: "COMPRAR EN LULU",
+    storeLabel: "Tienda",
     viewOn: (market) => `VER EN ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "de",
-    previewBtn: "Preview",
+    previewBtn: "Vista previa",
     previewBadge: "Vista previa",
+    modalZoomBtn: "Lupa",
+    modalZoomPill: "Lupa 🔍",
     badgeNew: "Nuevo",
     badgeComingSoon: "Próximamente",
     comingSoonNotice: "Próximamente en Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "Coloreados",
     coloredBadge: "Ilustraciones Coloreadas",
     coloredHeadline: "¡Mira lo que puedes crear con este libro!",
     coloredPageLabel: "Ilustración a Color",
@@ -1175,7 +1236,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Portada",
     backCoverLabel: "Contraportada",
     pageLabel: "Página",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Muestra Gratis",
     bookVideosBtn: "Vídeos Fan",
     ariaBookVideos: (title) => `Ver vídeos de la comunidad para ${title}`,
     noVideosAvailable: "Aún no hay vídeos de la comunidad para este libro",
@@ -1321,20 +1382,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "DIKKE LIJNEN & SIMPEL",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "NOTITIEBOEKEN & PLANNERS",
     filterEn: "Engels",
     filterIt: "Italiaans",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "KOOP OP AMAZON",
+    buyOnAmazon: "KOOP OP AMAZON",
+    buyOnLulu: "KOOP OP LULU",
+    storeLabel: "Winkel",
     viewOn: (market) => `BEKIJK OP ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "door",
-    previewBtn: "Preview",
+    previewBtn: "Voorbeeld",
     previewBadge: "Voorbeeldweergave",
+    modalZoomBtn: "Loep",
+    modalZoomPill: "Loep 🔍",
     badgeNew: "Nieuw",
     badgeComingSoon: "Binnenkort",
     comingSoonNotice: "Binnenkort verkrijgbaar op Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "Ingekleurd",
     coloredBadge: "Ingekleurde Tekeningen",
     coloredHeadline: "Kijk wat je kunt maken met dit boek!",
     coloredPageLabel: "Ingekleurd Kunstwerk",
@@ -1343,7 +1408,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Voorkant",
     backCoverLabel: "Achterkant",
     pageLabel: "Pagina",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Gratis Sample",
     bookVideosBtn: "Fan Video's",
     ariaBookVideos: (title) => `Bekijk community fan video's voor ${title}`,
     noVideosAvailable: "Nog geen fan video's beschikbaar voor dit boek",
@@ -1488,20 +1553,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "PROSTE I GRUBE LINIE",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "NOTATNIKI I PLANERY",
     filterEn: "Angielski",
     filterIt: "Włoski",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "KUP NA AMAZON",
+    buyOnAmazon: "KUP NA AMAZON",
+    buyOnLulu: "KUP NA LULU",
+    storeLabel: "Sklep",
     viewOn: (market) => `ZOBACZ NA ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "autorstwa",
-    previewBtn: "Preview",
+    previewBtn: "Podgląd",
     previewBadge: "Podgląd książki",
+    modalZoomBtn: "Lupa",
+    modalZoomPill: "Lupa 🔍",
     badgeNew: "Nowość",
     badgeComingSoon: "Wkrótce",
     comingSoonNotice: "Wkrótce dostępne na Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "Kolorowe",
     coloredBadge: "Pokolorowane Prace",
     coloredHeadline: "Zobacz, co możesz stworzyć z tą książką!",
     coloredPageLabel: "Pokolorowana Praca",
@@ -1510,7 +1579,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Okładka przednia",
     backCoverLabel: "Okładka tylna",
     pageLabel: "Strona",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Darmowa Próbka",
     bookVideosBtn: "Filmy Fanów",
     ariaBookVideos: (title) => `Zobacz filmy fanów dla ${title}`,
     noVideosAvailable: "Brak jeszcze filmów fanów dla tej książki",
@@ -1655,20 +1724,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "TJOCKA LINJER & ENKELT",
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
+    filterNotebooks: "ANTECKNINGSBÖCKER & PLANERARE",
     filterEn: "Engelska",
     filterIt: "Italienska",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "KÖP PÅ AMAZON",
+    buyOnAmazon: "KÖP PÅ AMAZON",
+    buyOnLulu: "KÖP PÅ LULU",
+    storeLabel: "Butik",
     viewOn: (market) => `VISA PÅ ${market.toUpperCase()}`,
     viewOnLulu: "Lulu",
     byAuthor: "av",
-    previewBtn: "Preview",
+    previewBtn: "Förhandsvisning",
     previewBadge: "Förhandsvisning",
+    modalZoomBtn: "Förstora",
+    modalZoomPill: "Förstora 🔍",
     badgeNew: "Nyhet",
     badgeComingSoon: "Kommer snart",
     comingSoonNotice: "Kommer snart till Amazon",
-    coloredBtn: "Colored",
+    coloredBtn: "Färglagda",
     coloredBadge: "Färglagda Teckningar",
     coloredHeadline: "Här är vad du kan skapa med den här boken!",
     coloredPageLabel: "Färglagt Konstverk",
@@ -1677,7 +1750,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "Framsida",
     backCoverLabel: "Baksida",
     pageLabel: "Sida",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "Gratis Prov",
     bookVideosBtn: "Fanvideor",
     ariaBookVideos: (title) => `Se fanvideor för ${title}`,
     noVideosAvailable: "Inga fanvideor tillgängliga för denna bok ännu",
@@ -1821,20 +1894,24 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterBoldAndEasy: "太線＆シンプル",
     filterPixelArt: "ピクセルアート",
     filterHumour: "ユーモア",
+    filterNotebooks: "ノート＆手帳",
     filterEn: "英語",
     filterIt: "イタリア語",
-    selectStore: "BUY ON AMAZON",
-    buyOnAmazon: "BUY ON AMAZON",
-    buyOnLulu: "BUY ON LULU",
+    selectStore: "AMAZONで購入",
+    buyOnAmazon: "AMAZONで購入",
+    buyOnLulu: "LULUで購入",
+    storeLabel: "ストア",
     viewOn: (market) => `${market.toUpperCase()} で見る`,
     viewOnLulu: "Lulu",
     byAuthor: "著者:",
-    previewBtn: "Preview",
+    previewBtn: "プレビュー",
     previewBadge: "サンプルプレビュー",
+    modalZoomBtn: "拡大鏡",
+    modalZoomPill: "拡大鏡 🔍",
     badgeNew: "新刊",
     badgeComingSoon: "近日発売",
     comingSoonNotice: "Amazonにて近日発売予定",
-    coloredBtn: "Colored",
+    coloredBtn: "彩色見本",
     coloredBadge: "塗り絵の完成見本",
     coloredHeadline: "この本でこんな素敵な作品が作れます！",
     coloredPageLabel: "完成見本",
@@ -1843,7 +1920,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     frontCoverLabel: "表紙",
     backCoverLabel: "裏表紙",
     pageLabel: "ページ",
-    freeSampleBtn: "Free Sample",
+    freeSampleBtn: "無料サンプル",
     bookVideosBtn: "ファン動画",
     ariaBookVideos: (title) => `${title}のファン動画を見る`,
     noVideosAvailable: "この本にはまだファン動画がありません",
@@ -2362,6 +2439,15 @@ function updateFreeSampleModalTranslations(t) {
   if (successAmazonTagline && t.formSuccessBuyTag) successAmazonTagline.textContent = t.formSuccessBuyTag;
   if (btnCloseSuccess && t.formSuccessClose) btnCloseSuccess.textContent = t.formSuccessClose;
 
+  const successAmazonBtnText = document.getElementById('success-amazon-btn-text');
+  const successLuluBtnText = document.getElementById('success-lulu-btn-text');
+  if (successAmazonBtnText && typeof t.viewOn === 'function') {
+    successAmazonBtnText.textContent = t.viewOn('Amazon');
+  }
+  if (successLuluBtnText && typeof t.viewOn === 'function') {
+    successLuluBtnText.textContent = t.viewOn('Lulu');
+  }
+
   // Localized placeholders
   if (inputFirstName) {
     if (t.formFirstNamePlaceholder) inputFirstName.placeholder = t.formFirstNamePlaceholder;
@@ -2377,23 +2463,55 @@ function updateFreeSampleModalTranslations(t) {
 }
 
 /**
+ * Helper to determine if a book should be visible for the current site language.
+ */
+function isBookVisibleForLanguage(book, lang) {
+  if (book && book.onlyItalian && lang !== 'it') {
+    return false;
+  }
+  return true;
+}
+window.isBookVisibleForLanguage = isBookVisibleForLanguage;
+
+/**
  * Calculates and displays the count of books in each category filter tab.
  */
 function updateFilterCounts() {
-  const countAll = BOOKS.length;
-  const countBoldAndEasy = BOOKS.filter(b => isBookCategory(b, 'bold-and-easy')).length;
-  const countPixelArt = BOOKS.filter(b => isBookCategory(b, 'pixel-art')).length;
-  const countHumour = BOOKS.filter(b => isBookCategory(b, 'humour')).length;
+  const visibleBooks = BOOKS.filter(b => isBookVisibleForLanguage(b, currentLanguage));
+  const countAll = visibleBooks.length;
+  const countBoldAndEasy = visibleBooks.filter(b => isBookCategory(b, 'bold-and-easy')).length;
+  const countPixelArt = visibleBooks.filter(b => isBookCategory(b, 'pixel-art')).length;
+  const countHumour = visibleBooks.filter(b => isBookCategory(b, 'humour')).length;
+  const countNotebooks = visibleBooks.filter(b => isBookCategory(b, 'notebooks')).length;
 
   const elAll = document.getElementById('count-all');
   const elBold = document.getElementById('count-bold-and-easy') || document.getElementById('count-isaac');
   const elPixel = document.getElementById('count-pixel-art');
   const elHumour = document.getElementById('count-humour') || document.getElementById('count-lucas');
+  const elNotebooks = document.getElementById('count-notebooks');
 
   if (elAll) elAll.textContent = countAll;
   if (elBold) elBold.textContent = countBoldAndEasy;
   if (elPixel) elPixel.textContent = countPixelArt;
   if (elHumour) elHumour.textContent = countHumour;
+  if (elNotebooks) elNotebooks.textContent = countNotebooks;
+
+  const btnNotebooks = document.getElementById('filter-btn-notebooks');
+  if (btnNotebooks) {
+    if (countNotebooks > 0) {
+      btnNotebooks.style.display = 'inline-flex';
+    } else {
+      btnNotebooks.style.display = 'none';
+      if (currentBookFilter === 'notebooks') {
+        currentBookFilter = 'all';
+        document.querySelectorAll('.filter-btn').forEach(btn => {
+          const isAll = btn.getAttribute('data-filter') === 'all';
+          btn.classList.toggle('active', isAll);
+          btn.setAttribute('aria-selected', isAll ? 'true' : 'false');
+        });
+      }
+    }
+  }
 }
 
 /**
@@ -2403,13 +2521,19 @@ function updateFilterCounts() {
 function isBookCategory(book, targetCategory) {
   if (!targetCategory || targetCategory === 'all') return true;
   if (targetCategory === 'bold-and-easy' || targetCategory === 'isaac-mcclour') {
-    return book.category === 'bold-and-easy' || !!(book.author && book.author.toLowerCase().includes('isaac'));
+    return book.category === 'bold-and-easy';
   }
   if (targetCategory === 'pixel-art' || targetCategory === 'lucia-c-marcos') {
-    return book.category === 'pixel-art' || !!(book.author && book.author.toLowerCase().includes('lucia'));
+    return book.category === 'pixel-art';
   }
-  if (targetCategory === 'humour' || targetCategory === 'humor' || targetCategory === 'lucas-c-morica') {
-    return book.category === 'humour' || book.category === 'humor' || !!(book.author && (book.author.toLowerCase().includes('lucas') || book.author.toLowerCase().includes('morica')));
+  if (targetCategory === 'humour' || targetCategory === 'humor') {
+    return book.category === 'humour' || book.category === 'humor';
+  }
+  if (targetCategory === 'notebooks' || targetCategory === 'notebook') {
+    return book.category === 'notebooks' || book.category === 'notebook';
+  }
+  if (targetCategory === 'lucas-c-morica') {
+    return !!(book.author && (book.author.toLowerCase().includes('lucas') || book.author.toLowerCase().includes('morica')));
   }
   return true;
 }
@@ -2421,13 +2545,14 @@ window.isBookAuthor = isBookAuthor;
 window.updateFilterCounts = updateFilterCounts;
 
 /**
- * Sets the active category filter ('all', 'bold-and-easy', 'pixel-art', 'humour') and re-renders the catalog.
+ * Sets the active category filter ('all', 'bold-and-easy', 'pixel-art', 'humour', 'notebooks') and re-renders the catalog.
  */
 function setBookFilter(filterKey) {
   let normalizedKey = filterKey;
   if (filterKey === 'isaac-mcclour') normalizedKey = 'bold-and-easy';
   else if (filterKey === 'lucia-c-marcos') normalizedKey = 'pixel-art';
-  else if (filterKey === 'lucas-c-morica' || filterKey === 'humor') normalizedKey = 'humour';
+  else if (filterKey === 'humor') normalizedKey = 'humour';
+  else if (filterKey === 'notebook' || filterKey === 'notebooks') normalizedKey = 'notebooks';
 
   currentBookFilter = normalizedKey;
 
@@ -2563,6 +2688,7 @@ window.openSampleModal = function(bookId, mode = 'preview') {
     footerEl.innerHTML = `
       <div style="display: flex; flex-direction: column; width: 100%; max-width: 380px; gap: 0.6rem; align-items: center;">
         ${buyButtonsHtml}
+        ${book.samplePdf ? `
         <button 
           type="button" 
           class="chip-sample-btn" 
@@ -2571,6 +2697,7 @@ window.openSampleModal = function(bookId, mode = 'preview') {
         >
           <span>${t.freeSampleBtn || 'Free Sample'}</span>
         </button>
+        ` : ''}
       </div>
     `;
   }
@@ -2602,6 +2729,8 @@ window.closeSampleModal = function() {
     document.body.style.overflow = '';
   }
   activePreviewBook = null;
+  isMagnifierActive = false;
+  updateMagnifierUI();
 };
 
 window.changeSamplePage = function(delta) {
@@ -2619,6 +2748,119 @@ window.changeSamplePage = function(delta) {
     updateSampleViewer();
   }
 };
+
+/**
+ * ============================================================================
+ * SAMPLE VIEWER MAGNIFIER (LENTE DI INGRANDIMENTO)
+ * ============================================================================
+ */
+let isMagnifierActive = false;
+const MAGNIFIER_ZOOM = 2.7;
+const LENS_RADIUS = 110; // 220px / 2
+
+function toggleMagnifier(e) {
+  if (e) {
+    e.stopPropagation();
+    e.preventDefault();
+  }
+  isMagnifierActive = !isMagnifierActive;
+  updateMagnifierUI();
+}
+window.toggleMagnifier = toggleMagnifier;
+
+function updateMagnifierUI() {
+  const btn = document.getElementById('modal-zoom-btn');
+  const pill = document.getElementById('sample-zoom-floating-pill');
+  const lens = document.getElementById('sample-magnifier-lens');
+  const container = document.getElementById('sample-img-container');
+
+  if (btn) btn.classList.toggle('active', isMagnifierActive);
+  if (pill) pill.classList.toggle('active', isMagnifierActive);
+  if (container) container.classList.toggle('magnifier-enabled', isMagnifierActive);
+
+  if (!isMagnifierActive && lens) {
+    lens.style.display = 'none';
+  }
+}
+window.updateMagnifierUI = updateMagnifierUI;
+
+function initMagnifierEvents() {
+  const container = document.getElementById('sample-img-container');
+  const img = document.getElementById('sample-page-img');
+  const lens = document.getElementById('sample-magnifier-lens');
+  if (!container || !img || !lens) return;
+
+  function updateLensPosition(clientX, clientY, isTouch = false) {
+    if (!isMagnifierActive) return;
+
+    const imgRect = img.getBoundingClientRect();
+    const containerRect = container.getBoundingClientRect();
+
+    if (
+      clientX < imgRect.left ||
+      clientX > imgRect.right ||
+      clientY < imgRect.top ||
+      clientY > imgRect.bottom
+    ) {
+      lens.style.display = 'none';
+      return;
+    }
+
+    lens.style.display = 'block';
+
+    const cursorContainerX = clientX - containerRect.left;
+    const cursorContainerY = clientY - containerRect.top;
+
+    const cursorImgX = clientX - imgRect.left;
+    const cursorImgY = clientY - imgRect.top;
+
+    const touchOffsetY = isTouch ? 40 : 0;
+    const lensX = cursorContainerX - LENS_RADIUS;
+    const lensY = cursorContainerY - LENS_RADIUS - touchOffsetY;
+
+    lens.style.left = `${lensX}px`;
+    lens.style.top = `${lensY}px`;
+
+    lens.style.backgroundImage = `url("${img.src}")`;
+
+    const bgWidth = imgRect.width * MAGNIFIER_ZOOM;
+    const bgHeight = imgRect.height * MAGNIFIER_ZOOM;
+    lens.style.backgroundSize = `${bgWidth}px ${bgHeight}px`;
+
+    const bgX = (cursorImgX * MAGNIFIER_ZOOM) - LENS_RADIUS;
+    const bgY = (cursorImgY * MAGNIFIER_ZOOM) - LENS_RADIUS;
+    lens.style.backgroundPosition = `-${bgX}px -${bgY}px`;
+  }
+
+  container.addEventListener('mousemove', (e) => {
+    updateLensPosition(e.clientX, e.clientY, false);
+  });
+
+  container.addEventListener('mouseleave', () => {
+    if (lens) lens.style.display = 'none';
+  });
+
+  container.addEventListener('click', (e) => {
+    if (e.target.closest('#sample-zoom-floating-pill')) return;
+    toggleMagnifier();
+    if (isMagnifierActive) {
+      updateLensPosition(e.clientX, e.clientY, false);
+    }
+  });
+
+  container.addEventListener('touchmove', (e) => {
+    if (!isMagnifierActive) return;
+    if (e.touches && e.touches.length > 0) {
+      e.preventDefault();
+      updateLensPosition(e.touches[0].clientX, e.touches[0].clientY, true);
+    }
+  }, { passive: false });
+
+  container.addEventListener('touchend', () => {
+    if (lens) lens.style.display = 'none';
+  });
+}
+window.initMagnifierEvents = initMagnifierEvents;
 
 function updateSampleViewer() {
   if (!activePreviewBook) return;
@@ -2658,6 +2900,11 @@ function updateSampleViewer() {
   }
 
   const currentSrc = pages[currentPreviewIndex];
+
+  const lens = document.getElementById('sample-magnifier-lens');
+  if (lens) {
+    lens.style.display = 'none';
+  }
 
   if (imgEl) {
     imgEl.src = currentSrc;
@@ -3370,9 +3617,13 @@ window.handleFreeSampleSubmit = async function(event) {
       }
 
       const successLuluBtn = document.getElementById('success-lulu-btn');
+      const successLuluBtnText = document.getElementById('success-lulu-btn-text');
       if (successLuluBtn) {
         if (activeSampleBook.luluUrl) {
           successLuluBtn.href = activeSampleBook.luluUrl;
+          if (successLuluBtnText) {
+            successLuluBtnText.textContent = (typeof activeT.viewOn === 'function') ? activeT.viewOn('Lulu') : (activeT.buyOnLulu || 'VEDI SU LULU');
+          }
           successLuluBtn.style.display = 'inline-flex';
         } else {
           successLuluBtn.style.display = 'none';
@@ -3728,7 +3979,7 @@ function createBookCard(book, index) {
           ${LULU_ICON_SVG}
           <span class="btn-buy-text">Lulu</span>
           <span class="lulu-store-badge">
-            <span>Store</span>
+            <span>${escapeHtml(t.storeLabel || 'Store')}</span>
             <svg class="btn-icon-mini" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
               <line x1="7" y1="17" x2="17" y2="7"></line>
               <polyline points="7 7 17 7 17 17"></polyline>
@@ -3742,13 +3993,13 @@ function createBookCard(book, index) {
         role="button" 
         aria-disabled="true" 
         tabindex="-1"
-        title="Coming soon"
+        title="${escapeHtml(t.badgeComingSoon || 'Coming Soon')}"
       >
         <div class="lulu-tall-inner">
           ${LULU_ICON_SVG}
           <span class="btn-buy-text">Lulu</span>
           <span class="lulu-store-badge lulu-badge-disabled">
-            <span>Store</span>
+            <span>${escapeHtml(t.badgeComingSoon || 'Coming Soon')}</span>
           </span>
         </div>
         <!-- Hover Overlay: Coming Soon -->
@@ -3758,7 +4009,7 @@ function createBookCard(book, index) {
               <circle cx="12" cy="12" r="10"></circle>
               <polyline points="12 6 12 12 16 14"></polyline>
             </svg>
-            <span>Coming soon</span>
+            <span>${escapeHtml(t.badgeComingSoon || 'Coming Soon')}</span>
           </span>
         </div>
       </div>
@@ -3888,8 +4139,9 @@ function renderBooks() {
 
   const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
-  // Filter books by author
-  const filteredBooks = BOOKS.filter(book => isBookAuthor(book, currentBookFilter));
+  // Filter books by language visibility and category/author
+  const visibleBooks = BOOKS.filter(book => isBookVisibleForLanguage(book, currentLanguage));
+  const filteredBooks = visibleBooks.filter(book => isBookAuthor(book, currentBookFilter));
 
   if (filteredBooks.length === 0) {
     booksContainer.innerHTML = `
@@ -4299,6 +4551,7 @@ function initApp() {
   attachEventListeners();
   initSampleModalEvents();
   initFreeSampleModalEvents();
+  initMagnifierEvents();
 
   // 3. Render page according to initial language & default filter 'all'
   updateInterfaceLanguage(currentLanguage);
