@@ -25,7 +25,7 @@ const CONFIG = {
   brandName: "Cozy Coloring Chaos",
   senderEmail: "cozycoloringchaos@gmail.com",
   adminCcEmail: "cozycoloringchaos@gmail.com",
-  siteUrl: "https://indiebookstudio.github.io/cozy-coloring-chaos/"
+  siteUrl: "https://cozycoloringchaos.com/"
 };
 
 // Rate limiter: Map<ip, Array<timestamp>>
@@ -56,20 +56,24 @@ const BOOKS = [
     title: "The Horror Pixel Show",
     subtitle: "66 Nightmares to Color by Number | A Horror Mystery Mosaic Coloring Book | Diamond-Shaped Designs | Monsters, Creatures & Dark Fantasies",
     author: "Lucia C. Marcos",
+    category: "pixel-art",
     cover: "assets/books/The.Horror.Pixel.Show/Front.Cover.png",
     samplePdf: "assets/books/The.Horror.Pixel.Show/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HK8WDHM1"
+    asin: "B0HK8WDHM1",
+    isNew: true
   },
   {
     id: "cozy-terror",
     title: "Cozy Terror",
     subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Cozy.Terror/Front.Cover.png",
     samplePdf: "assets/books/Cozy.Terror/Sample/Free.Sample.pdf",
     defaultMarket: "us",
     asin: "B0HHKY6Q8V",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/cozy-terror-bold-terrifying-coloring-book/paperback/product-45ej677.html?q=cozy+terror&page=1&pageSize=4",
     isNew: true
   },
   {
@@ -77,6 +81,7 @@ const BOOKS = [
     title: "The Cyberpunk Pixel Show",
     subtitle: "80 Cyber Dreams to Color by Number | A Relaxing Pixel Art Escape with Hidden Futuristic & Glamorous Visions to Reveal",
     author: "Lucia C. Marcos",
+    category: "pixel-art",
     cover: "assets/books/The.Cyberpunk.Pixel.Show/Front.Cover.png",
     samplePdf: "assets/books/The.Cyberpunk.Pixel.Show/Sample/Free.Sample.pdf",
     defaultMarket: "us",
@@ -88,25 +93,30 @@ const BOOKS = [
     title: "The Black Sword",
     subtitle: "An Epic Dark Fantasy Story in 100 Color-by-Number Scenes | A Story-Driven Pixel Art Coloring Book | 4mm Circles | 24 Colors | Knights, Dragons & Forgotten Worlds",
     author: "Lucia C. Marcos",
+    category: "pixel-art",
     cover: "assets/books/The.Black.Sword/Front.Cover.png",
     samplePdf: "assets/books/The.Black.Sword/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HJ92FNRK"
+    asin: "B0HJ92FNRK",
+    isNew: true
   },
   {
     id: "homer-in-circles",
     title: "Homer in Circles",
     subtitle: "A Monochromatic Greek Mythology Coloring Book | The Iliad & The Odyssey in 54 Monochromatic Circle-Art Illustrations | 1 Color",
     author: "Lucia C. Marcos",
+    category: "pixel-art",
     cover: "assets/books/Homer.In.Circles/Front.Cover.png",
     samplePdf: "assets/books/Homer.In.Circles/Sample/Free.Sample.pdf",
-    defaultMarket: "us"
+    defaultMarket: "us",
+    isComingSoon: true
   },
   {
     id: "innocent-paws",
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Innocent.Paws/Front.Cover.png",
     samplePdf: "assets/books/Innocent.Paws/Sample/Free.Sample.pdf",
     defaultMarket: "us",
@@ -117,6 +127,7 @@ const BOOKS = [
     title: "Killer Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Killer.Paws/Front.Cover.png",
     samplePdf: "assets/books/Killer.Paws/Sample/Free.Sample.pdf",
     defaultMarket: "us",
@@ -127,6 +138,7 @@ const BOOKS = [
     title: "Impossible Worlds",
     subtitle: "Cozy & Easy Coloring Book | Adorable Animals, Absurd Places, and Wonderfully Impossible Surprises",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Impossible.Worlds/Front.Cover.png",
     samplePdf: "assets/books/Impossible.Worlds/Sample/Free.Sample.pdf",
     defaultMarket: "us",
@@ -137,30 +149,48 @@ const BOOKS = [
     title: "Crazy Cozy",
     subtitle: "Bold & Easy Coloring Book | Adorable Objects, Ridiculous Personalities, and Wonderfully Absurd Situations",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Crazy.Cozy/Front.Cover.png",
     samplePdf: "assets/books/Crazy.Cozy/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HHZWYGNF"
+    asin: "B0HHZWYGNF",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/crazy-cozy/paperback/product-q67jpjz.html?page=1&pageSize=4",
+    isNew: true
   },
   {
     id: "italian-girls",
     title: "Italian Girls",
     subtitle: "Cozy & Easy Coloring Book | Cute Italian Girls, Relaxing Coloring Pages, Italian Lifestyle, Fashion & Everyday Moments",
     author: "Isaac McClour",
+    category: "bold-and-easy",
     cover: "assets/books/Italian.Girls/Front.Cover.png",
     samplePdf: "assets/books/Italian.Girls/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    asin: "B0HGJBKMGZ"
+    asin: "B0HGJBKMGZ",
+    luluUrl: "https://www.lulu.com/shop/isaac-mcclour/italian-girls-cozy-easy-coloring-book/paperback/product-v8nqpnv.html?page=1&pageSize=4"
   },
   {
     id: "non-rompetemi-i-coglioni",
     title: "Non Rompetemi i Coglioni",
     subtitle: "Il libro da colorare per sfogarsi senza finire nei guai | Libro antistress kawaii per adulti",
     author: "Lucas C. Morica",
+    category: "humour",
     cover: "assets/books/Non.Rompetemi.I.Coglioni/Front.Cover.png",
     samplePdf: "assets/books/Non.Rompetemi.I.Coglioni/Sample/Free.Sample.pdf",
     defaultMarket: "it",
     asin: "B0HF7WZBYD"
+  },
+  {
+    id: "non-mi-ricordo-mai-un-cazzo",
+    title: "Non mi ricordo mai un cazzo",
+    subtitle: "Per questo me lo scrivo | Il quaderno divertente e senza date per organizzare cose da fare, appuntamenti e password, per chi dimentica tutto",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Sample/Free.Sample.pdf",
+    defaultMarket: "it",
+    asin: "B0HLSY8JCZ",
+    isNew: true
   }
 ];
 
@@ -190,127 +220,163 @@ const EMAIL_I18N = {
     langHtml: "it",
     subject: (title) => `${title} - Download Sample Gratuito`,
     greeting: (f, l) => `Ciao ${f} ${l}!`.trim(),
-    intro: (title) => `Grazie per il tuo interesse per <strong>${title}</strong>.<br>In <strong>allegato a questa email</strong> trovi il file PDF del <strong>Sample Gratuito</strong> con alcune delle pagine più rilassanti e divertenti pronte da stampare e colorare!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Grazie per il tuo interesse per <strong>${title}</strong>.<br>In <strong>allegato a questa email</strong> trovi il file PDF del <strong>Sample Gratuito</strong> pronto da stampare e provare subito!`
+      : `Grazie per il tuo interesse per <strong>${title}</strong>.<br>In <strong>allegato a questa email</strong> trovi il file PDF del <strong>Sample Gratuito</strong> con alcune delle pagine più rilassanti e divertenti pronte da stampare e colorare!`,
     badge: "File PDF allegato a questa email",
-    ctaTitle: "Ti piacciono queste pagine?",
-    ctaDesc: "Scopri l'intero libro con tutte le illustrazioni originali in alta qualità ordinate comodamente su Amazon!",
+    ctaTitle: () => "Ti piacciono queste pagine?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Scopri l'intero quaderno con tutte le sezioni e le pagine originali ordinato comodamente su Amazon!"
+      : "Scopri l'intero libro con tutte le illustrazioni originali in alta qualità ordinate comodamente su Amazon!",
     buyBtn: (m) => `ACQUISTA SU ${m.toUpperCase()}`,
-    morePrompt: "Vuoi scoprire tutti i libri da colorare della nostra collezione?",
+    morePrompt: "Vuoi scoprire tutti i libri della nostra collezione?",
     moreLink: "Visita il sito Cozy Coloring Chaos",
     copyright: "Tutti i diritti riservati.",
-    disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su cozycoloringchaos.com"
   },
   en: {
     langHtml: "en",
     subject: (title) => `${title} - Free Sample Download`,
     greeting: (f, l) => `Hello ${f} ${l}!`.trim(),
-    intro: (title) => `Thank you for your interest in <strong>${title}</strong>.<br><strong>Attached to this email</strong> you will find the <strong>Free Sample PDF</strong> with selected cozy coloring pages ready to print and color!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Thank you for your interest in <strong>${title}</strong>.<br><strong>Attached to this email</strong> you will find the <strong>Free Sample PDF</strong> ready to print and use!`
+      : `Thank you for your interest in <strong>${title}</strong>.<br><strong>Attached to this email</strong> you will find the <strong>Free Sample PDF</strong> with selected cozy coloring pages ready to print and color!`,
     badge: "PDF file attached to this email",
-    ctaTitle: "Loving these coloring pages?",
-    ctaDesc: "Get the full book with all original high-quality illustrations delivered right to your door on Amazon!",
+    ctaTitle: () => "Loving these pages?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Get the full notebook delivered right to your door on Amazon!"
+      : "Get the full book with all original high-quality illustrations delivered right to your door on Amazon!",
     buyBtn: (m) => `BUY ON ${m.toUpperCase()}`,
-    morePrompt: "Want to explore more cozy coloring books from our collection?",
+    morePrompt: "Want to explore more books from our collection?",
     moreLink: "Visit Cozy Coloring Chaos",
     copyright: "All rights reserved.",
-    disclaimer: "You are receiving this email because you requested a free sample on indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "You are receiving this email because you requested a free sample on cozycoloringchaos.com"
   },
   de: {
     langHtml: "de",
     subject: (title) => `${title} - Kostenlose Leseprobe Download`,
     greeting: (f, l) => `Hallo ${f} ${l}!`.trim(),
-    intro: (title) => `Vielen Dank für dein Interesse an <strong>${title}</strong>.<br>Im <strong>Anhang dieser E-Mail</strong> findest du das <strong>kostenlose PDF-Sample</strong> mit ausgewählten Seiten zum Ausdrucken und Ausmalen!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Vielen Dank für dein Interesse an <strong>${title}</strong>.<br>Im <strong>Anhang dieser E-Mail</strong> findest du das <strong>kostenlose PDF-Sample</strong> zum Ausdrucken und Ausprobieren!`
+      : `Vielen Dank für dein Interesse an <strong>${title}</strong>.<br>Im <strong>Anhang dieser E-Mail</strong> findest du das <strong>kostenlose PDF-Sample</strong> mit ausgewählten Seiten zum Ausdrucken und Ausmalen!`,
     badge: "PDF-Datei im E-Mail-Anhang",
-    ctaTitle: "Gefallen dir diese Malvorlagen?",
-    ctaDesc: "Hol dir das komplette Buch mit allen Original-Illustrationen in bester Druckqualität direkt bei Amazon!",
+    ctaTitle: () => "Gefallen dir diese Seiten?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Hol dir das komplette Notizbuch direkt bei Amazon!"
+      : "Hol dir das komplette Buch mit allen Original-Illustrationen in bester Druckqualität direkt bei Amazon!",
     buyBtn: (m) => `BEI ${m.toUpperCase()} KAUFEN`,
-    morePrompt: "Möchtest du weitere Malbücher unserer Kollektion entdecken?",
+    morePrompt: "Möchtest du weitere Bücher unserer Kollektion entdecken?",
     moreLink: "Besuche Cozy Coloring Chaos",
     copyright: "Alle Rechte vorbehalten.",
-    disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf indiebookstudio.github.io/cozy-coloring-chaos/ angefordert hast."
+    disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf cozycoloringchaos.com angefordert hast."
   },
   fr: {
     langHtml: "fr",
     subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit`,
     greeting: (f, l) => `Bonjour ${f} ${l} !`.trim(),
-    intro: (title) => `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> prêt à imprimer et à utiliser !`
+      : `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
     badge: "Fichier PDF en pièce jointe",
-    ctaTitle: "Vous aimez ces coloriages ?",
-    ctaDesc: "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
+    ctaTitle: () => "Vous aimez ces pages ?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Commandez le carnet complet directement sur Amazon !"
+      : "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
     buyBtn: (m) => `ACHETER SUR ${m.toUpperCase()}`,
     morePrompt: "Envie de découvrir tous les livres de notre collection ?",
     moreLink: "Visiter Cozy Coloring Chaos",
     copyright: "Tous droits réservés.",
-    disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur cozycoloringchaos.com"
   },
   es: {
     langHtml: "es",
     subject: (title) => `${title} - Descarga de Muestra Gratis`,
     greeting: (f, l) => `¡Hola ${f} ${l}!`.trim(),
-    intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y usar.`
+      : `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
     badge: "Archivo PDF adjunto a este correo",
-    ctaTitle: "¿Te encantan estas ilustraciones?",
-    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
+    ctaTitle: () => "¿Te encantan estas páginas?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "¡Consigue el cuaderno completo directamente en Amazon!"
+      : "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
     buyBtn: (m) => `COMPRAR EN ${m.toUpperCase()}`,
-    morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
+    morePrompt: "¿Quieres descubrir todos los libros de nuestra colección?",
     moreLink: "Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
-    disclaimer: "Recibes este correo perché hai richiesto un sample su indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en cozycoloringchaos.com"
   },
   nl: {
     langHtml: "nl",
     subject: (title) => `${title} - Gratis Sample Download`,
     greeting: (f, l) => `Hallo ${f} ${l}!`.trim(),
-    intro: (title) => `Bedankt voor je interesse in <strong>${title}</strong>.<br>In de <strong>bijlage van deze e-mail</strong> vind je het <strong>gratis PDF-sample</strong> met leuke kleurplaten om direct te printen en in te kleuren!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Bedankt voor je interesse in <strong>${title}</strong>.<br>In de <strong>bijlage van deze e-mail</strong> vind je het <strong>gratis PDF-sample</strong> om direct te printen en te gebruiken!`
+      : `Bedankt voor je interesse in <strong>${title}</strong>.<br>In de <strong>bijlage van deze e-mail</strong> vind je het <strong>gratis PDF-sample</strong> met leuke kleurplaten om direct te printen en in te kleuren!`,
     badge: "PDF-bestand in de bijlage",
-    ctaTitle: "Vind je deze kleurplaten leuk?",
-    ctaDesc: "Bestel het complete kleurboek met alle originele illustraties eenvoudig op Amazon!",
+    ctaTitle: () => "Vind je deze pagina's leuk?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Bestel het complete notitieboek eenvoudig op Amazon!"
+      : "Bestel het complete kleurboek met alle originele illustraties eenvoudig op Amazon!",
     buyBtn: (m) => `KOOP OP ${m.toUpperCase()}`,
-    morePrompt: "Wil je meer gezellige kleurboeken ontdekken?",
+    morePrompt: "Wil je meer boeken uit onze collectie ontdekken?",
     moreLink: "Bezoek Cozy Coloring Chaos",
     copyright: "Alle rechten voorbehouden.",
-    disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op cozycoloringchaos.com"
   },
   pl: {
     langHtml: "pl",
     subject: (title) => `${title} - Pobierz Darmową Próbkę`,
     greeting: (f, l) => `Cześć ${f} ${l}!`.trim(),
-    intro: (title) => `Dziękujemy za zainteresowanie książką <strong>${title}</strong>.<br>W <strong>załączniku do tej wiadomości</strong> znajdziesz <strong>darmową próbkę PDF</strong> ze stronami gotowymi do wydrukowania i kolorowania!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Dziękujemy za zainteresowanie książką <strong>${title}</strong>.<br>W <strong>załączniku do tej wiadomości</strong> znajdziesz <strong>darmową próbkę PDF</strong> ze stronami gotowymi do wydrukowania i użycia!`
+      : `Dziękujemy za zainteresowanie książką <strong>${title}</strong>.<br>W <strong>załączniku do tej wiadomości</strong> znajdziesz <strong>darmową próbkę PDF</strong> ze stronami gotowymi do wydrukowania i kolorowania!`,
     badge: "Plik PDF w załączniku",
-    ctaTitle: "Podobają Ci się te ilustracje?",
-    ctaDesc: "Zamów pełną książkę ze wszystkimi oryginalnymi ilustracjami w wysokiej jakości na Amazon!",
+    ctaTitle: () => "Podobają Ci się te strony?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Zamów pełny notatnik w wysokiej jakości na Amazon!"
+      : "Zamów pełną książkę ze wszystkimi oryginalnymi ilustracjami w wysokiej jakości na Amazon!",
     buyBtn: (m) => `KUP NA ${m.toUpperCase()}`,
-    morePrompt: "Chcesz poznać wszystkie nasze kolorowanki?",
+    morePrompt: "Chcesz poznać wszystkie nasze książki?",
     moreLink: "Odwiedź Cozy Coloring Chaos",
     copyright: "Wszelkie prawa zastrzeżone.",
-    disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na cozycoloringchaos.com"
   },
   sv: {
     langHtml: "sv",
     subject: (title) => `${title} - Ladda ner Gratis Prov`,
     greeting: (f, l) => `Hej ${f} ${l}!`.trim(),
-    intro: (title) => `Tack för ditt intresse för <strong>${title}</strong>.<br>I <strong>bilagan till detta e-postmeddelande</strong> hittar du ditt <strong>gratis PDF-prov</strong> med mysiga målarbilder redo att skrivas ut och färgläggas!`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Tack för ditt intresse för <strong>${title}</strong>.<br>I <strong>bilagan till detta e-postmeddelande</strong> hittar du ditt <strong>gratis PDF-prov</strong> redo att skrivas ut och användas!`
+      : `Tack för ditt intresse för <strong>${title}</strong>.<br>I <strong>bilagan till detta e-postmeddelande</strong> hittar du ditt <strong>gratis PDF-prov</strong> med mysiga målarbilder redo att skrivas ut och färgläggas!`,
     badge: "PDF-fil bifogad i detta mejl",
-    ctaTitle: "Gillar du dessa målarbilder?",
-    ctaDesc: "Beställ hela boken med alla originalillustrationer i högsta kvalitet direkt från Amazon!",
+    ctaTitle: () => "Gillar du dessa sidor?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Beställ hela boken direkt från Amazon!"
+      : "Beställ hela boken med alla originalillustrationer i högsta kvalitet direkt från Amazon!",
     buyBtn: (m) => `KÖP PÅ ${m.toUpperCase()}`,
-    morePrompt: "Vill du utforska fler målarböcker från vår kollektion?",
+    morePrompt: "Vill du utforska fler böcker från vår kollektion?",
     moreLink: "Besök Cozy Coloring Chaos",
     copyright: "Alla rättigheter förbehållna.",
-    disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på cozycoloringchaos.com"
   },
   ja: {
     langHtml: "ja",
     subject: (title) => `${title} - 無料サンプルダウンロード`,
     greeting: (f, l) => `こんにちは、${l ? l + ' ' : ''}${f} 様`.trim(),
-    intro: (title) => `『<strong>${title}</strong>』にご興味をお持ちいただきありがとうございます。<br>このメールに<strong>無料サンプルPDF</strong>を<strong>添付</strong>いたしました。印刷してすぐにぬりえをお楽しみいただけます！`,
+    intro: (title, category) => category === 'notebooks'
+      ? `『<strong>${title}</strong>』にご興味をお持ちいただきありがとうございます。<br>このメールに<strong>無料サンプルPDF</strong>を<strong>添付</strong>いたしました。印刷してすぐにお使いいただけます！`
+      : `『<strong>${title}</strong>』にご興味をお持ちいただきありがとうございます。<br>このメールに<strong>無料サンプルPDF</strong>を<strong>添付</strong>いたしました。印刷してすぐにぬりえをお楽しみいただけます！`,
     badge: "PDFファイルを添付しています",
-    ctaTitle: "これらのイラストを気に入っていただけましたか？",
-    ctaDesc: "すべてのオリジナル高画質イラストが収録された完全版をAmazonでお求めいただけます！",
+    ctaTitle: () => "これらのページを気に入っていただけましたか？",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Amazonにて完全版をお求めいただけます！"
+      : "すべてのオリジナル高画質イラストが収録された完全版をAmazonでお求めいただけます！",
     buyBtn: (m) => `${m.toUpperCase()} で購入する`,
-    morePrompt: "他のぬりえ本コレクションも見てみませんか？",
+    morePrompt: "他のコレクションも見てみませんか？",
     moreLink: "Cozy Coloring Chaos 公式サイトへ",
     copyright: "無断転載を禁じます。",
-    disclaimer: "このメールは indiebookstudio.github.io/cozy-coloring-chaos/ にて無料サンプルをご請求いただいた方にお送りしています。"
+    disclaimer: "このメールは cozycoloringchaos.com にて無料サンプルをご請求いただいた方にお送りしています。"
   }
 };
 
@@ -384,6 +450,10 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
   const safeFirst = escapeHtml(firstName || '');
   const safeLast = escapeHtml(lastName || '');
 
+  const introText = typeof et.intro === 'function' ? et.intro(safeTitle, book.category) : et.intro;
+  const ctaTitleText = typeof et.ctaTitle === 'function' ? et.ctaTitle(book.category) : et.ctaTitle;
+  const ctaDescText = typeof et.ctaDesc === 'function' ? et.ctaDesc(book.category) : et.ctaDesc;
+
   return `
 <!DOCTYPE html>
 <html lang="${et.langHtml || 'en'}">
@@ -405,7 +475,7 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
         <h2 style="font-size: 22px; font-weight: 800; color: #1C1917; margin: 0 0 12px 0;">${et.greeting(safeFirst, safeLast)}</h2>
         
         <p style="font-size: 15px; line-height: 1.6; color: #44403C; margin: 0 0 24px 0;">
-          ${et.intro(safeTitle)}
+          ${introText}
         </p>
 
         <table align="center" border="0" cellpadding="0" cellspacing="0" style="margin: 20px auto; max-width: 240px;">
@@ -427,13 +497,20 @@ function buildEmailHtml({ firstName, lastName, book, amazonUrl, marketInfo, coun
         <table align="center" border="0" cellpadding="0" cellspacing="0" width="100%" style="background-color: #FFF7ED; border: 1.5px solid #FFEDD5; border-radius: 14px; margin: 24px 0;">
           <tr>
             <td style="padding: 24px 20px; text-align: center;">
-              <h3 style="margin: 0 0 8px 0; color: #9A3412; font-size: 17px; font-weight: 800;">${et.ctaTitle}</h3>
+              <h3 style="margin: 0 0 8px 0; color: #9A3412; font-size: 17px; font-weight: 800;">${ctaTitleText}</h3>
               <p style="margin: 0 0 18px 0; color: #7C2D12; font-size: 14px; line-height: 1.5;">
-                ${et.ctaDesc}
+                ${ctaDescText}
               </p>
-              <a href="${amazonUrl}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #FF5436 0%, #E03E22 100%); background-color: #FF5436; color: #FFFFFF !important; text-decoration: none; font-size: 14px; font-weight: 800; padding: 14px 28px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 4px 14px rgba(255,84,54,0.35);">
-                ${et.buyBtn(escapeHtml(marketLabel))}
-              </a>
+              <div style="margin: 10px 0;">
+                <a href="${amazonUrl}" target="_blank" style="display: inline-block; background: linear-gradient(135deg, #FF5436 0%, #E03E22 100%); background-color: #FF5436; color: #FFFFFF !important; text-decoration: none; font-size: 14px; font-weight: 800; padding: 14px 28px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 4px 14px rgba(255,84,54,0.35); margin: 6px 4px;">
+                  ${et.buyBtn(escapeHtml(marketLabel))}
+                </a>
+                ${book.luluUrl ? `
+                <a href="${book.luluUrl}" target="_blank" style="display: inline-block; background-color: #292524; color: #FFFFFF !important; text-decoration: none; font-size: 14px; font-weight: 800; padding: 14px 28px; border-radius: 50px; text-transform: uppercase; letter-spacing: 0.05em; box-shadow: 0 4px 14px rgba(0,0,0,0.18); margin: 6px 4px;">
+                  ACQUISTA SU LULU
+                </a>
+                ` : ''}
+              </div>
             </td>
           </tr>
         </table>
@@ -511,15 +588,23 @@ export default async function handler(req) {
     const lastName = (body.lastName || body.last_name || '').trim().substring(0, 100);
     const countryCode = (body.countryCode || body.country || 'us').trim().toLowerCase().substring(0, 10);
     const requestedLang = (body.lang || body.language || '').trim().toLowerCase().substring(0, 10);
-    const bookId = (body.bookId || body.book_id || 'impossible-worlds').trim().toLowerCase();
+    const bookId = (body.bookId || body.book_id || '').trim().toLowerCase();
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     if (!email || !emailRegex.test(email) || email.length > 254) {
       return jsonResponse({ success: false, error: "Please provide a valid email address." }, 400);
     }
 
+    if (!bookId) {
+      return jsonResponse({ success: false, error: "Please provide a valid bookId." }, 400);
+    }
+
     // 6. Metadata & Localization
-    const book = BOOKS.find(b => b.id === bookId) || BOOKS[0];
+    const book = BOOKS.find(b => b.id === bookId);
+    if (!book) {
+      console.error(`[Sample Error] Book not found for id: '${bookId}'`);
+      return jsonResponse({ success: false, error: `Book '${bookId}' not found.` }, 400);
+    }
     const marketKey = getMarketKey(countryCode, requestedLang);
     const marketInfo = AMAZON_MARKETS[marketKey] || AMAZON_MARKETS.us;
     const amazonUrl = getBookAmazonUrl(book, marketKey);

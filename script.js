@@ -498,7 +498,7 @@ const SAMPLE_COUNTRIES = [
 // Zero secrets are ever included in the frontend or Git repository.
 const EMAIL_CONFIG = {
   ccEmail: "cozycoloringchaos@gmail.com",
-  siteUrl: "https://indiebookstudio.github.io/cozy-coloring-chaos/",
+  siteUrl: "https://cozycoloringchaos.com/",
   brandName: "Cozy Coloring Chaos",
   
   // Serverless backend endpoint
@@ -3062,7 +3062,7 @@ const EMAIL_I18N = {
     morePrompt: "Vuoi scoprire tutti i libri da colorare della nostra collezione?",
     moreLink: "Visita il sito Cozy Coloring Chaos",
     copyright: "Tutti i diritti riservati.",
-    disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Ricevi questa email perché hai richiesto un sample gratuito su cozycoloringchaos.com"
   },
   en: {
     langHtml: "en",
@@ -3076,7 +3076,7 @@ const EMAIL_I18N = {
     morePrompt: "Want to explore more cozy coloring books from our collection?",
     moreLink: "Visit Cozy Coloring Chaos",
     copyright: "All rights reserved.",
-    disclaimer: "You are receiving this email because you requested a free sample on indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "You are receiving this email because you requested a free sample on cozycoloringchaos.com"
   },
   de: {
     langHtml: "de",
@@ -3090,7 +3090,7 @@ const EMAIL_I18N = {
     morePrompt: "Möchtest du weitere Malbücher unserer Kollektion entdecken?",
     moreLink: "Besuche Cozy Coloring Chaos",
     copyright: "Alle Rechte vorbehalten.",
-    disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf indiebookstudio.github.io/cozy-coloring-chaos/ angefordert hast."
+    disclaimer: "Du erhältst diese E-Mail, weil du eine kostenlose Leseprobe auf cozycoloringchaos.com angefordert hast."
   },
   fr: {
     langHtml: "fr",
@@ -3104,7 +3104,7 @@ const EMAIL_I18N = {
     morePrompt: "Envie de découvrir tous les livres de notre collection ?",
     moreLink: "Visiter Cozy Coloring Chaos",
     copyright: "Tous droits réservés.",
-    disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Vous recevez cet e-mail suite à votre demande d'extrait gratuit sur cozycoloringchaos.com"
   },
   es: {
     langHtml: "es",
@@ -3118,7 +3118,7 @@ const EMAIL_I18N = {
     morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
     moreLink: "Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
-    disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en cozycoloringchaos.com"
   },
   nl: {
     langHtml: "nl",
@@ -3132,7 +3132,7 @@ const EMAIL_I18N = {
     morePrompt: "Wil je meer gezellige kleurboeken ontdekken?",
     moreLink: "Bezoek Cozy Coloring Chaos",
     copyright: "Alle rechten voorbehouden.",
-    disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Je ontvangt deze e-mail omdat je een gratis sample hebt aangevraagd op cozycoloringchaos.com"
   },
   pl: {
     langHtml: "pl",
@@ -3146,7 +3146,7 @@ const EMAIL_I18N = {
     morePrompt: "Chcesz poznać wszystkie nasze kolorowanki?",
     moreLink: "Odwiedź Cozy Coloring Chaos",
     copyright: "Wszelkie prawa zastrzeżone.",
-    disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Otrzymujesz tę wiadomość, ponieważ poprosiłeś o darmową próbkę na cozycoloringchaos.com"
   },
   sv: {
     langHtml: "sv",
@@ -3160,7 +3160,7 @@ const EMAIL_I18N = {
     morePrompt: "Vill du utforska fler målarböcker från vår kollektion?",
     moreLink: "Besök Cozy Coloring Chaos",
     copyright: "Alla rättigheter förbehållna.",
-    disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på indiebookstudio.github.io/cozy-coloring-chaos/"
+    disclaimer: "Du får detta e-postmeddelande eftersom du begärde ett gratis prov på cozycoloringchaos.com"
   },
   ja: {
     langHtml: "ja",
@@ -3174,7 +3174,7 @@ const EMAIL_I18N = {
     morePrompt: "他のぬりえ本コレクションも見てみませんか？",
     moreLink: "Cozy Coloring Chaos 公式サイトへ",
     copyright: "無断転載を禁じます。",
-    disclaimer: "このメールは indiebookstudio.github.io/cozy-coloring-chaos/ にて無料サンプルをご請求いただいた方にお送りしています。"
+    disclaimer: "このメールは cozycoloringchaos.com にて無料サンプルをご請求いただいた方にお送りしています。"
   }
 };
 
