@@ -250,6 +250,20 @@ window.handleAdminSearch = function() {
   renderAdminTable(filtered);
 };
 
+window.handleAdminThumbError = function(img, localFallback, bookSlug) {
+  img.onerror = null; // PREVENT RECURSIVE LOOPING
+  const targetFallback = localFallback || 'assets/icon.png';
+  if (img.src && (img.src.endsWith(targetFallback) || img.src.includes(targetFallback))) {
+    img.src = 'assets/icon.png';
+    return;
+  }
+  img.onerror = function() {
+    img.onerror = null;
+    img.src = 'assets/icon.png';
+  };
+  img.src = targetFallback;
+};
+
 /**
  * Renders the videos in the admin table.
  */
@@ -277,24 +291,38 @@ function renderAdminTable(videos) {
     const localFallback = `assets/fan-videos/${v.tiktok_video_id}.jpg`;
     const thumb = v.thumbnail_url || localFallback;
 
+    let adminAvatar = v.creator_avatar_url || '';
+    const uLower = (v.creator_username || '').toLowerCase();
+    if (!adminAvatar && uLower === 'cozycoloringchaos') adminAvatar = 'assets/icon.png';
+    else if (!adminAvatar && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
+      adminAvatar = `assets/fan-videos/avatars/${v.creator_username}.jpg`;
+    }
+
+    const avatarHtml = adminAvatar ? `
+      <img 
+        src="${escapeHtml(adminAvatar)}" 
+        alt="" 
+        style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--color-border);"
+        onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"
+      >
+      <div style="display: none; width: 32px; height: 32px; border-radius: 50%; background: var(--color-bg-card); border: 1px solid var(--color-border); align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">${(v.creator_username || 'C').charAt(0).toUpperCase()}</div>
+    ` : `
+      <div style="display: flex; width: 32px; height: 32px; border-radius: 50%; background: var(--color-bg-card); border: 1px solid var(--color-border); align-items: center; justify-content: center; font-weight: bold; font-size: 0.8rem; flex-shrink: 0;">${(v.creator_username || 'C').charAt(0).toUpperCase()}</div>
+    `;
+
     return `
       <tr data-id="${v.id}">
         <td>
           <img 
-            src="${thumb}" 
+            src="${escapeHtml(thumb)}" 
             alt="Thumb" 
             class="admin-table-thumb" 
-            onerror="if(this.src!=='${localFallback}') this.src='${localFallback}';"
+            onerror="handleAdminThumbError(this, '${escapeHtml(localFallback)}', '${escapeHtml(v.book_slug || '')}')"
           >
         </td>
         <td>
           <div style="display: flex; align-items: center; gap: 0.65rem;">
-            <img 
-              src="${v.creator_avatar_url || `assets/fan-videos/avatars/${v.creator_username}.jpg`}" 
-              alt="" 
-              style="width: 32px; height: 32px; border-radius: 50%; object-fit: cover; flex-shrink: 0; border: 1px solid var(--color-border);"
-              onerror="this.style.display='none';"
-            >
+            ${avatarHtml}
             <div class="admin-table-creator">
               <strong>${escapeHtml(v.creator_name || v.creator_username)}</strong>
               <a href="${v.creator_profile_url || `https://www.tiktok.com/@${v.creator_username}`}" target="_blank" class="admin-table-handle">

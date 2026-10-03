@@ -12,6 +12,139 @@
 // Fallback dataset in case API is unreachable or during static preview
 const FALLBACK_VIDEOS = [
   {
+    id: "video-7692364197023321376",
+    tiktok_url: "https://www.tiktok.com/@craftyclare21/video/7692364197023321376",
+    tiktok_video_id: "7692364197023321376",
+    creator_username: "craftyclare21",
+    creator_name: "CraftyClare",
+    creator_profile_url: "https://www.tiktok.com/@craftyclare21",
+    creator_avatar_url: "assets/fan-videos/avatars/craftyclare21.jpg",
+    caption: "@Cozy Coloring Chaos #colourtok #colouringinspiration #colouringbooks #ohuhuhonoluluseries #colortokcommunity",
+    thumbnail_url: "assets/fan-videos/7692364197023321376.jpg",
+    book_slug: "cozy-terror",
+    category: "coloring",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-10-03T09:11:07.687Z",
+    updated_at: "2026-10-03T09:11:07.687Z"
+  },
+  {
+    id: "video-7691687371850468630",
+    tiktok_url: "https://www.tiktok.com/@cozycoloringchaos/video/7691687371850468630",
+    tiktok_video_id: "7691687371850468630",
+    creator_username: "cozycoloringchaos",
+    creator_name: "Cozy Coloring Chaos",
+    creator_profile_url: "https://www.tiktok.com/@cozycoloringchaos",
+    creator_avatar_url: "assets/icon.png",
+    caption: "🔥 TWO SHADES OF RED. ONE DEMON TO REVEAL. 🔥 It starts as a grid of mysterious pixels… then, color by color, the nightmare comes to life. 😈🔴 From the first pixel to the final reveal. 🩸 THE HORROR PIXEL SHOW 66 Nightmares to Color by Number by Lucia C. Marcos 👁️ Can you guess the image before it’s finished? Perfect for Halloween, don't you think? 📚 Available now on Amazon 🌐 cozycoloringchaos.com #TheHorrorPixelShow #LuciaCMarcos #PixelArt #ColorByNumber #HorrorColoringBook",
+    thumbnail_url: "assets/fan-videos/7691687371850468630.jpg",
+    book_slug: "the-horror-pixel-show",
+    category: "coloring",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-10-01T13:18:20.529Z",
+    updated_at: "2026-10-01T13:18:20.529Z"
+  },
+  {
+    id: "video-7691583050957770006",
+    tiktok_url: "https://www.tiktok.com/@leanne.stacy/video/7691583050957770006",
+    tiktok_video_id: "7691583050957770006",
+    creator_username: "leanne.stacy",
+    creator_name: "Leanne Stacy",
+    creator_profile_url: "https://www.tiktok.com/@leanne.stacy",
+    creator_avatar_url: "",
+    caption: "66 mystery nightmares to colour by numbers. Check out @Cozy Coloring Chaos profile and click the link in her bio to purchase. #nightmares #colouring #colourbynumbers #colouringbook",
+    thumbnail_url: "assets/fan-videos/7691583050957770006.jpg",
+    book_slug: "the-horror-pixel-show",
+    category: "flip-through",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-10-01T07:04:45.716Z",
+    updated_at: "2026-10-01T07:04:45.716Z"
+  },
+  {
+    id: "video-7691419056930426134",
+    tiktok_url: "https://www.tiktok.com/@cozycoloringchaos/video/7691419056930426134",
+    tiktok_video_id: "7691419056930426134",
+    creator_username: "cozycoloringchaos",
+    creator_name: "Cozy Coloring Chaos",
+    creator_profile_url: "https://www.tiktok.com/@cozycoloringchaos",
+    creator_avatar_url: "assets/icon.png",
+    caption: "🐾 INNOCENT PAWS 🐾 Just cute cats. Just cozy moments. Just paws, whiskers… and absolutely NO crimes. 😇🐱 Flip through Innocent Paws, a bold & easy coloring book made for relaxing, switching off your brain, and enjoying ridiculously adorable cats. ✨ 🎨 Cute & cozy scenes 🐱 Bold & easy designs 🖍️ Perfect for markers 🧘 Zero stress. Zero danger. Only paws. Innocent Paws by Isaac McClour 📚 Available on Amazon 🌐 cozycoloringchaos.com #InnocentPaws #ColoringBook #AdultColoring #CozyColoring #BoldAndEasy",
+    thumbnail_url: "assets/fan-videos/7691419056930426134.jpg",
+    book_slug: "innocent-paws",
+    category: "flip-through",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-10-01T05:35:10.737Z",
+    updated_at: "2026-10-01T05:35:10.737Z"
+  },
+  {
+    id: "video-7691561253742923030",
+    tiktok_url: "https://www.tiktok.com/@cozycoloringchaos/video/7691561253742923030",
+    tiktok_video_id: "7691561253742923030",
+    creator_username: "cozycoloringchaos",
+    creator_name: "Cozy Coloring Chaos",
+    creator_profile_url: "https://www.tiktok.com/@cozycoloringchaos",
+    creator_avatar_url: "assets/icon.png",
+    caption: "THE NIGHTMARE HAS ARRIVED. 🩸📦 Unboxing my copy of THE HORROR PIXEL SHOW for the very first time. 66 nightmares. 16 colors. Hundreds of tiny diamond-shaped pixels. And absolutely no cute stuff inside. 💀 You won't know exactly what's hiding on the page until you start coloring... Monstrous creatures. Possessed beauties. Grotesque transformations. And rivers of blood. 🩸 Are you ready to discover what's hiding in the pixels? THE HORROR PIXEL SHOW by Lucia C. Marcos Available now on Amazon. #TheHorrorPixelShow #HorrorColoringBook #ColorByNumber #AdultColoringBook #HorrorArt",
+    thumbnail_url: "assets/fan-videos/7691561253742923030.jpg",
+    book_slug: "the-horror-pixel-show",
+    category: "unboxing",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-10-01T05:31:16.141Z",
+    updated_at: "2026-10-01T05:31:16.141Z"
+  },
+  {
+    id: "video-7689668404634062132",
+    tiktok_url: "https://www.tiktok.com/@color.learning.jo/video/7689668404634062132",
+    tiktok_video_id: "7689668404634062132",
+    creator_username: "color.learning.jo",
+    creator_name: "Color Learning journy",
+    creator_profile_url: "https://www.tiktok.com/@color.learning.jo",
+    creator_avatar_url: "",
+    caption: "I’ve been waiting for a long time for this one !!! Books: Italian Girl by Issac Mcclour @Cozy Coloring Chaos Splendid moments by Alexander Sawyer @Alex Sawyer coloring books Girls moment by Coco Wyo @cocowyocoloring Kalour Colors All of this you can get in my list at the link in the bio ❤️ #unboxing #coloringsupplies #adultcoloringbook #cocowyo #jadesummer",
+    thumbnail_url: "assets/fan-videos/7689668404634062132.jpg",
+    book_slug: "italian-girls",
+    category: "unboxing",
+    language: "en",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-09-30T18:54:28.864Z",
+    updated_at: "2026-09-30T18:54:28.864Z"
+  },
+  {
+    id: "video-7690899420019215649",
+    tiktok_url: "https://www.tiktok.com/@cozy.sparkles90/video/7690899420019215649",
+    tiktok_video_id: "7690899420019215649",
+    creator_username: "cozy.sparkles90",
+    creator_name: "CozySparkles",
+    creator_profile_url: "https://www.tiktok.com/@cozy.sparkles90",
+    creator_avatar_url: "assets/fan-videos/avatars/cozy.sparkles90.jpg",
+    caption: "Lets go with spooky season!! This amazing book is from: @Cozy Coloring Chaos and I’m using the markers from @Ohuhuart #colortok #colortokcommunity #foryoupage❤️❤️ #fyp #dutchtiktok",
+    thumbnail_url: "assets/fan-videos/7690899420019215649.jpg",
+    book_slug: "cozy-terror",
+    category: "coloring",
+    language: "nl",
+    featured: true,
+    published: true,
+    sort_order: 0,
+    created_at: "2026-09-29T11:05:22.121Z",
+    updated_at: "2026-10-01T05:35:42.482Z"
+  },
+  {
     id: "video-7690538422930279712",
     tiktok_url: "https://www.tiktok.com/@cozy.sparkles90/video/7690538422930279712",
     tiktok_video_id: "7690538422930279712",
@@ -47,7 +180,7 @@ const FALLBACK_VIDEOS = [
     published: true,
     sort_order: 2,
     created_at: "2026-09-26T14:30:00.000Z",
-    updated_at: "2026-09-26T14:30:00.000Z"
+    updated_at: "2026-09-27T18:34:52.179Z"
   },
   {
     id: "video-7689374962397760800",
@@ -66,7 +199,7 @@ const FALLBACK_VIDEOS = [
     published: true,
     sort_order: 3,
     created_at: "2026-09-25T11:20:00.000Z",
-    updated_at: "2026-09-25T11:20:00.000Z"
+    updated_at: "2026-09-27T18:35:10.007Z"
   }
 ];
 
@@ -221,6 +354,34 @@ function getBookTitle(slug) {
   }
   return slug.split('-').map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(' ');
 }
+
+/**
+ * Maps book slug to its cover image path with brand icon fallback.
+ */
+function getBookCover(slug) {
+  if (typeof BOOKS !== 'undefined' && Array.isArray(BOOKS)) {
+    const found = BOOKS.find(b => b.id === slug);
+    if (found && found.cover) return found.cover;
+  }
+  return 'assets/icon.png';
+}
+
+/**
+ * Robust image error handler that unconditionally eliminates recursive request loops.
+ */
+window.handleFanThumbError = function(img, localFallback, bookSlug) {
+  img.onerror = null; // PREVENT RECURSIVE LOOPING
+  const targetFallback = localFallback || getBookCover(bookSlug);
+  if (img.src && (img.src.endsWith(targetFallback) || img.src.includes(targetFallback))) {
+    img.src = getBookCover(bookSlug);
+    return;
+  }
+  img.onerror = function() {
+    img.onerror = null;
+    img.src = getBookCover(bookSlug);
+  };
+  img.src = targetFallback;
+};
 
 /**
  * Gets active translation dictionary from script.js.
@@ -404,17 +565,42 @@ function createVideoCardHtml(video) {
   // Thumbnail fallback: local fallback file if remote fails
   const localFallback = `assets/fan-videos/${video.tiktok_video_id}.jpg`;
   const primaryThumb = video.thumbnail_url || localFallback;
-  const avatarSrc = video.creator_avatar_url || `assets/fan-videos/avatars/${video.creator_username}.jpg`;
+
+  // Safe Avatar logic: avoid requesting non-existent local avatar files
+  let avatarUrl = video.creator_avatar_url || '';
+  const userLower = (video.creator_username || '').toLowerCase();
+  if (!avatarUrl && userLower === 'cozycoloringchaos') {
+    avatarUrl = 'assets/icon.png';
+  } else if (!avatarUrl && (userLower === 'cozy.sparkles90' || userLower === 'craftyclare21')) {
+    avatarUrl = `assets/fan-videos/avatars/${video.creator_username}.jpg`;
+  }
+
+  const avatarMarkup = avatarUrl ? `
+    <img 
+      src="${escapeHtml(avatarUrl)}" 
+      alt="@${username}" 
+      class="creator-chip-avatar-img" 
+      loading="lazy" 
+      onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';"
+    />
+    <div class="creator-chip-avatar-fallback" style="display: none;">
+      ${username.charAt(0).toUpperCase()}
+    </div>
+  ` : `
+    <div class="creator-chip-avatar-fallback">
+      ${username.charAt(0).toUpperCase()}
+    </div>
+  `;
 
   return `
     <article class="fan-video-card" data-video-id="${video.id}" role="listitem" onclick="openFanVideoModal('${video.id}')" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' ') { event.preventDefault(); openFanVideoModal('${video.id}'); }" aria-label="Play video by @${username}: ${safeCaption.slice(0, 50)}">
       <div class="fan-card-media-wrapper">
         <img 
-          src="${primaryThumb}" 
+          src="${escapeHtml(primaryThumb)}" 
           alt="Video by @${username}: ${safeCaption.slice(0, 60)}" 
           class="fan-card-thumbnail" 
           loading="lazy" 
-          onerror="if(this.src!=='${localFallback}') this.src='${localFallback}';"
+          onerror="handleFanThumbError(this, '${escapeHtml(localFallback)}', '${escapeHtml(video.book_slug || '')}')"
         />
 
         <!-- Gradient Vignette & Dark Tint -->
@@ -462,16 +648,7 @@ function createVideoCardHtml(video) {
             onclick="event.stopPropagation()"
           >
             <div class="creator-chip-avatar-wrap">
-              <img 
-                src="${avatarSrc}" 
-                alt="@${username}" 
-                class="creator-chip-avatar-img"
-                loading="lazy"
-                onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';"
-              />
-              <div class="creator-chip-avatar-fallback" style="display: none;">
-                ${username.charAt(0).toUpperCase()}
-              </div>
+              ${avatarMarkup}
             </div>
             <div class="creator-chip-text">
               <span class="creator-chip-name">${creatorName}</span>
@@ -494,7 +671,6 @@ window.openFanVideoModal = function(videoId) {
   activeVideo = video;
   const username = video.creator_username || 'creator';
   const bookTitle = getBookTitle(video.book_slug);
-  const avatarSrc = video.creator_avatar_url || `assets/fan-videos/avatars/${video.creator_username}.jpg`;
 
   const t = getTranslations();
   const catKeyMap = {
@@ -518,10 +694,24 @@ window.openFanVideoModal = function(videoId) {
   if (modalVideoCaption) modalVideoCaption.textContent = video.caption || '';
 
   if (modalCreatorAvatarWrap) {
-    modalCreatorAvatarWrap.innerHTML = `
-      <img src="${avatarSrc}" alt="@${username}" class="modal-creator-avatar-img" onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';" />
-      <div class="creator-avatar-fallback" style="display: none;">${username.charAt(0).toUpperCase()}</div>
-    `;
+    let modalAvatar = video.creator_avatar_url || '';
+    const uLower = username.toLowerCase();
+    if (!modalAvatar && uLower === 'cozycoloringchaos') {
+      modalAvatar = 'assets/icon.png';
+    } else if (!modalAvatar && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
+      modalAvatar = `assets/fan-videos/avatars/${username}.jpg`;
+    }
+
+    if (modalAvatar) {
+      modalCreatorAvatarWrap.innerHTML = `
+        <img src="${escapeHtml(modalAvatar)}" alt="@${username}" class="modal-creator-avatar-img" onerror="this.style.display='none'; if(this.nextElementSibling) this.nextElementSibling.style.display='flex';" />
+        <div class="creator-avatar-fallback" style="display: none;">${username.charAt(0).toUpperCase()}</div>
+      `;
+    } else {
+      modalCreatorAvatarWrap.innerHTML = `
+        <div class="creator-avatar-fallback">${username.charAt(0).toUpperCase()}</div>
+      `;
+    }
   }
 
   if (modalCreatorProfileLink) {

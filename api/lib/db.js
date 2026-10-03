@@ -109,6 +109,34 @@ async function commitToGitHub(videos, message) {
   return true;
 }
 
+async function commitFileToGitHub(pathInRepo, buffer, message) {
+  const repo = getGitHubRepo();
+  const url = `https://api.github.com/repos/${repo}/contents/${pathInRepo}`;
+  let sha;
+  try {
+    const checkRes = await fetch(url, { headers: getGitHubHeaders() });
+    if (checkRes.ok) {
+      const data = await checkRes.json();
+      sha = data.sha;
+    }
+  } catch (e) {}
+
+  const base64Content = buffer.toString('base64');
+  await fetch(url, {
+    method: 'PUT',
+    headers: {
+      ...getGitHubHeaders(),
+      'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({
+      message: message,
+      content: base64Content,
+      sha: sha,
+      branch: 'main'
+    })
+  });
+}
+
 // ----------------------------------------------------------------------------
 // LOCAL FILE STORAGE IMPLEMENTATION
 // ----------------------------------------------------------------------------
@@ -263,6 +291,42 @@ export async function getVideoByUrl(tiktokUrl) {
  */
 export async function createVideo(videoData) {
   const now = new Date().toISOString();
+
+  let avatarUrl = videoData.creator_avatar_url || '';
+  const uLower = (videoData.creator_username || '').toLowerCase();
+  if (!avatarUrl && uLower === 'cozycoloringchaos') {
+    avatarUrl = 'assets/icon.png';
+  } else if (!avatarUrl && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
+    avatarUrl = `assets/fan-videos/avatars/${videoData.creator_username}.jpg`;
+  }
+
+  let thumbUrl = videoData.thumbnail_url || '';
+  if (videoData.tiktok_video_id && thumbUrl.startsWith('http')) {
+    if (isGitHubConfigured()) {
+      try {
+        const imgRes = await fetch(thumbUrl, { signal: AbortSignal.timeout(3500) });
+        if (imgRes.ok) {
+          const imgBuffer = Buffer.from(await imgRes.arrayBuffer());
+          await commitFileToGitHub(`assets/fan-videos/${videoData.tiktok_video_id}.jpg`, imgBuffer, `chore(cms): cache thumbnail for video ${videoData.tiktok_video_id}`);
+          thumbUrl = `assets/fan-videos/${videoData.tiktok_video_id}.jpg`;
+        }
+      } catch (imgErr) {
+        console.warn('Could not cache thumbnail to GitHub:', imgErr.message);
+      }
+    } else {
+      try {
+        const imgRes = await fetch(thumbUrl, { signal: AbortSignal.timeout(3500) });
+        if (imgRes.ok) {
+          const localPath = path.join(process.cwd(), 'assets', 'fan-videos', `${videoData.tiktok_video_id}.jpg`);
+          const dir = path.dirname(localPath);
+          if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+          fs.writeFileSync(localPath, Buffer.from(await imgRes.arrayBuffer()));
+          thumbUrl = `assets/fan-videos/${videoData.tiktok_video_id}.jpg`;
+        }
+      } catch (e) {}
+    }
+  }
+
   const record = {
     id: videoData.id || `video-${videoData.tiktok_video_id || Date.now()}`,
     tiktok_url: videoData.tiktok_url,
@@ -270,9 +334,9 @@ export async function createVideo(videoData) {
     creator_username: videoData.creator_username || '',
     creator_name: videoData.creator_name || videoData.creator_username || '',
     creator_profile_url: videoData.creator_profile_url || `https://www.tiktok.com/@${videoData.creator_username}`,
-    creator_avatar_url: videoData.creator_avatar_url || '',
+    creator_avatar_url: avatarUrl,
     caption: videoData.caption || '',
-    thumbnail_url: videoData.thumbnail_url || '',
+    thumbnail_url: thumbUrl,
     book_slug: videoData.book_slug || 'unassigned',
     category: videoData.category || 'other',
     language: videoData.language || 'en',
