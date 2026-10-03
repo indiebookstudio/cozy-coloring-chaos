@@ -230,7 +230,8 @@ const BOOKS = window.BOOKS = [
       "assets/books/Homer.In.Circles/Colored/160.png"
     ],
     defaultMarket: "us",
-    isComingSoon: true
+    asin: "B0HLTC3NFM",
+    isNew: true
   },
   {
     id: "innocent-paws",

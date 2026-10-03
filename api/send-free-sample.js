@@ -109,7 +109,8 @@ const BOOKS = [
     cover: "assets/books/Homer.In.Circles/Front.Cover.png",
     samplePdf: "assets/books/Homer.In.Circles/Sample/Free.Sample.pdf",
     defaultMarket: "us",
-    isComingSoon: true
+    asin: "B0HLTC3NFM",
+    isNew: true
   },
   {
     id: "innocent-paws",
