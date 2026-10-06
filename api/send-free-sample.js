@@ -190,7 +190,7 @@ const BOOKS = [
     cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Front.Cover.png",
     samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Sample/Free.Sample.pdf",
     defaultMarket: "it",
-    asin: "B0HLSY8JCZ",
+    asin: "B0HLT3HR9Z",
     isNew: true
   }
 ];

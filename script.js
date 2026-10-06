@@ -462,7 +462,7 @@ const BOOKS = window.BOOKS = [
       "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Back.Cover.png"
     ],
     defaultMarket: "it",
-    asin: "B0HLSY8JCZ",
+    asin: "B0HLT3HR9Z",
     isNew: true
   }
 ];
