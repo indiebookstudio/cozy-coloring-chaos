@@ -187,10 +187,22 @@ const BOOKS = [
     subtitle: "Per questo me lo scrivo | Il quaderno divertente e senza date per organizzare cose da fare, appuntamenti e password, per chi dimentica tutto",
     author: "Lucas C. Morica",
     category: "notebooks",
-    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Front.Cover.png",
-    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/Sample/Free.Sample.pdf",
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/IT/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/IT/Sample/Free.Sample.pdf",
     defaultMarket: "it",
     asin: "B0HLT3HR9Z",
+    isNew: true
+  },
+  {
+    id: "i-cant-remember-jack-shit",
+    title: "I Can't Remember Jack Shit",
+    subtitle: "So I write it down | A funny undated planner for to-dos, appointments & passwords | For people who forget everything",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HM3HRQ93",
     isNew: true
   }
 ];
