@@ -473,6 +473,7 @@ const BOOKS = window.BOOKS = [
     category: "notebooks",
     language: "English",
     langCode: "en",
+    onlyEnglish: true,
     cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Front.Cover.png",
     samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Sample/Free.Sample.pdf",
     preview: [
@@ -2508,6 +2509,9 @@ function updateFreeSampleModalTranslations(t) {
  */
 function isBookVisibleForLanguage(book, lang) {
   if (book && book.onlyItalian && lang !== 'it') {
+    return false;
+  }
+  if (book && book.onlyEnglish && lang !== 'en') {
     return false;
   }
   return true;
