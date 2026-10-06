@@ -572,6 +572,112 @@ body {
 }
 
 /* --------------------------------------------------------------------------
+   4b. BOOK SEARCH BAR
+   -------------------------------------------------------------------------- */
+.book-search-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  margin: 0 auto 2.25rem auto;
+  padding: 0 1rem;
+}
+
+.book-search-wrapper {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background-color: var(--color-bg-card);
+  border: 1.5px solid var(--color-border);
+  border-radius: var(--radius-pill);
+  box-shadow: var(--shadow-sm);
+  padding: 0.35rem 0.65rem 0.35rem 1rem;
+  transition: border-color var(--transition-smooth), box-shadow var(--transition-smooth), background-color var(--transition-smooth);
+}
+
+.book-search-wrapper:hover {
+  border-color: var(--color-border-hover);
+}
+
+.book-search-wrapper:focus-within {
+  border-color: var(--color-coral-primary);
+  box-shadow: 0 0 0 3px rgba(255, 84, 54, 0.15), var(--shadow-sm);
+  background-color: #FFFFFF;
+}
+
+.book-search-icon {
+  width: 18px;
+  height: 18px;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  margin-right: 0.55rem;
+  transition: color var(--transition-fast);
+}
+
+.book-search-wrapper:focus-within .book-search-icon {
+  color: var(--color-coral-primary);
+}
+
+.book-search-input {
+  flex: 1;
+  border: none;
+  outline: none;
+  background: transparent;
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 500;
+  color: var(--color-text-main);
+  padding: 0.45rem 0;
+  min-width: 0;
+}
+
+.book-search-input::placeholder {
+  color: var(--color-text-light);
+  font-weight: 400;
+  opacity: 0.9;
+}
+
+.book-search-clear {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  border: none;
+  background: var(--color-bg-surface);
+  color: var(--color-text-muted);
+  cursor: pointer;
+  flex-shrink: 0;
+  margin-left: 0.4rem;
+  padding: 0;
+  transition: background-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.book-search-clear:hover {
+  background-color: var(--color-bg-surface-hover);
+  color: var(--color-text-main);
+  transform: scale(1.05);
+}
+
+.book-search-clear svg {
+  width: 14px;
+  height: 14px;
+}
+
+@media (max-width: 640px) {
+  .book-search-container {
+    margin-bottom: 1.75rem;
+    padding: 0 0.5rem;
+  }
+  .book-search-input {
+    font-size: 0.9rem;
+  }
+}
+
+/* --------------------------------------------------------------------------
    5. BOOKS GRID & CARD DESIGN (3 COLUMNS ON DESKTOP, 2 ON TABLET, 1 ON MOBILE)
    -------------------------------------------------------------------------- */
 .books-grid {

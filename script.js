@@ -606,6 +606,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "UMORISMO",
     filterNotebooks: "QUADERNI & AGENDE",
+    searchPlaceholder: "Cerca un libro, autore o tema...",
+    searchAriaLabel: "Cerca libri nel catalogo",
+    searchClear: "Cancella ricerca",
+    noSearchResults: (q) => `Nessun libro trovato per "<strong>${escapeHtml(q)}</strong>". Prova con altri termini o cancella la ricerca.`,
     filterEn: "English",
     filterIt: "Italiano",
     selectStore: "ACQUISTA SU AMAZON",
@@ -778,6 +782,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "NOTEBOOKS & PLANNERS",
+    searchPlaceholder: "Search by title, author, or theme...",
+    searchAriaLabel: "Search books in catalog",
+    searchClear: "Clear search",
+    noSearchResults: (q) => `No books found matching "<strong>${escapeHtml(q)}</strong>". Try another keyword or clear the search.`,
     filterEn: "English",
     filterIt: "Italian",
     selectStore: "BUY ON AMAZON",
@@ -950,6 +958,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "NOTIZBÜCHER & PLANER",
+    searchPlaceholder: "Nach Titel, Autor oder Thema suchen...",
+    searchAriaLabel: "Bücher im Katalog suchen",
+    searchClear: "Suche löschen",
+    noSearchResults: (q) => `Keine Bücher gefunden für "<strong>${escapeHtml(q)}</strong>". Versuche einen anderen Begriff.`,
     filterEn: "Englisch",
     filterIt: "Italienisch",
     selectStore: "BEI AMAZON KAUFEN",
@@ -1122,6 +1134,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOUR",
     filterNotebooks: "CARNETS & AGENDAS",
+    searchPlaceholder: "Rechercher par titre, auteur ou thème...",
+    searchAriaLabel: "Rechercher des livres dans le catalogue",
+    searchClear: "Effacer la recherche",
+    noSearchResults: (q) => `Aucun livre trouvé pour "<strong>${escapeHtml(q)}</strong>". Essayez un autre mot-clé ou effacez la recherche.`,
     filterEn: "Anglais",
     filterIt: "Italien",
     selectStore: "ACHETER SUR AMAZON",
@@ -1294,6 +1310,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "CUADERNOS Y AGENDAS",
+    searchPlaceholder: "Buscar por título, autor o tema...",
+    searchAriaLabel: "Buscar libros en el catálogo",
+    searchClear: "Borrar búsqueda",
+    noSearchResults: (q) => `No se encontraron libros para "<strong>${escapeHtml(q)}</strong>". Prueba con otros términos o borra la búsqueda.`,
     filterEn: "Inglés",
     filterIt: "Italiano",
     selectStore: "COMPRAR EN AMAZON",
@@ -1466,6 +1486,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "NOTITIEBOEKEN & PLANNERS",
+    searchPlaceholder: "Zoek op titel, auteur of thema...",
+    searchAriaLabel: "Zoek boeken in de catalogus",
+    searchClear: "Zoekopdracht wissen",
+    noSearchResults: (q) => `Geen boeken gevonden voor "<strong>${escapeHtml(q)}</strong>". Probeer een ander zoekwoord of wis de zoekopdracht.`,
     filterEn: "Engels",
     filterIt: "Italiaans",
     selectStore: "KOOP OP AMAZON",
@@ -1637,6 +1661,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "NOTATNIKI I PLANERY",
+    searchPlaceholder: "Szukaj według tytułu, autora lub motywu...",
+    searchAriaLabel: "Szukaj książek w katalogu",
+    searchClear: "Wyczyść wyszukiwanie",
+    noSearchResults: (q) => `Nie znaleziono książek dla "<strong>${escapeHtml(q)}</strong>". Spróbuj innych słów kluczowych lub wyczyść wyszukiwanie.`,
     filterEn: "Angielski",
     filterIt: "Włoski",
     selectStore: "KUP NA AMAZON",
@@ -1808,6 +1836,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "PIXEL ART",
     filterHumour: "HUMOR",
     filterNotebooks: "ANTECKNINGSBÖCKER & PLANERARE",
+    searchPlaceholder: "Sök på titel, författare eller tema...",
+    searchAriaLabel: "Sök böcker i katalogen",
+    searchClear: "Rensa sökning",
+    noSearchResults: (q) => `Inga böcker hittades för "<strong>${escapeHtml(q)}</strong>". Försök med ett annat sökord eller rensa sökningen.`,
     filterEn: "Engelska",
     filterIt: "Italienska",
     selectStore: "KÖP PÅ AMAZON",
@@ -1978,6 +2010,10 @@ const TRANSLATIONS = window.TRANSLATIONS = {
     filterPixelArt: "ピクセルアート",
     filterHumour: "ユーモア",
     filterNotebooks: "ノート＆手帳",
+    searchPlaceholder: "タイトル、著者、テーマで検索...",
+    searchAriaLabel: "カタログ内の本を検索",
+    searchClear: "検索をクリア",
+    noSearchResults: (q) => `「<strong>${escapeHtml(q)}</strong>」に一致する本は見つかりませんでした。別のキーワードをお試しください。`,
     filterEn: "英語",
     filterIt: "イタリア語",
     selectStore: "AMAZONで購入",
@@ -2147,6 +2183,7 @@ const TRANSLATIONS = window.TRANSLATIONS = {
 // ============================================================================
 let currentLanguage = 'en';
 let currentBookFilter = 'all'; // 'all', 'it', 'en'
+let currentSearchQuery = '';
 // Store individual book selected markets
 const selectedMarketState = {};
 
@@ -4234,12 +4271,27 @@ function renderBooks() {
 
   // Filter books by language visibility and category/author
   const visibleBooks = BOOKS.filter(book => isBookVisibleForLanguage(book, currentLanguage));
-  const filteredBooks = visibleBooks.filter(book => isBookAuthor(book, currentBookFilter));
+  let filteredBooks = visibleBooks.filter(book => isBookAuthor(book, currentBookFilter));
+
+  // Filter books by search query if present
+  if (currentSearchQuery) {
+    const q = currentSearchQuery.toLowerCase().trim();
+    filteredBooks = filteredBooks.filter(book => {
+      const title = (book.title || '').toLowerCase();
+      const subtitle = (book.subtitle || '').toLowerCase();
+      const author = (book.author || '').toLowerCase();
+      const category = (book.category || '').toLowerCase();
+      return title.includes(q) || subtitle.includes(q) || author.includes(q) || category.includes(q);
+    });
+  }
 
   if (filteredBooks.length === 0) {
+    const emptyMessage = currentSearchQuery
+      ? (typeof t.noSearchResults === 'function' ? t.noSearchResults(currentSearchQuery) : `Nessun libro trovato per "${escapeHtml(currentSearchQuery)}".`)
+      : (t.noBooksFound || 'Nessun libro trovato.');
     booksContainer.innerHTML = `
       <div class="empty-state">
-        <p>${t.noBooksFound || 'Nessun libro trovato.'}</p>
+        <p>${emptyMessage}</p>
       </div>
     `;
     return;
@@ -4392,9 +4444,50 @@ function handleEmailButtonClick(e) {
 }
 
 /**
+ * Initializes live search bar functionality.
+ */
+function initSearchBarEvents() {
+  const searchInput = document.getElementById('book-search-input');
+  const searchClear = document.getElementById('book-search-clear');
+  if (!searchInput) return;
+
+  searchInput.addEventListener('input', (e) => {
+    currentSearchQuery = e.target.value.trim();
+    if (searchClear) {
+      searchClear.style.display = currentSearchQuery.length > 0 ? 'inline-flex' : 'none';
+    }
+    renderBooks();
+  });
+
+  if (searchClear) {
+    searchClear.addEventListener('click', () => {
+      searchInput.value = '';
+      currentSearchQuery = '';
+      searchClear.style.display = 'none';
+      searchInput.focus();
+      renderBooks();
+    });
+  }
+
+  searchInput.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (searchInput.value) {
+        searchInput.value = '';
+        currentSearchQuery = '';
+        if (searchClear) searchClear.style.display = 'none';
+        renderBooks();
+      }
+    }
+  });
+}
+
+/**
  * Attaches event listeners to language switcher, filter buttons, and email button.
  */
 function attachEventListeners() {
+  // Live Book Search Bar
+  initSearchBarEvents();
+
   // Topbar Email Click Handler (Copy + Toast)
   const emailBtn = document.getElementById('topbar-email-btn');
   if (emailBtn) {
@@ -4655,6 +4748,15 @@ function initApp() {
     const filterParam = urlParams.get('category') || urlParams.get('filter') || urlParams.get('author') || (window.location.hash ? window.location.hash.replace('#', '') : null);
     if (filterParam) {
       setBookFilter(filterParam);
+    }
+    const searchParam = urlParams.get('q') || urlParams.get('search');
+    if (searchParam) {
+      currentSearchQuery = searchParam.trim();
+      const searchInput = document.getElementById('book-search-input');
+      if (searchInput) searchInput.value = currentSearchQuery;
+      const searchClear = document.getElementById('book-search-clear');
+      if (searchClear) searchClear.style.display = currentSearchQuery.length > 0 ? 'inline-flex' : 'none';
+      renderBooks();
     }
     const modalParam = urlParams.get('modal');
     if (modalParam) {

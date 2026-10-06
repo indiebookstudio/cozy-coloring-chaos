@@ -553,6 +553,40 @@
           </div>
         </div>
 
+        <!-- Book Search Bar -->
+        <div class="book-search-container">
+          <div class="book-search-wrapper" role="search">
+            <svg class="book-search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"></circle>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+            </svg>
+            <input 
+              type="text" 
+              id="book-search-input" 
+              class="book-search-input" 
+              placeholder="Cerca un libro, autore o tema..." 
+              autocomplete="off" 
+              spellcheck="false"
+              data-i18n-placeholder="searchPlaceholder"
+              data-i18n-aria="searchAriaLabel"
+              aria-label="Cerca libri nel catalogo"
+            >
+            <button 
+              type="button" 
+              id="book-search-clear" 
+              class="book-search-clear" 
+              style="display: none;" 
+              aria-label="Cancella ricerca"
+              data-i18n-aria="searchClear"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+        </div>
+
         <!-- Book Cards Container (Populated dynamically by script.js) -->
         <div id="books-grid" class="books-grid" role="list">
           <noscript>
