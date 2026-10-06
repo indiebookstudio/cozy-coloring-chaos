@@ -204,6 +204,18 @@ const BOOKS = [
     defaultMarket: "us",
     asin: "B0HM3HRQ93",
     isNew: true
+  },
+  {
+    id: "jai-une-memoire-de-merde",
+    title: "J'ai une mémoire de merde",
+    subtitle: "Alors je note tout | Le carnet drôle et non daté pour organiser ses tâches, rendez-vous et mots de passe quand on oublie tout",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Sample/Free.Sample.pdf",
+    defaultMarket: "fr",
+    asin: "B0HM3VTVHN",
+    isNew: true
   }
 ];
 

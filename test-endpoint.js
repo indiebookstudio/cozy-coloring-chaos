@@ -126,16 +126,18 @@ async function runTests() {
     });
     assert(resUnknownBook.statusCode === 400, 'Unknown bookId rejected with HTTP 400 (no wrong book sent)', `Got ${resUnknownBook.statusCode}`);
 
-    console.log('\n--- Test 4: Missing API Key Error Handling ---');
+    console.log('\n--- Test 4: Missing API Key Error Handling (and Valid Notebook ID Resolution) ---');
     const originalKey = process.env.BREVO_API_KEY;
     delete process.env.BREVO_API_KEY;
-    const resNoKey = await makeRequest({
-      method: 'POST',
-      path: '/api/send-free-sample',
-      body: { email: 'valid@example.com', firstName: 'Mario', lastName: 'Rossi', bookId: 'non-mi-ricordo-mai-un-cazzo' }
-    });
-    assert(resNoKey.statusCode === 500, 'Missing key returns HTTP 500', `Got ${resNoKey.statusCode}`);
-    assert(resNoKey.json && resNoKey.json.success === false, 'Missing key returns success: false');
+    for (const testBookId of ['non-mi-ricordo-mai-un-cazzo', 'i-cant-remember-jack-shit', 'jai-une-memoire-de-merde']) {
+      const resNotebook = await makeRequest({
+        method: 'POST',
+        path: '/api/send-free-sample',
+        body: { email: 'valid@example.com', firstName: 'Test', lastName: 'User', bookId: testBookId }
+      });
+      assert(resNotebook.statusCode === 500, `Valid notebook '${testBookId}' passes validation and reaches Brevo (HTTP 500 without key)`, `Got ${resNotebook.statusCode}`);
+      assert(resNotebook.json && resNotebook.json.success === false, `Valid notebook '${testBookId}' returns success: false without key`);
+    }
     process.env.BREVO_API_KEY = originalKey;
 
     console.log('\n--- Test 5: Frontend Security Scan ---');

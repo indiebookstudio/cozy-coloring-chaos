@@ -505,6 +505,47 @@ const BOOKS = window.BOOKS = [
     defaultMarket: "us",
     asin: "B0HM3HRQ93",
     isNew: true
+  },
+  {
+    id: "jai-une-memoire-de-merde",
+    title: "J'ai une mémoire de merde",
+    subtitle: "Alors je note tout | Le carnet drôle et non daté pour organiser ses tâches, rendez-vous et mots de passe quand on oublie tout",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    language: "Français",
+    langCode: "fr",
+    onlyFrench: true,
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Front.Cover.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/2.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/3.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/4.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/5.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/16.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/21.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/34.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/37.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/43.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/51.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/59.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/71.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/78.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/79.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/87.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/94.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/99.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/110.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/117.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/119.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/127.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/134.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Back.Cover.png"
+    ],
+    defaultMarket: "fr",
+    asin: "B0HM3VTVHN",
+    isNew: true
   }
 ];
 
@@ -2514,6 +2555,9 @@ function isBookVisibleForLanguage(book, lang) {
   if (book && book.onlyEnglish && lang !== 'en') {
     return false;
   }
+  if (book && book.onlyFrench && lang !== 'fr') {
+    return false;
+  }
   return true;
 }
 window.isBookVisibleForLanguage = isBookVisibleForLanguage;
@@ -3141,10 +3185,14 @@ const EMAIL_I18N = {
     langHtml: "fr",
     subject: (title) => `${title} - Téléchargement de l'Extrait Gratuit`,
     greeting: (f, l) => `Bonjour ${f} ${l} !`,
-    intro: (title) => `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> prêt à imprimer et à utiliser !`
+      : `Merci pour votre intérêt pour <strong>${title}</strong>.<br>Vous trouverez en <strong>pièce jointe de cet e-mail</strong> votre <strong>extrait gratuit au format PDF</strong> avec des pages prêtes à imprimer et à colorier !`,
     badge: "Fichier PDF en pièce jointe",
-    ctaTitle: "Vous aimez ces coloriages ?",
-    ctaDesc: "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
+    ctaTitle: (category) => category === 'notebooks' ? "Vous aimez ces pages ?" : "Vous aimez ces coloriages ?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "Commandez le carnet complet directement sur Amazon !"
+      : "Commandez le livre complet avec toutes les illustrations originales en haute définition directement sur Amazon !",
     buyBtn: (m) => `ACHETER SUR ${m.toUpperCase()}`,
     morePrompt: "Envie de découvrir tous les livres de notre collection ?",
     moreLink: "Visiter Cozy Coloring Chaos",
