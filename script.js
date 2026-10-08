@@ -546,6 +546,46 @@ const BOOKS = window.BOOKS = [
     defaultMarket: "fr",
     asin: "B0HM3VTVHN",
     isNew: true
+  },
+  {
+    id: "tengo-una-memoria-de-mierda",
+    title: "Tengo una memoria de mierda",
+    subtitle: "Por eso lo apunto todo | El cuaderno divertido y sin fechas para organizar tareas, citas y contraseñas cuando se te olvida todo",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    language: "Español",
+    langCode: "es",
+    onlySpanish: true,
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Front.Cover.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/2.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/3.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/4.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/5.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/16.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/21.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/34.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/37.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/43.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/51.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/59.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/71.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/78.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/79.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/87.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/94.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/99.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/110.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/117.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/119.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/127.png",
+      "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Back.Cover.png"
+    ],
+    defaultMarket: "es",
+    asin: "B0HM7M6WB1",
+    isNew: true
   }
 ];
 
@@ -2595,6 +2635,9 @@ function isBookVisibleForLanguage(book, lang) {
   if (book && book.onlyFrench && lang !== 'fr') {
     return false;
   }
+  if (book && book.onlySpanish && lang !== 'es') {
+    return false;
+  }
   return true;
 }
 window.isBookVisibleForLanguage = isBookVisibleForLanguage;
@@ -3240,12 +3283,16 @@ const EMAIL_I18N = {
     langHtml: "es",
     subject: (title) => `${title} - Descarga de Muestra Gratis`,
     greeting: (f, l) => `¡Hola ${f} ${l}!`,
-    intro: (title) => `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
+    intro: (title, category) => category === 'notebooks'
+      ? `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y usar.`
+      : `Muchas gracias por tu interés en <strong>${title}</strong>.<br><strong>Adjunto a este correo</strong> encontrarás el PDF de la <strong>Muestra Gratuita</strong> con páginas seleccionadas listas para imprimir y colorear.`,
     badge: "Archivo PDF adjunto a este correo",
-    ctaTitle: "¿Te encantan estas ilustraciones?",
-    ctaDesc: "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
+    ctaTitle: (category) => category === 'notebooks' ? "¿Te encantan estas páginas?" : "¿Te encantan estas ilustraciones?",
+    ctaDesc: (category) => category === 'notebooks'
+      ? "¡Consigue el cuaderno completo directamente en Amazon!"
+      : "¡Consigue el libro completo con todas las ilustraciones originales en alta calidad en Amazon!",
     buyBtn: (m) => `COMPRAR EN ${m.toUpperCase()}`,
-    morePrompt: "¿Quieres descubrir todos los libros para colorear de nuestra colección?",
+    morePrompt: "¿Quieres descubrir todos los libros de nuestra colección?",
     moreLink: "Visita Cozy Coloring Chaos",
     copyright: "Todos los derechos reservados.",
     disclaimer: "Recibes este correo porque solicitaste una muestra gratuita en cozycoloringchaos.com"

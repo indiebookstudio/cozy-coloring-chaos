@@ -129,7 +129,7 @@ async function runTests() {
     console.log('\n--- Test 4: Missing API Key Error Handling (and Valid Notebook ID Resolution) ---');
     const originalKey = process.env.BREVO_API_KEY;
     delete process.env.BREVO_API_KEY;
-    for (const testBookId of ['non-mi-ricordo-mai-un-cazzo', 'i-cant-remember-jack-shit', 'jai-une-memoire-de-merde']) {
+    for (const testBookId of ['non-mi-ricordo-mai-un-cazzo', 'i-cant-remember-jack-shit', 'jai-une-memoire-de-merde', 'tengo-una-memoria-de-mierda']) {
       const resNotebook = await makeRequest({
         method: 'POST',
         path: '/api/send-free-sample',

@@ -23,7 +23,11 @@ const BOOK_HINTS = [
   { slug: 'impossible-worlds', keywords: ['impossible worlds', 'mondi impossibili', 'surreal'] },
   { slug: 'crazy-cozy', keywords: ['crazy cozy', 'pazzo cozy'] },
   { slug: 'italian-girls', keywords: ['italian girls', 'ragazze italiane'] },
-  { slug: 'non-rompetemi-i-coglioni', keywords: ['non rompetemi', 'coglioni', 'insulti', 'parolacce'] }
+  { slug: 'non-rompetemi-i-coglioni', keywords: ['non rompetemi', 'coglioni', 'insulti', 'parolacce'] },
+  { slug: 'non-mi-ricordo-mai-un-cazzo', keywords: ['non mi ricordo mai', 'non mi ricordo'] },
+  { slug: 'i-cant-remember-jack-shit', keywords: ['cant remember jack shit', "can't remember jack shit", 'jack shit'] },
+  { slug: 'jai-une-memoire-de-merde', keywords: ['memoire de merde', 'mémoire de merde'] },
+  { slug: 'tengo-una-memoria-de-mierda', keywords: ['memoria de mierda', 'tengo una memoria'] }
 ];
 
 const CATEGORY_HINTS = [

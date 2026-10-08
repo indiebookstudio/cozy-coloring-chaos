@@ -216,6 +216,18 @@ const BOOKS = [
     defaultMarket: "fr",
     asin: "B0HM3VTVHN",
     isNew: true
+  },
+  {
+    id: "tengo-una-memoria-de-mierda",
+    title: "Tengo una memoria de mierda",
+    subtitle: "Por eso lo apunto todo | El cuaderno divertido y sin fechas para organizar tareas, citas y contraseñas cuando se te olvida todo",
+    author: "Lucas C. Morica",
+    category: "notebooks",
+    cover: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Front.Cover.png",
+    samplePdf: "assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Sample/Free.Sample.pdf",
+    defaultMarket: "es",
+    asin: "B0HM7M6WB1",
+    isNew: true
   }
 ];
 
