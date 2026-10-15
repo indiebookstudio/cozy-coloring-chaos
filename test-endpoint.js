@@ -129,14 +129,14 @@ async function runTests() {
     console.log('\n--- Test 4: Missing API Key Error Handling (and Valid Notebook ID Resolution) ---');
     const originalKey = process.env.BREVO_API_KEY;
     delete process.env.BREVO_API_KEY;
-    for (const testBookId of ['non-mi-ricordo-mai-un-cazzo', 'i-cant-remember-jack-shit', 'jai-une-memoire-de-merde', 'tengo-una-memoria-de-mierda']) {
+    for (const testBookId of ['cozy-and-doomed', 'non-mi-ricordo-mai-un-cazzo', 'i-cant-remember-jack-shit', 'jai-une-memoire-de-merde', 'tengo-una-memoria-de-mierda']) {
       const resNotebook = await makeRequest({
         method: 'POST',
         path: '/api/send-free-sample',
         body: { email: 'valid@example.com', firstName: 'Test', lastName: 'User', bookId: testBookId }
       });
-      assert(resNotebook.statusCode === 500, `Valid notebook '${testBookId}' passes validation and reaches Brevo (HTTP 500 without key)`, `Got ${resNotebook.statusCode}`);
-      assert(resNotebook.json && resNotebook.json.success === false, `Valid notebook '${testBookId}' returns success: false without key`);
+      assert(resNotebook.statusCode === 500, `Valid book/notebook '${testBookId}' passes validation and reaches Brevo (HTTP 500 without key)`, `Got ${resNotebook.statusCode}`);
+      assert(resNotebook.json && resNotebook.json.success === false, `Valid book/notebook '${testBookId}' returns success: false without key`);
     }
     process.env.BREVO_API_KEY = originalKey;
 

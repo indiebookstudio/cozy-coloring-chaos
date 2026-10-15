@@ -15,6 +15,7 @@ import { getRequestBody, sendJson, handleOptions } from './lib/http.js';
 const BOOK_HINTS = [
   { slug: 'the-horror-pixel-show', keywords: ['horror pixel', 'pixel show', 'pixel art', 'mystery mosaic', 'diamond-shaped'] },
   { slug: 'the-cyberpunk-pixel-show', keywords: ['cyberpunk', 'cyber dreams', 'cyberpunk pixel', 'cyber sogni'] },
+  { slug: 'cozy-and-doomed', keywords: ['cozy & doomed', 'cozy and doomed', 'cozy doomed', 'doomed', 'catastrophic'] },
   { slug: 'cozy-terror', keywords: ['cozy terror', 'terror', 'dark & cozy horror', 'nightmares to color'] },
   { slug: 'the-black-sword', keywords: ['black sword', 'dark fantasy', 'black & white'] },
   { slug: 'homer-in-circles', keywords: ['homer in circles', 'homer', 'greek myths', 'miti greci', 'iliad', 'odyssey'] },

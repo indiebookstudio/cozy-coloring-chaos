@@ -87,7 +87,7 @@ const BOOKS = window.BOOKS = [
     asin: "B0HK8WDHM1",
     isNew: true
   },
-{
+  {
     id: "cozy-terror",
     title: "Cozy Terror",
     subtitle: "Bold & Terrifying Coloring Book | 48 Nightmares to Color, Dark & Cozy Horror for Adults and Teens",
@@ -231,6 +231,37 @@ const BOOKS = window.BOOKS = [
     ],
     defaultMarket: "us",
     asin: "B0HLTC3NFM",
+    isNew: true
+  },
+  {
+    id: "cozy-and-doomed",
+    title: "Cozy & Doomed",
+    subtitle: "Comfy & Catastrophic Coloring Book | 50 Bold & Easy Cozy Disaster Scenes for Adults Who Love Cute Things, Dark Humor & Terrible Timing",
+    author: "Isaac McClour",
+    category: "bold-and-easy",
+    language: "English",
+    langCode: "en",
+    cover: "assets/books/Cozy.&.Doomed/Front.Cover.png",
+    samplePdf: "assets/books/Cozy.&.Doomed/Sample/Free.Sample.pdf",
+    preview: [
+      "assets/books/Cozy.&.Doomed/Front.Cover.png",
+      "assets/books/Cozy.&.Doomed/2.png",
+      "assets/books/Cozy.&.Doomed/4.png",
+      "assets/books/Cozy.&.Doomed/8.png",
+      "assets/books/Cozy.&.Doomed/10.png",
+      "assets/books/Cozy.&.Doomed/56.png",
+      "assets/books/Cozy.&.Doomed/Back.Cover.png"
+    ],
+    colored: [
+      "assets/books/Cozy.&.Doomed/Colored/01.jpg",
+      "assets/books/Cozy.&.Doomed/Colored/02.jpg",
+      "assets/books/Cozy.&.Doomed/Colored/03.jpg",
+      "assets/books/Cozy.&.Doomed/Colored/04.jpg",
+      "assets/books/Cozy.&.Doomed/Colored/05.jpg",
+      "assets/books/Cozy.&.Doomed/Colored/06.jpg"
+    ],
+    defaultMarket: "us",
+    asin: "B0HN4ZCW9Z",
     isNew: true
   },
   {

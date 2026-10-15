@@ -113,6 +113,18 @@ const BOOKS = [
     isNew: true
   },
   {
+    id: "cozy-and-doomed",
+    title: "Cozy & Doomed",
+    subtitle: "Comfy & Catastrophic Coloring Book | 50 Bold & Easy Cozy Disaster Scenes for Adults Who Love Cute Things, Dark Humor & Terrible Timing",
+    author: "Isaac McClour",
+    category: "bold-and-easy",
+    cover: "assets/books/Cozy.&.Doomed/Front.Cover.png",
+    samplePdf: "assets/books/Cozy.&.Doomed/Sample/Free.Sample.pdf",
+    defaultMarket: "us",
+    asin: "B0HN4ZCW9Z",
+    isNew: true
+  },
+  {
     id: "innocent-paws",
     title: "Innocent Paws",
     subtitle: "A Cozy Murder Coloring Book | Darkly Humorous Murder Scenes in Cozy Everyday Settings for Adults and Teens",
@@ -637,7 +649,7 @@ export default async function handler(req) {
     }
 
     // 6. Metadata & Localization
-    const book = BOOKS.find(b => b.id === bookId);
+    const book = BOOKS.find(b => b.id === bookId) || (bookId === 'cozy-doomed' || bookId === 'cozy_doomed' ? BOOKS.find(b => b.id === 'cozy-and-doomed') : null);
     if (!book) {
       console.error(`[Sample Error] Book not found for id: '${bookId}'`);
       return jsonResponse({ success: false, error: `Book '${bookId}' not found.` }, 400);
