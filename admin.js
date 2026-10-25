@@ -74,8 +74,13 @@ function populateAdminBookOptions() {
   if (!formBookSelect) return;
   const catalog = (typeof BOOKS !== 'undefined' && Array.isArray(BOOKS)) ? BOOKS : [];
   
+  // Sort books alphabetically by title
+  const sortedBooks = [...catalog].sort((a, b) => 
+    (a.title || '').localeCompare(b.title || '', undefined, { sensitivity: 'base' })
+  );
+
   formBookSelect.innerHTML = `<option value="unassigned">Unassigned / General</option>`;
-  catalog.forEach(b => {
+  sortedBooks.forEach(b => {
     const opt = document.createElement('option');
     opt.value = b.id;
     opt.textContent = b.author ? `${b.title} (${b.author})` : b.title;

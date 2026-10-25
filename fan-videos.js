@@ -280,7 +280,12 @@ function populateBookFilterOptions() {
   // Clear any existing options except "All books"
   filterBookSelect.innerHTML = `<option value="all" data-i18n="filterAllBooks">All books</option>`;
 
-  catalogBooks.forEach(book => {
+  // Sort books alphabetically by title
+  const sortedBooks = [...catalogBooks].sort((a, b) => 
+    (a.title || '').localeCompare(b.title || '', undefined, { sensitivity: 'base' })
+  );
+
+  sortedBooks.forEach(book => {
     const opt = document.createElement('option');
     opt.value = book.id;
     opt.textContent = book.author ? `${book.title} (${book.author})` : book.title;
