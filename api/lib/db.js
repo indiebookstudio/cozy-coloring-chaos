@@ -287,6 +287,39 @@ export async function getVideoByUrl(tiktokUrl) {
 }
 
 /**
+ * Finds a video by numeric TikTok Video ID.
+ */
+export async function getVideoByVideoId(videoId) {
+  if (!videoId) return null;
+  const idStr = String(videoId).trim();
+
+  if (isSupabaseConfigured()) {
+    try {
+      const url = `${process.env.SUPABASE_URL}/rest/v1/fan_videos?tiktok_video_id=eq.${encodeURIComponent(idStr)}&select=*`;
+      const res = await fetch(url, { headers: getSupabaseHeaders() });
+      if (res.ok) {
+        const rows = await res.json();
+        return rows[0] || null;
+      }
+    } catch (err) {
+      console.error('Supabase getVideoByVideoId error:', err);
+    }
+  }
+
+  if (isGitHubConfigured()) {
+    try {
+      const { videos } = await fetchFromGitHub();
+      return videos.find(v => String(v.tiktok_video_id || '').trim() === idStr) || null;
+    } catch (err) {
+      console.error('GitHub getVideoByVideoId error:', err);
+    }
+  }
+
+  const videos = readLocalVideos();
+  return videos.find(v => String(v.tiktok_video_id || '').trim() === idStr) || null;
+}
+
+/**
  * Creates a new video record.
  */
 export async function createVideo(videoData) {

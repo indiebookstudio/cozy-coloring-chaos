@@ -559,6 +559,7 @@ window.handleImportTikTok = async function() {
       if (formCreatorName) formCreatorName.value = meta.creator_name || meta.creator_username || '';
       if (formCaption) formCaption.value = meta.caption || '';
       if (formThumbnailUrl) formThumbnailUrl.value = meta.thumbnail_url || '';
+      if (formAvatarUrl) formAvatarUrl.value = meta.creator_avatar_url || '';
       
       if (formBookSelect && meta.suggested_book_slug) {
         formBookSelect.value = meta.suggested_book_slug;

@@ -7,7 +7,7 @@
  */
 
 import { isAuthenticated } from './lib/auth.js';
-import { getAllVideos, getVideoById, getVideoByUrl, createVideo, updateVideo, deleteVideo } from './lib/db.js';
+import { getAllVideos, getVideoById, getVideoByUrl, getVideoByVideoId, createVideo, updateVideo, deleteVideo } from './lib/db.js';
 import { getRequestBody, getQueryParam, sendJson, handleOptions } from './lib/http.js';
 
 export default async function handler(req, res) {
@@ -47,8 +47,9 @@ export default async function handler(req, res) {
         return reply({ success: false, error: 'TikTok URL and Creator Username are required' }, 400);
       }
 
-      // Check duplicate URL
-      const existing = await getVideoByUrl(body.tiktok_url);
+      // Check duplicate URL or Video ID
+      const existing = (body.tiktok_video_id && await getVideoByVideoId(body.tiktok_video_id))
+        || await getVideoByUrl(body.tiktok_url);
       if (existing) {
         return reply({ success: false, error: 'This TikTok has already been added.' }, 409);
       }

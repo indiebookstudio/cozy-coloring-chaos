@@ -2,12 +2,12 @@
  * ============================================================================
  * ADMIN API: /api/admin-import
  * ============================================================================
- * Imports official metadata from TikTok oEmbed for a given TikTok video URL.
+ * Imports official metadata from TikTok for a given TikTok video URL.
  * Universal handler: runs in Vercel Node Serverless (req, res) & Web standards.
  */
 
 import { isAuthenticated } from './lib/auth.js';
-import { getVideoByUrl } from './lib/db.js';
+import { getVideoByUrl, getVideoByVideoId } from './lib/db.js';
 import { fetchTikTokOEmbed, parseTikTokUrl } from './lib/tiktok.js';
 import { getRequestBody, sendJson, handleOptions } from './lib/http.js';
 
@@ -19,7 +19,7 @@ const BOOK_HINTS = [
   { slug: 'cozy-terror', keywords: ['cozy terror', 'terror', 'dark & cozy horror', 'nightmares to color'] },
   { slug: 'the-black-sword', keywords: ['black sword', 'dark fantasy', 'black & white'] },
   { slug: 'homer-in-circles', keywords: ['homer in circles', 'homer', 'greek myths', 'miti greci', 'iliad', 'odyssey'] },
-  { slug: 'innocent-paws', keywords: ['innocent paws', 'paws', 'gatti', 'cats', 'cute animals'] },
+  { slug: 'innocent-paws', keywords: ['innocent paws', 'innoncent paws', 'innocent', 'innoncent', 'paws', 'patte', 'gatti', 'cats', 'cute animals'] },
   { slug: 'killer-paws', keywords: ['killer paws', 'killer cat'] },
   { slug: 'impossible-worlds', keywords: ['impossible worlds', 'mondi impossibili', 'surreal'] },
   { slug: 'crazy-cozy', keywords: ['crazy cozy', 'pazzo cozy'] },
@@ -34,7 +34,7 @@ const BOOK_HINTS = [
 const CATEGORY_HINTS = [
   { category: 'unboxing', keywords: ['unboxing', 'unboxed', 'mail', 'package', 'opened', 'pacco'] },
   { category: 'flip-through', keywords: ['flip through', 'flip-through', 'fliptrough', 'flip trough', 'sfoglio', 'sfogliata', 'browse'] },
-  { category: 'coloring', keywords: ['coloring', 'color with me', 'speed color', 'colored', 'coloro', 'colorare', 'colortok'] },
+  { category: 'coloring', keywords: ['coloring', 'color with me', 'speed color', 'colored', 'coloro', 'colorare', 'colortok', 'coloriage', 'colorier'] },
   { category: 'review', keywords: ['review', 'recensione', 'opinion', 'gifted', 'honest review', 'thoughts on'] },
   { category: 'collection', keywords: ['collection', 'collezione', 'all my books', 'shelf'] }
 ];
@@ -65,11 +65,11 @@ function detectCategory(text) {
 
 function detectLanguage(text) {
   const lower = (text || '').toLowerCase();
-  if (lower.includes('#dutchtiktok') || lower.includes('nederlands') || lower.includes('dutch')) return 'nl';
-  if (lower.includes('#italiantiktok') || lower.includes('italiano') || lower.includes('ciao') || lower.includes('grazie')) return 'it';
-  if (lower.includes('deutsch') || lower.includes('german')) return 'de';
-  if (lower.includes('français') || lower.includes('french')) return 'fr';
-  if (lower.includes('español') || lower.includes('spanish')) return 'es';
+  if (lower.includes('#dutchtiktok') || lower.includes('nederlands') || lower.includes('dutch') || lower.includes('kleuren')) return 'nl';
+  if (lower.includes('#italiantiktok') || lower.includes('italiano') || lower.includes('ciao') || lower.includes('grazie') || lower.includes('colorare') || lower.includes('disegno')) return 'it';
+  if (lower.includes('deutsch') || lower.includes('german') || lower.includes('malen') || lower.includes('ausmalen')) return 'de';
+  if (lower.includes('français') || lower.includes('francais') || lower.includes('french') || lower.includes('coloriage') || lower.includes('magnifique') || lower.includes('produit offert')) return 'fr';
+  if (lower.includes('español') || lower.includes('espanol') || lower.includes('spanish') || lower.includes('colorear') || lower.includes('dibujo')) return 'es';
   return 'en';
 }
 
@@ -101,11 +101,21 @@ export default async function handler(req, res) {
     if (!parsed) {
       return reply({
         success: false,
-        error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link da app vm.tiktok.com).'
+        error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link breve da app).'
       }, 400);
     }
 
-    // Check if duplicate already in database (check both raw and canonical URL)
+    // Check duplicate by Video ID or URL before fetching
+    if (parsed.videoId) {
+      const existingById = await getVideoByVideoId(parsed.videoId);
+      if (existingById) {
+        return reply({
+          success: false,
+          error: 'Questo video TikTok è già presente nella galleria.'
+        }, 409);
+      }
+    }
+
     const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
     if (existing) {
       return reply({
@@ -114,8 +124,19 @@ export default async function handler(req, res) {
       }, 409);
     }
 
-    // Fetch official oEmbed metadata from TikTok
+    // Fetch official and enriched metadata from TikTok
     const metadata = await fetchTikTokOEmbed(url);
+
+    // Double check duplicate if videoId was newly discovered during resolution
+    if (metadata.tiktok_video_id && metadata.tiktok_video_id !== parsed.videoId) {
+      const existingAfterResolution = await getVideoByVideoId(metadata.tiktok_video_id);
+      if (existingAfterResolution) {
+        return reply({
+          success: false,
+          error: 'Questo video TikTok è già presente nella galleria.'
+        }, 409);
+      }
+    }
 
     // Heuristics for book, category, and language
     const suggestedBook = detectBookSlug(metadata.caption);
@@ -131,7 +152,7 @@ export default async function handler(req, res) {
         suggested_language: suggestedLang
       },
       warning: metadata.is_partial 
-        ? 'Link riconosciuto e ID video estratto! TikTok non ha restituito i dettagli automatici per questo video: inserisci la didascalia e seleziona il libro prima di salvare.' 
+        ? 'Alcuni dettagli (come la didascalia o l\'autore) non sono stati recuperati automaticamente: compilali prima di salvare.' 
         : null
     });
   } catch (err) {
