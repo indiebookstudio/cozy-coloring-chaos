@@ -298,9 +298,9 @@ function renderAdminTable(videos) {
 
     let adminAvatar = v.creator_avatar_url || '';
     const uLower = (v.creator_username || '').toLowerCase();
-    if (!adminAvatar && uLower === 'cozycoloringchaos') adminAvatar = 'assets/icon.png';
-    else if (!adminAvatar && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
-      adminAvatar = `assets/fan-videos/avatars/${v.creator_username}.jpg`;
+    if (!adminAvatar) {
+      if (uLower === 'cozycoloringchaos') adminAvatar = 'assets/icon.png';
+      else if (v.creator_username) adminAvatar = `assets/fan-videos/avatars/${v.creator_username}.jpg`;
     }
 
     const avatarHtml = adminAvatar ? `

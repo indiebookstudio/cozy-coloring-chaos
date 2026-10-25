@@ -56,7 +56,7 @@ const FALLBACK_VIDEOS = [
     creator_username: "leanne.stacy",
     creator_name: "Leanne Stacy",
     creator_profile_url: "https://www.tiktok.com/@leanne.stacy",
-    creator_avatar_url: "",
+    creator_avatar_url: "assets/fan-videos/avatars/leanne.stacy.jpg",
     caption: "66 mystery nightmares to colour by numbers. Check out @Cozy Coloring Chaos profile and click the link in her bio to purchase. #nightmares #colouring #colourbynumbers #colouringbook",
     thumbnail_url: "assets/fan-videos/7691583050957770006.jpg",
     book_slug: "the-horror-pixel-show",
@@ -113,7 +113,7 @@ const FALLBACK_VIDEOS = [
     creator_username: "color.learning.jo",
     creator_name: "Color Learning journy",
     creator_profile_url: "https://www.tiktok.com/@color.learning.jo",
-    creator_avatar_url: "",
+    creator_avatar_url: "assets/fan-videos/avatars/color.learning.jo.jpg",
     caption: "I’ve been waiting for a long time for this one !!! Books: Italian Girl by Issac Mcclour @Cozy Coloring Chaos Splendid moments by Alexander Sawyer @Alex Sawyer coloring books Girls moment by Coco Wyo @cocowyocoloring Kalour Colors All of this you can get in my list at the link in the bio ❤️ #unboxing #coloringsupplies #adultcoloringbook #cocowyo #jadesummer",
     thumbnail_url: "assets/fan-videos/7689668404634062132.jpg",
     book_slug: "italian-girls",
@@ -571,13 +571,15 @@ function createVideoCardHtml(video) {
   const localFallback = `assets/fan-videos/${video.tiktok_video_id}.jpg`;
   const primaryThumb = video.thumbnail_url || localFallback;
 
-  // Safe Avatar logic: avoid requesting non-existent local avatar files
+  // Safe Avatar logic: use creator avatar or local avatar file
   let avatarUrl = video.creator_avatar_url || '';
   const userLower = (video.creator_username || '').toLowerCase();
-  if (!avatarUrl && userLower === 'cozycoloringchaos') {
-    avatarUrl = 'assets/icon.png';
-  } else if (!avatarUrl && (userLower === 'cozy.sparkles90' || userLower === 'craftyclare21')) {
-    avatarUrl = `assets/fan-videos/avatars/${video.creator_username}.jpg`;
+  if (!avatarUrl) {
+    if (userLower === 'cozycoloringchaos') {
+      avatarUrl = 'assets/icon.png';
+    } else if (video.creator_username) {
+      avatarUrl = `assets/fan-videos/avatars/${video.creator_username}.jpg`;
+    }
   }
 
   const avatarMarkup = avatarUrl ? `
@@ -701,10 +703,12 @@ window.openFanVideoModal = function(videoId) {
   if (modalCreatorAvatarWrap) {
     let modalAvatar = video.creator_avatar_url || '';
     const uLower = username.toLowerCase();
-    if (!modalAvatar && uLower === 'cozycoloringchaos') {
-      modalAvatar = 'assets/icon.png';
-    } else if (!modalAvatar && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
-      modalAvatar = `assets/fan-videos/avatars/${username}.jpg`;
+    if (!modalAvatar) {
+      if (uLower === 'cozycoloringchaos') {
+        modalAvatar = 'assets/icon.png';
+      } else if (username) {
+        modalAvatar = `assets/fan-videos/avatars/${username}.jpg`;
+      }
     }
 
     if (modalAvatar) {

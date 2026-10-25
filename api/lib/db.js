@@ -327,10 +327,37 @@ export async function createVideo(videoData) {
 
   let avatarUrl = videoData.creator_avatar_url || '';
   const uLower = (videoData.creator_username || '').toLowerCase();
-  if (!avatarUrl && uLower === 'cozycoloringchaos') {
+  const rawUsername = (videoData.creator_username || '').trim();
+  if (uLower === 'cozycoloringchaos') {
     avatarUrl = 'assets/icon.png';
-  } else if (!avatarUrl && (uLower === 'cozy.sparkles90' || uLower === 'craftyclare21')) {
-    avatarUrl = `assets/fan-videos/avatars/${videoData.creator_username}.jpg`;
+  } else if (rawUsername && avatarUrl.startsWith('http')) {
+    // Cache avatar image to assets/fan-videos/avatars/<username>.jpg
+    const avatarDest = `assets/fan-videos/avatars/${rawUsername}.jpg`;
+    if (isGitHubConfigured()) {
+      try {
+        const avRes = await fetch(avatarUrl, { signal: AbortSignal.timeout(3500) });
+        if (avRes.ok) {
+          const avBuffer = Buffer.from(await avRes.arrayBuffer());
+          await commitFileToGitHub(avatarDest, avBuffer, `chore(cms): cache avatar for @${rawUsername}`);
+          avatarUrl = avatarDest;
+        }
+      } catch (avErr) {
+        console.warn('Could not cache avatar to GitHub:', avErr.message);
+      }
+    } else {
+      try {
+        const avRes = await fetch(avatarUrl, { signal: AbortSignal.timeout(3500) });
+        if (avRes.ok) {
+          const localPath = path.join(process.cwd(), 'assets', 'fan-videos', 'avatars', `${rawUsername}.jpg`);
+          const dir = path.dirname(localPath);
+          if (!fs.existsSync(dir)) fs.mkdirSync(dir, { recursive: true });
+          fs.writeFileSync(localPath, Buffer.from(await avRes.arrayBuffer()));
+          avatarUrl = avatarDest;
+        }
+      } catch (e) {}
+    }
+  } else if (!avatarUrl && rawUsername) {
+    avatarUrl = `assets/fan-videos/avatars/${rawUsername}.jpg`;
   }
 
   let thumbUrl = videoData.thumbnail_url || '';
