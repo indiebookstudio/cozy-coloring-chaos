@@ -1,0 +1,611 @@
+{
+  "campaign": "christmas-2026-v2",
+  "verifiedOn": "2026-11-01",
+  "sourceLocale": "it",
+  "supportedUiLocales": [
+    "it",
+    "en",
+    "de",
+    "fr",
+    "es",
+    "nl",
+    "pl",
+    "sv",
+    "ja"
+  ],
+  "intervalMs": 8000,
+  "slides": [
+    {
+      "id": "01-regali",
+      "eyebrow": "NATALE, A MODO NOSTRO",
+      "title": "Regala un po’ di splendido caos.",
+      "body": "Libri da colorare, mondi pixel e un quaderno irriverente: tre idee regalo per chi ama uscire dagli schemi.",
+      "cta": "Scegli il tuo regalo",
+      "allowedUiLocales": [
+        "it"
+      ],
+      "role": "secondary",
+      "bookIds": [
+        "planner-lucas",
+        "crazy-cozy",
+        "the-cyberpunk-pixel-show"
+      ],
+      "fallbackHref": "#catalog-heading",
+      "alt": "Tre idee regalo tra luci natalizie: il quaderno di Lucas, Crazy Cozy e The Cyberpunk Pixel Show.",
+      "assets": {
+        "default": {
+          "desktop": "banners/01-regali-desktop.webp",
+          "mobile": "banners/01-regali-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.regali",
+      "action": "show-selection"
+    },
+    {
+      "id": "02-lucas-agenda",
+      "eyebrow": "LUCAS C. MORICA · QUADERNI PER ADULTI",
+      "title": "Per chi dimentica tutto. Anche a Natale.",
+      "body": "Un quaderno senza date per appuntamenti, cose da fare e tutto quello che sparisce dalla testa.",
+      "cta": "Scopri il quaderno",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "fr",
+        "es"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "planner-lucas"
+      ],
+      "fallbackHref": "#card-non-mi-ricordo-mai-un-cazzo",
+      "alt": "Il quaderno senza date di Lucas C. Morica, nell’edizione {editionTitle}, su una scrivania natalizia con penna rossa e regali.",
+      "assets": {
+        "it": {
+          "desktop": "banners/02-lucas-agenda-desktop.webp",
+          "mobile": "banners/02-lucas-agenda-mobile.webp"
+        },
+        "en": {
+          "desktop": "banners/02-lucas-agenda-en-desktop.webp",
+          "mobile": "banners/02-lucas-agenda-en-mobile.webp"
+        },
+        "fr": {
+          "desktop": "banners/02-lucas-agenda-fr-desktop.webp",
+          "mobile": "banners/02-lucas-agenda-fr-mobile.webp"
+        },
+        "es": {
+          "desktop": "banners/02-lucas-agenda-es-desktop.webp",
+          "mobile": "banners/02-lucas-agenda-es-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.lucas_agenda",
+      "action": "show-book"
+    },
+    {
+      "id": "03-isaac-cozy",
+      "eyebrow": "ISAAC MCCLOUR · UNA PAUSA COZY",
+      "title": "Una pausa cozy, lontano dal caos.",
+      "body": "Crazy Cozy, Cozy & Doomed e Impossible Worlds: tre modi di staccare con creature adorabili e situazioni assurde.",
+      "cta": "Scopri questi tre libri",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "de",
+        "fr",
+        "es",
+        "nl",
+        "pl",
+        "sv",
+        "ja"
+      ],
+      "role": "secondary",
+      "bookIds": [
+        "crazy-cozy",
+        "cozy-and-doomed",
+        "impossible-worlds"
+      ],
+      "fallbackHref": "#card-crazy-cozy",
+      "alt": "Crazy Cozy, Cozy & Doomed e Impossible Worlds tra coperte, regali e un capibara decorativo con cappello natalizio.",
+      "assets": {
+        "default": {
+          "desktop": "banners/03-isaac-cozy-desktop.webp",
+          "mobile": "banners/03-isaac-cozy-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.isaac_cozy",
+      "action": "show-selection"
+    },
+    {
+      "id": "04-lucia-pixel",
+      "eyebrow": "LUCIA C. MARCOS · MONDI DA RIVELARE",
+      "title": "Sotto l’albero, un altro mondo.",
+      "body": "Futuri al neon, draghi e miti greci. Scopri i mondi da rivelare di Lucia, un segno alla volta.",
+      "cta": "Esplora i libri di Lucia",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "de",
+        "fr",
+        "es",
+        "nl",
+        "pl",
+        "sv",
+        "ja"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "the-cyberpunk-pixel-show",
+        "the-black-sword",
+        "homer-in-circles"
+      ],
+      "fallbackHref": "#card-the-cyberpunk-pixel-show",
+      "alt": "The Cyberpunk Pixel Show, The Black Sword e Homer in Circles tra regali, luci dorate e un’aurora invernale.",
+      "assets": {
+        "default": {
+          "desktop": "banners/04-lucia-pixel-desktop.webp",
+          "mobile": "banners/04-lucia-pixel-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.lucia_pixel",
+      "action": "show-selection"
+    },
+    {
+      "id": "05-lucas-antistress",
+      "eyebrow": "LUCAS C. MORICA · UMORISMO PER ADULTI",
+      "title": "A Natale siamo tutti più buoni. Quasi.",
+      "body": "Per chi ama il kawaii, l’ironia e le parole senza filtro. Un regalo da colorare, per adulti che dicono quello che pensano.",
+      "cta": "Scopri il lato irriverente",
+      "allowedUiLocales": [
+        "it"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "non-rompetemi-i-coglioni"
+      ],
+      "fallbackHref": "#card-non-rompetemi-i-coglioni",
+      "alt": "Non Rompetemi i Coglioni di Lucas C. Morica accanto a un cappello natalizio, matite e una tazzina.",
+      "assets": {
+        "default": {
+          "desktop": "banners/05-lucas-antistress-desktop.webp",
+          "mobile": "banners/05-lucas-antistress-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.lucas_antistress",
+      "action": "show-book"
+    },
+    {
+      "id": "06-italian-girls",
+      "eyebrow": "ISAAC MCCLOUR · ITALIAN GIRLS",
+      "title": "Un piccolo viaggio in Italia. Da scartare.",
+      "body": "Stile, dolce vita e pagine da colorare: regala un’evasione italiana con Italian Girls.",
+      "cta": "Scopri Italian Girls",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "de",
+        "fr",
+        "es",
+        "nl",
+        "pl",
+        "sv",
+        "ja"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "italian-girls"
+      ],
+      "fallbackHref": "#card-italian-girls",
+      "alt": "Italian Girls di Isaac McClour tra regali natalizi, luci dorate e una tazzina su un piedistallo di velluto rosso.",
+      "assets": {
+        "default": {
+          "desktop": "banners/06-italian-girls-desktop.webp",
+          "mobile": "banners/06-italian-girls-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.italian_girls",
+      "action": "show-book"
+    },
+    {
+      "id": "07-paws-duo",
+      "eyebrow": "ISAAC MCCLOUR · COZY MURDER",
+      "title": "Sembrano innocenti. Scartali con cautela.",
+      "body": "Killer Paws e Innocent Paws: due libri da colorare dove il cozy incontra l’umorismo nero.",
+      "cta": "Scopri i due libri Paws",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "de",
+        "fr",
+        "es",
+        "nl",
+        "pl",
+        "sv",
+        "ja"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "killer-paws",
+        "innocent-paws"
+      ],
+      "fallbackHref": "#card-killer-paws",
+      "alt": "Killer Paws e Innocent Paws di Isaac McClour in una scena natalizia con regali, nastri e un gatto decorativo.",
+      "assets": {
+        "default": {
+          "desktop": "banners/07-paws-duo-desktop.webp",
+          "mobile": "banners/07-paws-duo-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.paws_duo",
+      "action": "show-selection"
+    },
+    {
+      "id": "08-regali-internazionali",
+      "eyebrow": "REGALI FUORI DAGLI SCHEMI",
+      "title": "Regali diversi. Per persone fuori dagli schemi.",
+      "body": "Dolce vita, misteri cozy e mondi al neon. Trova il libro da colorare per la persona che hai in mente.",
+      "cta": "Trova il tuo regalo",
+      "allowedUiLocales": [
+        "it",
+        "en",
+        "de",
+        "fr",
+        "es",
+        "nl",
+        "pl",
+        "sv",
+        "ja"
+      ],
+      "role": "primary",
+      "bookIds": [
+        "italian-girls",
+        "killer-paws",
+        "the-cyberpunk-pixel-show"
+      ],
+      "fallbackHref": "#catalog-heading",
+      "alt": "Italian Girls, Killer Paws e The Cyberpunk Pixel Show presentati come regali tra velluto verde, nastri rossi e luci natalizie.",
+      "assets": {
+        "default": {
+          "desktop": "banners/08-regali-internazionali-desktop.webp",
+          "mobile": "banners/08-regali-internazionali-mobile.webp"
+        }
+      },
+      "copyKey": "christmas.regali_internazionali",
+      "action": "show-selection"
+    }
+  ],
+  "plannerFamilyId": "planner-lucas",
+  "plannerEditions": {
+    "it": {
+      "title": "Non mi ricordo mai un cazzo",
+      "cardId": "card-non-mi-ricordo-mai-un-cazzo",
+      "cover": "covers/lucas-agenda.png",
+      "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/IT/Front.Cover.png",
+      "asin": "B0HLT3HR9Z",
+      "observedAmazonLinks": [
+        "https://www.amazon.it/dp/B0HLT3HR9Z"
+      ]
+    },
+    "en": {
+      "title": "I Can't Remember Jack Shit",
+      "cardId": "card-i-cant-remember-jack-shit",
+      "cover": "covers/lucas-agenda-en.png",
+      "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Front.Cover.png",
+      "asin": "B0HM3HRQ93",
+      "observedAmazonLinks": [
+        "https://www.amazon.com/dp/B0HM3HRQ93"
+      ]
+    },
+    "fr": {
+      "title": "J'ai une mémoire de merde",
+      "cardId": "card-jai-une-memoire-de-merde",
+      "cover": "covers/lucas-agenda-fr.png",
+      "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Front.Cover.png",
+      "observedAmazonLinks": [
+        "https://www.amazon.fr/dp/B0HM3VTVHN"
+      ],
+      "asin": "B0HM3VTVHN"
+    },
+    "es": {
+      "title": "Tengo una memoria de mierda",
+      "cardId": "card-tengo-una-memoria-de-mierda",
+      "cover": "covers/lucas-agenda-es.png",
+      "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Front.Cover.png",
+      "observedAmazonLinks": [
+        "https://www.amazon.es/dp/B0HM7M6WB1"
+      ],
+      "asin": "B0HM7M6WB1"
+    }
+  },
+  "localeRules": {
+    "it": {
+      "eligibleSlides": [
+        "01-regali",
+        "02-lucas-agenda",
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "05-lucas-antistress",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": {
+        "title": "Non mi ricordo mai un cazzo",
+        "cardId": "card-non-mi-ricordo-mai-un-cazzo",
+        "cover": "covers/lucas-agenda.png",
+        "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/IT/Front.Cover.png",
+        "asin": "B0HLT3HR9Z",
+        "observedAmazonLinks": [
+          "https://www.amazon.it/dp/B0HLT3HR9Z"
+        ]
+      },
+      "firstSlideWeights": {
+        "01-regali": 0,
+        "02-lucas-agenda": 1,
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "05-lucas-antistress": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 8
+    },
+    "en": {
+      "eligibleSlides": [
+        "02-lucas-agenda",
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": {
+        "title": "I Can't Remember Jack Shit",
+        "cardId": "card-i-cant-remember-jack-shit",
+        "cover": "covers/lucas-agenda-en.png",
+        "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/EN/Front.Cover.png",
+        "asin": "B0HM3HRQ93",
+        "observedAmazonLinks": [
+          "https://www.amazon.com/dp/B0HM3HRQ93"
+        ]
+      },
+      "firstSlideWeights": {
+        "02-lucas-agenda": 1,
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 4,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 6
+    },
+    "de": {
+      "eligibleSlides": [
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": null,
+      "firstSlideWeights": {
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 5
+    },
+    "fr": {
+      "eligibleSlides": [
+        "02-lucas-agenda",
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": {
+        "title": "J'ai une mémoire de merde",
+        "cardId": "card-jai-une-memoire-de-merde",
+        "cover": "covers/lucas-agenda-fr.png",
+        "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/FR/Front.Cover.png",
+        "observedAmazonLinks": [
+          "https://www.amazon.fr/dp/B0HM3VTVHN"
+        ],
+        "asin": "B0HM3VTVHN"
+      },
+      "firstSlideWeights": {
+        "02-lucas-agenda": 1,
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 6
+    },
+    "es": {
+      "eligibleSlides": [
+        "02-lucas-agenda",
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": {
+        "title": "Tengo una memoria de mierda",
+        "cardId": "card-tengo-una-memoria-de-mierda",
+        "cover": "covers/lucas-agenda-es.png",
+        "source": "https://cozycoloringchaos.com/assets/books/Non.Mi.Ricordo.Mai.Un.Cazzo/ES/Front.Cover.png",
+        "observedAmazonLinks": [
+          "https://www.amazon.es/dp/B0HM7M6WB1"
+        ],
+        "asin": "B0HM7M6WB1"
+      },
+      "firstSlideWeights": {
+        "02-lucas-agenda": 1,
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 6
+    },
+    "nl": {
+      "eligibleSlides": [
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": null,
+      "firstSlideWeights": {
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 5
+    },
+    "pl": {
+      "eligibleSlides": [
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": null,
+      "firstSlideWeights": {
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 5
+    },
+    "sv": {
+      "eligibleSlides": [
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": null,
+      "firstSlideWeights": {
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 5
+    },
+    "ja": {
+      "eligibleSlides": [
+        "03-isaac-cozy",
+        "04-lucia-pixel",
+        "06-italian-girls",
+        "07-paws-duo",
+        "08-regali-internazionali"
+      ],
+      "plannerEdition": null,
+      "firstSlideWeights": {
+        "03-isaac-cozy": 0,
+        "04-lucia-pixel": 1,
+        "06-italian-girls": 2,
+        "07-paws-duo": 2,
+        "08-regali-internazionali": 2
+      },
+      "expectedSlideCount": 5
+    }
+  },
+  "copyOverrides": {
+    "en": {
+      "01-regali": {
+        "eyebrow": "CHRISTMAS, OUR WAY",
+        "title": "Give a little beautiful chaos.",
+        "body": "Coloring books, pixel worlds and an irreverent notebook: gift ideas for people who love something different.",
+        "cta": "Find your gift"
+      },
+      "02-lucas-agenda": {
+        "eyebrow": "LUCAS C. MORICA · NOTEBOOKS FOR ADULTS",
+        "title": "For the one who forgets everything. Even at Christmas.",
+        "body": "An undated notebook for appointments, to-dos and everything that slips your mind.",
+        "cta": "Discover the notebook"
+      },
+      "03-isaac-cozy": {
+        "eyebrow": "ISAAC MCCLOUR · A COZY BREAK",
+        "title": "A cozy break from the holiday chaos.",
+        "body": "Crazy Cozy, Cozy & Doomed and Impossible Worlds: three coloring escapes filled with cute creatures and wonderfully absurd situations.",
+        "cta": "Explore these three books"
+      },
+      "04-lucia-pixel": {
+        "eyebrow": "LUCIA C. MARCOS · WORLDS TO REVEAL",
+        "title": "Another world, under the tree.",
+        "body": "Neon futures, dragons and Greek myths. Discover Lucia’s hidden worlds, one mark at a time.",
+        "cta": "Explore Lucia’s books"
+      },
+      "05-lucas-antistress": {
+        "eyebrow": "LUCAS C. MORICA · HUMOR FOR ADULTS",
+        "title": "Everyone’s nicer at Christmas. Almost.",
+        "body": "For adults who love kawaii, sharp humor and a few unfiltered words.",
+        "cta": "Discover the irreverent side"
+      },
+      "06-italian-girls": {
+        "eyebrow": "ISAAC MCCLOUR · ITALIAN GIRLS",
+        "title": "A little Italian escape. Wrapped for Christmas.",
+        "body": "A touch of dolce vita, cozy style and pages to color. Give an Italian escape with Italian Girls.",
+        "cta": "Discover Italian Girls"
+      },
+      "07-paws-duo": {
+        "eyebrow": "ISAAC MCCLOUR · COZY MURDER",
+        "title": "They look innocent. Unwrap with caution.",
+        "body": "Killer Paws and Innocent Paws: two coloring books where cozy scenes meet dark humor.",
+        "cta": "Explore both Paws books"
+      },
+      "08-regali-internazionali": {
+        "eyebrow": "GIFTS FOR THE WONDERFULLY DIFFERENT",
+        "title": "Different gifts. For delightfully different people.",
+        "body": "Dolce vita, cozy mysteries and neon worlds. Find a coloring book for the person you have in mind.",
+        "cta": "Find your gift"
+      }
+    },
+    "fr": {
+      "02-lucas-agenda": {
+        "eyebrow": "LUCAS C. MORICA · CARNETS POUR ADULTES",
+        "title": "Pour qui oublie tout. Même à Noël.",
+        "body": "Un carnet non daté pour les rendez-vous, les choses à faire et tout ce qui vous sort de la tête.",
+        "cta": "Découvrir le carnet"
+      }
+    },
+    "es": {
+      "02-lucas-agenda": {
+        "eyebrow": "LUCAS C. MORICA · CUADERNOS PARA ADULTOS",
+        "title": "Para quien lo olvida todo. Incluso en Navidad.",
+        "body": "Un cuaderno sin fechas para citas, tareas y todo lo que se te escapa de la cabeza.",
+        "cta": "Descubre el cuaderno"
+      }
+    }
+  },
+  "rotation": {
+    "first": "weighted-draw-from-primary-eligible-only",
+    "rest": "fisher-yates-once-per-locale-session-no-repeat-until-cycle-end",
+    "localeChange": "filter-rebuild-and-resolve-cover-before-render-no-wrong-language-flash",
+    "secondarySlidesPreserved": true
+  },
+  "businessInputsFromOwner": [
+    "Italian Girls is strong with American readers; prioritize English UI without inferring visitor geography.",
+    "Killer Paws and Innocent Paws work outside Halloween.",
+    "Crazy Cozy remains available but should not dominate.",
+    "Non Rompetemi i Coglioni campaign visibility is Italian-only."
+  ],
+  "auditCaveat": "Public DOM currently renders Non Rompetemi i Coglioni across all nine UI languages; explicit owner rule overrides this for hero visibility. Planner editions verified by language selector, not guessed."
+}

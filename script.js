@@ -2494,14 +2494,10 @@ function updateInterfaceLanguage(lang) {
     if (t[key]) el.setAttribute('placeholder', t[key]);
   });
 
-  // Sync Black Sword video controls UI with current language
-  try {
-    const promoVid = document.getElementById('black-sword-promo-video');
-    if (promoVid && typeof updateBlackSwordPlayUI === 'function') {
-      updateBlackSwordPlayUI(!promoVid.paused);
-      updateBlackSwordSoundUI(promoVid.muted);
-    }
-  } catch (e) {}
+  // Sync gift selection banner texts with current language
+  if (typeof updateGiftSelectionBanner === 'function') {
+    updateGiftSelectionBanner();
+  }
 
   // Update Free Sample modal translations and default country
   updateFreeSampleModalTranslations(t);
@@ -2753,6 +2749,13 @@ function setBookFilter(filterKey) {
   else if (filterKey === 'lucia-c-marcos') normalizedKey = 'pixel-art';
   else if (filterKey === 'humor') normalizedKey = 'humour';
   else if (filterKey === 'notebook' || filterKey === 'notebooks') normalizedKey = 'notebooks';
+
+  if (window.activeGiftSelectionBookIds) {
+    window.activeGiftSelectionBookIds = null;
+    if (typeof updateGiftSelectionBanner === 'function') {
+      updateGiftSelectionBanner();
+    }
+  }
 
   currentBookFilter = normalizedKey;
 
@@ -4347,9 +4350,14 @@ function renderBooks() {
 
   const t = TRANSLATIONS[currentLanguage] || TRANSLATIONS.en;
 
-  // Filter books by language visibility and category/author
+  // Filter books by language visibility and category/author or active gift selection
   const visibleBooks = BOOKS.filter(book => isBookVisibleForLanguage(book, currentLanguage));
-  let filteredBooks = visibleBooks.filter(book => isBookAuthor(book, currentBookFilter));
+  let filteredBooks;
+  if (window.activeGiftSelectionBookIds && Array.isArray(window.activeGiftSelectionBookIds) && window.activeGiftSelectionBookIds.length > 0) {
+    filteredBooks = visibleBooks.filter(book => window.activeGiftSelectionBookIds.includes(book.id));
+  } else {
+    filteredBooks = visibleBooks.filter(book => isBookAuthor(book, currentBookFilter));
+  }
 
   // Filter books by search query if present
   if (currentSearchQuery) {
@@ -4531,6 +4539,12 @@ function initSearchBarEvents() {
 
   searchInput.addEventListener('input', (e) => {
     currentSearchQuery = e.target.value.trim();
+    if (window.activeGiftSelectionBookIds) {
+      window.activeGiftSelectionBookIds = null;
+      if (typeof updateGiftSelectionBanner === 'function') {
+        updateGiftSelectionBanner();
+      }
+    }
     if (searchClear) {
       searchClear.style.display = currentSearchQuery.length > 0 ? 'inline-flex' : 'none';
     }
@@ -4721,88 +4735,159 @@ window.scrollToHomerInCirclesBook = scrollToHomerInCirclesBook;
 
 function scrollToBlackSwordBook(event) {
   if (event) event.preventDefault();
+  scrollToBookCard('the-black-sword');
+}
+window.scrollToBlackSwordBook = scrollToBlackSwordBook;
 
-  // If current filter hides pixel-art books, switch to 'all' or 'pixel-art'
-  if (typeof setBookFilter === 'function' && typeof currentBookFilter !== 'undefined') {
-    if (currentBookFilter !== 'all' && currentBookFilter !== 'pixel-art') {
-      setBookFilter('all');
+/**
+ * ============================================================================
+ * SEASONAL CAMPAIGN & GIFT SELECTION INTEGRATION
+ * ============================================================================
+ */
+
+/**
+ * Activates a curated gift selection filter in the catalog.
+ * Resolves localized edition IDs (e.g. planner-lucas), clears search/conflicting filters,
+ * displays the selected gift ideas banner, re-renders the books, and smoothly scrolls to catalog.
+ * @param {Array<string>} bookIds 
+ */
+function showGiftSelection(bookIds) {
+  const currentLang = (typeof currentLanguage !== 'undefined' && currentLanguage) ? currentLanguage : 'it';
+  const resolvedIds = (bookIds || []).map(id => {
+    if (id === 'planner-lucas') {
+      if (typeof getResolvedPlannerId === 'function') {
+        return getResolvedPlannerId(currentLang);
+      }
+      if (currentLang === 'it') return 'non-mi-ricordo-mai-un-cazzo';
+      if (currentLang === 'en') return 'i-cant-remember-jack-shit';
+      if (currentLang === 'fr') return 'jai-une-memoire-de-merde';
+      if (currentLang === 'es') return 'tengo-una-memoria-de-mierda';
+      return null;
+    }
+    return id;
+  }).filter(Boolean);
+
+  window.activeGiftSelectionBookIds = resolvedIds;
+
+  // Clear live search query
+  currentSearchQuery = '';
+  const searchInput = document.getElementById('book-search-input');
+  if (searchInput) searchInput.value = '';
+  const searchClear = document.getElementById('book-search-clear');
+  if (searchClear) searchClear.style.display = 'none';
+
+  // Deselect standard category tabs to highlight special gift selection
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.classList.remove('active');
+    btn.setAttribute('aria-selected', 'false');
+  });
+
+  if (typeof updateGiftSelectionBanner === 'function') {
+    updateGiftSelectionBanner();
+  }
+
+  renderBooks();
+
+  const targetHeading = document.getElementById('catalog-heading') || document.getElementById('gift-selection-bar');
+  if (targetHeading) {
+    targetHeading.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
+}
+window.showGiftSelection = showGiftSelection;
+
+/**
+ * Clears the active curated gift selection and returns to viewing all books.
+ */
+function clearGiftSelection() {
+  window.activeGiftSelectionBookIds = null;
+  if (typeof updateGiftSelectionBanner === 'function') {
+    updateGiftSelectionBanner();
+  }
+  setBookFilter('all');
+}
+window.clearGiftSelection = clearGiftSelection;
+
+/**
+ * Updates the localized chip text and count in the gift selection banner.
+ */
+function updateGiftSelectionBanner() {
+  const bar = document.getElementById('gift-selection-bar');
+  if (!bar) return;
+
+  const currentLang = (typeof currentLanguage !== 'undefined' && currentLanguage) ? currentLanguage : 'it';
+  if (window.activeGiftSelectionBookIds && Array.isArray(window.activeGiftSelectionBookIds) && window.activeGiftSelectionBookIds.length > 0) {
+    bar.style.display = 'flex';
+    const countEl = document.getElementById('gift-selection-count');
+    const labelEl = document.getElementById('gift-selection-label');
+    const clearTextEl = document.getElementById('gift-selection-clear-text');
+
+    const tXmas = (typeof getCampaignUiText === 'function') ? getCampaignUiText(currentLang) : null;
+    if (countEl) countEl.textContent = window.activeGiftSelectionBookIds.length;
+    if (labelEl) labelEl.textContent = (tXmas && tXmas.selectedGiftsChip) || 'Idee regalo selezionate';
+    if (clearTextEl) clearTextEl.textContent = (tXmas && tXmas.showAllBooks) || 'Mostra tutti i libri';
+  } else {
+    bar.style.display = 'none';
+  }
+}
+window.updateGiftSelectionBanner = updateGiftSelectionBanner;
+
+/**
+ * Smoothly scrolls to a single book card, highlighting it and ensuring it is visible.
+ * Resolves editions for planner-lucas.
+ * @param {string} bookId 
+ */
+function scrollToBookCard(bookId) {
+  const currentLang = (typeof currentLanguage !== 'undefined' && currentLanguage) ? currentLanguage : 'it';
+  let resolvedId = bookId;
+  if (bookId === 'planner-lucas') {
+    if (typeof getResolvedPlannerId === 'function') {
+      resolvedId = getResolvedPlannerId(currentLang);
+    } else {
+      if (currentLang === 'it') resolvedId = 'non-mi-ricordo-mai-un-cazzo';
+      else if (currentLang === 'en') resolvedId = 'i-cant-remember-jack-shit';
+      else if (currentLang === 'fr') resolvedId = 'jai-une-memoire-de-merde';
+      else if (currentLang === 'es') resolvedId = 'tengo-una-memoria-de-mierda';
+      else resolvedId = null;
     }
   }
 
-  const targetCard = document.getElementById('card-the-black-sword');
-  if (targetCard) {
-    targetCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    targetCard.classList.add('book-card-highlighted');
+  if (!resolvedId) return;
+
+  if (window.activeGiftSelectionBookIds) {
+    window.activeGiftSelectionBookIds = null;
+    if (typeof updateGiftSelectionBanner === 'function') {
+      updateGiftSelectionBanner();
+    }
+  }
+
+  if (currentSearchQuery) {
+    currentSearchQuery = '';
+    const searchInput = document.getElementById('book-search-input');
+    if (searchInput) searchInput.value = '';
+    const searchClear = document.getElementById('book-search-clear');
+    if (searchClear) searchClear.style.display = 'none';
+  }
+
+  const targetBook = BOOKS.find(b => b.id === resolvedId);
+  if (targetBook && !isBookCategory(targetBook, currentBookFilter)) {
+    setBookFilter('all');
+  } else {
+    renderBooks();
+  }
+
+  const card = document.getElementById('card-' + resolvedId);
+  if (card) {
+    card.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    card.classList.add('book-card-highlighted');
     setTimeout(() => {
-      targetCard.classList.remove('book-card-highlighted');
+      card.classList.remove('book-card-highlighted');
     }, 2400);
   } else {
     const catalog = document.getElementById('catalog-heading');
-    if (catalog) catalog.scrollIntoView({ behavior: 'smooth' });
+    if (catalog) catalog.scrollIntoView({ behavior: 'smooth', block: 'start' });
   }
 }
-
-function toggleBlackSwordPlay() {
-  const video = document.getElementById('black-sword-promo-video');
-  if (!video) return;
-
-  if (video.paused) {
-    video.play().catch(() => {});
-  } else {
-    video.pause();
-  }
-}
-
-function updateBlackSwordPlayUI(isPlaying) {
-  const t = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLanguage]) ? TRANSLATIONS[currentLanguage] : (TRANSLATIONS.it || {});
-  const iconPlay = document.getElementById('black-sword-icon-play');
-  const iconPause = document.getElementById('black-sword-icon-pause');
-  const label = document.getElementById('black-sword-play-label');
-  const btn = document.getElementById('black-sword-play-btn');
-  const centerPlay = document.getElementById('black-sword-center-play');
-
-  if (isPlaying) {
-    if (iconPlay) iconPlay.style.display = 'none';
-    if (iconPause) iconPause.style.display = 'inline-block';
-    if (label) label.textContent = t.bsPause || 'Pausa';
-    if (btn) btn.setAttribute('aria-label', t.bsPause || 'Pausa');
-    if (centerPlay) centerPlay.style.display = 'none';
-  } else {
-    if (iconPlay) iconPlay.style.display = 'inline-block';
-    if (iconPause) iconPause.style.display = 'none';
-    if (label) label.textContent = t.bsPlay || 'Avvia';
-    if (btn) btn.setAttribute('aria-label', t.bsPlay || 'Avvia');
-    if (centerPlay) centerPlay.style.display = 'flex';
-  }
-}
-
-function updateBlackSwordSoundUI(isMuted) {
-  const t = (typeof TRANSLATIONS !== 'undefined' && TRANSLATIONS[currentLanguage]) ? TRANSLATIONS[currentLanguage] : (TRANSLATIONS.it || {});
-  const iconMuted = document.getElementById('black-sword-sound-icon-muted');
-  const iconUnmuted = document.getElementById('black-sword-sound-icon-unmuted');
-  const label = document.getElementById('black-sword-sound-label');
-  const btn = document.getElementById('black-sword-sound-btn');
-
-  if (isMuted) {
-    if (iconMuted) iconMuted.style.display = 'inline-block';
-    if (iconUnmuted) iconUnmuted.style.display = 'none';
-    if (label) label.textContent = t.bsAudioOff || 'Audio off';
-    if (btn) btn.setAttribute('aria-label', t.bsAudioOff || 'Audio off');
-  } else {
-    if (iconMuted) iconMuted.style.display = 'none';
-    if (iconUnmuted) iconUnmuted.style.display = 'inline-block';
-    if (label) label.textContent = t.bsAudioOn || 'Audio on';
-    if (btn) btn.setAttribute('aria-label', t.bsAudioOn || 'Audio on');
-  }
-}
-
-function toggleBlackSwordSound() {
-  const video = document.getElementById('black-sword-promo-video');
-  if (!video) return;
-
-  video.muted = !video.muted;
-  updateBlackSwordSoundUI(video.muted);
-}
+window.scrollToBookCard = scrollToBookCard;
 
 /**
  * App initialization
@@ -4859,16 +4944,6 @@ function initApp() {
 
   // 6. Check for books with community videos asynchronously and sync UI
   fetchBooksWithFanVideos();
-
-  // 5. Ensure promotional video starts autoplaying (muted) and sync UI
-  try {
-    const promoVideo = document.getElementById('black-sword-promo-video');
-    if (promoVideo) {
-      promoVideo.addEventListener('play', () => updateBlackSwordPlayUI(true));
-      promoVideo.addEventListener('pause', () => updateBlackSwordPlayUI(false));
-      promoVideo.play().catch(() => {});
-    }
-  } catch (e) {}
 }
 
 // Initialize on DOM ready
