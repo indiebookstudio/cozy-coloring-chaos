@@ -9,15 +9,15 @@
 const SEASONAL_CAMPAIGN = {
   id: "halloween-2026",
   name: "Halloween 2026",
-  enabled: true,
+  enabled: false, // Disabilitato (passato). Impostare su true per riattivare o configurare una nuova campagna stagionale.
 
   banner: {
-    enabled: true,
+    enabled: false,
     bgImage: "assets/campaigns/halloween-2026/Banner.Halloween.2026.New.jpeg"
   },
 
   popup: {
-    enabled: true,
+    enabled: false,
     delayMs: 4000, // Short timeout (4s)
     sessionStorageKey: "ccc_campaign_halloween_2026_dismissed",
     bgImage: "assets/campaigns/halloween-2026/Popup.Halloween.2026.jpeg",
@@ -468,6 +468,7 @@ function mountCampaignPopup() {
  * Called automatically by script.js updateInterfaceLanguage(lang).
  */
 function updateCampaignTranslations(langCode) {
+  if (!SEASONAL_CAMPAIGN || !SEASONAL_CAMPAIGN.enabled) return;
   const activeLang = langCode || getActiveLanguage();
   const t = getCampaignT(activeLang);
 
@@ -552,6 +553,7 @@ function scheduleCampaignPopup() {
  * Opens the promotional popup modal.
  */
 function openCampaignPopup() {
+  if (!SEASONAL_CAMPAIGN || !SEASONAL_CAMPAIGN.enabled || !SEASONAL_CAMPAIGN.popup || !SEASONAL_CAMPAIGN.popup.enabled) return;
   if (campaignTimer) {
     clearTimeout(campaignTimer);
     campaignTimer = null;

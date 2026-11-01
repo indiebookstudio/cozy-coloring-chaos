@@ -52,6 +52,15 @@
 }
 
 /* Seasonal Banner Container: 100% complete uncropped 16:9 view */
+#seasonal-campaign-banner:empty {
+  display: none;
+}
+
+.site-hero-section:has(#seasonal-campaign-banner:empty) .site-hero-header,
+.site-hero-section:not(:has(.seasonal-banner-wrapper)) .site-hero-header {
+  margin-bottom: 0;
+}
+
 .seasonal-banner-wrapper {
   width: 100%;
   max-width: 1280px;
