@@ -1026,6 +1026,7 @@ function handleHeroCtaClick(event, slideIndex) {
   }
 }
 window.handleHeroCtaClick = handleHeroCtaClick;
+window.goToChristmasSlide = goToSlide;
 
 // ============================================================================
 // 8. MOUNT & SYNCHRONOUS LANGUAGE UPDATE
