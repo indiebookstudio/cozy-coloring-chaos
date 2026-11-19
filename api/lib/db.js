@@ -399,7 +399,7 @@ export async function createVideo(videoData) {
     thumbnail_url: thumbUrl,
     book_slug: videoData.book_slug || 'unassigned',
     category: videoData.category || 'other',
-    language: videoData.language || 'en',
+    language: videoData.language || '',
     featured: !!videoData.featured,
     published: videoData.published !== undefined ? !!videoData.published : true,
     sort_order: parseInt(videoData.sort_order ?? 0, 10) || 0,

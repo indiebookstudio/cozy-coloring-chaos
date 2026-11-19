@@ -46,8 +46,8 @@ export async function parseTikTokUrl(rawUrl) {
   // 3. Remove query parameters and hash for preliminary pattern matching
   const cleanUrl = url.split('?')[0].split('#')[0].replace(/\/+$/, '');
 
-  // 4. Standard video format: https://www.tiktok.com/@username/video/1234567890123456789
-  const stdMatch = cleanUrl.match(/tiktok\.com\/@([^/?#]+)\/video\/(\d+)/i);
+  // 4. Standard video/photo format: https://www.tiktok.com/@username/video/1234567890123456789
+  const stdMatch = cleanUrl.match(/tiktok\.com\/@([^/?#]+)\/(?:video|photo)\/(\d+)/i);
   if (stdMatch && stdMatch[1] && stdMatch[1] !== 'tiktok') {
     return {
       isValid: true,
@@ -61,7 +61,7 @@ export async function parseTikTokUrl(rawUrl) {
   //    https://www.tiktok.com/video/1234567890123456789
   //    https://www.tiktok.com/@/video/1234567890123456789
   //    https://www.tiktok.com/share/video/1234567890123456789
-  const noUserMatch = cleanUrl.match(/tiktok\.com\/(?:@\/|share\/)?video\/(\d+)/i);
+  const noUserMatch = cleanUrl.match(/tiktok\.com\/(?:@\/|share\/)?(?:video|photo)\/(\d+)/i);
   if (noUserMatch) {
     return {
       isValid: true,
@@ -96,16 +96,45 @@ export async function parseTikTokUrl(rawUrl) {
   // 8. Short URLs: vm.tiktok.com, vt.tiktok.com, tiktok.com/t/
   if (/(?:vm|vt)\.tiktok\.com|tiktok\.com\/t\//i.test(url)) {
     try {
-      const resp = await fetch(url, {
-        method: 'GET',
-        redirect: 'follow',
-        headers: {
-          'User-Agent': BOT_UA,
-          'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
-        },
-        signal: AbortSignal.timeout(6000)
-      });
-      let resolved = resp.url || url;
+      // Step A: Fast manual redirect lookup with modern browser headers
+      let resolved = '';
+      try {
+        const headResp = await fetch(url, {
+          method: 'GET',
+          redirect: 'manual',
+          headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+          },
+          signal: AbortSignal.timeout(4000)
+        });
+        const loc = headResp.headers.get('location');
+        if (loc) {
+          resolved = loc.startsWith('http') ? loc : new URL(loc, url).href;
+        }
+      } catch (e) {}
+
+      // Step B: Follow redirect if manual location was empty
+      if (!resolved) {
+        const resp = await fetch(url, {
+          method: 'GET',
+          redirect: 'follow',
+          headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8'
+          },
+          signal: AbortSignal.timeout(6000)
+        });
+        resolved = resp.url || url;
+
+        // If still unresolved, inspect HTML content of the redirected page for og:url or video ID
+        const html = await resp.text();
+        const ogUrlMatch = html.match(/<meta[^>]*property=["']og:url["'][^>]*content=["']([^"']*)["']/i) ||
+                          html.match(/<meta[^>]*content=["']([^"']*)["'][^>]*property=["']og:url["']/i);
+        if (ogUrlMatch) {
+          resolved = ogUrlMatch[1];
+        }
+      }
 
       // If TikTok redirected to login with redirect_url param, decode it
       if (resolved.includes('redirect_url=')) {
@@ -117,7 +146,7 @@ export async function parseTikTokUrl(rawUrl) {
       }
 
       const resolvedClean = resolved.split('?')[0].split('#')[0].replace(/\/+$/, '');
-      const resMatch = resolvedClean.match(/tiktok\.com\/@([^/?#]+)\/video\/(\d+)/i);
+      const resMatch = resolvedClean.match(/tiktok\.com\/@([^/?#]+)\/(?:video|photo)\/(\d+)/i);
       if (resMatch && resMatch[1] !== 'tiktok') {
         return {
           isValid: true,
@@ -127,7 +156,7 @@ export async function parseTikTokUrl(rawUrl) {
         };
       }
 
-      const resNoUser = resolvedClean.match(/tiktok\.com\/(?:@\/|share\/)?video\/(\d+)/i) || 
+      const resNoUser = resolvedClean.match(/tiktok\.com\/(?:@\/|share\/)?(?:video|photo)\/(\d+)/i) || 
                         resolvedClean.match(/tiktok\.com\/v\/(\d+)/i);
       if (resNoUser) {
         return {
@@ -229,7 +258,9 @@ export async function fetchTikTokOEmbed(url) {
   // SOURCE 1: TikWM Public API
   // -------------------------------------------------------------
   try {
-    const tikwmTarget = videoId ? `https://www.tiktok.com/@tiktok/video/${videoId}` : parsed.canonicalUrl;
+    const tikwmTarget = videoId 
+      ? (username ? `https://www.tiktok.com/@${username}/video/${videoId}` : `https://www.tiktok.com/@tiktok/video/${videoId}`)
+      : (parsed.canonicalUrl || url);
     const tikwmUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(tikwmTarget)}`;
     const twRes = await fetch(tikwmUrl, {
       headers: {
@@ -333,7 +364,7 @@ export async function fetchTikTokOEmbed(url) {
 
   // Fallback player iframe if oEmbed didn't provide one
   if (!embedHtml && videoId) {
-    embedHtml = `<iframe height="578" width="325" src="https://www.tiktok.com/player/v1/${videoId}?autoplay=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`;
+    embedHtml = `<iframe height="578" width="325" src="https://www.tiktok.com/player/v1/${videoId}?embed_from=oembed&autoplay=1&muted=1&music_info=1&description=0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; fullscreen; gyroscope; picture-in-picture; web-share" allowfullscreen loading="lazy"></iframe>`;
   }
 
   const isPartial = !caption || !thumbnailUrl || !username;

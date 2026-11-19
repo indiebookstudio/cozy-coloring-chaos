@@ -63,93 +63,16 @@ function detectCategory(text) {
   return 'other';
 }
 
-function detectLanguage(text) {
-  const lower = (text || '').toLowerCase();
-  if (lower.includes('#dutchtiktok') || lower.includes('nederlands') || lower.includes('dutch') || lower.includes('kleuren')) return 'nl';
-  if (lower.includes('#italiantiktok') || lower.includes('italiano') || lower.includes('ciao') || lower.includes('grazie') || lower.includes('colorare') || lower.includes('disegno')) return 'it';
-  if (lower.includes('deutsch') || lower.includes('german') || lower.includes('malen') || lower.includes('ausmalen')) return 'de';
-  if (lower.includes('français') || lower.includes('francais') || lower.includes('french') || lower.includes('coloriage') || lower.includes('magnifique') || lower.includes('produit offert')) return 'fr';
-  if (lower.includes('español') || lower.includes('espanol') || lower.includes('spanish') || lower.includes('colorear') || lower.includes('dibujo')) return 'es';
-  return 'en';
-}
-
-export default async function handler(req, res) {
-  if (req.method === 'OPTIONS') {
-    return handleOptions(req, res);
-  }
-
-  const reply = (data, status = 200, cookie = null, extraHeaders = {}) => sendJson(res, data, status, cookie, extraHeaders, req);
-
-  // Server-side authentication check
-  if (!isAuthenticated(req)) {
-    return reply({ success: false, error: 'Unauthorized. Please log in.' }, 401);
-  }
-
-  if (req.method !== 'POST') {
-    return reply({ success: false, error: 'Method Not Allowed. Use POST.' }, 405);
-  }
-
-  try {
-    const body = await getRequestBody(req);
-    const url = body.url;
-
-    if (!url || typeof url !== 'string') {
-      return reply({ success: false, error: 'TikTok URL is required' }, 400);
-    }
-
-    const parsed = await parseTikTokUrl(url);
-    if (!parsed) {
-      return reply({
-        success: false,
-        error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link breve da app).'
-      }, 400);
-    }
-
-    // Check duplicate by Video ID or URL before fetching
-    if (parsed.videoId) {
-      const existingById = await getVideoByVideoId(parsed.videoId);
-      if (existingById) {
-        return reply({
-          success: false,
-          error: 'Questo video TikTok è già presente nella galleria.'
-        }, 409);
-      }
-    }
-
-    const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
-    if (existing) {
-      return reply({
-        success: false,
-        error: 'Questo video TikTok è già presente nella galleria.'
-      }, 409);
-    }
-
-    // Fetch official and enriched metadata from TikTok
-    const metadata = await fetchTikTokOEmbed(url);
-
-    // Double check duplicate if videoId was newly discovered during resolution
-    if (metadata.tiktok_video_id && metadata.tiktok_video_id !== parsed.videoId) {
-      const existingAfterResolution = await getVideoByVideoId(metadata.tiktok_video_id);
-      if (existingAfterResolution) {
-        return reply({
-          success: false,
-          error: 'Questo video TikTok è già presente nella galleria.'
-        }, 409);
-      }
-    }
-
-    // Heuristics for book, category, and language
+    // Heuristics for book and category
     const suggestedBook = detectBookSlug(metadata.caption);
     const suggestedCategory = detectCategory(metadata.caption);
-    const suggestedLang = detectLanguage(metadata.caption);
 
     return reply({
       success: true,
       metadata: {
         ...metadata,
         suggested_book_slug: suggestedBook,
-        suggested_category: suggestedCategory,
-        suggested_language: suggestedLang
+        suggested_category: suggestedCategory
       },
       warning: metadata.is_partial 
         ? 'Alcuni dettagli (come la didascalia o l\'autore) non sono stati recuperati automaticamente: compilali prima di salvare.' 

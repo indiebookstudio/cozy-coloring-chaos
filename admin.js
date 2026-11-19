@@ -47,11 +47,9 @@ const formCreatorName = document.getElementById('admin-creator-name');
 const formCaption = document.getElementById('admin-caption');
 const formBookSelect = document.getElementById('admin-book-select');
 const formCategorySelect = document.getElementById('admin-category-select');
-const formLangSelect = document.getElementById('admin-lang-select');
 const formThumbnailUrl = document.getElementById('admin-thumbnail-url');
 const formAvatarUrl = document.getElementById('admin-avatar-url');
 const formSortOrder = document.getElementById('admin-sort-order');
-const formFeaturedCheckbox = document.getElementById('admin-featured-checkbox');
 const formPublishedCheckbox = document.getElementById('admin-published-checkbox');
 const saveBtn = document.getElementById('admin-save-btn');
 const saveBtnText = document.getElementById('admin-save-btn-text');
@@ -343,9 +341,6 @@ function renderAdminTable(videos) {
         <td>
           <span class="admin-chip admin-chip-cat">${escapeHtml((v.category || 'other').toUpperCase())}</span>
         </td>
-        <td>
-          <span class="admin-table-lang">${(v.language || 'en').toUpperCase()}</span>
-        </td>
         <td style="font-size: 0.8rem; color: var(--color-text-light);">
           ${dateFormatted}
         </td>
@@ -357,16 +352,6 @@ function renderAdminTable(videos) {
             title="Click to toggle publish status"
           >
             ${v.published ? 'Published' : 'Hidden'}
-          </button>
-        </td>
-        <td>
-          <button 
-            type="button" 
-            class="admin-badge-toggle ${v.featured ? 'status-featured' : 'status-standard'}" 
-            onclick="toggleFeatured('${v.id}', ${v.featured})"
-            title="Click to toggle featured status"
-          >
-            ${v.featured ? '★ Yes' : 'No'}
           </button>
         </td>
         <td style="text-align: right;">
@@ -429,11 +414,9 @@ window.openAddVideoModal = function() {
   if (formCaption) formCaption.value = '';
   if (formBookSelect) formBookSelect.value = 'unassigned';
   if (formCategorySelect) formCategorySelect.value = 'other';
-  if (formLangSelect) formLangSelect.value = 'en';
   if (formThumbnailUrl) formThumbnailUrl.value = '';
   if (formAvatarUrl) formAvatarUrl.value = '';
   if (formSortOrder) formSortOrder.value = '0';
-  if (formFeaturedCheckbox) formFeaturedCheckbox.checked = false;
   if (formPublishedCheckbox) formPublishedCheckbox.checked = true;
 
   if (saveBtnText) saveBtnText.textContent = 'SAVE / PUBLISH';
@@ -472,11 +455,9 @@ window.openEditVideoModal = function(id) {
   if (formCaption) formCaption.value = video.caption || '';
   if (formBookSelect) formBookSelect.value = video.book_slug || 'unassigned';
   if (formCategorySelect) formCategorySelect.value = video.category || 'other';
-  if (formLangSelect) formLangSelect.value = video.language || 'en';
   if (formThumbnailUrl) formThumbnailUrl.value = video.thumbnail_url || '';
   if (formAvatarUrl) formAvatarUrl.value = video.creator_avatar_url || '';
   if (formSortOrder) formSortOrder.value = video.sort_order ?? 0;
-  if (formFeaturedCheckbox) formFeaturedCheckbox.checked = !!video.featured;
   if (formPublishedCheckbox) formPublishedCheckbox.checked = video.published !== false;
 
   // Show preview box
@@ -572,9 +553,6 @@ window.handleImportTikTok = async function() {
       if (formCategorySelect && meta.suggested_category) {
         formCategorySelect.value = meta.suggested_category;
       }
-      if (formLangSelect && meta.suggested_language) {
-        formLangSelect.value = meta.suggested_language;
-      }
 
       // Show live preview
       if (previewBox) {
@@ -644,11 +622,9 @@ window.handleSaveVideo = async function(e) {
   const caption = (formCaption?.value || '').trim();
   const bookSlug = formBookSelect?.value || 'unassigned';
   const category = formCategorySelect?.value || 'other';
-  const language = formLangSelect?.value || 'en';
   const thumbUrl = (formThumbnailUrl?.value || '').trim();
   const avatarUrl = (formAvatarUrl?.value || '').trim();
   const sortOrder = parseInt(formSortOrder?.value || '0', 10);
-  const featured = !!formFeaturedCheckbox?.checked;
   const published = !!formPublishedCheckbox?.checked;
 
   if (!username) {
@@ -665,10 +641,8 @@ window.handleSaveVideo = async function(e) {
     caption: caption,
     book_slug: bookSlug,
     category: category,
-    language: language,
     thumbnail_url: thumbUrl,
     sort_order: sortOrder,
-    featured: featured,
     published: published
   };
 
@@ -730,24 +704,6 @@ window.togglePublish = async function(id, currentStatus) {
   }
 };
 
-/**
- * Toggles featured status directly from table.
- */
-window.toggleFeatured = async function(id, currentStatus) {
-  try {
-    const res = await adminFetch('/api/admin-videos', {
-      method: 'PUT',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ id, featured: !currentStatus })
-    });
-    if (res.ok) {
-      showToast(!currentStatus ? 'Marked as featured' : 'Unmarked featured', 'success');
-      await fetchAdminVideos();
-    }
-  } catch (e) {
-    showToast('Failed to update status', 'error');
-  }
-};
 
 /**
  * Opens delete confirmation dialog.

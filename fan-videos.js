@@ -214,7 +214,6 @@ const searchInput = document.getElementById('fan-search-input');
 const searchClearBtn = document.getElementById('fan-search-clear');
 const filterBookSelect = document.getElementById('fan-filter-book');
 const filterCatSelect = document.getElementById('fan-filter-category');
-const filterLangSelect = document.getElementById('fan-filter-lang');
 const sortSelect = document.getElementById('fan-sort-select');
 const resetFiltersBtn = document.getElementById('fan-reset-filters');
 
@@ -228,7 +227,6 @@ const modalCreatorHandle = document.getElementById('modal-creator-handle');
 const modalCreatorAvatarWrap = document.getElementById('modal-creator-avatar-wrap');
 const modalTagBook = document.getElementById('modal-tag-book');
 const modalTagCategory = document.getElementById('modal-tag-category');
-const modalTagLang = document.getElementById('modal-tag-lang');
 const modalVideoCaption = document.getElementById('modal-video-caption');
 const modalCreatorProfileLink = document.getElementById('modal-creator-profile-link');
 const modalFollowBtnLabel = document.getElementById('modal-follow-btn-label');
@@ -243,7 +241,6 @@ const modalBookLink = document.getElementById('modal-book-link');
 async function initFanVideos() {
   populateBookFilterOptions();
   setupFilterListeners();
-  setupCustomLanguageSelect();
   setupModalListeners();
 
   // Check for URL query parameter ?book= (e.g. from homepage book card)
@@ -414,17 +411,10 @@ window.updateFanVideosLanguage = function(lang, t) {
     filterBookSelect.value = currentSelectedBook;
   }
 
-  // 2. Update custom language select trigger label if "all" is currently selected
-  const hiddenLangSelect = document.getElementById('fan-filter-lang');
-  const currentLangLabel = document.getElementById('fan-lang-current-label');
-  if (hiddenLangSelect && hiddenLangSelect.value === 'all' && currentLangLabel) {
-    currentLangLabel.textContent = t.filterAllLanguages || 'All languages';
-  }
-
-  // 3. Re-render videos grid (updating results count label, category badge; NEVER touching captions)
+  // 2. Re-render videos grid (updating results count label, category badge; NEVER touching captions)
   applyFiltersAndRender();
 
-  // 4. If modal is currently active, update its localized labels
+  // 3. If modal is currently active, update its localized labels
   if (modalEl && modalEl.classList.contains('active') && activeVideo) {
     const username = activeVideo.creator_username || 'creator';
     if (modalFollowBtnLabel) {
@@ -454,10 +444,9 @@ function applyFiltersAndRender() {
   const searchTerm = (searchInput?.value || '').trim().toLowerCase();
   const selectedBook = filterBookSelect?.value || 'all';
   const selectedCat = filterCatSelect?.value || 'all';
-  const selectedLang = filterLangSelect?.value || 'all';
   const sortBy = sortSelect?.value || 'newest';
 
-  const hasActiveFilters = searchTerm !== '' || selectedBook !== 'all' || selectedCat !== 'all' || selectedLang !== 'all';
+  const hasActiveFilters = searchTerm !== '' || selectedBook !== 'all' || selectedCat !== 'all';
   if (resetFiltersBtn) {
     resetFiltersBtn.style.display = hasActiveFilters ? 'inline-flex' : 'none';
   }
@@ -472,9 +461,6 @@ function applyFiltersAndRender() {
     // Category filter
     if (selectedCat !== 'all' && (video.category || '').toLowerCase() !== selectedCat.toLowerCase()) return false;
 
-    // Language filter
-    if (selectedLang !== 'all' && (video.language || '').toLowerCase() !== selectedLang.toLowerCase()) return false;
-
     // Search filter
     if (searchTerm) {
       const textToSearch = `${video.creator_username} ${video.creator_name} ${video.caption} ${video.book_slug} ${video.category}`.toLowerCase();
@@ -486,9 +472,6 @@ function applyFiltersAndRender() {
 
   // Sorting
   filtered.sort((a, b) => {
-    if (sortBy === 'featured') {
-      if (a.featured !== b.featured) return a.featured ? -1 : 1;
-    }
     if (sortBy === 'oldest') {
       return new Date(a.created_at).getTime() - new Date(b.created_at).getTime();
     }
@@ -565,7 +548,6 @@ function createVideoCardHtml(video) {
   const safeCaption = escapeHtml(video.caption || '');
   const username = escapeHtml(video.creator_username || 'creator');
   const creatorName = escapeHtml(video.creator_name || username);
-  const langCode = (video.language || 'en').toUpperCase();
 
   // Thumbnail fallback: local fallback file if remote fails
   const localFallback = `assets/fan-videos/${video.tiktok_video_id}.jpg`;
@@ -616,7 +598,6 @@ function createVideoCardHtml(video) {
         <!-- Badges on top of card -->
         <div class="fan-card-badges">
           <span class="fan-badge-cat">${categoryLabel}</span>
-          <span class="fan-badge-lang">${langCode}</span>
         </div>
 
         <!-- Big Play Button Overlay -->
@@ -696,7 +677,6 @@ window.openFanVideoModal = function(videoId) {
   if (modalCreatorHandle) modalCreatorHandle.textContent = `@${username}`;
   if (modalTagBook) modalTagBook.textContent = bookTitle;
   if (modalTagCategory) modalTagCategory.textContent = categoryLabel;
-  if (modalTagLang) modalTagLang.textContent = (video.language || 'en').toUpperCase();
   // Authentic fan text: untouched!
   if (modalVideoCaption) modalVideoCaption.textContent = video.caption || '';
 
@@ -756,22 +736,20 @@ window.openFanVideoModal = function(videoId) {
     modalPlayerContainer.style.display = 'block';
 
     // Official TikTok Embed:
-    // With autoplay=1, mute=0, music_info=1 and unmuted audio
     const iframe = document.createElement('iframe');
-    iframe.src = `https://www.tiktok.com/player/v1/${video.tiktok_video_id}?autoplay=1&mute=0&music_info=1`;
+    iframe.src = `https://www.tiktok.com/player/v1/${video.tiktok_video_id}?embed_from=oembed&autoplay=1&muted=1&music_info=1&description=0`;
     iframe.title = `TikTok video by @${username}`;
     iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; fullscreen');
     iframe.setAttribute('allowfullscreen', 'true');
     iframe.setAttribute('scrolling', 'no');
     iframe.className = 'fan-tiktok-iframe';
     
-    // Automatically unmute audio and ensure play at full volume
-    const sendUnmuteAndPlay = () => {
+    // User interaction can unmute player
+    const sendUnmute = () => {
       try {
         if (iframe && iframe.contentWindow) {
           iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'unMute' }, '*');
           iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'changeVolume', value: 100 }, '*');
-          iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'play' }, '*');
         }
       } catch (e) {}
     };
@@ -785,13 +763,6 @@ window.openFanVideoModal = function(videoId) {
 
     iframe.onload = () => {
       clearTimeout(fallbackTimer);
-      // Immediately and repeatedly send unMute and volume commands as player initializes
-      sendUnmuteAndPlay();
-      setTimeout(sendUnmuteAndPlay, 150);
-      setTimeout(sendUnmuteAndPlay, 400);
-      setTimeout(sendUnmuteAndPlay, 800);
-      setTimeout(sendUnmuteAndPlay, 1500);
-      setTimeout(sendUnmuteAndPlay, 2500);
     };
 
     iframe.onerror = () => {
@@ -800,7 +771,7 @@ window.openFanVideoModal = function(videoId) {
       if (modalPlayerFallback) modalPlayerFallback.style.display = 'flex';
     };
 
-    modalPlayerContainer.onclick = sendUnmuteAndPlay;
+    modalPlayerContainer.onclick = sendUnmute;
     modalPlayerContainer.appendChild(iframe);
   }
 
@@ -840,25 +811,7 @@ window.resetFanFilters = function() {
   if (searchInput) searchInput.value = '';
   if (filterBookSelect) filterBookSelect.value = 'all';
   if (filterCatSelect) filterCatSelect.value = 'all';
-  if (filterLangSelect) filterLangSelect.value = 'all';
   if (sortSelect) sortSelect.value = 'newest';
-
-  // Reset custom language select
-  const currentFlag = document.getElementById('fan-lang-current-flag');
-  const currentLabel = document.getElementById('fan-lang-current-label');
-  const langMenu = document.getElementById('fan-lang-menu');
-  if (currentFlag) currentFlag.innerHTML = '🌐';
-  if (currentLabel) {
-    const t = (window.translations && window.currentLang) ? window.translations[window.currentLang] : null;
-    currentLabel.textContent = t && t.filterAllLanguages ? t.filterAllLanguages : 'All languages';
-  }
-  if (langMenu) {
-    langMenu.querySelectorAll('.fan-custom-select-option').forEach(b => {
-      const isAll = b.getAttribute('data-value') === 'all';
-      b.classList.toggle('active', isAll);
-      b.setAttribute('aria-selected', isAll ? 'true' : 'false');
-    });
-  }
 
   // Sync URL search params
   if (window.history && window.history.replaceState) {
@@ -869,82 +822,6 @@ window.resetFanFilters = function() {
 
   applyFiltersAndRender();
 };
-
-/**
- * Sets up custom dropdown for language filtering with real flag images.
- */
-function setupCustomLanguageSelect() {
-  const container = document.getElementById('fan-lang-custom-select');
-  const trigger = document.getElementById('fan-lang-trigger');
-  const menu = document.getElementById('fan-lang-menu');
-  const currentFlag = document.getElementById('fan-lang-current-flag');
-  const currentLabel = document.getElementById('fan-lang-current-label');
-  const hiddenSelect = document.getElementById('fan-filter-lang');
-  if (!container || !trigger || !menu || !hiddenSelect) return;
-
-  // Toggle dropdown open/close
-  trigger.addEventListener('click', (e) => {
-    e.stopPropagation();
-    const isOpen = container.classList.contains('open');
-    container.classList.toggle('open', !isOpen);
-    trigger.setAttribute('aria-expanded', !isOpen ? 'true' : 'false');
-  });
-
-  // Handle option click
-  menu.querySelectorAll('.fan-custom-select-option').forEach(optionBtn => {
-    optionBtn.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const val = optionBtn.getAttribute('data-value');
-
-      // Update active option styling
-      menu.querySelectorAll('.fan-custom-select-option').forEach(b => {
-        b.classList.remove('active');
-        b.setAttribute('aria-selected', 'false');
-      });
-      optionBtn.classList.add('active');
-      optionBtn.setAttribute('aria-selected', 'true');
-
-      // Update trigger content with flag and label
-      const optFlag = optionBtn.querySelector('.lang-flag-img');
-      const optName = optionBtn.querySelector('.fan-lang-opt-name');
-      if (currentFlag) {
-        if (optFlag) {
-          currentFlag.innerHTML = `<img src="${optFlag.src}" srcset="${optFlag.srcset || ''}" width="17" height="12" alt="" class="lang-flag-img">`;
-        } else {
-          currentFlag.innerHTML = '🌐';
-        }
-      }
-      if (currentLabel && optName) {
-        currentLabel.textContent = optName.textContent;
-      }
-
-      // Close dropdown
-      container.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-
-      // Update hidden select and trigger filtering
-      hiddenSelect.value = val;
-      hiddenSelect.dispatchEvent(new Event('change'));
-    });
-  });
-
-  // Close when clicking outside
-  document.addEventListener('click', (e) => {
-    if (!container.contains(e.target)) {
-      container.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-    }
-  });
-
-  // Close on Escape key
-  document.addEventListener('keydown', (e) => {
-    if (e.key === 'Escape' && container.classList.contains('open')) {
-      container.classList.remove('open');
-      trigger.setAttribute('aria-expanded', 'false');
-      trigger.focus();
-    }
-  });
-}
 
 /**
  * Sets up event listeners for filters, search, and sorting.
@@ -984,10 +861,6 @@ function setupFilterListeners() {
     filterCatSelect.addEventListener('change', applyFiltersAndRender);
   }
 
-  if (filterLangSelect) {
-    filterLangSelect.addEventListener('change', applyFiltersAndRender);
-  }
-
   if (sortSelect) {
     sortSelect.addEventListener('change', applyFiltersAndRender);
   }
@@ -1014,29 +887,7 @@ function setupModalListeners() {
       closeFanVideoModal();
     }
   });
-
-  // Listen for TikTok Embed Player events (onPlayerReady, onStateChange) to trigger unMute
-  window.addEventListener('message', (event) => {
-    try {
-      let data = event.data;
-      if (typeof data === 'string') {
-        try { data = JSON.parse(data); } catch (e) {}
-      }
-      if (data && data['x-tiktok-player']) {
-        const type = data.type;
-        if (type === 'onPlayerReady' || type === 'onStateChange') {
-          if (modalPlayerContainer) {
-            const iframe = modalPlayerContainer.querySelector('iframe');
-            if (iframe && iframe.contentWindow) {
-              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'unMute' }, '*');
-              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'changeVolume', value: 100 }, '*');
-              iframe.contentWindow.postMessage({ 'x-tiktok-player': true, type: 'play' }, '*');
-            }
-          }
-        }
-      }
-    } catch (err) {}
-  });
+}
 }
 
 function escapeHtml(str) {

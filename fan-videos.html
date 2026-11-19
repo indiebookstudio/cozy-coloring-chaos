@@ -209,7 +209,6 @@
               <select id="fan-sort-select" class="fan-select fan-sort-select" aria-label="Sort videos">
                 <option value="newest" data-i18n="sortNewest">Newest first</option>
                 <option value="oldest" data-i18n="sortOldest">Oldest first</option>
-                <option value="featured" data-i18n="sortFeatured">Featured first</option>
               </select>
             </div>
           </div>
@@ -237,97 +236,6 @@
                 <option value="collection" data-i18n="catCollection">Collection</option>
                 <option value="other" data-i18n="catOther">Other</option>
               </select>
-            </div>
-
-            <!-- Language Filter with Real Flags -->
-            <div class="fan-filter-group fan-filter-lang-group">
-              <label for="fan-lang-trigger" class="fan-control-label" data-i18n="filterLanguage">Language:</label>
-              
-              <!-- Hidden select for form value binding & backwards compatibility -->
-              <select id="fan-filter-lang" style="display: none;" aria-hidden="true" tabindex="-1">
-                <option value="all" data-i18n="filterAllLanguages">All languages</option>
-                <option value="en">English</option>
-                <option value="it">Italiano</option>
-                <option value="nl">Nederlands</option>
-                <option value="de">Deutsch</option>
-                <option value="fr">Français</option>
-                <option value="es">Español</option>
-                <option value="pl">Polski</option>
-                <option value="sv">Svenska</option>
-                <option value="ja">日本語</option>
-              </select>
-
-              <!-- Custom Select Dropdown with Flagcdn flags -->
-              <div class="fan-custom-select fan-lang-select" id="fan-lang-custom-select">
-                <button 
-                  type="button" 
-                  class="fan-custom-select-trigger" 
-                  id="fan-lang-trigger" 
-                  aria-haspopup="listbox" 
-                  aria-expanded="false" 
-                  aria-label="Filter by language"
-                >
-                  <span class="fan-custom-select-val">
-                    <span class="fan-lang-icon-all" id="fan-lang-current-flag">🌐</span>
-                    <span class="fan-lang-name" id="fan-lang-current-label" data-i18n="filterAllLanguages">All languages</span>
-                  </span>
-                  <svg class="fan-custom-select-chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-                    <polyline points="6 9 12 15 18 9"></polyline>
-                  </svg>
-                </button>
-
-                <div class="fan-custom-select-menu" id="fan-lang-menu" role="listbox" aria-label="Languages">
-                  <button type="button" class="fan-custom-select-option active" data-value="all" role="option" aria-selected="true">
-                    <span class="fan-lang-icon-all">🌐</span>
-                    <span class="fan-lang-opt-name" data-i18n="filterAllLanguages">All languages</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="en" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/gb.png" srcset="https://flagcdn.com/48x36/gb.png 2x" width="17" height="12" alt="English" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">English</span>
-                    <span class="fan-lang-opt-code">EN</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="it" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/it.png" srcset="https://flagcdn.com/48x36/it.png 2x" width="17" height="12" alt="Italiano" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Italiano</span>
-                    <span class="fan-lang-opt-code">IT</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="nl" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/nl.png" srcset="https://flagcdn.com/48x36/nl.png 2x" width="17" height="12" alt="Nederlands" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Nederlands</span>
-                    <span class="fan-lang-opt-code">NL</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="de" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/de.png" srcset="https://flagcdn.com/48x36/de.png 2x" width="17" height="12" alt="Deutsch" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Deutsch</span>
-                    <span class="fan-lang-opt-code">DE</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="fr" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/fr.png" srcset="https://flagcdn.com/48x36/fr.png 2x" width="17" height="12" alt="Français" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Français</span>
-                    <span class="fan-lang-opt-code">FR</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="es" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/es.png" srcset="https://flagcdn.com/48x36/es.png 2x" width="17" height="12" alt="Español" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Español</span>
-                    <span class="fan-lang-opt-code">ES</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="pl" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/pl.png" srcset="https://flagcdn.com/48x36/pl.png 2x" width="17" height="12" alt="Polski" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Polski</span>
-                    <span class="fan-lang-opt-code">PL</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="sv" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/se.png" srcset="https://flagcdn.com/48x36/se.png 2x" width="17" height="12" alt="Svenska" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">Svenska</span>
-                    <span class="fan-lang-opt-code">SV</span>
-                  </button>
-                  <button type="button" class="fan-custom-select-option" data-value="ja" role="option" aria-selected="false">
-                    <img src="https://flagcdn.com/24x18/jp.png" srcset="https://flagcdn.com/48x36/jp.png 2x" width="17" height="12" alt="日本語" class="lang-flag-img" loading="lazy">
-                    <span class="fan-lang-opt-name">日本語</span>
-                    <span class="fan-lang-opt-code">JA</span>
-                  </button>
-                </div>
-              </div>
             </div>
 
             <!-- Reset Filters Button -->
@@ -462,7 +370,6 @@
           <div class="fan-modal-tags">
             <span class="fan-tag fan-tag-book" id="modal-tag-book">Killer Paws</span>
             <span class="fan-tag fan-tag-cat" id="modal-tag-category">UNBOXING</span>
-            <span class="fan-tag fan-tag-lang" id="modal-tag-lang">EN</span>
           </div>
 
           <div class="fan-modal-caption-wrap">

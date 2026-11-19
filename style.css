@@ -4845,7 +4845,7 @@ body {
   right: 0.75rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
   gap: 0.35rem;
   z-index: 2;
   pointer-events: none;
