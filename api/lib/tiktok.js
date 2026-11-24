@@ -286,33 +286,35 @@ export async function fetchTikTokOEmbed(url) {
   }
 
   // -------------------------------------------------------------
-  // SOURCE 2: Official TikTok oEmbed
+  // SOURCE 2: Official TikTok oEmbed (fallback if TikWM missed metadata)
   // -------------------------------------------------------------
-  try {
-    const oembedTarget = (username && videoId)
-      ? `https://www.tiktok.com/@${username}/video/${videoId}`
-      : (videoId ? `https://www.tiktok.com/@tiktok/video/${videoId}` : parsed.canonicalUrl);
+  if (!caption || !thumbnailUrl || !username) {
+    try {
+      const oembedTarget = (username && videoId)
+        ? `https://www.tiktok.com/@${username}/video/${videoId}`
+        : (videoId ? `https://www.tiktok.com/@tiktok/video/${videoId}` : parsed.canonicalUrl);
 
-    const oembedUrl = `https://www.tiktok.com/oembed?url=${encodeURIComponent(oembedTarget)}`;
-    const oeRes = await fetch(oembedUrl, {
-      headers: {
-        'User-Agent': BROWSER_UA,
-        'Accept': 'application/json'
-      },
-      signal: AbortSignal.timeout(4000)
-    });
+      const oembedUrl = `https://www.tiktok.com/oembed?url=${encodeURIComponent(oembedTarget)}`;
+      const oeRes = await fetch(oembedUrl, {
+        headers: {
+          'User-Agent': BROWSER_UA,
+          'Accept': 'application/json'
+        },
+        signal: AbortSignal.timeout(3500)
+      });
 
-    if (oeRes.ok) {
-      const oeData = await oeRes.json();
-      if (!videoId) videoId = oeData.embed_product_id || extractVideoIdFromHtml(oeData.html) || '';
-      if (!caption && oeData.title) caption = cleanCaption(oeData.title);
-      if (!username && oeData.author_unique_id) username = oeData.author_unique_id;
-      if (!displayName && oeData.author_name) displayName = oeData.author_name;
-      if (!thumbnailUrl && oeData.thumbnail_url) thumbnailUrl = oeData.thumbnail_url;
-      if (oeData.html) embedHtml = oeData.html;
+      if (oeRes.ok) {
+        const oeData = await oeRes.json();
+        if (!videoId) videoId = oeData.embed_product_id || extractVideoIdFromHtml(oeData.html) || '';
+        if (!caption && oeData.title) caption = cleanCaption(oeData.title);
+        if (!username && oeData.author_unique_id) username = oeData.author_unique_id;
+        if (!displayName && oeData.author_name) displayName = oeData.author_name;
+        if (!thumbnailUrl && oeData.thumbnail_url) thumbnailUrl = oeData.thumbnail_url;
+        if (oeData.html) embedHtml = oeData.html;
+      }
+    } catch (err) {
+      console.warn('TikTok oEmbed warning:', err.message);
     }
-  } catch (err) {
-    console.warn('TikTok oEmbed warning:', err.message);
   }
 
   // -------------------------------------------------------------

@@ -530,8 +530,14 @@ window.handleImportTikTok = async function() {
       body: JSON.stringify({ url })
     });
 
-    const data = await res.json();
-    if (res.ok && data.success && data.metadata) {
+    let data = null;
+    try {
+      data = await res.json();
+    } catch (parseErr) {
+      // Server returned HTML (e.g. 504 gateway timeout or 500 error)
+    }
+
+    if (res.ok && data && data.success && data.metadata) {
       const meta = data.metadata;
       
       // Update input to canonical clean URL if available
@@ -588,11 +594,16 @@ window.handleImportTikTok = async function() {
       } else {
         showToast('Metadati importati da TikTok con successo! Verifica e salva.', 'success');
       }
+    } else if (data && data.error) {
+      showImportError(data.error);
+    } else if (res.status === 401) {
+      showImportError('Sessione scaduta. Ricarica la pagina ed effettua nuovamente il login.');
     } else {
-      showImportError(data.error || 'Impossibile importare i metadati da TikTok.');
+      showImportError(`Errore del server (${res.status}): Impossibile importare i metadati da TikTok.`);
     }
   } catch (err) {
-    showImportError('Errore di rete durante la connessione al server.');
+    console.error('Import error details:', err);
+    showImportError('Errore di connessione: ' + (err.message || 'impossibile contattare il server.'));
   } finally {
     if (importBtn) importBtn.disabled = false;
     if (importBtnText) importBtnText.style.display = 'inline';

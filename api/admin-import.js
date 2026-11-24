@@ -7,7 +7,7 @@
  */
 
 import { isAuthenticated } from './lib/auth.js';
-import { getVideoByUrl, getVideoByVideoId } from './lib/db.js';
+import { getAllVideos } from './lib/db.js';
 import { fetchTikTokOEmbed, parseTikTokUrl } from './lib/tiktok.js';
 import { getRequestBody, sendJson, handleOptions } from './lib/http.js';
 
@@ -95,19 +95,26 @@ export default async function handler(req, res) {
       }, 400);
     }
 
-    // Check duplicate by Video ID or URL before fetching
-    if (parsed.videoId) {
-      const existingById = await getVideoByVideoId(parsed.videoId);
-      if (existingById) {
-        return reply({
-          success: false,
-          error: 'Questo video TikTok è già presente nella galleria.'
-        }, 409);
-      }
+    // Check duplicate in gallery with a single cached dataset lookup
+    let allVideos = [];
+    try {
+      allVideos = await getAllVideos({ includeUnpublished: true });
+    } catch (e) {
+      console.warn('Could not check duplicates from database:', e.message);
     }
 
-    const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
-    if (existing) {
+    const normUrl = (url || '').trim().replace(/\/+$/, '').toLowerCase();
+    const normCanon = (parsed.canonicalUrl || '').trim().replace(/\/+$/, '').toLowerCase();
+    const vidId = String(parsed.videoId || '').trim();
+
+    const isDuplicate = (checkId, checkUrl) => allVideos.some(v => {
+      if (checkId && String(v.tiktok_video_id || '').trim() === checkId) return true;
+      const vUrl = (v.tiktok_url || '').trim().replace(/\/+$/, '').toLowerCase();
+      if (checkUrl && vUrl === checkUrl) return true;
+      return false;
+    });
+
+    if (isDuplicate(vidId, normCanon) || isDuplicate(vidId, normUrl)) {
       return reply({
         success: false,
         error: 'Questo video TikTok è già presente nella galleria.'
@@ -119,8 +126,7 @@ export default async function handler(req, res) {
 
     // Double check duplicate if videoId was newly discovered during resolution
     if (metadata.tiktok_video_id && metadata.tiktok_video_id !== parsed.videoId) {
-      const existingAfterResolution = await getVideoByVideoId(metadata.tiktok_video_id);
-      if (existingAfterResolution) {
+      if (isDuplicate(String(metadata.tiktok_video_id).trim(), null)) {
         return reply({
           success: false,
           error: 'Questo video TikTok è già presente nella galleria.'
