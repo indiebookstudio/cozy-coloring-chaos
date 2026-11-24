@@ -63,6 +63,71 @@ function detectCategory(text) {
   return 'other';
 }
 
+export default async function handler(req, res) {
+  if (req.method === 'OPTIONS') {
+    return handleOptions(req, res);
+  }
+
+  const reply = (data, status = 200, cookie = null, extraHeaders = {}) => sendJson(res, data, status, cookie, extraHeaders, req);
+
+  // Server-side authentication check
+  if (!isAuthenticated(req)) {
+    return reply({ success: false, error: 'Unauthorized. Please log in.' }, 401);
+  }
+
+  if (req.method !== 'POST') {
+    return reply({ success: false, error: 'Method Not Allowed. Use POST.' }, 405);
+  }
+
+  try {
+    const body = await getRequestBody(req);
+    const url = body.url;
+
+    if (!url || typeof url !== 'string') {
+      return reply({ success: false, error: 'TikTok URL is required' }, 400);
+    }
+
+    const parsed = await parseTikTokUrl(url);
+    if (!parsed) {
+      return reply({
+        success: false,
+        error: 'Formato link TikTok non riconosciuto. Inserisci un link valido (es. https://www.tiktok.com/@creator/video/123456789 o link breve da app).'
+      }, 400);
+    }
+
+    // Check duplicate by Video ID or URL before fetching
+    if (parsed.videoId) {
+      const existingById = await getVideoByVideoId(parsed.videoId);
+      if (existingById) {
+        return reply({
+          success: false,
+          error: 'Questo video TikTok è già presente nella galleria.'
+        }, 409);
+      }
+    }
+
+    const existing = await getVideoByUrl(parsed.canonicalUrl) || await getVideoByUrl(url);
+    if (existing) {
+      return reply({
+        success: false,
+        error: 'Questo video TikTok è già presente nella galleria.'
+      }, 409);
+    }
+
+    // Fetch official and enriched metadata from TikTok
+    const metadata = await fetchTikTokOEmbed(url);
+
+    // Double check duplicate if videoId was newly discovered during resolution
+    if (metadata.tiktok_video_id && metadata.tiktok_video_id !== parsed.videoId) {
+      const existingAfterResolution = await getVideoByVideoId(metadata.tiktok_video_id);
+      if (existingAfterResolution) {
+        return reply({
+          success: false,
+          error: 'Questo video TikTok è già presente nella galleria.'
+        }, 409);
+      }
+    }
+
     // Heuristics for book and category
     const suggestedBook = detectBookSlug(metadata.caption);
     const suggestedCategory = detectCategory(metadata.caption);
