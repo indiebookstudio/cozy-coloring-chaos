@@ -585,9 +585,9 @@ window.handleImportTikTok = async function() {
         }
       }, 50);
 
-      if (data.warning) {
+      if (!meta.caption || data.warning) {
         if (importWarningAlert) {
-          importWarningAlert.textContent = data.warning;
+          importWarningAlert.textContent = data.warning || 'Attenzione: TikTok non ha restituito automaticamente la didascalia del post. Inserisci il testo del video nel campo sottostante prima di salvare.';
           importWarningAlert.style.display = 'block';
         }
         showToast('Link riconosciuto! Completa la didascalia o i dettagli qui sotto e salva.', 'info');

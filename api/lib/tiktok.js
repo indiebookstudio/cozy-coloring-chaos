@@ -255,31 +255,81 @@ export async function fetchTikTokOEmbed(url) {
   let embedHtml = '';
 
   // -------------------------------------------------------------
-  // SOURCE 1: TikWM Public API
+  // SOURCE 1: TikWM Public API (Multi-attempt GET/POST with fallbacks)
   // -------------------------------------------------------------
   try {
-    const tikwmTarget = videoId 
-      ? (username ? `https://www.tiktok.com/@${username}/video/${videoId}` : `https://www.tiktok.com/@tiktok/video/${videoId}`)
-      : (parsed.canonicalUrl || url);
-    const tikwmUrl = `https://www.tikwm.com/api/?url=${encodeURIComponent(tikwmTarget)}`;
-    const twRes = await fetch(tikwmUrl, {
+    const candidateUrls = [];
+    if (videoId && username) {
+      candidateUrls.push(`https://www.tiktok.com/@${username}/video/${videoId}`);
+    }
+    if (parsed.canonicalUrl && !candidateUrls.includes(parsed.canonicalUrl)) {
+      candidateUrls.push(parsed.canonicalUrl);
+    }
+    if (url && !candidateUrls.includes(url)) {
+      candidateUrls.push(url);
+    }
+    if (videoId && !candidateUrls.some(u => u.includes(`/${videoId}`))) {
+      candidateUrls.push(`https://www.tiktok.com/@tiktok/video/${videoId}`);
+    }
+
+    const fetchTikWMData = async (endpoint, options) => {
+      try {
+        const res = await fetch(endpoint, options);
+        if (!res.ok) return null;
+        const json = await res.json();
+        if (json && json.code === 0 && json.data) {
+          return json.data;
+        }
+      } catch (e) {}
+      return null;
+    };
+
+    let item = null;
+    const primaryTarget = candidateUrls[0] || url;
+
+    // Attempt 1: GET https://www.tikwm.com/api/?url=...
+    item = await fetchTikWMData(`https://www.tikwm.com/api/?url=${encodeURIComponent(primaryTarget)}`, {
       headers: {
         'User-Agent': BROWSER_UA,
         'Accept': 'application/json'
       },
-      signal: AbortSignal.timeout(6000)
+      signal: AbortSignal.timeout(9000)
     });
-    if (twRes.ok) {
-      const twData = await twRes.json();
-      if (twData.code === 0 && twData.data) {
-        const item = twData.data;
-        if (item.id) videoId = String(item.id);
-        if (item.title) caption = cleanCaption(item.title);
-        if (item.author?.unique_id) username = item.author.unique_id;
-        if (item.author?.nickname) displayName = item.author.nickname;
-        if (item.author?.avatar) avatarUrl = item.author.avatar;
-        if (item.cover || item.origin_cover) thumbnailUrl = item.cover || item.origin_cover;
+
+    // Attempt 2: If failed, try POST to https://tikwm.com/api/
+    if (!item) {
+      item = await fetchTikWMData('https://tikwm.com/api/', {
+        method: 'POST',
+        headers: {
+          'User-Agent': BROWSER_UA,
+          'Content-Type': 'application/x-www-form-urlencoded',
+          'Accept': 'application/json'
+        },
+        body: new URLSearchParams({ url: primaryTarget, hd: '1' }),
+        signal: AbortSignal.timeout(8000)
+      });
+    }
+
+    // Attempt 3: If still failed and there are alternative candidate URLs (e.g. raw or canonical)
+    if (!item && candidateUrls.length > 1) {
+      for (let i = 1; i < candidateUrls.length && !item; i++) {
+        item = await fetchTikWMData(`https://tikwm.com/api/?url=${encodeURIComponent(candidateUrls[i])}`, {
+          headers: {
+            'User-Agent': BROWSER_UA,
+            'Accept': 'application/json'
+          },
+          signal: AbortSignal.timeout(7000)
+        });
       }
+    }
+
+    if (item) {
+      if (item.id) videoId = String(item.id);
+      if (item.title) caption = cleanCaption(item.title);
+      if (item.author?.unique_id) username = item.author.unique_id;
+      if (item.author?.nickname) displayName = item.author.nickname;
+      if (item.author?.avatar) avatarUrl = item.author.avatar;
+      if (item.cover || item.origin_cover) thumbnailUrl = item.cover || item.origin_cover;
     }
   } catch (err) {
     console.warn('TikWM fetch warning:', err.message);
