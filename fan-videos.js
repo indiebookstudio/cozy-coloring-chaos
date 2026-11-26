@@ -888,7 +888,6 @@ function setupModalListeners() {
     }
   });
 }
-}
 
 function escapeHtml(str) {
   if (!str) return '';
